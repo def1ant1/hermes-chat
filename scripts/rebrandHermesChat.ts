@@ -123,10 +123,34 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => brand.name.toLowerCase().replaceAll(/\s+/g, '-'),
   },
   {
+    description: 'Kebab-case service identifiers such as docker-compose service names (lobe-chat).',
+    id: 'product-name-kebab',
+    pattern: /\blobe-chat\b/g,
+    replacement: (brand) => brand.shortName.toLowerCase().replaceAll(/\s+/g, '-'),
+  },
+  {
     description: 'Uppercase tokens such as environment variables or constants.',
     id: 'product-name-uppercase',
     pattern: /\bLOBECHAT\b/g,
     replacement: (brand) => brand.name.toUpperCase().replaceAll(/\s+/g, '_'),
+  },
+  {
+    description: 'Uppercase kebab-case constants (e.g., Helm release names LOBE-CHAT).',
+    id: 'product-name-uppercase-kebab',
+    pattern: /\bLOBE-CHAT\b/g,
+    replacement: (brand) => brand.shortName.toUpperCase().replaceAll(/\s+/g, '-'),
+  },
+  {
+    description: 'Snake_case identifiers such as database schemas (lobe_chat).',
+    id: 'product-name-snake',
+    pattern: /\blobe_chat\b/g,
+    replacement: (brand) => brand.shortName.toLowerCase().replaceAll(/\s+/g, '_'),
+  },
+  {
+    description: 'Upper snake case identifiers used in environment variables (LOBE_CHAT).',
+    id: 'product-name-uppercase-snake',
+    pattern: /\bLOBE_CHAT\b/g,
+    replacement: (brand) => brand.shortName.toUpperCase().replaceAll(/\s+/g, '_'),
   },
   {
     description:
@@ -244,7 +268,8 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     description: 'Environment variables referencing lobehub cloud.',
     id: 'service-mode-flag',
     pattern: /lobehubCloud/g,
-    replacement: (brand) => `${(brand.organization?.name ?? brand.name).replaceAll(/\s+/g, '')}Cloud`,
+    replacement: (brand) =>
+      `${(brand.organization?.name ?? brand.name).replaceAll(/\s+/g, '')}Cloud`,
   },
 ];
 
@@ -381,7 +406,7 @@ async function applyReplacements(
   brand: BrandMetadata,
   rules: readonly ReplacementRule[],
   dryRun: boolean,
-): Promise<{ counts: Record<string, number>, modified: boolean; }> {
+): Promise<{ counts: Record<string, number>; modified: boolean }> {
   const raw = await readFile(filePath);
 
   if (detectBinary(raw)) {
@@ -562,7 +587,9 @@ function parseBrandOverridesFromArgs(): {
     const ownerFallback =
       repositoryOverrides.owner ??
       baseRepository?.owner ??
-      (metadataBrand.organization?.name ?? metadataBrand.name).toLowerCase().replaceAll(/\s+/g, '-');
+      (metadataBrand.organization?.name ?? metadataBrand.name)
+        .toLowerCase()
+        .replaceAll(/\s+/g, '-');
     const nameFallback =
       repositoryOverrides.name ??
       baseRepository?.name ??

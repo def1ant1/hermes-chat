@@ -21,6 +21,9 @@ roll back rebrands without manually touching thousands of strings.
 - Hermes Chat brand constants now live in `packages/const/src/branding.ts` and
   `packages/const/src/url.ts`. Any automation consuming historical Hermes Chat
   values must migrate to the Hermes equivalents before release promotion.
+- The rebranding CLI now rewrites **kebab-case** (`lobe-chat` / `LOBE-CHAT`) and
+  **snake_case** (`lobe_chat` / `LOBE_CHAT`) permutations so Docker services,
+  Helm releases, and environment constants migrate without manual follow-up.
 
 ## Usage
 
