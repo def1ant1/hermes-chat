@@ -1,5 +1,5 @@
 {
-  "name": "@lobechat/const",
+  "name": "@hermeslabs/const",
   "version": "1.0.0",
   "private": true,
   "exports": {
@@ -11,5 +11,10 @@
     "model-bank": "workspace:*",
     "query-string": "^9.2.2",
     "url-join": "^5.0.0"
+  },
+  "x-migration-notes": {
+    "executedAt": "2025-10-04T21:56:03.451Z",
+    "executedBy": "gpt-5-codex",
+    "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   }
 }

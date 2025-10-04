@@ -1,5 +1,5 @@
 {
-  "name": "@lobechat/utils",
+  "name": "@hermeslabs/utils",
   "version": "1.0.0",
   "private": true,
   "exports": {
@@ -12,12 +12,17 @@
     "test:coverage": "vitest --coverage --silent='passed-only'"
   },
   "dependencies": {
-    "@lobechat/const": "workspace:*",
-    "@lobechat/types": "workspace:*",
+    "@hermeslabs/const": "workspace:*",
+    "@hermeslabs/types": "workspace:*",
     "dayjs": "^1.11.18",
     "dompurify": "^3.2.7"
   },
   "devDependencies": {
     "vitest-canvas-mock": "^0.3.3"
+  },
+  "x-migration-notes": {
+    "executedAt": "2025-10-04T21:56:03.451Z",
+    "executedBy": "gpt-5-codex",
+    "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   }
 }

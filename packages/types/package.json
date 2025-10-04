@@ -1,12 +1,17 @@
 {
-  "name": "@lobechat/types",
+  "name": "@hermeslabs/types",
   "version": "1.0.0",
   "private": true,
   "main": "./src/index.ts",
   "dependencies": {
-    "@lobechat/web-crawler": "workspace:*",
+    "@hermeslabs/web-crawler": "workspace:*",
     "@lobehub/chat-plugin-sdk": "^1.32.4",
     "type-fest": "^4.41.0",
     "zod": "^3.25.76"
+  },
+  "x-migration-notes": {
+    "executedAt": "2025-10-04T21:56:03.451Z",
+    "executedBy": "gpt-5-codex",
+    "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   }
 }

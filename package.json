@@ -143,19 +143,19 @@
     "@icons-pack/react-simple-icons": "9.6.0",
     "@khmyznikov/pwa-install": "0.3.9",
     "@langchain/community": "^0.3.55",
-    "@lobechat/agent-runtime": "workspace:*",
-    "@lobechat/const": "workspace:*",
-    "@lobechat/context-engine": "workspace:*",
-    "@lobechat/database": "workspace:*",
-    "@lobechat/electron-client-ipc": "workspace:*",
-    "@lobechat/electron-server-ipc": "workspace:*",
-    "@lobechat/file-loaders": "workspace:*",
-    "@lobechat/model-runtime": "workspace:*",
-    "@lobechat/observability-otel": "workspace:*",
-    "@lobechat/prompts": "workspace:*",
-    "@lobechat/python-interpreter": "workspace:*",
-    "@lobechat/utils": "workspace:*",
-    "@lobechat/web-crawler": "workspace:*",
+    "@hermeslabs/agent-runtime": "workspace:*",
+    "@hermeslabs/const": "workspace:*",
+    "@hermeslabs/context-engine": "workspace:*",
+    "@hermeslabs/database": "workspace:*",
+    "@hermeslabs/electron-client-ipc": "workspace:*",
+    "@hermeslabs/electron-server-ipc": "workspace:*",
+    "@hermeslabs/file-loaders": "workspace:*",
+    "@hermeslabs/model-runtime": "workspace:*",
+    "@hermeslabs/observability-otel": "workspace:*",
+    "@hermeslabs/prompts": "workspace:*",
+    "@hermeslabs/python-interpreter": "workspace:*",
+    "@hermeslabs/utils": "workspace:*",
+    "@hermeslabs/web-crawler": "workspace:*",
     "@lobehub/analytics": "^1.6.0",
     "@lobehub/charts": "^2.1.2",
     "@lobehub/chat-plugin-sdk": "^1.32.4",
@@ -291,7 +291,7 @@
     "@commitlint/cli": "^19.8.1",
     "@edge-runtime/vm": "^5.0.0",
     "@huggingface/tasks": "^0.19.0",
-    "@lobechat/types": "workspace:*",
+    "@hermeslabs/types": "workspace:*",
     "@lobehub/i18n-cli": "^1.25.1",
     "@lobehub/lint": "^1.26.2",
     "@lobehub/market-types": "^1.11.4",
@@ -384,5 +384,10 @@
     "overrides": {
       "mdast-util-gfm-autolink-literal": "2.0.0"
     }
+  },
+  "x-migration-notes": {
+    "executedAt": "2025-10-04T21:56:03.451Z",
+    "executedBy": "gpt-5-codex",
+    "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   }
 }
