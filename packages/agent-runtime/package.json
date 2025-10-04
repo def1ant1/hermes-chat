@@ -13,8 +13,8 @@
     "openai": "^4.0.0"
   },
   "x-migration-notes": {
-    "executedAt": "2025-10-04T22:24:14.504Z",
-    "executedBy": "gpt-5-codex",
+    "migratedAt": "2025-10-04T23:38:50.807Z",
+    "engineer": "gpt-5-codex",
     "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   }
 }
