@@ -24,6 +24,13 @@ roll back rebrands without manually touching thousands of strings.
 - The rebranding CLI now rewrites **kebab-case** (`lobe-chat` / `LOBE-CHAT`) and
   **snake_case** (`lobe_chat` / `LOBE_CHAT`) permutations so Docker services,
   Helm releases, and environment constants migrate without manual follow-up.
+- Domain automation now also covers legacy `lobechat.com` (including
+  `www.lobechat.com`) addresses so vanity links route through the new Hermes
+  entrypoints without post-run edits.
+- Raw asset download URLs rooted at
+  `https://raw.githubusercontent.com/lobehub/lobe-chat` are rewritten to the
+  Hermes CDN (falling back to the primary domain when no CDN is configured),
+  preserving the branch/path suffix for deterministic migrations.
 
 ## Usage
 

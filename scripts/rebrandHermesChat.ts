@@ -198,9 +198,23 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => brand.domain,
   },
   {
+    description:
+      'Legacy lobechat.com hostnames (without www) that still surface in historical READMEs and deployment manifests.',
+    id: 'legacy-lobechat-domain',
+    pattern: /lobechat\.com/g,
+    replacement: (brand) => brand.domain,
+  },
+  {
     description: 'www-prefixed marketing domains.',
     id: 'www-domain',
     pattern: /www\.lobehub\.com/g,
+    replacement: (brand) => `www.${brand.domain}`,
+  },
+  {
+    description:
+      'www-prefixed lobechat.com hostnames to guarantee vanity links follow the new Hermes entrypoint.',
+    id: 'legacy-lobechat-domain-www',
+    pattern: /www\.lobechat\.com/g,
     replacement: (brand) => `www.${brand.domain}`,
   },
   {
@@ -208,6 +222,23 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     id: 'cdn-domain',
     pattern: /cdn\.lobehub\.com/g,
     replacement: (brand) => brand.cdnDomain ?? brand.domain,
+  },
+  {
+    description:
+      'Raw GitHub asset downloads sourced from lobehub/lobe-chat now stream from the Hermes CDN (or domain fallback).',
+    id: 'raw-github-cdn',
+    pattern: /https?:\/\/raw\.githubusercontent\.com\/lobehub\/lobe-chat/g,
+    replacement: (brand) => {
+      const owner =
+        brand.repository?.owner ??
+        brand.organization?.name?.toLowerCase().replaceAll(/\s+/g, '-') ??
+        brand.name.toLowerCase().replaceAll(/\s+/g, '-');
+      const repo =
+        brand.repository?.name ?? brand.name.toLowerCase().replaceAll(/\s+/g, '-');
+      const cdn = brand.cdnDomain ?? brand.domain;
+
+      return `https://${cdn}/${owner}/${repo}`;
+    },
   },
   {
     description: 'Direct logo asset references inside markdown/docs.',
