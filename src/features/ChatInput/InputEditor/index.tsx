@@ -1,6 +1,6 @@
-import { isDesktop } from '@lobechat/const';
-import { HotkeyEnum, KeyEnum } from '@lobechat/types';
-import { isCommandPressed } from '@lobechat/utils';
+import { isDesktop } from '@hermeslabs/const';
+import { HotkeyEnum, KeyEnum } from '@hermeslabs/types';
+import { isCommandPressed } from '@hermeslabs/utils';
 import {
   ReactCodePlugin,
   ReactCodeblockPlugin,

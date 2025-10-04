@@ -1,4 +1,5 @@
-import { TracePayload } from '@lobechat/types';
+import { TracePayload } from '@hermeslabs/types';
+
 import { FetchSSEOptions } from '@/utils/fetch';
 
 export interface FetchOptions extends FetchSSEOptions {

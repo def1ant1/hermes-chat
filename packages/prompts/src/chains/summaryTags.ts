@@ -1,4 +1,4 @@
-import { ChatStreamPayload } from '@lobechat/types';
+import { ChatStreamPayload } from '@hermeslabs/types';
 
 export const chainSummaryTags = (content: string, locale: string): Partial<ChatStreamPayload> => ({
   messages: [

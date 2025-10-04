@@ -1,4 +1,9 @@
-import { INBOX_GUIDE_SYSTEMROLE, INBOX_SESSION_ID, isDesktop, isServerMode } from '@lobechat/const';
+import {
+  INBOX_GUIDE_SYSTEMROLE,
+  INBOX_SESSION_ID,
+  isDesktop,
+  isServerMode,
+} from '@hermeslabs/const';
 import {
   type AgentState,
   ContextEngine,
@@ -13,10 +18,10 @@ import {
   ToolCallProcessor,
   ToolMessageReorder,
   ToolSystemRoleProvider,
-} from '@lobechat/context-engine';
-import { historySummaryPrompt } from '@lobechat/prompts';
-import { ChatMessage, OpenAIChatMessage } from '@lobechat/types';
-import { VARIABLE_GENERATORS } from '@lobechat/utils/client';
+} from '@hermeslabs/context-engine';
+import { historySummaryPrompt } from '@hermeslabs/prompts';
+import { ChatMessage, OpenAIChatMessage } from '@hermeslabs/types';
+import { VARIABLE_GENERATORS } from '@hermeslabs/utils/client';
 
 import { isCanUseFC } from '@/helpers/isCanUseFC';
 import { getToolStoreState } from '@/store/tool';

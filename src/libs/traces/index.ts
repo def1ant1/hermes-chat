@@ -1,4 +1,4 @@
-import { CURRENT_VERSION } from '@lobechat/const';
+import { CURRENT_VERSION } from '@hermeslabs/const';
 import { Langfuse } from 'langfuse';
 import { CreateLangfuseTraceBody } from 'langfuse-core';
 

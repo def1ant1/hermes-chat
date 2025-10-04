@@ -1,7 +1,7 @@
 /**
  * @see https://github.com/lobehub/lobe-chat/discussions/6563
  */
-import type { ChatModelCard } from '@lobechat/types';
+import type { ChatModelCard } from '@hermeslabs/types';
 import OpenAI, { ClientOptions } from 'openai';
 import { Stream } from 'openai/streaming';
 

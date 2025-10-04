@@ -4,7 +4,7 @@ import {
   getTextInputUnitRate,
   getTextOutputUnitRate,
   getWriteCacheInputUnitRate,
-} from '@lobechat/utils';
+} from '@hermeslabs/utils';
 import { ModelPriceCurrency, Pricing } from 'model-bank';
 
 export const getPrice = (pricing: Pricing) => {

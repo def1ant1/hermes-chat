@@ -1,5 +1,5 @@
-import { ChatCompletionErrorPayload, TextToImagePayload } from '@lobechat/model-runtime';
-import { ChatErrorType } from '@lobechat/types';
+import { ChatCompletionErrorPayload, TextToImagePayload } from '@hermeslabs/model-runtime';
+import { ChatErrorType } from '@hermeslabs/types';
 import { NextResponse } from 'next/server';
 
 import { checkAuth } from '@/app/(backend)/middleware/auth';

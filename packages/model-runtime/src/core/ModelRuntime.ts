@@ -1,4 +1,4 @@
-import type { TracePayload } from '@lobechat/types';
+import type { TracePayload } from '@hermeslabs/types';
 import { ClientOptions } from 'openai';
 
 import { LobeBedrockAIParams } from '../providers/bedrock';

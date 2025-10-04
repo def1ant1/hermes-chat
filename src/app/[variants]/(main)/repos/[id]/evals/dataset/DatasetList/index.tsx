@@ -1,6 +1,6 @@
 'use client';
 
-import { RAGEvalDataSetItem } from '@lobechat/types';
+import { RAGEvalDataSetItem } from '@hermeslabs/types';
 import { ActionIcon } from '@lobehub/ui';
 import { PlusIcon } from 'lucide-react';
 import { memo } from 'react';

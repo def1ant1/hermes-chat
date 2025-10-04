@@ -1,4 +1,4 @@
-import { USD_TO_CNY } from '@lobechat/const';
+import { USD_TO_CNY } from '@hermeslabs/const';
 import dayjs from 'dayjs';
 import { isNumber } from 'lodash-es';
 import { ModelPriceCurrency } from 'model-bank';

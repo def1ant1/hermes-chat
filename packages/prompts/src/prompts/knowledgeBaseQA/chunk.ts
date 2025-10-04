@@ -1,4 +1,4 @@
-import { ChatSemanticSearchChunk } from '@lobechat/types';
+import { ChatSemanticSearchChunk } from '@hermeslabs/types';
 
 const chunkPrompt = (item: ChatSemanticSearchChunk) =>
   `<chunk fileId="${item.fileId}" fileName="${item.fileName}" similarity="${item.similarity}" ${item.pageNumber ? ` pageNumber="${item.pageNumber}" ` : ''}>${item.text}</chunk>`;

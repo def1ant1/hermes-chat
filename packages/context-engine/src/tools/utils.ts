@@ -12,7 +12,7 @@ const genToolCallShortMD5Hash = (name: string): string => {
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
     const char = name.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
+    hash = (hash << 5) - hash + char;
     hash = hash & hash; // Convert to 32bit integer
   }
   return Math.abs(hash).toString(16).slice(0, 16);
@@ -20,9 +20,13 @@ const genToolCallShortMD5Hash = (name: string): string => {
 
 /**
  * Generate tool calling name
- * Default tool name generation logic (copied from @lobechat/utils)
+ * Default tool name generation logic (copied from @hermeslabs/utils)
  */
-export const generateToolName = (identifier: string, name: string, type: string = 'default'): string => {
+export const generateToolName = (
+  identifier: string,
+  name: string,
+  type: string = 'default',
+): string => {
   const pluginType = type && type !== 'default' ? `${PLUGIN_SCHEMA_SEPARATOR + type}` : '';
 
   // Use plugin identifier as prefix to avoid conflicts

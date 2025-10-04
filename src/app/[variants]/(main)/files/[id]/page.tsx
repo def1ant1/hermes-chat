@@ -1,4 +1,4 @@
-import { getUserAuth } from '@lobechat/utils/server';
+import { getUserAuth } from '@hermeslabs/utils/server';
 import { notFound } from 'next/navigation';
 import { Flexbox } from 'react-layout-kit';
 

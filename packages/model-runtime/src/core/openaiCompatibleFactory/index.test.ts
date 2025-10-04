@@ -4,7 +4,7 @@ import {
   ChatStreamCallbacks,
   ChatStreamPayload,
   LobeOpenAICompatibleRuntime,
-} from '@lobechat/model-runtime';
+} from '@hermeslabs/model-runtime';
 import { ModelProvider } from 'model-bank';
 import OpenAI from 'openai';
 import type { Stream } from 'openai/streaming';
@@ -974,7 +974,11 @@ describe('LobeOpenAICompatibleFactory', () => {
           .spyOn(inst['client'].responses, 'create')
           .mockResolvedValue({ tee: () => [prod, debug] } as any);
 
-        await inst.chat({ messages: [{ content: 'hi', role: 'user' }], model: 'any-model', temperature: 0 });
+        await inst.chat({
+          messages: [{ content: 'hi', role: 'user' }],
+          model: 'any-model',
+          temperature: 0,
+        });
 
         expect(mockResponsesCreate).toHaveBeenCalled();
       });
@@ -990,20 +994,38 @@ describe('LobeOpenAICompatibleFactory', () => {
         const inst = new LobeMockProviderUseResponseModels({ apiKey: 'test' });
         const spy = vi.spyOn(inst['client'].responses, 'create');
         // Prevent hanging by mocking normal chat completion stream
-        vi.spyOn(inst['client'].chat.completions, 'create').mockResolvedValue(new ReadableStream() as any);
+        vi.spyOn(inst['client'].chat.completions, 'create').mockResolvedValue(
+          new ReadableStream() as any,
+        );
 
         // First invocation: model contains the string
-        spy.mockResolvedValueOnce({ tee: () => [new ReadableStream(), new ReadableStream()] } as any);
-        await inst.chat({ messages: [{ content: 'hi', role: 'user' }], model: 'prefix-special-model-suffix', temperature: 0 });
+        spy.mockResolvedValueOnce({
+          tee: () => [new ReadableStream(), new ReadableStream()],
+        } as any);
+        await inst.chat({
+          messages: [{ content: 'hi', role: 'user' }],
+          model: 'prefix-special-model-suffix',
+          temperature: 0,
+        });
         expect(spy).toHaveBeenCalledTimes(1);
 
         // Second invocation: model matches the RegExp
-        spy.mockResolvedValueOnce({ tee: () => [new ReadableStream(), new ReadableStream()] } as any);
-        await inst.chat({ messages: [{ content: 'hi', role: 'user' }], model: 'special-xyz', temperature: 0 });
+        spy.mockResolvedValueOnce({
+          tee: () => [new ReadableStream(), new ReadableStream()],
+        } as any);
+        await inst.chat({
+          messages: [{ content: 'hi', role: 'user' }],
+          model: 'special-xyz',
+          temperature: 0,
+        });
         expect(spy).toHaveBeenCalledTimes(2);
 
         // Third invocation: model does not match any useResponseModels patterns
-        await inst.chat({ messages: [{ content: 'hi', role: 'user' }], model: 'unrelated-model', temperature: 0 });
+        await inst.chat({
+          messages: [{ content: 'hi', role: 'user' }],
+          model: 'unrelated-model',
+          temperature: 0,
+        });
         expect(spy).toHaveBeenCalledTimes(2); // Ensure no additional calls were made
       });
     });

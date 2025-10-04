@@ -1,4 +1,4 @@
-import { RAGEvalDataSetItem } from '@lobechat/types';
+import { RAGEvalDataSetItem } from '@hermeslabs/types';
 import { createStyles } from 'antd-style';
 import { parseAsInteger, useQueryState } from 'nuqs';
 import { memo } from 'react';

@@ -1,5 +1,9 @@
-import { LOBE_CHAT_OBSERVATION_ID, LOBE_CHAT_TRACE_ID, MESSAGE_CANCEL_FLAT } from '@lobechat/const';
-import { parseToolCalls } from '@lobechat/model-runtime';
+import {
+  LOBE_CHAT_OBSERVATION_ID,
+  LOBE_CHAT_TRACE_ID,
+  MESSAGE_CANCEL_FLAT,
+} from '@hermeslabs/const';
+import { parseToolCalls } from '@hermeslabs/model-runtime';
 import {
   ChatErrorType,
   ChatImageChunk,
@@ -13,7 +17,7 @@ import {
   ModelUsage,
   ResponseAnimation,
   ResponseAnimationStyle,
-} from '@lobechat/types';
+} from '@hermeslabs/types';
 
 import { fetchEventSource } from '../client/fetchEventSource';
 import { nanoid } from '../uuid';

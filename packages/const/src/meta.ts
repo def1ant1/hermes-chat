@@ -1,4 +1,4 @@
-import { MetaData } from '@lobechat/types';
+import { MetaData } from '@hermeslabs/types';
 
 import { BRANDING_LOGO_URL } from './branding';
 

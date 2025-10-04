@@ -1,5 +1,5 @@
-import { SendMessageServerParams, StructureOutputParams } from '@lobechat/types';
-import { cleanObject } from '@lobechat/utils';
+import { SendMessageServerParams, StructureOutputParams } from '@hermeslabs/types';
+import { cleanObject } from '@hermeslabs/utils';
 
 import { lambdaClient } from '@/libs/trpc/client';
 import { createXorKeyVaultsPayload } from '@/services/_auth';

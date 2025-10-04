@@ -1,5 +1,5 @@
-import { isDesktop } from '@lobechat/const';
-import { ProxyTRPCRequestParams, dispatch, streamInvoke } from '@lobechat/electron-client-ipc';
+import { isDesktop } from '@hermeslabs/const';
+import { ProxyTRPCRequestParams, dispatch, streamInvoke } from '@hermeslabs/electron-client-ipc';
 import debug from 'debug';
 
 import { getElectronStoreState } from '@/store/electron';

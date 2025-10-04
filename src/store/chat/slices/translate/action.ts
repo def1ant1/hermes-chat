@@ -1,5 +1,5 @@
-import { chainLangDetect , chainTranslate } from '@lobechat/prompts';
-import { TraceNameMap, TracePayload } from '@lobechat/types';
+import { chainLangDetect, chainTranslate } from '@hermeslabs/prompts';
+import { TraceNameMap, TracePayload } from '@hermeslabs/types';
 import { produce } from 'immer';
 import { StateCreator } from 'zustand/vanilla';
 

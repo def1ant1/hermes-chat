@@ -1,5 +1,5 @@
+import type { ChatModelCard } from '@hermeslabs/types';
 import { HfInference } from '@huggingface/inference';
-import type { ChatModelCard } from '@lobechat/types';
 import { ModelProvider } from 'model-bank';
 import urlJoin from 'url-join';
 

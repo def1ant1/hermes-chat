@@ -3,8 +3,8 @@ import {
   chainSummaryAgentName,
   chainSummaryDescription,
   chainSummaryTags,
-} from '@lobechat/prompts';
-import { TraceNameMap, TracePayload, TraceTopicType } from '@lobechat/types';
+} from '@hermeslabs/prompts';
+import { TraceNameMap, TracePayload, TraceTopicType } from '@hermeslabs/types';
 import { getSingletonAnalyticsOptional } from '@lobehub/analytics';
 import type { PartialDeep } from 'type-fest';
 import { StateCreator } from 'zustand/vanilla';

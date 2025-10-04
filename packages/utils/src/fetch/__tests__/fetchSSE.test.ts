@@ -1,5 +1,5 @@
-import { MESSAGE_CANCEL_FLAT } from '@lobechat/const';
-import { ChatMessageError } from '@lobechat/types';
+import { MESSAGE_CANCEL_FLAT } from '@hermeslabs/const';
+import { ChatMessageError } from '@hermeslabs/types';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { FetchEventSourceInit } from '../../client/fetchEventSource';

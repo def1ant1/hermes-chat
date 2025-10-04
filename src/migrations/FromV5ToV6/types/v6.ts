@@ -1,4 +1,4 @@
-import { FewShots } from '@lobechat/types';
+import { FewShots } from '@hermeslabs/types';
 import { LLMParams } from 'model-bank';
 
 export type TTSServer = 'openai' | 'edge' | 'microsoft';

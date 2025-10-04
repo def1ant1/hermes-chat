@@ -1,4 +1,4 @@
-import { chainRewriteQuery } from '@lobechat/prompts';
+import { chainRewriteQuery } from '@hermeslabs/prompts';
 import { StateCreator } from 'zustand/vanilla';
 
 import { chatService } from '@/services/chat';

@@ -1,4 +1,4 @@
-import { ChatStreamPayload } from '@lobechat/types';
+import { ChatStreamPayload } from '@hermeslabs/types';
 
 export const chainSummaryGenerationTitle = (
   prompts: string[],

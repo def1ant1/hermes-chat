@@ -1,4 +1,4 @@
-import type { ChatModelCard } from '@lobechat/types';
+import type { ChatModelCard } from '@hermeslabs/types';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import {

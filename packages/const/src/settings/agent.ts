@@ -3,7 +3,7 @@ import {
   LobeAgentConfig,
   LobeAgentTTSConfig,
   UserDefaultAgent,
-} from '@lobechat/types';
+} from '@hermeslabs/types';
 
 import { DEFAULT_AGENT_META } from '../meta';
 import { DEFAULT_MODEL, DEFAULT_PROVIDER } from './llm';

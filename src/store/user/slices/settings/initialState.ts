@@ -1,5 +1,5 @@
-import { DEFAULT_SETTINGS } from '@lobechat/const';
-import { UserSettings } from '@lobechat/types';
+import { DEFAULT_SETTINGS } from '@hermeslabs/const';
+import { UserSettings } from '@hermeslabs/types';
 import type { PartialDeep } from 'type-fest';
 
 export interface UserSettingsState {

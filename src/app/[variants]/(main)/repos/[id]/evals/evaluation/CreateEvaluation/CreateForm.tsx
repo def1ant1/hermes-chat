@@ -1,4 +1,4 @@
-import { CreateNewEvalEvaluation } from '@lobechat/types';
+import { CreateNewEvalEvaluation } from '@hermeslabs/types';
 import { Button, Form, Input, Select, TextArea } from '@lobehub/ui';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

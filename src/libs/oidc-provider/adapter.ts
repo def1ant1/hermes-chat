@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@lobechat/database';
+import { LobeChatDatabase } from '@hermeslabs/database';
 import {
   oidcAccessTokens,
   oidcAuthorizationCodes,
@@ -8,7 +8,7 @@ import {
   oidcInteractions,
   oidcRefreshTokens,
   oidcSessions,
-} from '@lobechat/database/schemas';
+} from '@hermeslabs/database/schemas';
 import debug from 'debug';
 import { eq, sql } from 'drizzle-orm';
 
@@ -163,7 +163,7 @@ class OIDCAdapter {
       log('[%s] Setting userId: %s', this.name, payload.accountId);
     } else {
       try {
-        const { getUserAuth } = await import('@lobechat/utils/server');
+        const { getUserAuth } = await import('@hermeslabs/utils/server');
         try {
           const { userId } = await getUserAuth();
           if (userId) {

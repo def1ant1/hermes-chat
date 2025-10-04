@@ -1,4 +1,4 @@
-import { correctOIDCUrl, getUserAuth } from '@lobechat/utils/server';
+import { correctOIDCUrl, getUserAuth } from '@hermeslabs/utils/server';
 import debug from 'debug';
 import { NextRequest, NextResponse } from 'next/server';
 

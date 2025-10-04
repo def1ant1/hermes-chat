@@ -1,4 +1,4 @@
-import { ChatMessage } from '@lobechat/types';
+import { ChatMessage } from '@hermeslabs/types';
 
 const chatMessage = (message: ChatMessage) => {
   return `<${message.role}>${message.content}</${message.role}>`;

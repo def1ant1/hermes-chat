@@ -1,5 +1,5 @@
-import { filesPrompts } from '@lobechat/prompts';
-import { imageUrlToBase64, isLocalUrl, parseDataUri } from '@lobechat/utils';
+import { filesPrompts } from '@hermeslabs/prompts';
+import { imageUrlToBase64, isLocalUrl, parseDataUri } from '@hermeslabs/utils';
 import debug from 'debug';
 
 import { BaseProcessor } from '../base/BaseProcessor';

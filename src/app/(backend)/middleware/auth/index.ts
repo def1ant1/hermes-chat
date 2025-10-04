@@ -3,9 +3,9 @@ import {
   AgentRuntimeError,
   ChatCompletionErrorPayload,
   ModelRuntime,
-} from '@lobechat/model-runtime';
-import { ChatErrorType, ClientSecretPayload } from '@lobechat/types';
-import { getXorPayload } from '@lobechat/utils/server';
+} from '@hermeslabs/model-runtime';
+import { ChatErrorType, ClientSecretPayload } from '@hermeslabs/types';
+import { getXorPayload } from '@hermeslabs/utils/server';
 import { NextRequest } from 'next/server';
 
 import {

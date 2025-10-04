@@ -1,6 +1,6 @@
 import { type AuthObject } from '@clerk/backend';
-import { AgentRuntimeError } from '@lobechat/model-runtime';
-import { ChatErrorType } from '@lobechat/types';
+import { AgentRuntimeError } from '@hermeslabs/model-runtime';
+import { ChatErrorType } from '@hermeslabs/types';
 
 import { enableClerk, enableNextAuth } from '@/const/auth';
 import { getAppConfig } from '@/envs/app';

@@ -1,4 +1,4 @@
-import { DEFAULT_PREFERENCE } from '@lobechat/const';
+import { DEFAULT_PREFERENCE } from '@hermeslabs/const';
 
 import type { UserStore } from '@/store/user';
 

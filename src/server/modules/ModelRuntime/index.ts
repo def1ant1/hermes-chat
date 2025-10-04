@@ -1,5 +1,5 @@
-import { ModelRuntime } from '@lobechat/model-runtime';
-import { ClientSecretPayload } from '@lobechat/types';
+import { ModelRuntime } from '@hermeslabs/model-runtime';
+import { ClientSecretPayload } from '@hermeslabs/types';
 import { ModelProvider } from 'model-bank';
 
 import { getLLMConfig } from '@/envs/llm';

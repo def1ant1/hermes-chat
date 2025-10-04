@@ -1,4 +1,4 @@
-import { StoreApiWithSelector } from '@lobechat/types';
+import { StoreApiWithSelector } from '@hermeslabs/types';
 import { StoreApi } from 'zustand';
 import { createContext } from 'zustand-utils';
 import { shallow } from 'zustand/shallow';

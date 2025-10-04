@@ -1,4 +1,4 @@
-import { dispatch } from '@lobechat/electron-client-ipc';
+import { dispatch } from '@hermeslabs/electron-client-ipc';
 
 class AutoUpdateService {
   checkUpdate = async () => {

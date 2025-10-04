@@ -1,5 +1,5 @@
-import { ModelRuntime } from '@lobechat/model-runtime';
-import { LobeVertexAI } from '@lobechat/model-runtime/vertexai';
+import { ModelRuntime } from '@hermeslabs/model-runtime';
+import { LobeVertexAI } from '@hermeslabs/model-runtime/vertexai';
 import { ModelProvider } from 'model-bank';
 
 import { checkAuth } from '@/app/(backend)/middleware/auth';

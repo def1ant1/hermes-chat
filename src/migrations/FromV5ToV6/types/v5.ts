@@ -1,4 +1,4 @@
-import { FewShots, LobeAgentTTSConfig } from '@lobechat/types';
+import { FewShots, LobeAgentTTSConfig } from '@hermeslabs/types';
 import { LLMParams } from 'model-bank';
 
 /**

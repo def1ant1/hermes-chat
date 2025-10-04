@@ -1,4 +1,4 @@
-import { ChatFileItem, ChatImageItem, ChatVideoItem } from '@lobechat/types';
+import { ChatFileItem, ChatImageItem, ChatVideoItem } from '@hermeslabs/types';
 
 import { filePrompts } from './file';
 import { imagesPrompts } from './image';

@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@lobechat/database';
+import { LobeChatDatabase } from '@hermeslabs/database';
 
 import { SessionModel } from '@/database/models/session';
 import { getServerDefaultAgentConfig } from '@/server/globalConfig';

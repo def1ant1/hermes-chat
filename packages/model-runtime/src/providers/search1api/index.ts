@@ -1,4 +1,4 @@
-import type { ChatModelCard } from '@lobechat/types';
+import type { ChatModelCard } from '@hermeslabs/types';
 import { ModelProvider } from 'model-bank';
 import OpenAI from 'openai';
 

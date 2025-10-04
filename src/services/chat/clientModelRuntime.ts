@@ -1,4 +1,4 @@
-import { ModelRuntime } from '@lobechat/model-runtime';
+import { ModelRuntime } from '@hermeslabs/model-runtime';
 
 import { createPayloadWithKeyVaults } from '../_auth';
 

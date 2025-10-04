@@ -1,4 +1,4 @@
-import { EvalDatasetRecordRefFile } from '@lobechat/types';
+import { EvalDatasetRecordRefFile } from '@hermeslabs/types';
 import { and, eq, inArray } from 'drizzle-orm';
 
 import { NewEvalDatasetRecordsItem, evalDatasetRecords, files } from '../../../schemas';

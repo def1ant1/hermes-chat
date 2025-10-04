@@ -1,4 +1,4 @@
-import type { ChatModelCard } from '@lobechat/types';
+import type { ChatModelCard } from '@hermeslabs/types';
 import { AIBaseModelCard } from 'model-bank';
 
 import type { ModelProviderKey } from '../types';
@@ -315,9 +315,9 @@ const processModelCard = (
     )
       ? 'image'
       : isKeywordListMatch(
-        model.id.toLowerCase(),
-        EMBEDDING_MODEL_KEYWORDS.map((k) => k.toLowerCase()),
-      )
+            model.id.toLowerCase(),
+            EMBEDDING_MODEL_KEYWORDS.map((k) => k.toLowerCase()),
+          )
         ? 'embedding'
         : 'chat');
 

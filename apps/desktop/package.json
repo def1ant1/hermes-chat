@@ -41,9 +41,9 @@
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/tsconfig": "^1.0.1",
     "@electron-toolkit/utils": "^4.0.0",
-    "@lobechat/electron-client-ipc": "workspace:*",
-    "@lobechat/electron-server-ipc": "workspace:*",
-    "@lobechat/file-loaders": "workspace:*",
+    "@hermeslabs/electron-client-ipc": "workspace:*",
+    "@hermeslabs/electron-server-ipc": "workspace:*",
+    "@hermeslabs/file-loaders": "workspace:*",
     "@lobehub/i18n-cli": "^1.20.3",
     "@types/lodash": "^4.17.0",
     "@types/resolve": "^1.20.6",
@@ -79,5 +79,10 @@
       "electron",
       "electron-builder"
     ]
+  },
+  "x-migration-notes": {
+    "executedAt": "2025-10-04T22:24:14.504Z",
+    "executedBy": "gpt-5-codex",
+    "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   }
 }

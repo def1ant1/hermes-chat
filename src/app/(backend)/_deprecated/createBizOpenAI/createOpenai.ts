@@ -1,4 +1,4 @@
-import { ChatErrorType } from '@lobechat/types';
+import { ChatErrorType } from '@hermeslabs/types';
 import OpenAI from 'openai';
 
 import { getLLMConfig } from '@/envs/llm';

@@ -1,5 +1,5 @@
-import { LobeChatDatabase } from '@lobechat/database';
-import { ClientSecretPayload } from '@lobechat/types';
+import { LobeChatDatabase } from '@hermeslabs/database';
+import { ClientSecretPayload } from '@hermeslabs/types';
 import debug from 'debug';
 import { NextRequest } from 'next/server';
 
