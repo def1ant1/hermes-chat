@@ -31,6 +31,11 @@ roll back rebrands without manually touching thousands of strings.
   `https://raw.githubusercontent.com/lobehub/lobe-chat` are rewritten to the
   Hermes CDN (falling back to the primary domain when no CDN is configured),
   preserving the branch/path suffix for deterministic migrations.
+- The automation now standardizes both scoped package imports (`@lobehub/*` and
+  `@lobechat/*`) and bare social handles. Scoped imports adopt the sanitized
+  organization slug (or fall back to the short product name when no org is
+  supplied) so npm installs remain routable, while bare `@lobechat` mentions map
+  to the product short name for human-readable marketing copy.
 
 ## Usage
 
