@@ -34,7 +34,8 @@ export const AUTHOR_LIST = {
 
 export class Ld {
   generate({
-    image = '/og/cover.png',
+    // NOTE(HERMES-BRAND-OG): Align with OG_URL constant to keep structured data in sync.
+    image = '/og/hermes-chat-cover.svg',
     article,
     url,
     title,

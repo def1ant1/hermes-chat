@@ -1,0 +1,31 @@
+<!-- Hermes Chat primary logo generated for README hero. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <linearGradient id="hermes-gradient" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+    <linearGradient id="wing-gradient" x1="0%" x2="100%" y1="50%" y2="50%">
+      <stop offset="0%" stop-color="#facc15" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#f97316" stop-opacity="0.95" />
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="40" fill="url(#hermes-gradient)" />
+  <path
+    d="M40 56c12 0 22-8 32-8s20 8 32 8c6 0 11-1 16-3l-12 20c-12 0-22-8-32-8s-20 8-32 8c-6 0-11 1-16 3l12-20z"
+    fill="url(#wing-gradient)"
+    opacity="0.9"
+  />
+  <path
+    d="M68 44h24v72H68z"
+    fill="#ecfeff"
+    opacity="0.9"
+    rx="12"
+  />
+  <path
+    d="M52 64h16v52H52a12 12 0 0 1-12-12V76a12 12 0 0 1 12-12zm56 0h-16v52h16a12 12 0 0 0 12-12V76a12 12 0 0 0-12-12z"
+    fill="#ecfeff"
+    opacity="0.9"
+  />
+</svg>

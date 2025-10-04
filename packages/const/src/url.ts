@@ -11,7 +11,8 @@ export const OFFICIAL_URL = 'https://hermes.chat';
 export const OFFICIAL_PREVIEW_URL = 'https://preview.hermes.chat';
 export const OFFICIAL_SITE = 'https://hermes.chat';
 
-export const OG_URL = '/og/cover.png?v=1';
+// NOTE(HERMES-BRAND-OG): Vector source lives at public/og/hermes-chat-cover.svg; rasterize to PNG during deploy if needed.
+export const OG_URL = '/og/hermes-chat-cover.svg?v=1';
 
 export const GITHUB = 'https://github.com/hermes-chat/hermes-chat';
 export const GITHUB_ISSUES = urlJoin(GITHUB, 'issues/new/choose');

@@ -1,8 +1,8 @@
 ---
-title: LobeChat 插件生态系统 - 功能扩展与开发资源
-description: 了解 LobeChat 插件生态系统如何增强 LobeChat 助手的实用性和灵活性，以及提供的开发资源和插件开发指南。
+title: Hermes Chat 插件生态系统 - 功能扩展与开发资源
+description: 了解 Hermes Chat 插件生态系统如何增强 Hermes Chat 助手的实用性和灵活性，以及提供的开发资源和插件开发指南。
 tags:
-  - LobeChat
+  - Hermes Chat
   - 插件生态系统
   - 开发资源
   - 插件开发指南
@@ -12,11 +12,11 @@ tags:
 
 <Image alt={'插件系统'} borderless cover src={'https://github.com/user-attachments/assets/66a891ac-01b6-4e3f-b978-2eb07b489b1b'} />
 
-LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地增强了 LobeChat 助手的实用性和灵活性。
+Hermes Chat 的插件生态系统是其核心功能的重要扩展，它极大地增强了 Hermes Chat 助手的实用性和灵活性。
 
-<Video src="https://github.com/lobehub/lobe-chat/assets/28616219/f29475a3-f346-4196-a435-41a6373ab9e2" />
+<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/f29475a3-f346-4196-a435-41a6373ab9e2" />
 
-通过利用插件，LobeChat 的助手们能够实现实时信息的获取和处理，例如搜索网络信息，为用户提供即时且相关的资讯。
+通过利用插件，Hermes Chat 的助手们能够实现实时信息的获取和处理，例如搜索网络信息，为用户提供即时且相关的资讯。
 
 此外，这些插件不仅局限于新闻聚合，还可以扩展到其他实用的功能，如快速检索文档、生成图片、获取 Bilibili 、Steam 等各种平台数据，以及与其他各式各样的第三方服务交互。
 
@@ -37,34 +37,34 @@ LobeChat 的插件生态系统是其核心功能的重要扩展，它极大地�
   插件开发指南](/zh/docs/usage/plugins/development)。
 </Callout>
 
-- [lobe-chat-plugins][lobe-chat-plugins]：这是 LobeChat 的插件索引。它从该仓库的 index.json 中获取插件列表并显示给用户。
+- [lobe-chat-plugins][lobe-chat-plugins]：这是 Hermes Chat 的插件索引。它从该仓库的 index.json 中获取插件列表并显示给用户。
 - [chat-plugin-template][chat-plugin-template]: Chat Plugin 插件开发模版，你可以通过项目模版快速新建插件项目。
-- [@lobehub/chat-plugin-sdk][chat-plugin-sdk]：LobeChat 插件 SDK 可帮助您创建出色的 Lobe Chat 插件。
-- [@lobehub/chat-plugins-gateway][chat-plugins-gateway]：LobeChat 插件网关是一个后端服务，作为 LobeChat 插件的网关。我们使用 Vercel 部署此服务。
+- [@hermeslabs/chat-plugin-sdk][chat-plugin-sdk]：Hermes Chat 插件 SDK 可帮助您创建出色的 Hermes Chat 插件。
+- [@hermeslabs/chat-plugins-gateway][chat-plugins-gateway]：Hermes Chat 插件网关是一个后端服务，作为 Hermes Chat 插件的网关。我们使用 Vercel 部署此服务。
 
 ### 路线进展
 
-LobeChat 的插件系统目前已初步进入一个稳定阶段，我们已基本完成大部分插件系统所需的功能，但我们仍然在规划与思考插件能为我们带来的全新可能性。您可以在以下 Issues 中了解更多信息:
+Hermes Chat 的插件系统目前已初步进入一个稳定阶段，我们已基本完成大部分插件系统所需的功能，但我们仍然在规划与思考插件能为我们带来的全新可能性。您可以在以下 Issues 中了解更多信息:
 
 <Steps>
   ### ✅ 插件一期
 
-  实现插件与主体分离，将插件拆分为独立仓库维护，并实现插件的动态加载。 [**#73**](https://github.com/lobehub/lobe-chat/issues/73)
+  实现插件与主体分离，将插件拆分为独立仓库维护，并实现插件的动态加载。 [**#73**](https://github.com/hermeslabs/lobe-chat/issues/73)
 
   ### ✅ 插件二期
 
-  插件的安全性与使用的稳定性，更加精准地呈现异常状态，插件架构的可维护性与开发者友好。[**#97**](https://github.com/lobehub/lobe-chat/issues/97)
+  插件的安全性与使用的稳定性，更加精准地呈现异常状态，插件架构的可维护性与开发者友好。[**#97**](https://github.com/hermeslabs/lobe-chat/issues/97)
 
   ### ✅ 插件三期
 
-  更高阶与完善的自定义能力，支持 OpenAPI schema 调用、兼容 ChatGPT 插件、新增 Midjourney 插件。 [**#411**](https://github.com/lobehub/lobe-chat/discussions/#411)
+  更高阶与完善的自定义能力，支持 OpenAPI schema 调用、兼容 ChatGPT 插件、新增 Midjourney 插件。 [**#411**](https://github.com/hermeslabs/lobe-chat/discussions/#411)
 
   ### 💭 插件四期
 
-  完善的鉴权、可视化配置插件定义、 Plugin SDK CLI 、 Python 语言研发模板、还有什么想法？欢迎参与讨论： [**#1310**](https://github.com/lobehub/lobe-chat/discussions/#1310)
+  完善的鉴权、可视化配置插件定义、 Plugin SDK CLI 、 Python 语言研发模板、还有什么想法？欢迎参与讨论： [**#1310**](https://github.com/hermeslabs/lobe-chat/discussions/#1310)
 </Steps>
 
-[chat-plugin-sdk]: https://github.com/lobehub/chat-plugin-sdk
-[chat-plugin-template]: https://github.com/lobehub/chat-plugin-template
-[chat-plugins-gateway]: https://github.com/lobehub/chat-plugins-gateway
-[lobe-chat-plugins]: https://github.com/lobehub/lobe-chat-plugins
+[chat-plugin-sdk]: https://github.com/hermeslabs/chat-plugin-sdk
+[chat-plugin-template]: https://github.com/hermeslabs/chat-plugin-template
+[chat-plugins-gateway]: https://github.com/hermeslabs/chat-plugins-gateway
+[lobe-chat-plugins]: https://github.com/hermeslabs/lobe-chat-plugins

@@ -1,6 +1,10 @@
-# Lobe Chat API Client-Server Interaction Logic
+---
+title: Hermes Chat API Client-Server Interaction Logic
+---
 
-This document explains the implementation logic of Lobe Chat API in client-server interactions, including event sequences and core components involved.
+# Hermes Chat API Client-Server Interaction Logic
+
+This document explains the implementation logic of Hermes Chat API in client-server interactions, including event sequences and core components involved.
 
 ## Interaction Sequence Diagram
 
@@ -189,7 +193,7 @@ sequenceDiagram
 
 ## AgentRuntime Overview
 
-AgentRuntime is a core abstraction layer in Lobe Chat that encapsulates a unified interface for interacting with different AI model providers. Its main responsibilities and features include:
+AgentRuntime is a core abstraction layer in Hermes Chat that encapsulates a unified interface for interacting with different AI model providers. Its main responsibilities and features include:
 
 1. **Unified Abstraction Layer**: AgentRuntime provides a unified interface that hides the implementation details and differences between various AI provider APIs (such as OpenAI, Anthropic, Bedrock, etc.).
 
@@ -233,7 +237,7 @@ AgentRuntime is a core abstraction layer in Lobe Chat that encapsulates a unifie
 
    **Adapter Implementation Examples**:
 
-   1. **OpenRouter Adapter**: OpenRouter is a unified API that allows access to AI models from multiple providers. Lobe Chat implements support for OpenRouter through an adapter:
+   1. **OpenRouter Adapter**: OpenRouter is a unified API that allows access to AI models from multiple providers. Hermes Chat implements support for OpenRouter through an adapter:
 
       ```ts
       // OpenRouter adapter implementation
@@ -247,8 +251,8 @@ AgentRuntime is a core abstraction layer in Lobe Chat that encapsulates a unifie
             apiKey: options.apiKey,
             baseURL: OPENROUTER_BASE_URL,
             defaultHeaders: {
-              'HTTP-Referer': 'https://github.com/lobehub/lobe-chat',
-              'X-Title': 'LobeChat',
+              'HTTP-Referer': 'https://github.com/hermeslabs/lobe-chat',
+              'X-Title': 'Hermes Chat',
             },
           });
           this.baseURL = OPENROUTER_BASE_URL;
@@ -256,7 +260,7 @@ AgentRuntime is a core abstraction layer in Lobe Chat that encapsulates a unifie
 
         // Implement chat functionality
         async chat(payload: ChatCompletionCreateParamsBase, options?: RequestOptions) {
-          // Convert Lobe Chat request format to OpenRouter format
+          // Convert Hermes Chat request format to OpenRouter format
           // Handle model mapping, message format, etc.
           return this.client.chat.completions.create(
             {
@@ -271,7 +275,7 @@ AgentRuntime is a core abstraction layer in Lobe Chat that encapsulates a unifie
       }
       ```
 
-   2. **Google Gemini Adapter**: Gemini is Google's large language model. Lobe Chat supports Gemini series models through a dedicated adapter:
+   2. **Google Gemini Adapter**: Gemini is Google's large language model. Hermes Chat supports Gemini series models through a dedicated adapter:
 
       ```ts
       import { GoogleGenerativeAI } from '@google/generative-ai';

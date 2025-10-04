@@ -292,8 +292,10 @@ interface RebrandSummary {
 
 const DEFAULT_BRAND: BrandMetadata = {
   assets: {
-    banner: '/assets/hermes-chat/banner.png',
-    favicon: '/assets/hermes-chat/favicon.png',
+    /** Vector hero stored in-repo so downstream pipelines can rasterize as needed. */
+    banner: '/assets/hermes-chat/banner.svg',
+    /** SVG favicon glyph to avoid shipping binary blobs in source control. */
+    favicon: '/assets/hermes-chat/favicon.svg',
     logo: '/assets/hermes-chat/logo.svg',
     wordmark: '/assets/hermes-chat/wordmark.svg',
   },

@@ -48,9 +48,9 @@ REPOSITORY_HOST=${REPOSITORY_HOST:-"github.com"}
 REPOSITORY_OWNER=${REPOSITORY_OWNER:-"hermes-chat"}
 REPOSITORY_NAME=${REPOSITORY_NAME:-"hermes-chat"}
 ASSET_LOGO=${ASSET_LOGO:-"/assets/hermes-chat/logo.svg"}
-ASSET_FAVICON=${ASSET_FAVICON:-"/assets/hermes-chat/favicon.png"}
+ASSET_FAVICON=${ASSET_FAVICON:-"/assets/hermes-chat/favicon.svg"}
 ASSET_WORDMARK=${ASSET_WORDMARK:-"/assets/hermes-chat/wordmark.svg"}
-ASSET_BANNER=${ASSET_BANNER:-"/assets/hermes-chat/banner.png"}
+ASSET_BANNER=${ASSET_BANNER:-"/assets/hermes-chat/banner.svg"}
 
 DRY_RUN=false
 WORKSPACE=""

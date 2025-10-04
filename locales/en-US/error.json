@@ -80,7 +80,7 @@
     "520": "We apologize, the server encountered an unexpected issue that prevented it from completing your request. Please try again later; we are working to resolve this issue.",
     "522": "We apologize, the server connection timed out and was unable to respond to your request in a timely manner. This may be due to an unstable network or the server being temporarily inaccessible. Please try again later; we are working to restore service.",
     "524": "We apologize, the server timed out while waiting for a response, possibly due to a slow reply. Please try again later.",
-    "AgentRuntimeError": "Lobe language model runtime execution error. Please troubleshoot or retry based on the following information.",
+    "AgentRuntimeError": "Hermes Chat language model runtime execution error. Please troubleshoot or retry based on the following information.",
     "ConnectionCheckFailed": "The request returned empty. Please check if the API proxy address does not end with `/v1`.",
     "CreateMessageError": "Sorry, the message could not be sent successfully. Please copy the content and try sending it again. This message will not be retained after refreshing the page.",
     "ExceededContextWindow": "The current request content exceeds the length that the model can handle. Please reduce the amount of content and try again.",

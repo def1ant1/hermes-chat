@@ -1,10 +1,14 @@
+---
+title: 使用服务端数据库
+---
+
 # 使用服务端数据库
 
-LobeChat 提供了内置的客户端数据库体验。
+Hermes Chat 提供了内置的客户端数据库体验。
 但某些重要功能仅在服务端开发中可用。
 
 为了使用服务端数据库功能，
-需要参考 [部署服务端数据库](https://lobehub.com/docs/self-hosting/server-database) 的说明来配置所有前置条件。
+需要参考 [部署服务端数据库](https://hermes.chat/docs/self-hosting/server-database) 的说明来配置所有前置条件。
 本文档提供了一个更简化的配置方法，能够在本地开发时快速启动简化的服务端环境。
 
 ## 快速设置
@@ -52,7 +56,7 @@ pnpm db:migrate
 
 ### 启动开发服务器
 
-启动 LobeChat 开发服务器：
+启动 Hermes Chat 开发服务器：
 
 ```bash
 pnpm dev
@@ -138,14 +142,13 @@ await fetch(uploadUrl, {
 });
 ```
 
-
 ### 服务地址
 
 运行 Docker Compose 开发环境时：
 
-- **PostgreSQL**：`postgres://postgres@localhost:5432/lobechat`
+- **PostgreSQL**：`postgres://postgres@localhost:5432/hermes-chat`
 - **MinIO API**：`http://localhost:9000`
-- **MinIO 控制台**：`http://localhost:9001` (admin/CHANGE_THIS_PASSWORD_IN_PRODUCTION)
+- **MinIO 控制台**：`http://localhost:9001` (admin/CHANGE\_THIS\_PASSWORD\_IN\_PRODUCTION)
 - **应用程序**：`http://localhost:3010`
 
 ### 重置服务
@@ -163,7 +166,6 @@ docker-compose -f docker-compose.development.yml down -v
 docker-compose -f docker-compose.development.yml up -d
 pnpm db:migrate
 ```
-
 
 ### 故障排除
 

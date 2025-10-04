@@ -1,11 +1,12 @@
 ---
-title: Deploy LobeChat with Docker
+title: Deploy Hermes Chat with Docker
 description: >-
-  Learn how to deploy the LobeChat service using Docker, including installation steps, command deployment, proxy configuration, and automatic update scripts.
-
+  Learn how to deploy the Hermes Chat service using Docker, including
+  installation steps, command deployment, proxy configuration, and automatic
+  update scripts.
 tags:
   - Docker Deployment
-  - LobeChat Service
+  - Hermes Chat Service
   - Docker Command
   - Proxy Configuration
   - Automatic Update Script
@@ -21,7 +22,7 @@ tags:
   [![][docker-pulls-shield]][docker-pulls-link]
 </div>
 
-We provide a [Docker image][docker-release-link] for you to deploy the LobeChat service on your private device.
+We provide a [Docker image][docker-release-link] for you to deploy the Hermes Chat service on your private device.
 
 <Steps>
   ### Install Docker Container Environment
@@ -44,14 +45,14 @@ We provide a [Docker image][docker-release-link] for you to deploy the LobeChat 
 
   ### Docker Command Deployment
 
-  Use the following command to start the LobeChat service with one click:
+  Use the following command to start the Hermes Chat service with one click:
 
   ```fish
   $ docker run -d -p 3210:3210 \
     -e OPENAI_API_KEY=sk-xxxx \
     -e ACCESS_CODE=lobe66 \
     --name lobe-chat \
-    lobehub/lobe-chat
+    hermeslabs/lobe-chat
   ```
 
   Command explanation:
@@ -60,7 +61,7 @@ We provide a [Docker image][docker-release-link] for you to deploy the LobeChat 
 
   - Replace `sk-xxxx` in the above command with your OpenAI API Key.
 
-  - For the complete list of environment variables supported by LobeChat, please refer to the [Environment Variables](/docs/self-hosting/environment-variables) section.
+  - For the complete list of environment variables supported by Hermes Chat, please refer to the [Environment Variables](/docs/self-hosting/environment-variables) section.
 
   <Callout type="tip">
     Since the official Docker image build takes about half an hour, if you see the "update available"
@@ -70,7 +71,7 @@ We provide a [Docker image][docker-release-link] for you to deploy the LobeChat 
   <Callout type="warning">
     The official Docker image does not have a password set. It is strongly recommended to add a
     password to enhance security, otherwise you may encounter situations like [My API Key was
-    stolen!!!](https://github.com/lobehub/lobe-chat/issues/1123).
+    stolen!!!](https://github.com/hermeslabs/lobe-chat/issues/1123).
   </Callout>
 
   <Callout type="important">
@@ -89,7 +90,7 @@ We provide a [Docker image][docker-release-link] for you to deploy the LobeChat 
     -e OPENAI_PROXY_URL=https://api-proxy.com/v1 \
     -e ACCESS_CODE=lobe66 \
     --name lobe-chat \
-    lobehub/lobe-chat
+    hermeslabs/lobe-chat
   ```
 
   ### Crontab Automatic Update Script (Optional)
@@ -115,7 +116,7 @@ We provide a [Docker image][docker-release-link] for you to deploy the LobeChat 
   export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
   # Pull the latest image and store the output in a variable
-  output=$(docker pull lobehub/lobe-chat:latest 2>&1)
+  output=$(docker pull hermeslabs/lobe-chat:latest 2>&1)
 
   # Check if the pull command was executed successfully
   if [ $? -ne 0 ]; then
@@ -123,27 +124,27 @@ We provide a [Docker image][docker-release-link] for you to deploy the LobeChat 
   fi
 
   # Check if the output contains a specific string
-  echo "$output" | grep -q "Image is up to date for lobehub/lobe-chat:latest"
+  echo "$output" | grep -q "Image is up to date for hermeslabs/lobe-chat:latest"
 
   # If the image is already up to date, do nothing
   if [ $? -eq 0 ]; then
     exit 0
   fi
 
-  echo "Detected Lobe-Chat update"
+  echo "Detected Hermes Chat update"
 
   # Remove the old container
-  echo "Removed: $(docker rm -f Lobe-Chat)"
+  echo "Removed: $(docker rm -f Hermes Chat)"
 
   # Run the new container
-  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=Lobe-Chat --restart=always lobehub/lobe-chat)"
+  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=Hermes Chat --restart=always hermeslabs/lobe-chat)"
 
   # Print the update time and version
   echo "Update time: $(date)"
-  echo "Version: $(docker inspect lobehub/lobe-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
+  echo "Version: $(docker inspect hermeslabs/lobe-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
 
   # Clean up unused images
-  docker images | grep 'lobehub/lobe-chat' | grep -v 'lobehub/lobe-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
+  docker images | grep 'hermeslabs/lobe-chat' | grep -v 'hermeslabs/lobe-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
   echo "Removed old images."
   ```
 
@@ -156,9 +157,9 @@ We provide a [Docker image][docker-release-link] for you to deploy the LobeChat 
   ```
 </Steps>
 
-[docker-pulls-link]: https://hub.docker.com/r/lobehub/lobe-chat
-[docker-pulls-shield]: https://img.shields.io/docker/pulls/lobehub/lobe-chat?color=45cc11&labelColor=black&style=flat-square
-[docker-release-link]: https://hub.docker.com/r/lobehub/lobe-chat
-[docker-release-shield]: https://img.shields.io/docker/v/lobehub/lobe-chat?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
-[docker-size-link]: https://hub.docker.com/r/lobehub/lobe-chat
-[docker-size-shield]: https://img.shields.io/docker/image-size/lobehub/lobe-chat?color=369eff&labelColor=black&style=flat-square&sort=semver
+[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/lobe-chat?color=45cc11&labelColor=black&style=flat-square
+[docker-release-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
+[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/lobe-chat?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
+[docker-size-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
+[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/lobe-chat?color=369eff&labelColor=black&style=flat-square&sort=semver

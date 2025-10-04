@@ -1,16 +1,16 @@
 ---
-title: Deploying LobeChat with Docker Compose
+title: Deploying Hermes Chat with Docker Compose
 description: >-
-  Learn how to deploy the LobeChat service using Docker Compose, including configuration tutorials for various services.
-
+  Learn how to deploy the Hermes Chat service using Docker Compose, including
+  configuration tutorials for various services.
 tags:
   - Docker Compose
-  - LobeChat
+  - Hermes Chat
   - Docker Container
   - Deployment Guide
 ---
 
-# Deploying LobeChat Server Database Version with Docker Compose
+# Deploying Hermes Chat Server Database Version with Docker Compose
 
 <div style={{display:"flex", gap: 4}}>
   [![][docker-release-shield]][docker-release-link]
@@ -79,13 +79,13 @@ The script supports the following deployment modes; please choose the appropriat
   After the script finishes running, you need to check the configuration generation report, which includes the accounts and initial login passwords for the Casdoor administrator and user.
 
   <Callout type="warning">
-    Please log in to LobeChat using the user account; the administrator account is only for managing
+    Please log in to Hermes Chat using the user account; the administrator account is only for managing
     Casdoor.
   </Callout>
 
   ```log
   The results of the secure key generation are as follows:
-  LobeChat:
+  Hermes Chat:
     - URL: http://localhost:3210
     - Username: user
     - Password: c66f8c
@@ -127,7 +127,7 @@ The script supports the following deployment modes; please choose the appropriat
 
   ### Access Application
 
-  Visit your LobeChat service at [http://localhost:3210](http://localhost:3210). The account credentials for the application can be found in the report from step `2`.
+  Visit your Hermes Chat service at [http://localhost:3210](http://localhost:3210). The account credentials for the application can be found in the report from step `2`.
 </Steps>
 
 ### Port Mode
@@ -145,13 +145,13 @@ The script supports the following deployment modes; please choose the appropriat
   After the script finishes running, please check the configuration generation report for the Casdoor administrator account, user account, and their initial login passwords.
 
   <Callout type="warning">
-    Please log in to LobeChat using the user account; the administrator account is only for managing
+    Please log in to Hermes Chat using the user account; the administrator account is only for managing
     Casdoor.
   </Callout>
 
   ```log
   The results of the secure key generation are as follows:
-  LobeChat:
+  Hermes Chat:
     - URL: http://your_server_ip:3210
     - Username: user
     - Password: 837e26
@@ -192,12 +192,12 @@ The script supports the following deployment modes; please choose the appropriat
 
   ### Access Application
 
-  You can access your LobeChat service at `http://your_server_ip:3210`. The account credentials for the application can be found in the report from step `2`.
+  You can access your Hermes Chat service at `http://your_server_ip:3210`. The account credentials for the application can be found in the report from step `2`.
 
   <Callout type="warning">
     If your service can accessed via the public network,
     we strongly recommend disabling the registration,
-    refer to the [documentation](https://lobehub.com/docs/self-hosting/advanced/auth/next-auth/casdoor)
+    refer to the [documentation](https://hermes.chat/docs/self-hosting/advanced/auth/next-auth/casdoor)
     for more information.
   </Callout>
 </Steps>
@@ -233,41 +233,41 @@ The script supports the following deployment modes; please choose the appropriat
 
     ⚠️ If you are using such panel software,
     please do not enable any form of caching in the reverse proxy settings of such panel software to avoid affecting the normal operation of the service.
-    Read more at [https://github.com/lobehub/lobe-chat/discussions/5986](https://github.com/lobehub/lobe-chat/discussions/5986)
+    Read more at [https://github.com/hermeslabs/lobe-chat/discussions/5986](https://github.com/hermeslabs/lobe-chat/discussions/5986)
   </Callout>
 
   ### Complete Remaining Configuration in Interactive Script
 
   In domain mode, you need to complete the following configurations based on script prompts:
 
-  - Domain setup for the LobeChat service: `lobe.example.com`
+  - Domain setup for the Hermes Chat service: `lobe.example.com`
   - Domain setup for the Minio service: `minio.example.com`
   - Domain setup for the Casdoor service: `auth.example.com`
   - Choose the access protocol: `http` or `https`
   - Regenerate secure keys: We highly recommend regenerating the secure keys; if you lack the key generation library required by the script, we suggest referring to the [Custom Deployment](#custom-deployment) section for key modifications.
 
-    <Callout type="warning">
-      The following issues may impede access to your service:
+  <Callout type="warning">
+    The following issues may impede access to your service:
 
-      - The domain configuration here must match the reverse proxy configuration in step `1`.
+    - The domain configuration here must match the reverse proxy configuration in step `1`.
 
-      - If you are using Cloudflare for domain resolution and have activated `full proxy`, please use the `https` protocol.
+    - If you are using Cloudflare for domain resolution and have activated `full proxy`, please use the `https` protocol.
 
-      - If you have used the HTTPS protocol, ensure that your domain certificate is correctly configured; one-click deployment does not support self-signed certificates by default.
-    </Callout>
+    - If you have used the HTTPS protocol, ensure that your domain certificate is correctly configured; one-click deployment does not support self-signed certificates by default.
+  </Callout>
 
   ### Check Configuration Generation Report
 
   After the script finishes running, you need to check the configuration generation report, which includes the initial login password for the Casdoor administrator.
 
   <Callout type="warning">
-    Please log in to LobeChat using the user account; the administrator account is only for managing
+    Please log in to Hermes Chat using the user account; the administrator account is only for managing
     Casdoor.
   </Callout>
 
   ```log
   The results of the secure key generation are as follows:
-  LobeChat:
+  Hermes Chat:
     - URL: https://lobe.example.com
     - Username: user
     - Password: 837e26
@@ -308,23 +308,23 @@ The script supports the following deployment modes; please choose the appropriat
 
   ### Access Application
 
-  You can access your LobeChat service via `https://lobe.example.com`. The account credentials for the application can be found in the report from step `3`.
+  You can access your Hermes Chat service via `https://lobe.example.com`. The account credentials for the application can be found in the report from step `3`.
 
   <Callout type="warning">
     If your service can accessed via the public network,
     we strongly recommend disabling the registration,
-    refer to the [documentation](https://lobehub.com/docs/self-hosting/advanced/auth/next-auth/casdoor)
+    refer to the [documentation](https://hermes.chat/docs/self-hosting/advanced/auth/next-auth/casdoor)
     for more information.
   </Callout>
 </Steps>
 
 ## Custom Deployment
 
-This section mainly introduces the configurations that need to be modified to customize the deployment of the LobeChat service in different network environments. Before starting, you can download the [Docker Compose configuration file](https://raw.githubusercontent.com/lobehub/lobe-chat/HEAD/docker-compose/local/docker-compose.yml) and the [environment variable configuration file](https://raw.githubusercontent.com/lobehub/lobe-chat/refs/heads/main/docker-compose/local/.env.example).
+This section mainly introduces the configurations that need to be modified to customize the deployment of the Hermes Chat service in different network environments. Before starting, you can download the [Docker Compose configuration file](https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/docker-compose.yml) and the [environment variable configuration file](https://raw.githubusercontent.com/hermeslabs/lobe-chat/refs/heads/main/docker-compose/local/.env.example).
 
 ```sh
-curl -O https://raw.githubusercontent.com/lobehub/lobe-chat/HEAD/docker-compose/local/docker-compose.yml
-curl -O https://raw.githubusercontent.com/lobehub/lobe-chat/HEAD/docker-compose/local/.env.example
+curl -O https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/docker-compose.yml
+curl -O https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/.env.example
 mv .env.example .env
 ```
 
@@ -335,14 +335,14 @@ mv .env.example .env
 
 ### Prerequisites
 
-Generally, to fully run the LobeChat database version, you will need at least the following four services:
+Generally, to fully run the Hermes Chat database version, you will need at least the following four services:
 
-- The LobeChat database version itself
+- The Hermes Chat database version itself
 - PostgreSQL database with PGVector plugin
 - Object storage service that supports S3 protocol
-- An SSO authentication service supported by LobeChat
+- An SSO authentication service supported by Hermes Chat
 
-These services can be combined through self-hosting or online cloud services to meet various deployment needs. In this article, we provide a Docker Compose configuration entirely based on open-source self-hosted services, which can be used directly to start the LobeChat database version or modified to suit your requirements.
+These services can be combined through self-hosting or online cloud services to meet various deployment needs. In this article, we provide a Docker Compose configuration entirely based on open-source self-hosted services, which can be used directly to start the Hermes Chat database version or modified to suit your requirements.
 
 We use [MinIO](https://github.com/minio/minio) as the local S3 object storage service and [Casdoor](https://github.com/casdoor/casdoor) as the local authentication service by default.
 
@@ -357,15 +357,15 @@ Now, we will introduce the necessary configurations for running these services:
 
 1. Casdoor
 
-- LobeChat requires communication with Casdoor, so you need to configure Casdoor's Issuer.
+- Hermes Chat requires communication with Casdoor, so you need to configure Casdoor's Issuer.
 
 ```env
 AUTH_CASDOOR_ISSUER=https://auth.example.com
 ```
 
-This configuration will affect LobeChat's login authentication service, and you need to ensure that the URL of the Casdoor service is correct. You can find common manifestations and solutions for errors in this configuration in the [FAQ](#faq).
+This configuration will affect Hermes Chat's login authentication service, and you need to ensure that the URL of the Casdoor service is correct. You can find common manifestations and solutions for errors in this configuration in the [FAQ](#faq).
 
-- Additionally, you need to allow the callback URL in Casdoor to point to the LobeChat address:
+- Additionally, you need to allow the callback URL in Casdoor to point to the Hermes Chat address:
 
 Please add a line in the `Authentication -> Application` -> `<Application ID, default is app-built-in>` -> `Redirect URI` in Casdoor's web panel:
 
@@ -381,7 +381,7 @@ origin=https://auth.example.com
 
 2. MinIO
 
-- LobeChat needs to provide a public access URL for object files for the LLM service provider, hence you need to configure MinIO's Endpoint.
+- Hermes Chat needs to provide a public access URL for object files for the LLM service provider, hence you need to configure MinIO's Endpoint.
 
 ```env
 S3_PUBLIC_DOMAIN=https://minio.example.com
@@ -432,18 +432,18 @@ Solutions:
 lobe-chat      | [auth][error] TypeError: fetch failed
 ```
 
-Cause: LobeChat cannot access the authentication service.
+Cause: Hermes Chat cannot access the authentication service.
 
 Solutions:
 
-- Check whether your authentication service is running properly and whether LobeChat's network can reach the authentication service.
+- Check whether your authentication service is running properly and whether Hermes Chat's network can reach the authentication service.
 
-- A straightforward troubleshooting method is to use the `curl` command in the LobeChat container terminal to access your authentication service at `https://auth.example.com/.well-known/openid-configuration`. If JSON format data is returned, it indicates your authentication service is functioning correctly.
+- A straightforward troubleshooting method is to use the `curl` command in the Hermes Chat container terminal to access your authentication service at `https://auth.example.com/.well-known/openid-configuration`. If JSON format data is returned, it indicates your authentication service is functioning correctly.
 
 ````markdown
 ## Extended Configuration
 
-To enhance your LobeChat service, you can perform the following extended configurations according to your needs.
+To enhance your Hermes Chat service, you can perform the following extended configurations according to your needs.
 
 ### Use MinIO to Store Casdoor Avatars
 
@@ -518,7 +518,7 @@ In the following, it is assumed that in addition to the above services, you are 
 
 The domain and corresponding service port descriptions are as follows:
 
-- `lobe.example.com`: This is your LobeChat service domain, which needs to reverse proxy to the LobeChat service port, default is `3210`.
+- `lobe.example.com`: This is your Hermes Chat service domain, which needs to reverse proxy to the Hermes Chat service port, default is `3210`.
 - `auth.example.com`: This is your Logto UI domain, which needs to reverse proxy to the Logto WebUI service port, default is `8000`.
 - `minio.example.com`: This is your MinIO API domain, which needs to reverse proxy to the MinIO API service port, default is `9000`.
 - `minio-ui.example.com`: Optional, this is your MinIO UI domain, which needs to reverse proxy to the MinIO WebUI service port, default is `9001`.
@@ -526,7 +526,7 @@ The domain and corresponding service port descriptions are as follows:
 #### Configuration File
 
 ```sh
-bash <(curl -fsSL https://raw.githubusercontent.com/lobehub/lobe-chat/HEAD/docker-compose/local/setup.sh) -f -l zh_CN
+bash <(curl -fsSL https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/setup.sh) -f -l zh_CN
 docker compose up -d
 ```
 
@@ -628,11 +628,11 @@ Log in to the admin account:
 
 After logging in, perform the following actions:
 
-1. In `User Management -> Organizations`, add a new organization with the name and display name `Lobe Users`. Keep the rest as default.
+1. In `User Management -> Organizations`, add a new organization with the name and display name `Hermes Users`. Keep the rest as default.
 2. In `Authentication -> Apps`, add a new application.
 
-- Name and display name should be `LobeChat`.
-- Organization should be `Lobe Users`.
+- Name and display name should be `Hermes Chat`.
+- Organization should be `Hermes Users`.
 - Add a line in Redirect URLs as `https://lobe.example.com/api/auth/callback/casdoor`.
 - Disable all login methods except password.
 - Fill in the client ID and client secret in the `.env` file under `AUTH_CASDOOR_ID` and `AUTH_CASDOOR_SECRET`.
@@ -649,7 +649,7 @@ After logging in, perform the following actions:
 This article uses MinIO as an example to explain the configuration process. If you are using another S3 service provider, please refer to their documentation for configuration.
 
 <Callout type="warning">
-  Please remember to configure the corresponding S3 service provider's CORS settings to ensure that LobeChat can access the S3 service correctly.
+  Please remember to configure the corresponding S3 service provider's CORS settings to ensure that Hermes Chat can access the S3 service correctly.
 
   In this document, you need to allow cross-origin requests from `https://lobe.example.com`. This can either be configured in MinIO WebUI under `Configuration - API - Cors Allow Origin`, or in the Docker Compose configuration under `minio - environment - MINIO_API_CORS_ALLOW_ORIGIN`.
 
@@ -667,13 +667,13 @@ You first need to access the WebUI for configuration:
 
    <Image alt="Create MinIO Access Key" src="https://github.com/user-attachments/assets/72f02ce5-9991-425b-9864-9113ee1ed6bf" />
 
-3. Restart the LobeChat service:
+3. Restart the Hermes Chat service:
 
    ```sh
    docker compose up -d
    ```
 
-At this point, you have successfully deployed the LobeChat database version, and you can access your LobeChat service at `https://lobe.example.com`.
+At this point, you have successfully deployed the Hermes Chat database version, and you can access your Hermes Chat service at `https://lobe.example.com`.
 
 #### Configuration Files
 
@@ -700,7 +700,7 @@ CASDOOR_PORT=8000
 MINIO_PORT=9000
 
 # Postgres related, which are the necessary environment variables for DB
-LOBE_DB_NAME=lobechat
+LOBE_DB_NAME=hermes-chat
 POSTGRES_PASSWORD=uWNZugjBqixf8dxC
 
 # Casdoor secret
@@ -729,7 +729,7 @@ services:
       - '${MINIO_PORT}:${MINIO_PORT}' # MinIO API
       - '9001:9001' # MinIO Console
       - '${CASDOOR_PORT}:${CASDOOR_PORT}' # Casdoor
-      - '${LOBE_PORT}:3210' # LobeChat
+      - '${LOBE_PORT}:3210' # Hermes Chat
     command: tail -f /dev/null
     networks:
       - lobe-network
@@ -768,7 +768,6 @@ services:
     command: >
       server /etc/minio/data --address ":${MINIO_PORT}" --console-address ":9001"
 
-
   casdoor:
     image: casbin/casdoor
     container_name: lobe-casdoor
@@ -788,7 +787,7 @@ services:
       - ./init_data.json:/init_data.json
 
   lobe:
-    image: lobehub/lobe-chat-database
+    image: hermeslabs/lobe-chat-database
     container_name: lobe-chat-database
     network_mode: 'service:network-service'
     depends_on:
@@ -839,9 +838,9 @@ networks:
     driver: bridge
 ```
 
-[docker-pulls-link]: https://hub.docker.com/r/lobehub/lobe-chat-database
-[docker-pulls-shield]: https://img.shields.io/docker/pulls/lobehub/lobe-chat-database?color=45cc11&labelColor=black&style=flat-square
-[docker-release-link]: https://hub.docker.com/r/lobehub/lobe-chat-database
-[docker-release-shield]: https://img.shields.io/docker/v/lobehub/lobe-chat-database?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
-[docker-size-link]: https://hub.docker.com/r/lobehub/lobe-chat-database
-[docker-size-shield]: https://img.shields.io/docker/image-size/lobehub/lobe-chat-database?color=369eff&labelColor=black&style=flat-square&sort=semver
+[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/lobe-chat-database?color=45cc11&labelColor=black&style=flat-square
+[docker-release-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
+[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/lobe-chat-database?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
+[docker-size-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
+[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/lobe-chat-database?color=369eff&labelColor=black&style=flat-square&sort=semver

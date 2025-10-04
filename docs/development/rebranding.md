@@ -1,7 +1,7 @@
 # Hermes Chat Rebranding Toolkit
 
 The Hermes Chat automation suite standardizes how we migrate codebases from the
-legacy **LobeChat / LobeHub** branding to modern Hermes-first language. The
+legacy **Hermes Chat / Hermes Labs** branding to modern Hermes-first language. The
 workflow is intentionally repeatable so enterprise operators can roll forward or
 roll back rebrands without manually touching thousands of strings.
 
@@ -19,7 +19,7 @@ roll back rebrands without manually touching thousands of strings.
 ## Canonical constants
 
 - Hermes Chat brand constants now live in `packages/const/src/branding.ts` and
-  `packages/const/src/url.ts`. Any automation consuming historical LobeChat
+  `packages/const/src/url.ts`. Any automation consuming historical Hermes Chat
   values must migrate to the Hermes equivalents before release promotion.
 
 ## Usage
@@ -64,7 +64,7 @@ bunx tsx scripts/rebrandHermesChat.ts \
   --support-url https://hermes.chat/support \
   --contact-email hello@hermes.chat \
   --asset-logo /assets/hermes-chat/logo.svg \
-  --asset-favicon /assets/hermes-chat/favicon.png \
+  --asset-favicon /assets/hermes-chat/favicon.svg \
   --asset-wordmark /assets/hermes-chat/wordmark.svg
 ```
 
@@ -108,3 +108,8 @@ bunx vitest run --silent='passed-only' 'tests/scripts/rebrandHermesChat.test.ts'
 
 This ensures the automation continues to cover key text-based assets such as
 constants, docs, and locale files.
+
+## Translation follow-up
+
+- The CLI run in this rebrand refreshed **`locales/en-US`** automatically. Non-English locales require native reviewer updates—create follow-up translation requests after running `bun run docs:i18n` so regional maintainers can regenerate content.
+- Track outstanding placeholder phrases using the `docs/development/brand-assets.md` inventory to keep design and localization teams aligned.
