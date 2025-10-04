@@ -88,7 +88,7 @@ async function createWorkspace(): Promise<string> {
 
   await writeFile(
     join(workspace, 'docs.md'),
-    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @lobehub/ui\nSocial: Follow us @lobehub!\nAsset: /assets/logo/lobehub.svg\n`,
+    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @lobehub/ui\nSocial: Follow us @lobehub!\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nMarkdown sample: \`lobe_chat\`\n`,
     'utf8',
   );
 
@@ -144,6 +144,10 @@ describe('rebrandHermesChat CLI', () => {
       expect(docs).toContain('@hermeslabs!');
       expect(docs).toContain('/brand/logo.svg');
       expect(docs).toContain('urn:hermeslabs:chat');
+      expect(docs).toContain('Docker service: hermes-qa');
+      expect(docs).toContain('Helm release: HERMES-QA');
+      expect(docs).toContain('Environment constant: HERMES_QA');
+      expect(docs).toContain('`hermes_qa`');
       expect(docs).not.toContain('LobeChat');
       expect(docs).not.toContain('lobehub.com');
 
