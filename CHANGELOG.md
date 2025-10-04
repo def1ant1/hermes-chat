@@ -2,6 +2,12 @@
 
 # Changelog
 
+## \[Unreleased]
+
+### 🔄 Refactors
+
+- **branding**: retarget Hermes Chat canonical constants, URLs, and npm package metadata to the Hermes Labs namespace so downstream services consume the new brand system defaults.
+
 ### [Version 1.133.6](https://github.com/lobehub/lobe-chat/compare/v1.133.5...v1.133.6)
 
 <sup>Released on **2025-10-04**</sup>

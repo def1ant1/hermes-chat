@@ -7,16 +7,16 @@ const isDev = process.env.NODE_ENV === 'development';
 
 export const UTM_SOURCE = 'chat_preview';
 
-export const OFFICIAL_URL = 'https://lobechat.com';
-export const OFFICIAL_PREVIEW_URL = 'https://chat-preview.lobehub.com';
-export const OFFICIAL_SITE = 'https://lobehub.com';
+export const OFFICIAL_URL = 'https://hermes.chat';
+export const OFFICIAL_PREVIEW_URL = 'https://preview.hermes.chat';
+export const OFFICIAL_SITE = 'https://hermes.chat';
 
 export const OG_URL = '/og/cover.png?v=1';
 
-export const GITHUB = 'https://github.com/lobehub/lobe-chat';
+export const GITHUB = 'https://github.com/hermes-chat/hermes-chat';
 export const GITHUB_ISSUES = urlJoin(GITHUB, 'issues/new/choose');
-export const CHANGELOG = 'https://lobehub.com/changelog';
-export const DOCKER_IMAGE = 'https://hub.docker.com/r/lobehub/lobe-chat';
+export const CHANGELOG = 'https://hermes.chat/changelog';
+export const DOCKER_IMAGE = 'https://hub.docker.com/r/hermeschat/hermes-chat';
 
 export const DOCUMENTS = urlJoin(OFFICIAL_SITE, '/docs');
 export const USAGE_DOCUMENTS = urlJoin(DOCUMENTS, '/usage');
@@ -34,19 +34,20 @@ export const MANUAL_UPGRADE_URL = urlJoin(SELF_HOSTING_DOCUMENTS, '/advanced/ups
 export const BLOG = urlJoin(OFFICIAL_SITE, 'blog');
 
 export const ABOUT = OFFICIAL_SITE;
-export const FEEDBACK = 'https://github.com/lobehub/lobe-chat/issues/new/choose';
+export const FEEDBACK = urlJoin(GITHUB, 'issues/new/choose');
 export const PRIVACY_URL = urlJoin(OFFICIAL_SITE, '/privacy');
 export const TERMS_URL = urlJoin(OFFICIAL_SITE, '/terms');
 
-export const PLUGINS_INDEX_URL = 'https://chat-plugins.lobehub.com';
+// TODO(HERMES-INFRA-42): Replace with production plugin directory once DNS is live.
+export const PLUGINS_INDEX_URL = 'https://plugins.hermes.chat';
 
 export const MORE_MODEL_PROVIDER_REQUEST_URL =
-  'https://github.com/lobehub/lobe-chat/discussions/6157';
+  'https://github.com/hermes-chat/hermes-chat/discussions/6157';
 
 export const MORE_FILE_PREVIEW_REQUEST_URL =
-  'https://github.com/lobehub/lobe-chat/discussions/3684';
+  'https://github.com/hermes-chat/hermes-chat/discussions/3684';
 
-export const AGENTS_INDEX_GITHUB = 'https://github.com/lobehub/lobe-chat-agents';
+export const AGENTS_INDEX_GITHUB = 'https://github.com/hermes-chat/hermes-chat-agents';
 export const AGENTS_INDEX_GITHUB_ISSUE = urlJoin(AGENTS_INDEX_GITHUB, 'issues/new');
 
 export const SESSION_CHAT_URL = (id: string = INBOX_SESSION_ID, mobile?: boolean) =>
@@ -57,13 +58,18 @@ export const SESSION_CHAT_URL = (id: string = INBOX_SESSION_ID, mobile?: boolean
 
 export const imageUrl = (filename: string) => `/images/${filename}`;
 
-export const LOBE_URL_IMPORT_NAME = 'settings';
+export const HERMES_URL_IMPORT_NAME = 'settings';
+/**
+ * @deprecated Prefer {@link HERMES_URL_IMPORT_NAME}. Retained temporarily so
+ * automated migrations that still import the legacy constant do not break.
+ */
+export const LOBE_URL_IMPORT_NAME = HERMES_URL_IMPORT_NAME;
 
 export const RELEASES_URL = urlJoin(GITHUB, 'releases');
 
 export const mailTo = (email: string) => `mailto:${email}`;
 
 export const AES_GCM_URL = 'https://datatracker.ietf.org/doc/html/draft-ietf-avt-srtp-aes-gcm-01';
-export const BASE_PROVIDER_DOC_URL = 'https://lobehub.com/docs/usage/providers';
+export const BASE_PROVIDER_DOC_URL = 'https://hermes.chat/docs/usage/providers';
 export const SITEMAP_BASE_URL = isDev ? '/sitemap.xml/' : 'sitemap';
 export const CHANGELOG_URL = urlJoin(OFFICIAL_SITE, 'changelog/versions');

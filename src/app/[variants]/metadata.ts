@@ -1,4 +1,4 @@
-import { BRANDING_LOGO_URL, BRANDING_NAME, ORG_NAME } from '@/const/branding';
+import { BRANDING_LOGO_URL, BRANDING_NAME, ORG_NAME, SOCIAL_HANDLE } from '@/const/branding';
 import { DEFAULT_LANG } from '@/const/locale';
 import { OFFICIAL_URL, OG_URL } from '@/const/url';
 import { isCustomBranding, isCustomORG } from '@/const/version';
@@ -6,6 +6,10 @@ import { translation } from '@/server/translation';
 import { DynamicLayoutProps } from '@/types/next';
 import { RouteVariants } from '@/utils/server/routeVariants';
 
+/**
+ * Generates Next.js metadata preloaded with Hermes Chat canonical branding so
+ * downstream layouts never drift from the approved names or social handles.
+ */
 export const generateMetadata = async (props: DynamicLayoutProps) => {
   const locale = await RouteVariants.getLocale(props);
   const { t } = await translation('metadata', locale);
@@ -52,7 +56,7 @@ export const generateMetadata = async (props: DynamicLayoutProps) => {
       card: 'summary_large_image',
       description: t('chat.description', { appName: BRANDING_NAME }),
       images: [OG_URL],
-      site: isCustomORG ? `@${ORG_NAME}` : '@lobehub',
+      site: isCustomORG ? `@${ORG_NAME}` : SOCIAL_HANDLE.x,
       title: t('chat.title', { appName: BRANDING_NAME }),
     },
   };

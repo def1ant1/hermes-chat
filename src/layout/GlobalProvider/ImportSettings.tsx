@@ -3,7 +3,7 @@
 import { useQueryState } from 'nuqs';
 import { memo, useEffect } from 'react';
 
-import { LOBE_URL_IMPORT_NAME } from '@/const/url';
+import { HERMES_URL_IMPORT_NAME } from '@/const/url';
 import { useUserStore } from '@/store/user';
 
 const ImportSettings = memo(() => {
@@ -13,7 +13,7 @@ const ImportSettings = memo(() => {
   ]);
 
   // Import settings from the url
-  const [searchParam] = useQueryState(LOBE_URL_IMPORT_NAME, {
+  const [searchParam] = useQueryState(HERMES_URL_IMPORT_NAME, {
     clearOnDefault: true,
     defaultValue: '',
   });

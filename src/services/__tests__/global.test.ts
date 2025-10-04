@@ -35,7 +35,7 @@ describe('GlobalService', () => {
       const version = await globalService.getLatestVersion();
 
       // Assert
-      expect(fetch).toHaveBeenCalledWith('https://registry.npmmirror.com/@lobehub/chat/latest');
+      expect(fetch).toHaveBeenCalledWith('https://registry.npmmirror.com/@hermeslabs/chat/latest');
       expect(version).toBe(mockVersion);
     });
 

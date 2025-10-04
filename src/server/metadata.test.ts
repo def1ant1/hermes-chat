@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, expect, it } from 'vitest';
 
-import { BRANDING_NAME } from '@/const/branding';
+import { BRANDING_NAME, SOCIAL_HANDLE } from '@/const/branding';
 import { OG_URL } from '@/const/url';
 
 import { Meta } from './metadata';
@@ -77,6 +77,7 @@ describe('Metadata', () => {
   });
 
   describe('genTwitter', () => {
+    /** Validates Hermes Chat social handle wiring for Twitter cards. */
     it('should generate Twitter metadata correctly', () => {
       const result = (meta as any).genTwitter({
         title: 'Twitter Title',
@@ -90,7 +91,7 @@ describe('Metadata', () => {
         title: 'Twitter Title',
         description: 'Twitter description',
         images: ['https://twitter-image.com'],
-        site: '@lobehub',
+        site: SOCIAL_HANDLE.x,
         url: 'https://example.com/twitter',
       });
     });
@@ -115,7 +116,7 @@ describe('Metadata', () => {
         locale: 'es-ES',
         type: 'article',
         url: 'https://example.com/og',
-        siteName: 'LobeChat',
+        siteName: BRANDING_NAME,
         alternateLocale: expect.arrayContaining([
           'ar',
           'bg-BG',

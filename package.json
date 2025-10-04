@@ -1,7 +1,7 @@
 {
-  "name": "@lobehub/chat",
+  "name": "@hermeslabs/chat",
   "version": "1.133.6",
-  "description": "Lobe Chat - an open-source, high-performance chatbot framework that supports speech synthesis, multimodal, and extensible Function Call plugin system. Supports one-click free deployment of your private ChatGPT/LLM web application.",
+  "description": "Hermes Chat - an enterprise-ready, high-performance chatbot platform with speech synthesis, multimodal intelligence, and an extensible Function Call plugin system. Deploy private LLM workspaces in minutes.",
   "keywords": [
     "framework",
     "chatbot",
@@ -14,16 +14,16 @@
     "tts",
     "stt"
   ],
-  "homepage": "https://github.com/lobehub/lobe-chat",
+  "homepage": "https://github.com/hermes-chat/hermes-chat",
   "bugs": {
-    "url": "https://github.com/lobehub/lobe-chat/issues/new/choose"
+    "url": "https://github.com/hermes-chat/hermes-chat/issues/new/choose"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lobehub/lobe-chat.git"
+    "url": "https://github.com/hermes-chat/hermes-chat.git"
   },
   "license": "MIT",
-  "author": "LobeHub <i@lobehub.com>",
+  "author": "Hermes Labs <hello@hermes.chat>",
   "sideEffects": false,
   "workspaces": [
     "packages/*"
@@ -43,7 +43,7 @@
     "db:generate-client": "tsx ./scripts/migrateClientDB/compile-migrations.ts",
     "db:migrate": "MIGRATION_DB=1 tsx ./scripts/migrateServerDB/index.ts",
     "db:studio": "drizzle-kit studio",
-    "db:visualize": "dbdocs build docs/development/database-schema.dbml --project lobe-chat",
+    "db:visualize": "dbdocs build docs/development/database-schema.dbml --project hermes-chat",
     "desktop:build": "npm run desktop:build-next && npm run desktop:prepare-dist && npm run desktop:build-electron",
     "desktop:build-electron": "tsx scripts/electronWorkflow/buildElectron.ts",
     "desktop:build-local": "npm run desktop:build-next && npm run desktop:prepare-dist && npm run build-local --prefix=./apps/desktop",
@@ -68,9 +68,9 @@
     "reinstall": "rm -rf pnpm-lock.yaml && rm -rf node_modules && pnpm -r exec rm -rf node_modules && pnpm install",
     "reinstall:desktop": "rm -rf pnpm-lock.yaml && rm -rf node_modules && pnpm -r exec rm -rf node_modules && pnpm install --node-linker=hoisted",
     "release": "semantic-release",
-    "self-hosting:docker": "docker build -t lobe-chat:local .",
-    "self-hosting:docker-cn": "docker build -t lobe-chat-local --build-arg USE_CN_MIRROR=true .",
-    "self-hosting:docker-cn@database": "docker build -t lobe-chat-database-local -f Dockerfile.database --build-arg USE_CN_MIRROR=true .",
+    "self-hosting:docker": "docker build -t hermes-chat:local .",
+    "self-hosting:docker-cn": "docker build -t hermes-chat-local --build-arg USE_CN_MIRROR=true .",
+    "self-hosting:docker-cn@database": "docker build -t hermes-chat-database-local -f Dockerfile.database --build-arg USE_CN_MIRROR=true .",
     "start": "next start -p 3210",
     "stylelint": "stylelint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
     "test": "npm run test-app && npm run test-server",
