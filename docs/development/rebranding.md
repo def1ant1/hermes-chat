@@ -16,6 +16,12 @@ roll back rebrands without manually touching thousands of strings.
   workspaces to ensure regression-free refactors before touching production
   repositories.
 
+## Canonical constants
+
+- Hermes Chat brand constants now live in `packages/const/src/branding.ts` and
+  `packages/const/src/url.ts`. Any automation consuming historical LobeChat
+  values must migrate to the Hermes equivalents before release promotion.
+
 ## Usage
 
 ### Quick start

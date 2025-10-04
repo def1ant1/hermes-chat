@@ -1,16 +1,21 @@
 import { Metadata } from 'next';
 import qs from 'query-string';
 
-import { BRANDING_NAME } from '@/const/branding';
+import { BRANDING_NAME, SOCIAL_HANDLE } from '@/const/branding';
 import { DEFAULT_LANG } from '@/const/locale';
 import { OG_URL } from '@/const/url';
 import { Locales, locales } from '@/locales/resources';
 import { getCanonicalUrl } from '@/server/utils/url';
 import { formatDescLength, formatTitleLength } from '@/utils/genOG';
 
+/**
+ * Builds Open Graph and Twitter metadata tailored for Hermes Chat's brand
+ * surface. Centralizing the logic guarantees that every route inherits the
+ * approved product naming and social handles.
+ */
 export class Meta {
   public generate({
-    description = 'LobeChat offers you the best ChatGPT, OLLaMA, Gemini, Claude WebUI user experience',
+    description = 'Hermes Chat delivers a premium ChatGPT, OLLaMA, Gemini, and Claude WebUI with enterprise governance.',
     title,
     image = OG_URL,
     url,
@@ -60,6 +65,7 @@ export class Meta {
     };
   }
 
+  /** Maps localized alternates so marketing campaigns can link canonical pages. */
   private genAlternateLocales = (locale: Locales, path: string = '/') => {
     let links: any = {};
     const defaultLink = getCanonicalUrl(path);
@@ -75,6 +81,7 @@ export class Meta {
     };
   };
 
+  /** Generates Twitter card details aligned to the Hermes Labs social handle. */
   private genTwitter({
     description,
     title,
@@ -90,12 +97,13 @@ export class Meta {
       card: 'summary_large_image',
       description,
       images: [image],
-      site: '@lobehub',
+      site: SOCIAL_HANDLE.x,
       title,
       url,
     };
   }
 
+  /** Ensures OG payloads consistently advertise the Hermes Chat brand. */
   private genOpenGraph({
     alternate,
     locale = DEFAULT_LANG,
@@ -122,7 +130,7 @@ export class Meta {
         },
       ],
       locale,
-      siteName: 'LobeChat',
+      siteName: BRANDING_NAME,
       title,
       type,
       url,

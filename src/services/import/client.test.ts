@@ -940,7 +940,8 @@ describe('ImporterService', () => {
                   historyCount: 1,
                 },
                 openingQuestions: ['Question 1', 'Question 2'],
-                openingMessage: 'Hello, I am [LobeChat](https://github.com/lobehub/lobe-chat).',
+                openingMessage:
+                  'Hello, I am [Hermes Chat](https://github.com/hermes-chat/hermes-chat).',
               },
               group: 'XlUbvOvL',
               meta: {

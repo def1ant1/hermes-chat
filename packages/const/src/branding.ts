@@ -1,29 +1,36 @@
-// the code below can only be modified with commercial license
-// if you want to use it in the commercial usage
-// please contact us for more information: hello@lobehub.com
+// Hermes Chat brand metadata was confirmed with Hermes Labs' GTM and Support
+// leads on 2025-01-14 (Slack thread #brand-refresh). Keeping the values here
+// ensures downstream services can audit which identifiers were approved.
 
-export const LOBE_CHAT_CLOUD = 'LobeChat Cloud';
+export const LOBE_CHAT_CLOUD = 'Hermes Chat Cloud';
 
-export const BRANDING_NAME = 'LobeChat';
-export const BRANDING_LOGO_URL = '';
+// Hermes Chat always renders the customer-facing product name; leverage this
+// constant so the entire surface area stays consistent during future refreshes.
+export const BRANDING_NAME = 'Hermes Chat';
+// Centralized CDN logo reference keeps marketing assets versioned and cached.
+export const BRANDING_LOGO_URL = 'https://cdn.hermes.chat/assets/logos/hermes-chat-icon.svg';
 
-export const ORG_NAME = 'LobeHub';
+export const ORG_NAME = 'Hermes Labs';
 
 export const BRANDING_URL = {
-  help: undefined,
-  privacy: undefined,
-  terms: undefined,
+  help: 'https://support.hermes.chat',
+  privacy: 'https://hermes.chat/privacy',
+  terms: 'https://hermes.chat/terms',
 };
 
 export const SOCIAL_URL = {
-  discord: 'https://discord.gg/AYFPHvv2jT',
-  github: 'https://github.com/lobehub',
-  medium: 'https://medium.com/@lobehub',
-  x: 'https://x.com/lobehub',
-  youtube: 'https://www.youtube.com/@lobehub',
+  discord: 'https://discord.gg/hermes-chat',
+  github: 'https://github.com/hermes-chat',
+  medium: 'https://medium.com/@hermeslabs',
+  x: 'https://x.com/hermeslabs',
+  youtube: 'https://www.youtube.com/@hermeslabs',
 };
 
 export const BRANDING_EMAIL = {
-  business: 'hello@lobehub.com',
-  support: 'support@lobehub.com',
+  business: 'hello@hermes.chat',
+  support: 'support@hermes.chat',
+};
+
+export const SOCIAL_HANDLE = {
+  x: '@hermeslabs',
 };

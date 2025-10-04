@@ -2,7 +2,7 @@ import { isString } from 'lodash-es';
 import qs from 'query-string';
 import urlJoin from 'url-join';
 
-import { BRANDING_EMAIL, BRANDING_NAME, SOCIAL_URL } from '@/const/branding';
+import { BRANDING_EMAIL, BRANDING_NAME, ORG_NAME, SOCIAL_URL } from '@/const/branding';
 import { DEFAULT_LANG } from '@/const/locale';
 import { OFFICIAL_SITE, OFFICIAL_URL } from '@/const/url';
 import { Locales } from '@/locales/resources';
@@ -24,11 +24,11 @@ export const AUTHOR_LIST = {
     name: 'CanisMinor',
     url: 'https://github.com/canisminor1990',
   },
-  lobehub: {
-    avatar: 'https://avatars.githubusercontent.com/u/131470832?v=4',
-    desc: 'Official Account',
-    name: 'LobeHub',
-    url: 'https://github.com/lobehub',
+  hermeslabs: {
+    avatar: 'https://cdn.hermes.chat/assets/avatars/hermes-labs.png',
+    desc: 'Official Hermes Labs Account',
+    name: 'Hermes Labs',
+    url: 'https://github.com/hermes-chat',
   },
 };
 
@@ -87,7 +87,7 @@ export class Ld {
     return {
       '@id': this.getId(OFFICIAL_URL, '#organization'),
       '@type': 'Organization',
-      'alternateName': 'LobeChat',
+      'alternateName': BRANDING_NAME,
       'contactPoint': {
         '@type': 'ContactPoint',
         'contactType': 'customer support',
@@ -104,7 +104,7 @@ export class Ld {
         'url': urlJoin(OFFICIAL_SITE, '/icon-512x512.png'),
         'width': 512,
       },
-      'name': 'LobeHub',
+      'name': ORG_NAME,
       'sameAs': [SOCIAL_URL.x, SOCIAL_URL.github, SOCIAL_URL.medium, SOCIAL_URL.youtube],
       'url': OFFICIAL_SITE,
     };
@@ -116,8 +116,8 @@ export class Ld {
       '@type': 'Organization',
     };
     if (!ids || ids.length === 0) return defaultAuthor;
-    if (ids.length === 1 && ids[0] === 'lobehub') return defaultAuthor;
-    const personId = ids.find((id) => id !== 'lobehub');
+    if (ids.length === 1 && ids[0] === 'hermeslabs') return defaultAuthor;
+    const personId = ids.find((id) => id !== 'hermeslabs');
     if (!personId) return defaultAuthor;
     const person = (AUTHOR_LIST as any)?.[personId];
     if (!person) return defaultAuthor;
