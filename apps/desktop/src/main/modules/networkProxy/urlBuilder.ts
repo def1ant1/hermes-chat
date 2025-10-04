@@ -1,4 +1,4 @@
-import { NetworkProxySettings } from '@lobechat/electron-client-ipc';
+import { NetworkProxySettings } from '@hermeslabs/electron-client-ipc';
 
 /**
  * 代理 URL 构建器

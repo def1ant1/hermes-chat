@@ -1,4 +1,4 @@
-import { UserTTSConfig } from '@lobechat/types';
+import { UserTTSConfig } from '@hermeslabs/types';
 
 export const DEFAULT_TTS_CONFIG: UserTTSConfig = {
   openAI: {

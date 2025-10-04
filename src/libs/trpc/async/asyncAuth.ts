@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@lobechat/database';
+import { LobeChatDatabase } from '@hermeslabs/database';
 import { TRPCError } from '@trpc/server';
 import debug from 'debug';
 

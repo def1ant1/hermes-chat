@@ -2,7 +2,7 @@ import {
   LobeChatGroupChatConfig,
   LobeChatGroupFullConfig,
   LobeChatGroupMetaConfig,
-} from '@lobechat/types';
+} from '@hermeslabs/types';
 
 import { DEFAULT_MODEL, DEFAULT_PROVIDER } from './llm';
 

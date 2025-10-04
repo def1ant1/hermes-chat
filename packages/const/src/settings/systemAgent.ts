@@ -1,4 +1,4 @@
-import { QueryRewriteSystemAgent, SystemAgentItem, UserSystemAgentConfig } from '@lobechat/types';
+import { QueryRewriteSystemAgent, SystemAgentItem, UserSystemAgentConfig } from '@hermeslabs/types';
 
 import { DEFAULT_MODEL, DEFAULT_PROVIDER } from './llm';
 

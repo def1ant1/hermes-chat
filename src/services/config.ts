@@ -1,5 +1,5 @@
-import { BRANDING_NAME, isDeprecatedEdition, isServerMode } from '@lobechat/const';
-import { downloadFile, exportJSONFile } from '@lobechat/utils/client';
+import { BRANDING_NAME, isDeprecatedEdition, isServerMode } from '@hermeslabs/const';
+import { downloadFile, exportJSONFile } from '@hermeslabs/utils/client';
 import dayjs from 'dayjs';
 
 import { CURRENT_CONFIG_VERSION } from '@/migrations';

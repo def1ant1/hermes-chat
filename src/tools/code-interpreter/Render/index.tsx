@@ -3,7 +3,7 @@ import {
   CodeInterpreterParams,
   CodeInterpreterResponse,
   CodeInterpreterState,
-} from '@lobechat/types';
+} from '@hermeslabs/types';
 import { Alert, Highlighter, Text } from '@lobehub/ui';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';

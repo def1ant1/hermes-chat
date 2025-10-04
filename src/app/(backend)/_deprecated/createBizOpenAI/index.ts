@@ -1,4 +1,4 @@
-import { ChatErrorType, ErrorType } from '@lobechat/types';
+import { ChatErrorType, ErrorType } from '@hermeslabs/types';
 import OpenAI from 'openai';
 
 import { getOpenAIAuthFromRequest } from '@/const/fetch';

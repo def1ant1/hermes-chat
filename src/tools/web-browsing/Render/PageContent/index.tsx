@@ -1,4 +1,4 @@
-import { CrawlErrorResult } from '@lobechat/web-crawler';
+import { CrawlErrorResult } from '@hermeslabs/web-crawler';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
@@ -17,9 +17,9 @@ const PagesContent = memo<PagesContentProps>(({ results, messageId, urls }) => {
   if (!results || results.length === 0) {
     return (
       <Flexbox gap={12} horizontal>
-        {urls && urls.length > 0 && urls.map((url, index) => (
-          <Loading key={`${url}_${index}`} url={url} />
-        ))}
+        {urls &&
+          urls.length > 0 &&
+          urls.map((url, index) => <Loading key={`${url}_${index}`} url={url} />)}
       </Flexbox>
     );
   }

@@ -3,8 +3,8 @@ import type {
   EnabledProviderWithModels,
   GlobalLLMProviderKey,
   ModelProviderCard,
-} from '@lobechat/types';
-import { ServerModelProviderConfig } from '@lobechat/types';
+} from '@hermeslabs/types';
+import { ServerModelProviderConfig } from '@hermeslabs/types';
 import { uniqBy } from 'lodash-es';
 
 import { filterEnabledModels } from '@/config/modelProviders';

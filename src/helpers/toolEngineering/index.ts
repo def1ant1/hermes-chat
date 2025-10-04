@@ -1,9 +1,9 @@
 /**
  * Tools Engineering - Unified tools processing using ToolsEngine
  */
-import { ToolsEngine } from '@lobechat/context-engine';
-import type { PluginEnableChecker } from '@lobechat/context-engine';
-import { ChatCompletionTool, WorkingModel } from '@lobechat/types';
+import { ToolsEngine } from '@hermeslabs/context-engine';
+import type { PluginEnableChecker } from '@hermeslabs/context-engine';
+import { ChatCompletionTool, WorkingModel } from '@hermeslabs/types';
 import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
 
 import { getSearchConfig } from '@/helpers/getSearchConfig';

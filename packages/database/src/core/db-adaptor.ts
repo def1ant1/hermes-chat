@@ -1,4 +1,4 @@
-import { isDesktop } from '@lobechat/const';
+import { isDesktop } from '@hermeslabs/const';
 
 import { LobeChatDatabase } from '../type';
 import { getPgliteInstance } from './electron';

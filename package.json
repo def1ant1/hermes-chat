@@ -139,10 +139,6 @@
     "@fal-ai/client": "^1.6.2",
     "@formkit/auto-animate": "^0.9.0",
     "@google/genai": "^1.19.0",
-    "@huggingface/inference": "^2.8.1",
-    "@icons-pack/react-simple-icons": "9.6.0",
-    "@khmyznikov/pwa-install": "0.3.9",
-    "@langchain/community": "^0.3.55",
     "@hermeslabs/agent-runtime": "workspace:*",
     "@hermeslabs/const": "workspace:*",
     "@hermeslabs/context-engine": "workspace:*",
@@ -156,6 +152,10 @@
     "@hermeslabs/python-interpreter": "workspace:*",
     "@hermeslabs/utils": "workspace:*",
     "@hermeslabs/web-crawler": "workspace:*",
+    "@huggingface/inference": "^2.8.1",
+    "@icons-pack/react-simple-icons": "9.6.0",
+    "@khmyznikov/pwa-install": "0.3.9",
+    "@langchain/community": "^0.3.55",
     "@lobehub/analytics": "^1.6.0",
     "@lobehub/charts": "^2.1.2",
     "@lobehub/chat-plugin-sdk": "^1.32.4",
@@ -290,8 +290,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@edge-runtime/vm": "^5.0.0",
-    "@huggingface/tasks": "^0.19.0",
     "@hermeslabs/types": "workspace:*",
+    "@huggingface/tasks": "^0.19.0",
     "@lobehub/i18n-cli": "^1.25.1",
     "@lobehub/lint": "^1.26.2",
     "@lobehub/market-types": "^1.11.4",
@@ -386,7 +386,7 @@
     }
   },
   "x-migration-notes": {
-    "executedAt": "2025-10-04T21:56:03.451Z",
+    "executedAt": "2025-10-04T22:24:14.504Z",
     "executedBy": "gpt-5-codex",
     "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   }

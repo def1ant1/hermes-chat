@@ -1,5 +1,5 @@
 import { UserJSON } from '@clerk/backend';
-import { LobeChatDatabase } from '@lobechat/database';
+import { LobeChatDatabase } from '@hermeslabs/database';
 
 import { UserModel } from '@/database/models/user';
 import { initializeServerAnalytics } from '@/libs/analytics';

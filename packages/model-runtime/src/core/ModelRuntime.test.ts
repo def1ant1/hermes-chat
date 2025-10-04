@@ -1,6 +1,6 @@
 // @vitest-environment node
-import { TraceNameMap } from '@lobechat/types';
-import { ClientSecretPayload } from '@lobechat/types';
+import { TraceNameMap } from '@hermeslabs/types';
+import { ClientSecretPayload } from '@hermeslabs/types';
 import { Langfuse } from 'langfuse';
 import { LangfuseGenerationClient, LangfuseTraceClient } from 'langfuse-core';
 import { ModelProvider } from 'model-bank';

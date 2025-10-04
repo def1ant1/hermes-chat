@@ -1,4 +1,4 @@
-import { pluginPrompts } from '@lobechat/prompts';
+import { pluginPrompts } from '@hermeslabs/prompts';
 import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
 
 import { MetaData } from '@/types/meta';

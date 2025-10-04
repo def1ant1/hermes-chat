@@ -1,4 +1,4 @@
-import { getXorPayload } from '@lobechat/utils/server';
+import { getXorPayload } from '@hermeslabs/utils/server';
 import { TRPCError } from '@trpc/server';
 
 import { edgeTrpc } from '../init';

@@ -1,4 +1,4 @@
-import { FewShots, LobeAgentTTSConfig, MetaData, STTServer } from '@lobechat/types';
+import { FewShots, LobeAgentTTSConfig, MetaData, STTServer } from '@hermeslabs/types';
 import type { ThemeMode } from 'antd-style';
 import { LLMParams } from 'model-bank';
 

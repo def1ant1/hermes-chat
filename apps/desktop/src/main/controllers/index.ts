@@ -1,5 +1,5 @@
-import type { ClientDispatchEvents } from '@lobechat/electron-client-ipc';
-import type { ServerDispatchEvents } from '@lobechat/electron-server-ipc';
+import type { ClientDispatchEvents } from '@hermeslabs/electron-client-ipc';
+import type { ServerDispatchEvents } from '@hermeslabs/electron-server-ipc';
 
 import type { App } from '@/core/App';
 import { IoCContainer } from '@/core/infrastructure/IoCContainer';

@@ -1,4 +1,4 @@
-import type { ChatModelCard } from '@lobechat/types';
+import type { ChatModelCard } from '@hermeslabs/types';
 import uniqueId from 'lodash-es/uniqueId';
 import { ModelProvider } from 'model-bank';
 

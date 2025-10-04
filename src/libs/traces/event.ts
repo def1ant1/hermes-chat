@@ -1,4 +1,4 @@
-import { TraceEventType } from '@lobechat/types';
+import { TraceEventType } from '@hermeslabs/types';
 import { diffChars } from 'diff';
 import { LangfuseTraceClient } from 'langfuse-core';
 

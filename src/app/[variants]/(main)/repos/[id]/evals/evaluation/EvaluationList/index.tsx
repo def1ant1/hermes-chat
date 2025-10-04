@@ -1,7 +1,7 @@
 'use client';
 
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
-import { EvalEvaluationStatus, RAGEvalEvaluationItem } from '@lobechat/types';
+import { EvalEvaluationStatus, RAGEvalEvaluationItem } from '@hermeslabs/types';
 import { ActionIcon, Button, ButtonProps, Icon } from '@lobehub/ui';
 import { App } from 'antd';
 import { createStyles } from 'antd-style';

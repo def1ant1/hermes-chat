@@ -1,5 +1,5 @@
-import { ChatCompletionErrorPayload } from '@lobechat/model-runtime';
-import { ChatErrorType } from '@lobechat/types';
+import { ChatCompletionErrorPayload } from '@hermeslabs/model-runtime';
+import { ChatErrorType } from '@hermeslabs/types';
 import { ModelProvider } from 'model-bank';
 import { NextResponse } from 'next/server';
 

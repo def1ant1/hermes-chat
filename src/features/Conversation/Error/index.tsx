@@ -1,5 +1,5 @@
-import { AgentRuntimeErrorType, ILobeAgentRuntimeErrorType } from '@lobechat/model-runtime';
-import { ChatErrorType, ErrorType } from '@lobechat/types';
+import { AgentRuntimeErrorType, ILobeAgentRuntimeErrorType } from '@hermeslabs/model-runtime';
+import { ChatErrorType, ErrorType } from '@hermeslabs/types';
 import { IPluginErrorType } from '@lobehub/chat-plugin-sdk';
 import type { AlertProps } from '@lobehub/ui';
 import { Skeleton } from 'antd';

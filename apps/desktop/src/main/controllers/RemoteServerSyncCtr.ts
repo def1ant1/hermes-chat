@@ -2,7 +2,7 @@ import {
   ProxyTRPCRequestParams,
   ProxyTRPCRequestResult,
   ProxyTRPCStreamRequestParams,
-} from '@lobechat/electron-client-ipc';
+} from '@hermeslabs/electron-client-ipc';
 import { IpcMainEvent, WebContents, ipcMain } from 'electron';
 import { HttpProxyAgent } from 'http-proxy-agent';
 import { HttpsProxyAgent } from 'https-proxy-agent';

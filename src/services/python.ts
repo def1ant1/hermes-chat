@@ -1,5 +1,5 @@
-import { PythonInterpreter } from '@lobechat/python-interpreter';
-import { CodeInterpreterResponse } from '@lobechat/types';
+import { PythonInterpreter } from '@hermeslabs/python-interpreter';
+import { CodeInterpreterResponse } from '@hermeslabs/types';
 
 class PythonService {
   async runPython(

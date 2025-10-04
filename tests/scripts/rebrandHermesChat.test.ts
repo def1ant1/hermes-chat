@@ -88,7 +88,7 @@ async function createWorkspace(): Promise<string> {
 
   await writeFile(
     join(workspace, 'docs.md'),
-    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @lobehub/ui\nScoped migration: @lobechat/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nMarkdown sample: \`lobe_chat\`\n`,
+    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @lobehub/ui\nScoped migration: @hermeslabs/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nMarkdown sample: \`lobe_chat\`\n`,
     'utf8',
   );
 
@@ -141,7 +141,9 @@ describe('rebrandHermesChat CLI', () => {
       expect(docs).toContain('https://qa.hermes.chat/support');
       expect(docs).toContain('cdn.qa.hermes.chat');
       expect(docs).toContain('https://qa.hermes.chat + https://www.qa.hermes.chat');
-      expect(docs).toContain('https://cdn.qa.hermes.chat/hermes-chat/chat-enterprise/main/assets/logo.svg');
+      expect(docs).toContain(
+        'https://cdn.qa.hermes.chat/hermes-chat/chat-enterprise/main/assets/logo.svg',
+      );
       expect(docs).toContain('help@hermes.chat');
       expect(docs).toContain('@hermeslabs/ui');
       expect(docs).toContain('@hermeslabs/analytics');
@@ -167,7 +169,9 @@ describe('rebrandHermesChat CLI', () => {
       const locale = await readFile(join(workspace, 'locale/en.json'), 'utf8');
       expect(locale).toContain('https://www.qa.hermes.chat');
       expect(locale).toContain('HermesLabsCloud');
-      expect(locale).toContain('https://cdn.qa.hermes.chat/hermes-chat/chat-enterprise/main/assets/icon.png');
+      expect(locale).toContain(
+        'https://cdn.qa.hermes.chat/hermes-chat/chat-enterprise/main/assets/icon.png',
+      );
     } finally {
       await rm(workspace, { recursive: true, force: true });
     }

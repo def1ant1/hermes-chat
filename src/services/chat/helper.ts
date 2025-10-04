@@ -1,4 +1,4 @@
-import { isDeprecatedEdition } from '@lobechat/const';
+import { isDeprecatedEdition } from '@hermeslabs/const';
 import { ModelProvider } from 'model-bank';
 
 import { getAiInfraStoreState } from '@/store/aiInfra';

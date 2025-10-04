@@ -1,4 +1,4 @@
-import { FilesConfig, FilesConfigItem } from '@lobechat/types';
+import { FilesConfig, FilesConfigItem } from '@hermeslabs/types';
 
 import {
   DEFAULT_EMBEDDING_MODEL,

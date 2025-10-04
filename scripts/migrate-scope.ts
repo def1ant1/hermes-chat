@@ -1,5 +1,5 @@
 import { readFile, readdir, stat, writeFile } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { extname, join, relative, resolve } from 'node:path';
 import process from 'node:process';
 import { parseArgs } from 'node:util';
 
@@ -26,29 +26,27 @@ const {
   values: { compat, date, engineer, root, 'dry-run': dryRun },
 } = parseArgs({
   options: {
-    compat: {
+    'compat': {
+      description: 'Override the API compatibility guidance inserted into x-migration-notes.',
       type: 'string',
-      description:
-        'Override the API compatibility guidance inserted into x-migration-notes.',
     },
-    date: {
+    'date': {
+      description: 'Optional ISO8601 timestamp to record. Defaults to the execution time.',
       type: 'string',
-      description:
-        'Optional ISO8601 timestamp to record. Defaults to the execution time.',
-    },
-    engineer: {
-      type: 'string',
-      description:
-        'Name or handle of the engineer executing the migration (stored in x-migration-notes).',
-    },
-    root: {
-      type: 'string',
-      description: 'Repository root (defaults to current working directory).',
     },
     'dry-run': {
-      type: 'boolean',
       default: false,
       description: 'Perform all transformations in-memory without writing to disk.',
+      type: 'boolean',
+    },
+    'engineer': {
+      description:
+        'Name or handle of the engineer executing the migration (stored in x-migration-notes).',
+      type: 'string',
+    },
+    'root': {
+      description: 'Repository root (defaults to current working directory).',
+      type: 'string',
     },
   },
 });
@@ -79,8 +77,7 @@ const migrationTimestamp = date ?? new Date().toISOString();
  * consumers. The default statement asserts that the package surface remains
  * stable; callers can override if the migration ever becomes breaking.
  */
-const compatibilityNotes =
-  compat ?? 'No breaking API changes; workspace version remains 1.0.0.';
+const compatibilityNotes = compat ?? 'No breaking API changes; workspace version remains 1.0.0.';
 
 /**
  * Utility guard to determine whether an arbitrary value is a plain object. We
@@ -214,23 +211,52 @@ const migrateOverrides = (
  * this logic centralized ensures we emit consistent metadata everywhere.
  */
 const buildMigrationNotes = () => ({
+  apiCompatibility: compatibilityNotes,
   executedAt: migrationTimestamp,
   executedBy: migrationEngineer,
-  apiCompatibility: compatibilityNotes,
 });
 
-const SKIP_DIRECTORIES = new Set(['node_modules', 'dist', 'build', '.git']);
+const SKIP_DIRECTORIES = new Set([
+  'node_modules',
+  'dist',
+  'build',
+  '.git',
+  '.next',
+  '.turbo',
+  'coverage',
+  'tmp',
+  'temp',
+  '.temp',
+  '.cache',
+]);
+
+const SOURCE_DIRECTORIES = ['src', 'packages', 'apps', 'tests', 'scripts'];
+
+const SOURCE_EXTENSIONS = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs']);
+
+const toRelativePath = (absolutePath: string) => relative(workspaceRoot, absolutePath);
 
 const collectManifestPaths = async (): Promise<string[]> => {
   const manifestPaths = new Set<string>();
-  manifestPaths.add(resolve(workspaceRoot, 'package.json'));
-
-  const packagesRoot = resolve(workspaceRoot, 'packages');
-  const queue: string[] = [packagesRoot];
+  const visited = new Set<string>();
+  const queue: string[] = [workspaceRoot];
 
   while (queue.length > 0) {
     const current = queue.pop();
-    if (!current) continue;
+    if (!current || visited.has(current)) continue;
+
+    visited.add(current);
+
+    const manifestCandidate = join(current, 'package.json');
+
+    try {
+      const stats = await stat(manifestCandidate);
+      if (stats.isFile()) {
+        manifestPaths.add(manifestCandidate);
+      }
+    } catch {
+      // Directory does not represent a package boundary; continue scanning.
+    }
 
     let entries;
     try {
@@ -241,7 +267,7 @@ const collectManifestPaths = async (): Promise<string[]> => {
     }
 
     for (const entry of entries) {
-      if (!entry.isDirectory()) {
+      if (!entry.isDirectory() || entry.isSymbolicLink()) {
         continue;
       }
 
@@ -249,34 +275,77 @@ const collectManifestPaths = async (): Promise<string[]> => {
         continue;
       }
 
-      const absoluteDir = join(current, entry.name);
-      const manifestCandidate = join(absoluteDir, 'package.json');
-
-      try {
-        const stats = await stat(manifestCandidate);
-        if (stats.isFile()) {
-          manifestPaths.add(manifestCandidate);
-        }
-      } catch {
-        // Not a package boundary; continue exploring nested directories.
-      }
-
-      queue.push(absoluteDir);
+      queue.push(join(current, entry.name));
     }
   }
 
   return Array.from(manifestPaths);
 };
 
-/**
- * Primary execution entrypoint. We collect every package.json (root + nested
- * workspaces) and apply the scope migration + metadata injection.
- */
-const main = async () => {
+const collectSourceFiles = async (): Promise<string[]> => {
+  const files = new Set<string>();
+
+  for (const relativeDir of SOURCE_DIRECTORIES) {
+    const absoluteDir = resolve(workspaceRoot, relativeDir);
+
+    try {
+      const stats = await stat(absoluteDir);
+      if (!stats.isDirectory()) {
+        continue;
+      }
+    } catch {
+      continue;
+    }
+
+    const queue: string[] = [absoluteDir];
+
+    while (queue.length > 0) {
+      const current = queue.pop();
+      if (!current) continue;
+
+      let entries;
+      try {
+        entries = await readdir(current, { withFileTypes: true });
+      } catch (error) {
+        log.debug(`Skipping ${current}: ${(error as Error).message}`);
+        continue;
+      }
+
+      for (const entry of entries) {
+        if (entry.isSymbolicLink()) {
+          continue;
+        }
+
+        const absolutePath = join(current, entry.name);
+
+        if (entry.isDirectory()) {
+          if (SKIP_DIRECTORIES.has(entry.name) || entry.name.startsWith('.')) {
+            continue;
+          }
+          queue.push(absolutePath);
+          continue;
+        }
+
+        if (!entry.isFile()) {
+          continue;
+        }
+
+        if (!SOURCE_EXTENSIONS.has(extname(entry.name))) {
+          continue;
+        }
+
+        files.add(absolutePath);
+      }
+    }
+  }
+
+  return Array.from(files);
+};
+
+const migrateManifests = async () => {
   log.start('Scanning for package manifests...');
 
   const manifestPaths = await collectManifestPaths();
-
   manifestPaths.sort();
 
   if (manifestPaths.length === 0) {
@@ -298,11 +367,7 @@ const main = async () => {
       mutated = true;
     }
 
-    const dependenciesBlocks = [
-      'dependencies',
-      'devDependencies',
-      'peerDependencies',
-    ] as const;
+    const dependenciesBlocks = ['dependencies', 'devDependencies', 'peerDependencies'] as const;
 
     for (const blockName of dependenciesBlocks) {
       const currentBlock = json[blockName];
@@ -355,11 +420,71 @@ const main = async () => {
   if (dryRun) {
     log.info(`Dry-run complete. ${updatedCount} manifest(s) would be updated.`);
   } else {
-    log.success(`Migration complete. Updated ${updatedCount} manifest(s).`);
+    log.success(`Manifest migration complete. Updated ${updatedCount} manifest(s).`);
   }
 };
 
-main().catch((error) => {
+const migrateSourceFiles = async () => {
+  log.start('Scanning for TypeScript/JavaScript modules referencing the legacy scope...');
+
+  const sourceFiles = await collectSourceFiles();
+  sourceFiles.sort();
+
+  if (sourceFiles.length === 0) {
+    log.warn('No source directories discovered; skipping import migration.');
+    return;
+  }
+
+  let updatedCount = 0;
+
+  for (const absolutePath of sourceFiles) {
+    const displayPath = toRelativePath(absolutePath);
+    let raw: string;
+
+    try {
+      raw = await readFile(absolutePath, 'utf8');
+    } catch (error) {
+      log.error(`Unable to read ${displayPath}.`, error);
+      continue;
+    }
+
+    if (!raw.includes(LEGACY_SCOPE)) {
+      continue;
+    }
+
+    const next = raw.replaceAll(LEGACY_SCOPE, TARGET_SCOPE);
+    if (next === raw) {
+      continue;
+    }
+
+    updatedCount += 1;
+
+    if (dryRun) {
+      log.info(`[dry-run] Would update ${displayPath}.`);
+      continue;
+    }
+
+    await writeFile(absolutePath, next, 'utf8');
+    log.success(`Updated ${displayPath}.`);
+  }
+
+  if (dryRun) {
+    log.info(`Dry-run complete. ${updatedCount} source file(s) would be updated.`);
+  } else {
+    log.success(`Import migration complete. Updated ${updatedCount} source file(s).`);
+  }
+};
+
+/**
+ * Execute the manifest and source migrations sequentially so we never land in
+ * a state where imports reference packages that have not yet been renamed (or
+ * vice-versa). Using top-level await keeps the script compatible with
+ * lint-staged rules that prefer promise orchestration without manual wrappers.
+ */
+try {
+  await migrateManifests();
+  await migrateSourceFiles();
+} catch (error) {
   log.error('Scope migration failed.', error);
   process.exitCode = 1;
-});
+}

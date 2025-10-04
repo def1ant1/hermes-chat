@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { ChatCompletionTool } from '@lobechat/model-runtime';
+import { ChatCompletionTool } from '@hermeslabs/model-runtime';
 import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import * as debugStreamModule from '../../utils/debugStream';

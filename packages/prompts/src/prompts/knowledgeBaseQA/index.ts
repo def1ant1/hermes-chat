@@ -1,4 +1,4 @@
-import { ChatSemanticSearchChunk, KnowledgeItem } from '@lobechat/types';
+import { ChatSemanticSearchChunk, KnowledgeItem } from '@hermeslabs/types';
 
 import { chunkPrompts } from './chunk';
 import { knowledgePrompts } from './knowledge';

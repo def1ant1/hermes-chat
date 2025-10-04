@@ -109,7 +109,7 @@ interface ReplacementRule {
  * published artifacts (npm scopes, marketing handles, etc.).
  */
 function sanitizeHandleSlug(source: string): string {
-  return source.toLowerCase().replaceAll(/[^a-z0-9]+/g, '');
+  return source.toLowerCase().replaceAll(/[^\da-z]+/g, '');
 }
 
 /**
@@ -185,7 +185,7 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   },
   {
     description:
-      'Product-scoped package imports (e.g., @lobechat/*) must adopt the organization scope so npm installations resolve post-migration.',
+      'Product-scoped package imports (e.g., @hermeslabs/*) must adopt the organization scope so npm installations resolve post-migration.',
     id: 'product-scope-lobechat',
     pattern: /@lobechat\//g,
     replacement: (brand) => {
@@ -269,8 +269,7 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
         brand.repository?.owner ??
         brand.organization?.name?.toLowerCase().replaceAll(/\s+/g, '-') ??
         brand.name.toLowerCase().replaceAll(/\s+/g, '-');
-      const repo =
-        brand.repository?.name ?? brand.name.toLowerCase().replaceAll(/\s+/g, '-');
+      const repo = brand.repository?.name ?? brand.name.toLowerCase().replaceAll(/\s+/g, '-');
       const cdn = brand.cdnDomain ?? brand.domain;
 
       return `https://${cdn}/${owner}/${repo}`;
