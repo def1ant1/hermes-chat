@@ -103,6 +103,16 @@ interface ReplacementRule {
 }
 
 /**
+ * Normalizes organization or product names into durable handle slugs so that
+ * package scopes and social usernames remain DNS/registry safe. We trim
+ * whitespace and punctuation to avoid leaking inconsistent casing into
+ * published artifacts (npm scopes, marketing handles, etc.).
+ */
+function sanitizeHandleSlug(source: string): string {
+  return source.toLowerCase().replaceAll(/[^a-z0-9]+/g, '');
+}
+
+/**
  * The central configuration describing every deterministic renaming we perform.
  *
  * Each entry is heavily annotated to ensure future migrations can extend the
@@ -164,14 +174,40 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     id: 'organization-scope',
     pattern: /@lobehub\//g,
     replacement: (brand) =>
-      `@${(brand.organization?.name ?? brand.name).toLowerCase().replaceAll(/\s+/g, '')}/`,
+      `@${sanitizeHandleSlug(brand.organization?.name ?? brand.shortName ?? brand.name)}/`,
   },
   {
     description: 'Bare organization handles (e.g., social usernames).',
     id: 'organization-handle',
     pattern: /@lobehub(?!\.com)/g,
     replacement: (brand) =>
-      `@${(brand.organization?.name ?? brand.name).toLowerCase().replaceAll(/\s+/g, '')}`,
+      `@${sanitizeHandleSlug(brand.organization?.name ?? brand.shortName ?? brand.name)}`,
+  },
+  {
+    description:
+      'Product-scoped package imports (e.g., @lobechat/*) must adopt the organization scope so npm installations resolve post-migration.',
+    id: 'product-scope-lobechat',
+    pattern: /@lobechat\//g,
+    replacement: (brand) => {
+      // npm scopes mirror the parent organization slug; fall back to the short name when no org exists.
+      const scopeSource = brand.organization?.name ?? brand.shortName ?? brand.name;
+      const scopeSlug = sanitizeHandleSlug(scopeSource);
+
+      return `@${scopeSlug}/`;
+    },
+  },
+  {
+    description:
+      'Bare @lobechat handles inside marketing copy should pivot to the product short name to avoid colliding with organization slugs.',
+    id: 'product-handle-lobechat',
+    pattern: /@lobechat(?!\.com)(?!\/)/g,
+    replacement: (brand) => {
+      // Social-style mentions typically highlight the product; use the short name so enterprise renames remain human readable.
+      const handleSource = brand.shortName ?? brand.organization?.name ?? brand.name;
+      const handleSlug = sanitizeHandleSlug(handleSource);
+
+      return `@${handleSlug}`;
+    },
   },
   {
     description: 'Links to the legacy support portal.',
