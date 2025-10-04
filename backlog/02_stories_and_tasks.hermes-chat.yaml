@@ -1,1 +1,441 @@
-<contents from answer above for stories and tasks>
+# Stories and tasks derived from Hermes Chat epics. Comments link back to docs/BRANDING.md context.
+stories:
+  - id: STORY-HC-001
+    epic_id: EPIC-HC-001
+    title: Align shared theming tokens with Hermes Chat palette
+    priority: P0
+    description: >-
+      Update shared design tokens and component themes to adopt Hermes Chat naming, palettes,
+      and typography while preserving WCAG AA accessibility budgets across light and dark modes.
+    # Context: Visual identity pillars defined in docs/BRANDING.md#positioning--value-proposition.
+    acceptance_criteria:
+      - >-
+        `packages/const/theme.ts` exports Hermes Chat palette variables, typography scale, and spacing
+        tokens that pass automated contrast audits.
+      - >-
+        `apps/web/styles/global.less` references updated token names without breaking existing imports.
+      - >-
+        Percy/Chromatic snapshots confirm no regressions on the marketing home hero and dashboard shell.
+    testing:
+      - >-
+        Add `tests/visual/brand.spec.ts` coverage for theme switcher permutations and run via CI pipeline.
+      - >-
+        Execute `bunx vitest run --silent='passed-only' 'tests/unit/theme*'` locally before merge.
+    documentation:
+      - >-
+        Document new token naming table in `docs/development/design-system.md` including rationale.
+    tasks:
+      - id: TASK-HC-001A
+        type: engineering
+        owner: design-platform
+        description: >-
+          Refactor `packages/const/theme.ts` to export Hermes-specific palettes, gradients, and font stacks
+          with backwards-compatible aliases for downstream packages.
+        references:
+          - packages/const/theme.ts
+          - apps/web/styles/global.less
+        automation:
+          - Update `scripts/rebrand_hermes_chat.sh` to regenerate CSS variables and purge CDN caches.
+        testing:
+          - Percy baseline refresh + `bunx vitest run --silent='passed-only' 'tests/unit/theme*'`.
+        documentation:
+          - Add changelog entry in `docs/changelog/2025-hermes-chat-launch.md` detailing token updates.
+      - id: TASK-HC-001B
+        type: engineering
+        owner: qa-automation
+        description: >-
+          Extend visual regression harness in `tests/visual/brand.spec.ts` covering hero, dashboard shell,
+          and settings themes with Hermes branding toggles.
+        references:
+          - tests/visual/brand.spec.ts
+          - packages/const/theme.ts
+        automation:
+          - Configure Percy project to block merges on diff threshold >0.2%.
+        testing:
+          - Run updated visual suite via CI and capture baseline artifacts in S3 bucket.
+        documentation:
+          - Update `docs/development/testing/visual-regression.md` with new coverage map.
+
+  - id: STORY-HC-002
+    epic_id: EPIC-HC-001
+    title: Refresh marketing and in-app assets for Hermes Chat visuals
+    priority: P1
+    description: >-
+      Produce Hermes Chat-branded assets, integrate them into marketing and app surfaces, and automate
+      export pipelines to avoid manual uploads.
+    # Context: Asset changeover scheduled post-domain cutover per docs/BRANDING.md#dependencies--action-items.
+    acceptance_criteria:
+      - >-
+        New SVG/PNG assets live in `public/brand/hermes-chat/` with hashed filenames for cache busting.
+      - >-
+        In-app modal illustrations and email templates pull Hermes imagery via centralized CDN paths.
+      - >-
+        Asset export pipeline can be triggered via `scripts/rebrand_hermes_chat.sh assets`.
+    testing:
+      - >-
+        Run automated accessibility lint to confirm Alt text for marketing hero and in-app modals.
+      - >-
+        Execute `bunx vitest run --silent='passed-only' 'tests/unit/emailTemplates*'` to catch asset regressions.
+    documentation:
+      - >-
+        Embed before/after comparisons in `docs/BRANDING.md` and asset source references in `docs/wiki/design/`.
+    tasks:
+      - id: TASK-HC-002A
+        type: design
+        owner: brand-studio
+        description: >-
+          Generate Hermes Chat hero, favicon, and email illustration assets; export to `public/brand/hermes-chat/`
+          using Figma automation plugins.
+        references:
+          - public/brand/
+          - scripts/rebrand_hermes_chat.sh
+        automation:
+          - Extend export CLI to pull from Figma API and upload directly to CDN bucket.
+        testing:
+          - Accessibility audit via axe-core CLI ensuring Alt text metadata.
+        documentation:
+          - Update asset inventory table in `docs/wiki/design/hermes-chat-visual-system.md`.
+      - id: TASK-HC-002B
+        type: engineering
+        owner: growth-eng
+        description: >-
+          Wire Hermes assets into marketing Next.js pages (`apps/web/app/(marketing)`) and transactional email
+          templates in `packages/const/emails.ts` with feature flag for staged rollout.
+        references:
+          - apps/web/app/(marketing)
+          - packages/const/emails.ts
+        automation:
+          - Add asset integrity check to `scripts/rebrand_hermes_chat.sh verify-assets` command.
+        testing:
+          - Run `bunx vitest run --silent='passed-only' 'tests/unit/emailTemplates*'` and preview marketing pages locally.
+        documentation:
+          - Capture rollout plan in `docs/development/release-checklist.md`.
+
+  - id: STORY-HC-003
+    epic_id: EPIC-HC-002
+    title: Replace product strings and configs with Hermes nomenclature
+    priority: P0
+    description: >-
+      Update server and client configuration values, user-visible copy, and automation webhooks to reference
+      Hermes Chat across the stack with governance guardrails for future regressions.
+    # Context: Minimizes naming confusion tracked in docs/BRANDING.md#success-metrics--signals.
+    acceptance_criteria:
+      - >-
+        `packages/const/app.ts` and `src/config/branding.ts` expose Hermes Chat metadata with fallback aliases removed.
+      - >-
+        OAuth callback descriptors and webhook payloads emit `brand: "hermes-chat"` keys.
+      - >-
+        CI job fails when `rg "LobeChat"` finds strings outside approved archive list.
+    testing:
+      - >-
+        Add `tests/e2e/rebrand.spec.ts` coverage for onboarding, workspace rename, and billing flows.
+      - >-
+        Execute contract tests for webhook payloads using `tests/automation/webhook-contract.spec.ts`.
+    documentation:
+      - >-
+        Update `docs/usage/enterprise-guide.md` and `docs/self-hosting/configuration.md` with new environment variable names.
+    tasks:
+      - id: TASK-HC-003A
+        type: engineering
+        owner: platform-core
+        description: >-
+          Refactor `packages/const/app.ts`, `packages/const/emails.ts`, and `src/config/branding.ts` to centralize Hermes Chat
+          copy, tagline, and support links while removing deprecated exports.
+        references:
+          - packages/const/app.ts
+          - packages/const/emails.ts
+          - src/config/branding.ts
+        automation:
+          - Extend `scripts/rebrand_hermes_chat.sh lint-strings` to check for forbidden tokens.
+        testing:
+          - Run `bunx vitest run --silent='passed-only' 'tests/unit/config*'`.
+        documentation:
+          - Record API name changes in `docs/changelog/2025-hermes-chat-launch.md`.
+      - id: TASK-HC-003B
+        type: engineering
+        owner: integrations
+        description: >-
+          Update webhook + OAuth fixtures in `tests/automation/` and `apps/web/api/` to emit Hermes identifiers and validate
+          via staging connectors.
+        references:
+          - tests/automation/webhook-contract.spec.ts
+          - apps/web/api/
+        automation:
+          - Add smoke validation to CI using staging credentials with masked secrets via GitHub OIDC.
+        testing:
+          - Execute connector smoke tests via `bun run test:connectors --filter hermes`.
+        documentation:
+          - Update integration guides in `docs/usage/integrations/*.md` to reflect new identifiers.
+
+  - id: STORY-HC-004
+    epic_id: EPIC-HC-002
+    title: Localize Hermes Chat copy and enforce translation workflow
+    priority: P1
+    description: >-
+      Refresh localization bundles for Hermes Chat messaging in English and zh-CN, establish automation to flag
+      untranslated strings, and update translation QA scripts.
+    # Context: Launch parity requirement from docs/BRANDING.md#launch-constraints--guardrails.
+    acceptance_criteria:
+      - >-
+        `locales/en-US/*.json` and `locales/zh-CN/*.json` reflect Hermes copy for navigation, emails, and modals.
+      - >-
+        Localization QA sign-off recorded with screenshot diffs in the translation backlog.
+      - >-
+        i18n CI step fails when new strings ship without Hermes translations.
+    testing:
+      - >-
+        Execute `bunx vitest run --silent='passed-only' 'tests/i18n/*'` and review screenshot diffs.
+      - >-
+        Run `bun run lint:i18n` to ensure namespace completeness.
+    documentation:
+      - >-
+        Add translation workflow updates to `docs/development/i18n.md`.
+    tasks:
+      - id: TASK-HC-004A
+        type: localization
+        owner: localization-guild
+        description: >-
+          Update translation files in `locales/en-US/` and `locales/zh-CN/` with Hermes Chat copy, referencing the approved
+          messaging architecture worksheet.
+        references:
+          - locales/en-US/
+          - locales/zh-CN/
+        automation:
+          - Configure Crowdin/GitHub sync to auto-open PRs on new source strings.
+        testing:
+          - `bunx vitest run --silent='passed-only' 'tests/i18n/*'` with locale-specific snapshots.
+        documentation:
+          - Note QA evidence links in `docs/development/i18n.md`.
+      - id: TASK-HC-004B
+        type: engineering
+        owner: tooling
+        description: >-
+          Enhance i18n pipeline to block merges when Hermes translations missing; update `scripts/rebrand_hermes_chat.sh
+          validate-i18n` command to run in CI.
+        references:
+          - scripts/rebrand_hermes_chat.sh
+          - .github/workflows/i18n.yml
+        automation:
+          - Add CI job invoking `scripts/rebrand_hermes_chat.sh validate-i18n` with summary comment on PR.
+        testing:
+          - Dry-run workflow in staging branch to validate gating behavior.
+        documentation:
+          - Update `docs/development/release-checklist.md` with new localization gate.
+
+  - id: STORY-HC-005
+    epic_id: EPIC-HC-003
+    title: Provision Hermes Chat domains with automated infrastructure-as-code
+    priority: P0
+    description: >-
+      Implement infrastructure-as-code updates to manage DNS, TLS certificates, and environment variables for the Hermes Chat
+      domain suite while ensuring auditability and staged rollouts.
+    # Context: Domain strategy defined in docs/BRANDING.md#naming--domain-strategy.
+    acceptance_criteria:
+      - >-
+        Terraform/Pulumi modules in `infrastructure/domains/` declare Hermes hostnames with staged validation and outputs stored
+        in secrets manager.
+      - >-
+        ACME certificate automation validated in staging with automated renewal alerts integrated into PagerDuty.
+      - >-
+        Environment variables in `.env.production` templates reflect Hermes URLs with fallback support for legacy tenants.
+    testing:
+      - >-
+        Run infrastructure unit tests via `pnpm --filter infrastructure test` (or equivalent) and stage apply in sandbox.
+      - >-
+        Execute synthetic monitoring script `tests/synthetic/domains.spec.ts` after staging deploy.
+    documentation:
+      - >-
+        Update `docs/self-hosting/migration-hermes-chat.md` with DNS cutover checklist and rollback procedure.
+    tasks:
+      - id: TASK-HC-005A
+        type: engineering
+        owner: sre
+        description: >-
+          Extend Terraform/Pulumi stacks to include Hermes Chat records, certificate resources, and Traffic Manager routing,
+          using canary weighted distribution.
+        references:
+          - infrastructure/domains/
+          - .github/workflows/rebrand-cutover.yml
+        automation:
+          - Add automated drift detection via Terraform Cloud or Pulumi Deploy with weekly reports.
+        testing:
+          - Sandbox `terraform plan` or `pulumi preview` recorded and attached to PR.
+        documentation:
+          - Document apply/rollback SOP in `docs/self-hosting/migration-hermes-chat.md`.
+      - id: TASK-HC-005B
+        type: engineering
+        owner: sre
+        description: >-
+          Configure GitHub Actions workflow `.github/workflows/rebrand-cutover.yml` to orchestrate staged deploy, approval gates,
+          and synthetic health checks post-deploy.
+        references:
+          - .github/workflows/rebrand-cutover.yml
+          - tests/synthetic/domains.spec.ts
+        automation:
+          - Implement required approvals from SRE + compliance teams with Slack notifications.
+        testing:
+          - Dry-run workflow using staging secrets and verify auto-rollback triggers on failure.
+        documentation:
+          - Update `docs/development/release-checklist.md` with workflow diagram.
+
+  - id: STORY-HC-006
+    epic_id: EPIC-HC-003
+    title: Execute redirect and monitoring rollout for Hermes domains
+    priority: P1
+    description: >-
+      Implement redirect logic, monitoring dashboards, and incident response updates to support Hermes Chat domain cutover
+      without customer downtime.
+    # Context: Redirect promises captured in docs/BRANDING.md#naming--domain-strategy.
+    acceptance_criteria:
+      - >-
+        Redirect map configured in `apps/web/middleware.ts` covering top 200 legacy URLs with analytics tagging.
+      - >-
+        Observability dashboards updated to reflect Hermes domains and error budgets.
+      - >-
+        Statuspage + PagerDuty integrations send Hermes-labeled notifications.
+    testing:
+      - >-
+        Synthetic monitoring assertions for redirect latency (<200ms p95) using `tests/synthetic/domains.spec.ts`.
+      - >-
+        Chaos test verifying rollback toggles via feature flag in `packages/const/featureFlags.ts`.
+    documentation:
+      - >-
+        Update incident response SOP in `docs/self-hosting/failover.md` and `docs/development/oncall-runbook.md`.
+    tasks:
+      - id: TASK-HC-006A
+        type: engineering
+        owner: platform-core
+        description: >-
+          Implement redirect + feature flag logic in `apps/web/middleware.ts` and `packages/const/featureFlags.ts` with telemetry
+          events instrumented for adoption analytics.
+        references:
+          - apps/web/middleware.ts
+          - packages/const/featureFlags.ts
+        automation:
+          - Add redirect coverage check to `scripts/rebrand_hermes_chat.sh verify-redirects`.
+        testing:
+          - Run `bunx vitest run --silent='passed-only' 'tests/synthetic/domains.spec.ts'` locally pre-merge.
+        documentation:
+          - Document redirect map in `docs/self-hosting/migration-hermes-chat.md` appendix.
+      - id: TASK-HC-006B
+        type: engineering
+        owner: observability
+        description: >-
+          Update Grafana dashboards, Prometheus alerts, and Statuspage automation to reference Hermes domains and uptime SLIs.
+        references:
+          - observability/grafana/
+          - scripts/automation/statuspage-sync.ts
+        automation:
+          - Schedule nightly Statuspage sync via GitHub Actions to avoid manual updates.
+        testing:
+          - Validate dashboards via automated screenshot diff tool in `tests/observability/dashboard.spec.ts`.
+        documentation:
+          - Update monitoring guide in `docs/development/observability.md`.
+
+  - id: STORY-HC-007
+    epic_id: EPIC-HC-004
+    title: Launch communications & enablement package
+    priority: P0
+    description: >-
+      Deliver Hermes Chat announcement materials, in-app education, and success enablement collateral with automated
+      distribution and analytics tracking.
+    # Context: Supports go-to-market enablement plan from docs/BRANDING.md#dependencies--action-items.
+    acceptance_criteria:
+      - >-
+        Announcement posts published to `docs/changelog/2025-hermes-chat-launch.md`, marketing blog, and in-app modal with
+        consistent messaging + UTMs.
+      - >-
+        Customer success toolkit (email templates, FAQ, migration script) stored in `docs/usage/` and surfaced in-app.
+      - >-
+        Iterable/Marketo workflows updated with Hermes segmentation and scheduled automation.
+    testing:
+      - >-
+        Run documentation link checker `bun run lint:docs` to ensure CTA integrity.
+      - >-
+        QA in-app education flows via `tests/e2e/rebrand.spec.ts` gating on CTA events.
+    documentation:
+      - >-
+        Archive enablement assets in `docs/wiki/gtm/hermes-chat-launch.md` with versioning notes.
+    tasks:
+      - id: TASK-HC-007A
+        type: marketing-ops
+        owner: growth-eng
+        description: >-
+          Build and schedule Iterable/Marketo workflows with Hermes segments using API-driven scripts under `scripts/automation/`.
+        references:
+          - scripts/automation/
+          - docs/changelog/2025-hermes-chat-launch.md
+        automation:
+          - Add CI job to lint marketing automation configs before deployment.
+        testing:
+          - Fire test campaigns to sandbox audience verifying event tracking.
+        documentation:
+          - Document workflow IDs + triggers in `docs/wiki/gtm/hermes-chat-launch.md`.
+      - id: TASK-HC-007B
+        type: content
+        owner: product-marketing
+        description: >-
+          Draft announcement blog, changelog entry, FAQ, and in-app copy referencing Hermes positioning.
+        references:
+          - docs/changelog/2025-hermes-chat-launch.md
+          - docs/usage/
+        automation:
+          - Use markdown linter + translation sync via `scripts/rebrand_hermes_chat.sh prepare-content`.
+        testing:
+          - Run `bun run lint:docs` and peer review by legal/compliance.
+        documentation:
+          - Store approval notes in `docs/wiki/gtm/hermes-chat-launch.md`.
+
+  - id: STORY-HC-008
+    epic_id: EPIC-HC-004
+    title: Instrument analytics for Hermes adoption dashboards
+    priority: P1
+    description: >-
+      Implement analytics schema updates, dashboards, and data quality automation to measure Hermes Chat adoption across web,
+      product, and support channels.
+    # Context: Tracks success metrics defined in docs/BRANDING.md#success-metrics--signals.
+    acceptance_criteria:
+      - >-
+        Analytics schema updated in `packages/const/analytics.ts` with Hermes events, documented in tracking plan.
+      - >-
+        Amplitude/Looker dashboards published with baseline metrics captured GA +14 days.
+      - >-
+        Data quality monitors alert on missing events within 1 hour.
+    testing:
+      - >-
+        Add schema tests in `tests/analytics/tracking-plan.spec.ts` verifying payload shapes.
+      - >-
+        Run data backfill dry-run verifying no duplicate events.
+    documentation:
+      - >-
+        Update tracking plan in `docs/development/analytics.md` and share in stakeholder channel.
+    tasks:
+      - id: TASK-HC-008A
+        type: data-engineering
+        owner: data-platform
+        description: >-
+          Update event schemas in `packages/const/analytics.ts`, adjust ingestion pipeline configs, and backfill historical data
+          with Hermes identifiers.
+        references:
+          - packages/const/analytics.ts
+          - analytics/pipeline/
+        automation:
+          - Add schema validation step to CI via `bunx vitest run --silent='passed-only' 'tests/analytics/*'`.
+        testing:
+          - Execute backfill dry-run in staging warehouse and validate row counts.
+        documentation:
+          - Document pipeline changes in `docs/development/analytics.md`.
+      - id: TASK-HC-008B
+        type: data-analytics
+        owner: biz-ops
+        description: >-
+          Build Looker dashboard + Amplitude boards for Hermes adoption metrics and integrate alerts with Slack + PagerDuty.
+        references:
+          - analytics/dashboards/
+          - docs/development/analytics.md
+        automation:
+          - Schedule nightly refresh jobs via dbt Cloud or Looker scheduler.
+        testing:
+          - Validate dashboards using screenshot diffs stored under `tests/analytics/dashboard-visual.spec.ts`.
+        documentation:
+          - Capture metric definitions + owners in `docs/development/analytics.md` appendix.

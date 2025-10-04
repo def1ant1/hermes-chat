@@ -1,1 +1,162 @@
-<contents from answer above for epics>
+# Hermes Chat rebranding epics capturing enterprise launch scope. Derived from docs/BRANDING.md stakeholder notes.
+epics:
+  - id: EPIC-HC-001
+    name: Hermes Chat Experience & Visual Identity Refresh
+    description: >-
+      Update shared UI theming, marketing assets, and design tokens so every customer-facing
+      touchpoint reflects the Hermes Chat visual system while maintaining accessibility and
+      localization readiness across web and desktop surfaces.
+    business_rationale: >-
+      A unified brand reduces buyer confusion during the LobeChat → Hermes Chat transition and
+      supports the enterprise positioning commitments captured in docs/BRANDING.md.
+    dependencies:
+      - EPIC-HC-003 # Infrastructure must route new domains before updated assets ship publicly.
+    # Decision context: aligns with docs/BRANDING.md#positioning--value-proposition visual standards.
+    acceptance_criteria:
+      - >-
+        100% of shared design tokens in `packages/const/theme.ts` and `apps/web/styles` reference
+        Hermes Chat naming and pass automated contrast checks via CI linting.
+      - >-
+        Updated hero assets and logos exported to `public/brand/hermes-chat/` with Alt text coverage
+        validated by automated accessibility tests.
+      - >-
+        Marketing landing pages deploy with new branding without increasing CLS/LCP by more than 5%
+        compared to pre-refresh baseline (tracked in Vercel analytics dashboard).
+    # Ensures automation-first validation per stakeholder request in docs/BRANDING.md dependencies table.
+    testing_expectations:
+      - >-
+        Extend visual regression coverage in `tests/visual/brand.spec.ts` to snapshot new themes in
+        light/dark modes with Percy or Chromatic automation.
+      - >-
+        Run `bunx vitest run --silent='passed-only' 'tests/unit/theme*'` to ensure design tokens remain
+        backwards compatible.
+    # Automation guardrail: reduces manual asset handling per enterprise readiness goals.
+    automation_expectations:
+      - >-
+        Update `scripts/rebrand_hermes_chat.sh` to regenerate asset exports and purge CDN caches without
+        manual uploads.
+    # Documentation updates anchor visual change log entries for future audits.
+    documentation_expectations:
+      - >-
+        Refresh `docs/BRANDING.md` and marketing wiki entries with before/after visuals and accessibility
+        notes linked from the release announcement.
+
+  - id: EPIC-HC-002
+    name: Core Product Copy, Localization, and Configuration Rebrand
+    description: >-
+      Replace legacy LobeChat naming across application strings, configuration constants, and
+      automation scripts to reflect Hermes Chat while preserving translation quality and developer
+      ergonomics.
+    business_rationale: >-
+      Ensures enterprise admins experience a consistent identity throughout workflows, minimizing
+      support tickets tied to naming mismatches noted in docs/BRANDING.md success metrics.
+    dependencies:
+      - EPIC-HC-001 # Visual tokens define the canonical naming and tagline references.
+    # Decision context: supports localization parity goals noted in docs/BRANDING.md#launch-constraints--guardrails.
+    acceptance_criteria:
+      - >-
+        0 deprecated "LobeChat" references remain in `packages/const/` and `src/` string tables as
+        validated by `rg -n "LobeChat"` CI gate.
+      - >-
+        English and zh-CN locale files in `locales/` updated with Hermes Chat messaging, with translation
+        memory diffs reviewed by localization QA.
+      - >-
+        App configuration metadata (OAuth client names, webhook payload brand keys) reflect Hermes Chat
+        and pass integration smoke tests with top 5 enterprise connectors.
+    # Testing prioritizes multilingual regression risk tied to enterprise compliance messaging.
+    testing_expectations:
+      - >-
+        Add regression suites in `tests/e2e/rebrand.spec.ts` covering authentication flows, admin console
+        branding, and webhook payload validation.
+      - >-
+        Execute localization snapshot tests using `bunx vitest run --silent='passed-only' 'tests/i18n/*'`.
+    # Automation to enforce branding consistency and minimize manual lint sweeps.
+    automation_expectations:
+      - >-
+        Extend `scripts/rebrand_hermes_chat.sh` to lint for prohibited terms and auto-open PRs when new
+        strings appear without Hermes Chat branding.
+    # Documentation refresh aligns success enablement content with Hermes Chat references.
+    documentation_expectations:
+      - >-
+        Update `docs/usage/enterprise-guide.md` and API references describing authentication, ensuring
+        screenshots/taglines align with Hermes Chat naming.
+
+  - id: EPIC-HC-003
+    name: Domain Cutover & Deployment Automation
+    description: >-
+      Configure DNS, certificates, environment variables, and deployment pipelines to serve Hermes Chat
+      across primary (`hermes.chat`) and secondary (`app.hermes.chat`, `status.hermes.chat`) domains with
+      zero downtime and auditable rollback paths.
+    business_rationale: >-
+      Aligns infrastructure with the stakeholder-approved domain strategy, enabling marketing launch
+      campaigns and compliance-ready audit logs documented in docs/BRANDING.md.
+    dependencies:
+      - EPIC-HC-001 # Visual assets depend on correct domain paths for CDN purges.
+      - EPIC-HC-002 # Configuration updates must land before DNS cutover to avoid broken callbacks.
+    # Decision context: derived from docs/BRANDING.md#naming--domain-strategy domain commitments.
+    acceptance_criteria:
+      - >-
+        Automated Terraform or Pulumi stack updates provision certificates and DNS records with staged
+        validation for all Hermes Chat domains and document outputs in `infrastructure/` runbooks.
+      - >-
+        Blue/green deployment for `apps/web` validates redirect rules from `chat.lobehub.com` achieving
+        99.99% uptime during the cutover window.
+      - >-
+        Observability dashboards (Grafana + Statuspage) reflect new domains within 24 hours of deployment.
+    # Testing focus: resiliency + latency budgets promised in stakeholder workshop.
+    testing_expectations:
+      - >-
+        Implement synthetic monitoring scripts in `tests/synthetic/domains.spec.ts` verifying redirects,
+        certificate health, and latency budgets (<200ms p95 global).
+      - >-
+        Run disaster-recovery drills documented in `docs/self-hosting/failover.md` to confirm rollback steps.
+    # Automation ensures reproducible infrastructure changes with dual approvals.
+    automation_expectations:
+      - >-
+        Integrate cutover workflows into CI/CD (`.github/workflows/rebrand-cutover.yml`) ensuring approvals
+        from SRE and compliance before production apply steps.
+    # Documentation ties back to migration guides promised to existing tenants.
+    documentation_expectations:
+      - >-
+        Publish migration guides in `docs/self-hosting/migration-hermes-chat.md` and update status page SOPs.
+
+  - id: EPIC-HC-004
+    name: Launch Communications, Enablement, and Analytics Instrumentation
+    description: >-
+      Deliver coordinated launch materials, customer education assets, and analytics tracking to monitor
+      Hermes Chat brand adoption across marketing, product, and support channels.
+    business_rationale: >-
+      Supports success metrics defined in docs/BRANDING.md by ensuring stakeholders measure adoption,
+      educate customers, and manage change effectively.
+    dependencies:
+      - EPIC-HC-001
+      - EPIC-HC-002
+      - EPIC-HC-003
+    # Decision context: supports success metrics in docs/BRANDING.md#success-metrics--signals.
+    acceptance_criteria:
+      - >-
+        Launch announcement content published across docs, changelog, and in-app modals with consistent
+        messaging and CTA instrumentation (UTM + event schemas).
+      - >-
+        Customer success playbooks in `docs/usage/` updated with migration scripts and automation recipes,
+        reviewed by support leadership.
+      - >-
+        Analytics dashboards (Amplitude/Looker) track Hermes Chat conversion funnel with baseline KPIs set
+        before GA +14 days.
+    # Testing ensures instrumentation is reliable for executive dashboards.
+    testing_expectations:
+      - >-
+        Validate tracking plans via automated schema tests in `tests/analytics/tracking-plan.spec.ts` to
+        ensure event payloads conform to analytics contract.
+      - >-
+        Run documentation link check automation (`bun run lint:docs`) confirming no dead links post-refresh.
+    # Automation reduces manual launch ops toil and drift.
+    automation_expectations:
+      - >-
+        Update marketing automation workflows (Iterable/Marketo) via API-driven scripts stored in
+        `scripts/automation/` to prevent manual email sequencing.
+    # Documentation callouts preserve institutional memory for go-to-market teams.
+    documentation_expectations:
+      - >-
+        Add Hermes Chat launch runbook to `docs/changelog/2025-hermes-chat-launch.md` and link to training
+        decks for sales, support, and partners.
