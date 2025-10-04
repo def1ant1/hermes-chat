@@ -1,12 +1,14 @@
 ---
-title: 在 LobeChat 中配置 Authelia 身份验证服务
-description: 学习如何在 LobeChat 中配置 Authelia 身份验证服务，包括创建提供程序、配置环境变量和部署 LobeChat。详细步骤和必要环境变量设置。
+title: 在 Hermes Chat 中配置 Authelia 身份验证服务
+description: >-
+  学习如何在 Hermes Chat 中配置 Authelia 身份验证服务，包括创建提供程序、配置环境变量和部署 Hermes
+  Chat。详细步骤和必要环境变量设置。
 tags:
   - Authelia
   - 身份验证
   - 单点登录
   - 环境变量
-  - LobeChat
+  - Hermes Chat
 ---
 
 # 配置 Authelia 身份验证服务
@@ -16,7 +18,7 @@ tags:
 <Steps>
   ### 创建 Authelia 提供应用
 
-  我们现在默认您已经了解了如何使用 Authelia。假设您的 LobeChat 实例部署在 `https://lobe.example.com/` 中。注意，目前只有 `localhost` 支持 HTTP 访问，其他域名需要启用 TLS，否则 Authelia 默认将主动中断身份认证。
+  我们现在默认您已经了解了如何使用 Authelia。假设您的 Hermes Chat 实例部署在 `https://lobe.example.com/` 中。注意，目前只有 `localhost` 支持 HTTP 访问，其他域名需要启用 TLS，否则 Authelia 默认将主动中断身份认证。
 
   现在，我们打开 Authelia 实例的配置文件进行编辑：
 
@@ -30,7 +32,7 @@ tags:
       ## The other portions of the mandatory OpenID Connect 1.0 configuration go here.
       ## See: https://www.authelia.com/c/oidc
       - id: lobe-chat
-        description: LobeChat
+        description: Hermes Chat
         secret: '$pbkdf2-sha512$310000$c8p78n7pUMln0jzvd4aK4Q$JNRBzwAo0ek5qKn50cFzzvE9RXV88h1wJn5KGiHrD0YKtZaR/nCb2CJPOsKaPK0hjf.9yHxzQGZziziccp6Yng'  # The digest of 'insecure_secret'.
         public: false
         authorization_policy: two_factor
@@ -49,7 +51,7 @@ tags:
 
   ### 配置环境变量
 
-  在部署 LobeChat 时，你需要配置以下环境变量：
+  在部署 Hermes Chat 时，你需要配置以下环境变量：
 
   | 环境变量                      | 类型 | 描述                                                                                               |
   | ------------------------- | -- | ------------------------------------------------------------------------------------------------ |
@@ -66,5 +68,5 @@ tags:
 </Steps>
 
 <Callout type={'info'}>
-  部署成功后，用户将可以使用 Authelia 中配置的用户通过身份认证并使用 LobeChat。
+  部署成功后，用户将可以使用 Authelia 中配置的用户通过身份认证并使用 Hermes Chat。
 </Callout>

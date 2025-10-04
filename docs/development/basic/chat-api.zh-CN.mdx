@@ -1,6 +1,10 @@
-# Lobe Chat API 前后端交互逻辑
+---
+title: Hermes Chat API 前后端交互逻辑
+---
 
-本文档说明了 Lobe Chat API 在前后端交互中的实现逻辑，包括事件序列和涉及的核心组件。
+# Hermes Chat API 前后端交互逻辑
+
+本文档说明了 Hermes Chat API 在前后端交互中的实现逻辑，包括事件序列和涉及的核心组件。
 
 ## 交互时序图
 
@@ -189,7 +193,7 @@ sequenceDiagram
 
 ## AgentRuntime 说明
 
-AgentRuntime 是 Lobe Chat 中的一个核心抽象层，它封装了与不同 AI 模型提供商交互的统一接口。其主要职责和特点包括：
+AgentRuntime 是 Hermes Chat 中的一个核心抽象层，它封装了与不同 AI 模型提供商交互的统一接口。其主要职责和特点包括：
 
 1. **统一抽象层**：AgentRuntime 提供了一个统一的接口，隐藏了不同 AI 提供商 API 的实现细节差异（如 OpenAI、Anthropic、Bedrock 等）。
 
@@ -233,7 +237,7 @@ AgentRuntime 是 Lobe Chat 中的一个核心抽象层，它封装了与不同 A
 
    **适配器实现示例**：
 
-   1. **OpenRouter 适配器**：OpenRouter 是一个统一 API，可以通过它访问多个模型提供商的 AI 模型。Lobe Chat 通过适配器实现对 OpenRouter 的支持：
+   1. **OpenRouter 适配器**：OpenRouter 是一个统一 API，可以通过它访问多个模型提供商的 AI 模型。Hermes Chat 通过适配器实现对 OpenRouter 的支持：
 
       ```ts
       // OpenRouter 适配器实现
@@ -247,8 +251,8 @@ AgentRuntime 是 Lobe Chat 中的一个核心抽象层，它封装了与不同 A
             apiKey: options.apiKey,
             baseURL: OPENROUTER_BASE_URL,
             defaultHeaders: {
-              'HTTP-Referer': 'https://github.com/lobehub/lobe-chat',
-              'X-Title': 'LobeChat',
+              'HTTP-Referer': 'https://github.com/hermeslabs/lobe-chat',
+              'X-Title': 'Hermes Chat',
             },
           });
           this.baseURL = OPENROUTER_BASE_URL;
@@ -256,7 +260,7 @@ AgentRuntime 是 Lobe Chat 中的一个核心抽象层，它封装了与不同 A
 
         // 实现聊天功能
         async chat(payload: ChatCompletionCreateParamsBase, options?: RequestOptions) {
-          // 将 Lobe Chat 的请求格式转换为 OpenRouter 格式
+          // 将 Hermes Chat 的请求格式转换为 OpenRouter 格式
           // 处理模型映射、消息格式等
           return this.client.chat.completions.create(
             {
@@ -271,7 +275,7 @@ AgentRuntime 是 Lobe Chat 中的一个核心抽象层，它封装了与不同 A
       }
       ```
 
-   2. **Google Gemini 适配器**：Gemini 是 Google 的大语言模型，Lobe Chat 通过专门的适配器支持 Gemini 系列模型：
+   2. **Google Gemini 适配器**：Gemini 是 Google 的大语言模型，Hermes Chat 通过专门的适配器支持 Gemini 系列模型：
 
       ```ts
       import { GoogleGenerativeAI } from '@google/generative-ai';

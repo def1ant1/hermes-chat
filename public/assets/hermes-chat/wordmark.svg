@@ -1,0 +1,36 @@
+<!-- Hermes Chat wordmark set in fallback system fonts to avoid licensing issues. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160">
+  <defs>
+    <linearGradient id="wordmark-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#312e81" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+  </defs>
+  <rect width="640" height="160" rx="40" fill="#0f172a" opacity="0.92" />
+  <g transform="translate(80,108)">
+    <text
+      fill="url(#wordmark-gradient)"
+      font-family="'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif"
+      font-size="72"
+      font-weight="700"
+      letter-spacing="0.02em"
+      text-anchor="start"
+      dominant-baseline="middle"
+    >
+      Hermes Chat
+    </text>
+    <text
+      fill="#e0f2fe"
+      font-family="'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif"
+      font-size="26"
+      font-weight="500"
+      letter-spacing="0.1em"
+      text-anchor="start"
+      dominant-baseline="middle"
+      transform="translate(0,54)"
+    >
+      ENTERPRISE AI WORKSPACE
+    </text>
+  </g>
+</svg>

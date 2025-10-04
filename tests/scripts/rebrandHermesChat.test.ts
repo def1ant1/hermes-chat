@@ -42,7 +42,7 @@ const REQUIRED_ARGS = [
   '--asset-logo',
   '/brand/logo.svg',
   '--asset-favicon',
-  '/brand/favicon.png',
+  '/brand/favicon.svg',
   '--asset-wordmark',
   '/brand/wordmark.svg',
 ];
@@ -149,7 +149,7 @@ describe('rebrandHermesChat CLI', () => {
 
       const config = await readFile(join(workspace, 'config.json'), 'utf8');
       expect(config).toContain('qa.hermes.chat');
-      expect(config).toContain('/brand/favicon.png');
+      expect(config).toContain('/brand/favicon.svg');
       expect(config).not.toContain('lobehub');
 
       const locale = await readFile(join(workspace, 'locale/en.json'), 'utf8');

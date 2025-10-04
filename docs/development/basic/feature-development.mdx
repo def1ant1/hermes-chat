@@ -1,8 +1,15 @@
-# LobeChat Feature Development Complete Guide
+---
+title: Hermes Chat Feature Development Complete Guide
+---
 
-This document aims to guide developers on how to develop a complete feature in LobeChat.
+# Hermes Chat Feature Development Complete Guide
 
-We will use [RFC 021 - Custom Assistant Opening Guidance](https://github.com/lobehub/lobe-chat/discussions/891) as an example to illustrate the complete implementation process.
+This document aims to guide developers on how to develop a complete feature in Hermes Chat.
+
+> \[!NOTE]
+> Runtime TypeScript interfaces are still prefixed with `Lobe*` (for example `LobeAgentConfig`). The Hermes Chat SDK keeps these names temporarily for backward compatibility; update references once the core packages publish Hermes-specific aliases.
+
+We will use [RFC 021 - Custom Assistant Opening Guidance](https://github.com/hermeslabs/lobe-chat/discussions/891) as an example to illustrate the complete implementation process.
 
 ## 1. Update Schema
 
@@ -237,11 +244,11 @@ export const agentSelectors = {
 
 We're adding a new category of settings this time. In `src/features/AgentSetting`, various UI components for agent settings are defined. This time we're adding a setting type: opening settings. We'll add a folder `AgentOpening` to store opening settings-related components. The project uses:
 
-- [ant-design](https://ant.design/) and [lobe-ui](https://github.com/lobehub/lobe-ui): component libraries
+- [ant-design](https://ant.design/) and [lobe-ui](https://github.com/hermeslabs/lobe-ui): component libraries
 - [antd-style](https://ant-design.github.io/antd-style): css-in-js solution
 - [react-layout-kit](https://github.com/arvinxx/react-layout-kit): responsive layout components
 - [@ant-design/icons](https://ant.design/components/icon-cn) and [lucide](https://lucide.dev/icons/): icon libraries
-- [react-i18next](https://github.com/i18next/react-i18next) and [lobe-i18n](https://github.com/lobehub/lobe-cli-toolbox/tree/master/packages/lobe-i18n): i18n framework and multi-language automatic translation tool
+- [react-i18next](https://github.com/i18next/react-i18next) and [lobe-i18n](https://github.com/hermeslabs/lobe-cli-toolbox/tree/master/packages/lobe-i18n): i18n framework and multi-language automatic translation tool
 
 lobe-chat is an internationalized project, so newly added text needs to update the default `locale` file: `src/locales/default/setting.ts`.
 
@@ -252,7 +259,7 @@ Let's take the subcomponent `OpeningQuestion.tsx` as an example. Component imple
 'use client';
 
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
-import { SortableList } from '@lobehub/ui';
+import { SortableList } from '@hermeslabs/ui';
 import { Button, Empty, Input } from 'antd';
 import { createStyles } from 'antd-style';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -364,7 +371,8 @@ const OpeningQuestions = memo(() => {
         {isRepeat && (
           <p className={styles.repeatError}>{t('settingOpening.openingQuestions.repeat')}</p>
         )}
-      </Flexbox>
+     
+</Flexbox>
 
       <div className={styles.questionsList}>
         {openingQuestions.length > 0 ? (
@@ -380,7 +388,8 @@ const OpeningQuestions = memo(() => {
                   onClick={() => removeQuestion(item.content)}
                   type="text"
                 />
-              </SortableList.Item>
+             
+</SortableList.Item>
             )}
           />
         ) : (
@@ -389,8 +398,10 @@ const OpeningQuestions = memo(() => {
             description={t('settingOpening.openingQuestions.empty')}
           />
         )}
-      </div>
-    </Flexbox>
+     
+</div>
+   
+</Flexbox>
   );
 });
 
@@ -442,7 +453,8 @@ const WelcomeMessage = () => {
       {chatItem}
       {/* Render guiding questions */}
       <OpeningQuestions mobile={mobile} questions={openingQuestions} />
-    </Flexbox>
+   
+</Flexbox>
   ) : (
     chatItem
   );
@@ -460,4 +472,4 @@ For the current scenario, I recommend running the tests locally to see which tes
 
 ## Summary
 
-The above is the complete implementation process for the LobeChat opening settings feature. Developers can refer to this document for the development and testing of related features.
+The above is the complete implementation process for the Hermes Chat opening settings feature. Developers can refer to this document for the development and testing of related features.

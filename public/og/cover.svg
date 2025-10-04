@@ -1,0 +1,49 @@
+<!-- Hermes Chat OpenGraph illustration (vector, no binary payload). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Hermes Chat OpenGraph Cover</title>
+  <desc id="desc">Hermes Chat automation graph with governance and observability callouts.</desc>
+  <defs>
+    <linearGradient id="coverBackground" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+    <linearGradient id="coverAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" rx="56" fill="url(#coverBackground)" />
+  <g opacity="0.35">
+    <circle cx="280" cy="200" r="120" fill="#38bdf8" />
+    <circle cx="960" cy="150" r="140" fill="#f472b6" />
+    <circle cx="820" cy="520" r="180" fill="#a855f7" />
+  </g>
+  <g fill="#e2e8f0">
+    <text x="120" y="220" font-family="'Inter', 'Segoe UI', sans-serif" font-size="96" font-weight="600">Hermes Chat</text>
+    <text x="120" y="300" font-family="'Inter', 'Segoe UI', sans-serif" font-size="44" fill="#cbd5f5">
+      Enterprise AI workspace for regulated teams and mission-critical copilots
+    </text>
+    <text x="120" y="360" font-family="'Inter', 'Segoe UI', sans-serif" font-size="32" fill="#94a3b8">
+      Automate multi-model workflows • Enforce governance • Ship trusted AI faster
+    </text>
+  </g>
+  <g stroke="url(#coverAccent)" stroke-width="6" fill="none" opacity="0.85">
+    <path d="M160 420 C 320 360, 480 480, 640 420 S 960 360, 1080 460" />
+    <path d="M200 480 C 360 420, 520 520, 680 460 S 960 420, 1040 520" stroke-dasharray="22 26" />
+  </g>
+  <g font-family="'Inter', 'Segoe UI', sans-serif" font-size="30" font-weight="600" fill="#0f172a">
+    <g transform="translate(160 430)">
+      <rect width="280" height="96" rx="24" fill="#f8fafc" opacity="0.88" />
+      <text x="40" y="60">Zero-trust automation</text>
+    </g>
+    <g transform="translate(480 470)">
+      <rect width="300" height="96" rx="24" fill="#f8fafc" opacity="0.88" />
+      <text x="40" y="60">Unified observability</text>
+    </g>
+    <g transform="translate(820 430)">
+      <rect width="260" height="96" rx="24" fill="#f8fafc" opacity="0.88" />
+      <text x="36" y="60">MCP-native tooling</text>
+    </g>
+  </g>
+</svg>

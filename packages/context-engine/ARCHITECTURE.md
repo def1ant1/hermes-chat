@@ -42,10 +42,10 @@ Context Engine 是一个灵活的消息处理管道系统，用于在 AI 对话�
 interface Pipeline {
   // 添加处理器到管道
   add(processor: BaseProcessor): Pipeline;
-  
+
   // 执行管道处理
   execute(context: ProcessorContext): Promise<ProcessorContext>;
-  
+
   // 获取管道中的所有处理器
   getProcessors(): BaseProcessor[];
 }
@@ -57,10 +57,10 @@ interface Pipeline {
 
 ```typescript
 interface ProcessorContext {
-  messages: Message[];           // 消息列表
-  metadata?: ProcessorMetadata;  // 元数据
+  messages: Message[]; // 消息列表
+  metadata?: ProcessorMetadata; // 元数据
   variables?: Record<string, any>; // 变量
-  abortSignal?: AbortSignal;    // 中止信号
+  abortSignal?: AbortSignal; // 中止信号
 }
 ```
 
@@ -95,30 +95,30 @@ BaseProcessor (抽象基类)
 abstract class BaseProcessor {
   // 处理器类型
   abstract readonly type: ProcessorType;
-  
+
   // 处理器名称
   abstract readonly name: string;
-  
+
   // 主处理方法
   async process(context: ProcessorContext): Promise<ProcessorContext> {
     // 1. 前置验证
     this.validateInput(context);
-    
+
     // 2. 执行处理
     const result = await this.doProcess(context);
-    
+
     // 3. 后置验证
     this.validateOutput(result);
-    
+
     return result;
   }
-  
+
   // 子类实现的核心处理逻辑
   protected abstract doProcess(context: ProcessorContext): Promise<ProcessorContext>;
-  
+
   // 输入验证（可选覆盖）
   protected validateInput(context: ProcessorContext): void {}
-  
+
   // 输出验证（可选覆盖）
   protected validateOutput(context: ProcessorContext): void {}
 }
@@ -129,40 +129,40 @@ abstract class BaseProcessor {
 ```typescript
 abstract class BaseInjector extends BaseProcessor {
   readonly type = ProcessorType.Injector;
-  
+
   protected async doProcess(context: ProcessorContext): Promise<ProcessorContext> {
     // 1. 判断是否需要注入
     if (!this.shouldInject(context)) {
       return context;
     }
-    
+
     // 2. 构建注入内容
     const content = await this.buildContent(context);
-    
+
     // 3. 创建消息
     const message = this.createMessage(content, context);
-    
+
     // 4. 确定注入位置
     const position = this.getInjectionPosition(context);
-    
+
     // 5. 执行注入
     return this.inject(context, message, position);
   }
-  
+
   // 子类需要实现的方法
   protected abstract shouldInject(context: ProcessorContext): boolean;
   protected abstract buildContent(context: ProcessorContext): Promise<string>;
-  
+
   // 可选覆盖的方法
   protected getInjectionPosition(context: ProcessorContext): number {
     return 0; // 默认注入到开头
   }
-  
+
   protected createMessage(content: string, context: ProcessorContext): Message {
     return {
       role: 'system',
       content,
-      metadata: { injectedBy: this.name }
+      metadata: { injectedBy: this.name },
     };
   }
 }
@@ -176,14 +176,12 @@ abstract class BaseInjector extends BaseProcessor {
 // 创建一个自定义注入器
 class CustomContextInjector extends BaseInjector {
   readonly name = 'custom-context-injector';
-  
+
   protected shouldInject(context: ProcessorContext): boolean {
     // 判断逻辑
-    return !context.messages.some(msg => 
-      msg.metadata?.injectedBy === this.name
-    );
+    return !context.messages.some((msg) => msg.metadata?.injectedBy === this.name);
   }
-  
+
   protected async buildContent(context: ProcessorContext): Promise<string> {
     // 构建内容逻辑
     return `Custom context: ${context.variables?.customValue}`;
@@ -207,7 +205,7 @@ const pipeline = createPipeline()
 const result = await pipeline.execute({
   messages: initialMessages,
   variables: { customValue: 'test' },
-  metadata: { model: 'gpt-4' }
+  metadata: { model: 'gpt-4' },
 });
 ```
 
@@ -226,9 +224,7 @@ if (config.enableSearch) {
 }
 
 // 始终添加的处理器
-pipeline
-  .add(new HistoryTruncator())
-  .add(new ModelCapabilityValidator());
+pipeline.add(new HistoryTruncator()).add(new ModelCapabilityValidator());
 ```
 
 ### 4. 错误处理
@@ -256,7 +252,7 @@ interface ProcessorConfig {
   // 通用配置
   enabled?: boolean;
   priority?: number;
-  
+
   // 处理器特定配置
   [key: string]: any;
 }
@@ -277,7 +273,7 @@ interface PipelineConfig {
     type: string;
     config?: ProcessorConfig;
   }>;
-  
+
   // 全局配置
   abortOnError?: boolean;
   timeout?: number;
@@ -288,32 +284,37 @@ const pipeline = createPipelineFromConfig({
   processors: [
     { type: 'system-role', config: { enabled: true } },
     { type: 'history', config: { maxMessages: 20 } },
-    { type: 'rag', config: { threshold: 0.7 } }
+    { type: 'rag', config: { threshold: 0.7 } },
   ],
   abortOnError: false,
-  timeout: 30000
+  timeout: 30000,
 });
 ```
 
 ## 最佳实践
 
 ### 1. 单一职责原则
+
 每个处理器应该只负责一种特定的处理任务。
 
 ### 2. 可配置性
+
 处理器应该通过配置参数来控制行为，而不是硬编码。
 
 ### 3. 错误处理
+
 - 使用具体的错误类型
 - 提供有意义的错误信息
 - 考虑错误恢复策略
 
 ### 4. 性能优化
+
 - 避免不必要的消息复制
 - 使用流式处理处理大量数据
 - 实现适当的缓存机制
 
 ### 5. 测试
+
 - 为每个处理器编写单元测试
 - 测试处理器组合的集成测试
 - 边界条件和错误场景测试
@@ -326,13 +327,13 @@ const pipeline = createPipelineFromConfig({
 // 定义新的处理器类型
 enum CustomProcessorType {
   Analyzer = 'analyzer',
-  Enhancer = 'enhancer'
+  Enhancer = 'enhancer',
 }
 
 // 创建对应的基类
 abstract class BaseAnalyzer extends BaseProcessor {
   readonly type = CustomProcessorType.Analyzer;
-  
+
   // 分析器特定的方法
   protected abstract analyze(messages: Message[]): AnalysisResult;
 }
@@ -346,7 +347,7 @@ class CompositeProcessor extends BaseProcessor {
   constructor(private processors: BaseProcessor[]) {
     super();
   }
-  
+
   protected async doProcess(context: ProcessorContext): Promise<ProcessorContext> {
     let result = context;
     for (const processor of this.processors) {
@@ -372,8 +373,8 @@ registry.registerPlugin({
   version: '1.0.0',
   processors: [
     { type: 'custom-injector', factory: () => new CustomInjector() },
-    { type: 'custom-validator', factory: () => new CustomValidator() }
-  ]
+    { type: 'custom-validator', factory: () => new CustomValidator() },
+  ],
 });
 ```
 
@@ -382,6 +383,7 @@ registry.registerPlugin({
 ### 从当前架构迁移
 
 1. **BaseProvider 迁移到 BaseInjector**
+
    ```typescript
    // 旧代码
    class MyProvider extends BaseProvider {
@@ -389,13 +391,13 @@ registry.registerPlugin({
        // 实现
      }
    }
-   
+
    // 新代码
    class MyInjector extends BaseInjector {
      shouldInject(context) {
        // 判断逻辑
      }
-     
+
      buildContent(context) {
        // 构建内容
      }

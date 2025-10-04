@@ -1,20 +1,21 @@
 ---
 title: Share Settings via URL - Import and Export Configuration Settings
 description: >-
-  Learn how to import and export configuration settings for LobeChat via URL. Understand the supported settings, URL format, and parameter schema for keyVaults and languageModel.
-
+  Learn how to import and export configuration settings for Hermes Chat via URL.
+  Understand the supported settings, URL format, and parameter schema for
+  keyVaults and languageModel.
 tags:
   - Share Settings
   - URL Import
   - URL Export
   - Configuration Settings
-  - LobeChat
+  - Hermes Chat
   - Parameter Schema
 ---
 
 # Share settings via URL
 
-LobeChat support import settings from external URL to quickly set up LobeChat configuration.
+Hermes Chat support import settings from external URL to quickly set up Hermes Chat configuration.
 
 The currently supported settings are:
 
@@ -26,8 +27,8 @@ The currently supported settings are:
 Use the following URL format to import settings parameters from an external URL:
 
 ```plaintext
-https://lobehub.com/?settings=<settings object in JSON format>
-https://lobehub.com/?settings={"keyVaults":{"openai":{"apiKey":"user-key","baseURL":"https://your-proxy.com/v1"}}}
+https://hermes.chat/?settings=<settings object in JSON format>
+https://hermes.chat/?settings={"keyVaults":{"openai":{"apiKey":"user-key","baseURL":"https://your-proxy.com/v1"}}}
 ```
 
 Example of settings in JSON format:
@@ -61,7 +62,7 @@ console.log(url);
 ```
 
 <Callout type={'warning'}>
-  LobeChat does not verify the correctness of the settings parameters in the URL, nor provide
+  Hermes Chat does not verify the correctness of the settings parameters in the URL, nor provide
   encryption or decryption methods. Please use with caution.
 </Callout>
 

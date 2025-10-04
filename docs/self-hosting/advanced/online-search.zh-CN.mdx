@@ -1,6 +1,6 @@
 ---
 title: 配置联网搜索功能 - 增强 AI 的网络信息获取能力
-description: 了解如何为 LobeChat 配置 SearXNG 联网搜索功能，使 AI 能够获取最新的网络信息。
+description: 了解如何为 Hermes Chat 配置 SearXNG 联网搜索功能，使 AI 能够获取最新的网络信息。
 tags:
   - 联网搜索
   - SearXNG
@@ -10,13 +10,13 @@ tags:
 
 # 配置联网搜索功能
 
-LobeChat 支持为 AI 配置**联网搜索功能**，使其能够实时获取互联网信息，从而提供更准确、最新的回答。联网搜索支持多个搜索引擎提供商，包括 [SearXNG](https://github.com/searxng/searxng)、[Search1API](https://www.search1api.com)、[Google](https://programmablesearchengine.google.com)、[Brave](https://brave.com/search/api) 等。
+Hermes Chat 支持为 AI 配置**联网搜索功能**，使其能够实时获取互联网信息，从而提供更准确、最新的回答。联网搜索支持多个搜索引擎提供商，包括 [SearXNG](https://github.com/searxng/searxng)、[Search1API](https://www.search1api.com)、[Google](https://programmablesearchengine.google.com)、[Brave](https://brave.com/search/api) 等。
 
 <Callout type="info">
   联网搜索可以让 AI 获取时效性内容，如最新新闻、技术动态或产品信息。你可以使用开源的 SearXNG 自行部署，也可以选择集成主流搜索引擎服务，如 Search1API、Google、Brave 等，根据你的使用场景自由组合。
 </Callout>
 
-通过设置搜索服务环境变量 `SEARCH_PROVIDERS` 和对应的 API Key，LobeChat 将在多个搜索源中查询并返回结果。你还可以搭配配置爬虫服务环境变量 `CRAWLER_IMPLS`（如 `browserless`、`firecrawl`、`tavily` 等）以提取网页内容，实现搜索 + 阅读的增强能力。
+通过设置搜索服务环境变量 `SEARCH_PROVIDERS` 和对应的 API Key，Hermes Chat 将在多个搜索源中查询并返回结果。你还可以搭配配置爬虫服务环境变量 `CRAWLER_IMPLS`（如 `browserless`、`firecrawl`、`tavily` 等）以提取网页内容，实现搜索 + 阅读的增强能力。
 
 # 核心环境变量
 
@@ -30,15 +30,15 @@ CRAWLER_IMPLS="native,search1api"
 
 支持的爬虫类型如下：
 
-| 值             | 说明                                                               | 环境变量                       |
-| ------------- | ---------------------------------------------------------------- | -------------------------- |
-| `browserless` | 基于 [Browserless](https://www.browserless.io/) 的无头浏览器爬虫，适合渲染复杂页面。 | `BROWSERLESS_TOKEN`        |
-| `exa`         | 使用 [Exa](https://exa.ai/) 提供的爬虫能力，需申请 API。                       | `EXA_API_KEY`              |
-| `firecrawl`   | [Firecrawl](https://firecrawl.dev/) 无头浏览器 API，适合现代网站抓取。          | `FIRECRAWL_API_KEY`        |
-| `jina`        | 使用 [Jina AI](https://jina.ai/) 的爬虫服务，支持快速提取摘要信息。                 | `JINA_READER_API_KEY`      |
-| `native`      | 内置通用爬虫，适用于标准网页结构。                                                |                            |
+| 值             | 说明                                                               | 环境变量                                                                        |
+| ------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `browserless` | 基于 [Browserless](https://www.browserless.io/) 的无头浏览器爬虫，适合渲染复杂页面。 | `BROWSERLESS_TOKEN`                                                         |
+| `exa`         | 使用 [Exa](https://exa.ai/) 提供的爬虫能力，需申请 API。                       | `EXA_API_KEY`                                                               |
+| `firecrawl`   | [Firecrawl](https://firecrawl.dev/) 无头浏览器 API，适合现代网站抓取。          | `FIRECRAWL_API_KEY`                                                         |
+| `jina`        | 使用 [Jina AI](https://jina.ai/) 的爬虫服务，支持快速提取摘要信息。                 | `JINA_READER_API_KEY`                                                       |
+| `native`      | 内置通用爬虫，适用于标准网页结构。                                                |                                                                             |
 | `search1api`  | 利用 [Search1API](https://www.search1api.com) 提供的页面抓取能力，适合结构化内容提取。 | `SEARCH1API_API_KEY` `SEARCH1API_CRAWL_API_KEY` `SEARCH1API_SEARCH_API_KEY` |
-| `tavily`      | 使用 [Tavily](https://www.tavily.com/) 的网页抓取与摘要 API。               | `TAVILY_API_KEY`           |
+| `tavily`      | 使用 [Tavily](https://www.tavily.com/) 的网页抓取与摘要 API。               | `TAVILY_API_KEY`                                                            |
 
 > 💡 设置多个爬虫可提升成功率，系统将根据优先级尝试不同爬虫。
 
@@ -54,19 +54,19 @@ SEARCH_PROVIDERS="searxng"
 
 支持的搜索引擎如下：
 
-| 值            | 说明                                                                                    | 环境变量                                        |
-| ------------ | ------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `anspire`    | 基于 [Anspire（安思派）](https://anspire.ai/) 提供的搜索服务。                                       | `ANSPIRE_API_KEY`                           |
-| `bocha`      | 基于 [Bocha（博查）](https://open.bochaai.com/) 提供的搜索服务。                                    | `BOCHA_API_KEY`                             |
-| `brave`      | [Brave](https://search.brave.com/help/api)，隐私友好的搜索源。                                  | `BRAVE_API_KEY`                             |
-| `exa`        | [Exa](https://exa.ai/)，面向 AI 的搜索 API。                                                 | `EXA_API_KEY`                               |
-| `firecrawl`  | 支持 [Firecrawl](https://firecrawl.dev/) 提供的搜索服务。                                       | `FIRECRAWL_API_KEY`                         |
-| `google`     | 使用 [Google Programmable Search Engine](https://programmablesearchengine.google.com/)。 | `GOOGLE_PSE_API_KEY` `GOOGLE_PSE_ENGINE_ID` |
-| `jina`       | 使用 [Jina AI](https://jina.ai/) 提供的语义搜索服务。                                             | `JINA_READER_API_KEY`                       |
-| `kagi`       | [Kagi](https://kagi.com/) 提供的高级搜索 API，需订阅 Key。                                        | `KAGI_API_KEY`                              |
+| 值            | 说明                                                                                    | 环境变量                                                                        |
+| ------------ | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `anspire`    | 基于 [Anspire（安思派）](https://anspire.ai/) 提供的搜索服务。                                       | `ANSPIRE_API_KEY`                                                           |
+| `bocha`      | 基于 [Bocha（博查）](https://open.bochaai.com/) 提供的搜索服务。                                    | `BOCHA_API_KEY`                                                             |
+| `brave`      | [Brave](https://search.brave.com/help/api)，隐私友好的搜索源。                                  | `BRAVE_API_KEY`                                                             |
+| `exa`        | [Exa](https://exa.ai/)，面向 AI 的搜索 API。                                                 | `EXA_API_KEY`                                                               |
+| `firecrawl`  | 支持 [Firecrawl](https://firecrawl.dev/) 提供的搜索服务。                                       | `FIRECRAWL_API_KEY`                                                         |
+| `google`     | 使用 [Google Programmable Search Engine](https://programmablesearchengine.google.com/)。 | `GOOGLE_PSE_API_KEY` `GOOGLE_PSE_ENGINE_ID`                                 |
+| `jina`       | 使用 [Jina AI](https://jina.ai/) 提供的语义搜索服务。                                             | `JINA_READER_API_KEY`                                                       |
+| `kagi`       | [Kagi](https://kagi.com/) 提供的高级搜索 API，需订阅 Key。                                        | `KAGI_API_KEY`                                                              |
 | `search1api` | 使用 [Search1API](https://www.search1api.com) 聚合搜索能力。                                   | `SEARCH1API_API_KEY` `SEARCH1API_CRAWL_API_KEY` `SEARCH1API_SEARCH_API_KEY` |
-| `searxng`    | 使用自托管或公共 [SearXNG](https://searx.space/) 实例。                                          | `SEARXNG_URL`                               |
-| `tavily`     | [Tavily](https://www.tavily.com/)，快速网页摘要与答案返回。                                        | `TAVILY_API_KEY`                            |
+| `searxng`    | 使用自托管或公共 [SearXNG](https://searx.space/) 实例。                                          | `SEARXNG_URL`                                                               |
+| `tavily`     | [Tavily](https://www.tavily.com/)，快速网页摘要与答案返回。                                        | `TAVILY_API_KEY`                                                            |
 
 > ⚠️ 某些搜索提供商需要单独申请 API Key，并在 `.env` 中配置相关凭证。
 
@@ -182,7 +182,7 @@ SEARXNG_URL=https://searxng-instance.com
 
 这个 URL 应该指向一个可用的 SearXNG 实例。您可以选择自行部署 SearXNG，或使用公共可用的 SearXNG 实例。
 
-您可以在 [SearXNG 实例列表](https://searx.space/) 中找到公开可用的 SearXNG 实例。选择一个响应速度快、可靠性高的实例，然后将其 URL 配置到 LobeChat 中。
+您可以在 [SearXNG 实例列表](https://searx.space/) 中找到公开可用的 SearXNG 实例。选择一个响应速度快、可靠性高的实例，然后将其 URL 配置到 Hermes Chat 中。
 
 > 注意，使用的 `searxng` 必须开启 `json` 输出，否则 `lobe-chat` 调用会报错。如果是自托管，类似下面这样，找到 `searxng` 的配置文件，追加 `json` 即可。
 
@@ -199,7 +199,7 @@ formats:
 
 配置完成后，您可以通过以下步骤验证联网搜索功能是否正常工作：
 
-1. 重启 LobeChat 服务
+1. 重启 Hermes Chat 服务
 2. 启动一个新的聊天，启动智能联网，之后向 AI 提问一个需要最新信息的问题，例如："今天的实时金价是多少？" 或 "最近的重大新闻有哪些？"
 3. 观察 AI 是否能够返回基于互联网搜索的最新信息
 
@@ -207,6 +207,6 @@ formats:
 
 ## 参考资料
 
-- [LobeChat 联网搜索 RFC 讨论](https://github.com/lobehub/lobe-chat/discussions/6447)
+- [Hermes Chat 联网搜索 RFC 讨论](https://github.com/hermeslabs/lobe-chat/discussions/6447)
 - [SearXNG GitHub 仓库](https://github.com/searxng/searxng)
 - [SearXNG 开启 json 输出的讨论](https://github.com/searxng/searxng/discussions/3542)

@@ -1,8 +1,8 @@
 ---
 title: Groq Tools Calling
 description: >-
-  了解 Groq 平台模型 Tools Calling的能力一览，包括LLAMA3 70B、LLAMA3 8B和Mixtral-8x7B的简单和复杂指令调用情况。
-
+  了解 Groq 平台模型 Tools Calling的能力一览，包括LLAMA3 70B、LLAMA3
+  8B和Mixtral-8x7B的简单和复杂指令调用情况。
 tags:
   - Groq 平台模型
   - Tools Calling
@@ -29,11 +29,11 @@ Groq 平台的模型 Tools Calling 能力一览：
 
 测试指令：指令 ①
 
-<Video src="https://github.com/lobehub/lobe-chat/assets/28616219/a509d3f4-20b5-40a4-a2dc-adf11e1789e8" />
+<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/a509d3f4-20b5-40a4-a2dc-adf11e1789e8" />
 
 从上述视频中可以看到 LLAMA3 70B 支持并发 Tools Calling，可以同时调用多次天气查询。
 
-<Image alt="LLAMA3 70B 简单指令的 Tools Calling" src="https://github.com/lobehub/lobe-chat/assets/28616219/f9cd0d4d-0e44-4bff-98cc-560f11259a60" />
+<Image alt="LLAMA3 70B 简单指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/f9cd0d4d-0e44-4bff-98cc-560f11259a60" />
 
 <details>
   <summary>Tools Calling 原始输出：</summary>
@@ -50,9 +50,9 @@ Groq 平台的模型 Tools Calling 能力一览：
 
 测试指令：指令 ②
 
-<Video src="https://github.com/lobehub/lobe-chat/assets/28616219/b790f5d8-e797-4325-a974-436505b16fba" />
+<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/b790f5d8-e797-4325-a974-436505b16fba" />
 
-<Image alt="LLAMA3 70B 复杂指令的 Tools Calling" src="https://github.com/lobehub/lobe-chat/assets/28616219/082170fa-6d09-4602-8e23-eb678024305f" />
+<Image alt="LLAMA3 70B 复杂指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/082170fa-6d09-4602-8e23-eb678024305f" />
 
 <details>
   <summary>Tools Calling 原始输出：</summary>
@@ -72,11 +72,11 @@ Groq 平台的模型 Tools Calling 能力一览：
 
 测试指令：指令 ①
 
-<Video src="https://github.com/lobehub/lobe-chat/assets/28616219/8077f432-b5f6-4e68-a311-2aac1d7ea892" />
+<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/8077f432-b5f6-4e68-a311-2aac1d7ea892" />
 
 从上述视频中可以看到 LLAMA3-8B 对于天气插件可以正常调用，并获得正确的总结结果。但是它并没有完全 follow 我们的描述指令，没有回答「好的」。
 
-<Image alt="LLAMA3-8B 简单指令的 Tools Calling" src="https://github.com/lobehub/lobe-chat/assets/28616219/9d553f4e-0818-4f6c-be9d-70da289dd723" />
+<Image alt="LLAMA3-8B 简单指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/9d553f4e-0818-4f6c-be9d-70da289dd723" />
 
 <details>
   <summary>Tools Calling 原始输出：</summary>
@@ -94,11 +94,11 @@ Groq 平台的模型 Tools Calling 能力一览：
 
 测试指令：指令 ②
 
-<Video src="https://github.com/lobehub/lobe-chat/assets/28616219/48dcfb0a-ba03-4eae-951e-37f3645eb9c7" />
+<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/48dcfb0a-ba03-4eae-951e-37f3645eb9c7" />
 
 LLAMA3 8B 在 DallE 的输出场景下，只会输出 1 张图片，而不是像 LLAMA3 70B 一样输出 4 张，意味着在复杂 Tools 指令层面，能力和 GPT 3.5 Turbo 接近，不如 GPT 4。
 
-<Image alt="LLAMA3 8B 复杂指令的 Tools Calling" src="https://github.com/lobehub/lobe-chat/assets/28616219/b0180793-5934-4296-a569-60fbc70e8262" />
+<Image alt="LLAMA3 8B 复杂指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/b0180793-5934-4296-a569-60fbc70e8262" />
 
 <details>
   <summary>Tools Calling 原始输出：</summary>
@@ -118,11 +118,11 @@ LLAMA3 8B 在 DallE 的输出场景下，只会输出 1 张图片，而不是像
 
 测试指令：指令 ①
 
-<Video src="https://github.com/lobehub/lobe-chat/assets/28616219/70b887fa-0e16-4ed2-892e-db52dcecf71d" />
+<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/70b887fa-0e16-4ed2-892e-db52dcecf71d" />
 
 从上述视频中可以看到 Mixtral-8x7B 对于天气插件的查询输出的参数有问题，导致无法正常调用插件。
 
-<Image alt="Mixtral-8x7B 简单指令的 Tools Calling" src="https://github.com/lobehub/lobe-chat/assets/28616219/1b7bf28e-fa31-4838-ae92-9100a4bbb71c" />
+<Image alt="Mixtral-8x7B 简单指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/1b7bf28e-fa31-4838-ae92-9100a4bbb71c" />
 
 <details>
   <summary>Tools Calling 原始输出：</summary>
@@ -141,13 +141,13 @@ LLAMA3 8B 在 DallE 的输出场景下，只会输出 1 张图片，而不是像
 
 测试指令：指令 ②
 
-<Video src="https://github.com/lobehub/lobe-chat/assets/28616219/86c4ce08-c634-4a45-8782-c74245eee05b" />
+<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/86c4ce08-c634-4a45-8782-c74245eee05b" />
 
 非常意外地，Mixtral 8x7B 在文生图的 Tools Calling 的场景下，居然可以正常出图，而且出图的能力基本和 LLAMA3 70B 持平。
 
-<Image alt="Mixtral-8x7B 复杂指令的 Tools Calling" src="https://github.com/lobehub/lobe-chat/assets/28616219/6e7bc3fa-3bc7-4c23-8f88-f38bb889c594" />
+<Image alt="Mixtral-8x7B 复杂指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/6e7bc3fa-3bc7-4c23-8f88-f38bb889c594" />
 
-<Image alt="Mixtral-8x7B 复杂指令的 Tools Calling" src="https://github.com/lobehub/lobe-chat/assets/28616219/815b2792-adaf-4315-9014-f20531a3978b" />
+<Image alt="Mixtral-8x7B 复杂指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/815b2792-adaf-4315-9014-f20531a3978b" />
 
 <details>
   <summary>Tools Calling 原始输出：</summary>
