@@ -55,6 +55,25 @@ approvals so pre-production rollouts stay aligned with governance policy.
   The snapshot enforces the Hermes author tuples and stops regressions before
   rollout.
 
+## Plugin tooling automation
+
+- **Type migration:** `packages/context-engine/src/tools/types.ts` now exposes
+  `HermesChatPluginApi` and `HermesChatPluginManifest`. The legacy
+  `LobeChat*` aliases remain exported (and marked deprecated) so downstream
+  SDKs can align with the rename on their own release cadences. The migration is
+  documented inline and tied to the automation guardrails below.
+- **Automation guardrail:** `scripts/rebrandHermesChat.ts` rewrites these type
+  identifiers via the `typescript-plugin-api-interface` and
+  `typescript-plugin-manifest-interface` rules. The CLI test fixture (`tests/scripts/rebrandHermesChat.test.ts`)
+  asserts both replacements so CI fails fast if future edits skip the rename.
+- **Verification:** `packages/context-engine/src/tools/__tests__/types.test.ts`
+  adds `expectTypeOf` assertions to guarantee the Hermes-prefixed interfaces stay
+  structurally compatible with their deprecated aliases. Run
+  `bunx vitest run --silent='passed-only' 'packages/context-engine/src/tools/__tests__/types.test.ts'`
+  before shipping plugin schema changes.
+- **Timeline:** Track removal of the deprecated aliases and downstream adoption
+  milestones in the [enterprise migration notes](/docs/changelog/2025-hermes-chat-launch).
+
 ## Support and escalation flow
 
 Hermes Labs Support, Customer Success, and Trust & Safety jointly ratified the

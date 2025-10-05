@@ -147,6 +147,12 @@ async function createWorkspace(): Promise<string> {
     'utf8',
   );
 
+  await writeFile(
+    join(workspace, 'types.ts'),
+    `import type { LobeChatPluginApi, LobeChatPluginManifest } from './types';\n\nexport type FixtureManifest = LobeChatPluginManifest & { brand: string };\n\nexport const fixtureApi: LobeChatPluginApi = {\n  description: 'Legacy manifest compatibility smoke test',\n  name: 'legacyTest',\n  parameters: {},\n};\n`,
+    'utf8',
+  );
+
   return workspace;
 }
 
@@ -199,6 +205,12 @@ describe('rebrandHermesChat CLI', () => {
       expect(config).toContain('qa.hermes.chat');
       expect(config).toContain('/brand/favicon.svg');
       expect(config).not.toContain('lobehub');
+
+      const typesFixture = await readFile(join(workspace, 'types.ts'), 'utf8');
+      expect(typesFixture).toContain('HermesChatPluginManifest');
+      expect(typesFixture).toContain('HermesChatPluginApi');
+      expect(typesFixture).not.toContain('LobeChatPluginManifest');
+      expect(typesFixture).not.toContain('LobeChatPluginApi');
 
       const locale = await readFile(join(workspace, 'locale/en.json'), 'utf8');
       expect(locale).toContain('https://www.qa.hermes.chat');

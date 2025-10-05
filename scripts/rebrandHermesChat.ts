@@ -201,6 +201,19 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => deriveCloudServiceTokens(brand).constant,
   },
   {
+    description: 'TypeScript interface rename for plugin manifests consumed by the context engine.',
+    id: 'typescript-plugin-manifest-interface',
+    pattern: /\bLobeChatPluginManifest\b/g,
+    replacement: () => 'HermesChatPluginManifest',
+  },
+  {
+    description:
+      'TypeScript interface rename for plugin API descriptors consumed by the context engine.',
+    id: 'typescript-plugin-api-interface',
+    pattern: /\bLobeChatPluginApi\b/g,
+    replacement: () => 'HermesChatPluginApi',
+  },
+  {
     description: 'Marketing copy describing the managed cloud offer in title case.',
     id: 'cloud-token-title',
     pattern: /\bLobe Chat Cloud\b/g,
