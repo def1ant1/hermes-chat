@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from './types';
+import { HermesChatPluginManifest } from './types';
 
 // Tool naming constants
 const PLUGIN_SCHEMA_SEPARATOR = '____';
@@ -46,7 +46,7 @@ export const generateToolName = (
 /**
  * Validate manifest schema structure
  */
-export function validateManifest(manifest: any): manifest is LobeChatPluginManifest {
+export function validateManifest(manifest: any): manifest is HermesChatPluginManifest {
   return Boolean(
     manifest &&
       typeof manifest === 'object' &&
@@ -61,9 +61,13 @@ export function validateManifest(manifest: any): manifest is LobeChatPluginManif
  */
 export function filterValidManifests(manifestSchemas: any[]): {
   invalid: any[];
-  valid: LobeChatPluginManifest[];
+  valid: HermesChatPluginManifest[];
 } {
-  const valid: LobeChatPluginManifest[] = [];
+  // NOTE: We intentionally migrate to Hermes-prefixed types here to keep the
+  // runtime logic aligned with the new manifest contract. The deprecated alias
+  // in `types.ts` still backstops legacy imports until downstream packages are
+  // auto-migrated by `scripts/rebrandHermesChat.ts`.
+  const valid: HermesChatPluginManifest[] = [];
   const invalid: any[] = [];
 
   for (const manifest of manifestSchemas) {

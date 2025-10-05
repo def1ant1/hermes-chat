@@ -3,7 +3,7 @@ import debug from 'debug';
 import {
   FunctionCallChecker,
   GenerateToolsParams,
-  LobeChatPluginManifest,
+  HermesChatPluginManifest,
   PluginEnableChecker,
   ToolsEngineOptions,
   ToolsGenerationContext,
@@ -18,7 +18,10 @@ const log = debug('context-engine:tools-engine');
  * Tools Engine - Unified processing of tools array construction and transformation
  */
 export class ToolsEngine {
-  private manifestSchemas: Map<string, LobeChatPluginManifest>;
+  // The map now stores Hermes-prefixed manifest contracts; the compatibility
+  // alias in `types.ts` ensures legacy imports continue to function until the
+  // enterprise migration completes.
+  private manifestSchemas: Map<string, HermesChatPluginManifest>;
   private enableChecker?: PluginEnableChecker;
   private functionCallChecker?: FunctionCallChecker;
   private defaultToolIds: string[];
@@ -156,13 +159,13 @@ export class ToolsEngine {
     provider: string,
     context?: ToolsGenerationContext,
   ): {
-    enabledManifests: LobeChatPluginManifest[];
+    enabledManifests: HermesChatPluginManifest[];
     filteredPlugins: Array<{
       id: string;
       reason: 'not_found' | 'disabled' | 'incompatible';
     }>;
   } {
-    const enabledManifests: LobeChatPluginManifest[] = [];
+    const enabledManifests: HermesChatPluginManifest[] = [];
     const filteredPlugins: Array<{
       id: string;
       reason: 'not_found' | 'disabled' | 'incompatible';
@@ -218,7 +221,7 @@ export class ToolsEngine {
   /**
    * Convert manifests to UniformTool array
    */
-  private convertManifestsToTools(manifests: LobeChatPluginManifest[]): UniformTool[] {
+  private convertManifestsToTools(manifests: HermesChatPluginManifest[]): UniformTool[] {
     log('Converting %d manifests to tools', manifests.length);
 
     // Use simplified conversion logic to avoid external package dependencies
@@ -268,14 +271,14 @@ export class ToolsEngine {
   /**
    * 获取插件的 manifest
    */
-  getPluginManifest(pluginId: string): LobeChatPluginManifest | undefined {
+  getPluginManifest(pluginId: string): HermesChatPluginManifest | undefined {
     return this.manifestSchemas.get(pluginId);
   }
 
   /**
    * 更新插件 manifest schemas（用于动态添加插件）
    */
-  updateManifestSchemas(manifestSchemas: LobeChatPluginManifest[]): void {
+  updateManifestSchemas(manifestSchemas: HermesChatPluginManifest[]): void {
     this.manifestSchemas.clear();
     for (const schema of manifestSchemas) {
       this.manifestSchemas.set(schema.identifier, schema);
@@ -285,7 +288,7 @@ export class ToolsEngine {
   /**
    * 添加单个插件 manifest
    */
-  addPluginManifest(manifest: LobeChatPluginManifest): void {
+  addPluginManifest(manifest: HermesChatPluginManifest): void {
     this.manifestSchemas.set(manifest.identifier, manifest);
   }
 

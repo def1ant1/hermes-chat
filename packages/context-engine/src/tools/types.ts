@@ -1,17 +1,54 @@
-export interface LobeChatPluginApi {
+/**
+ * Hermes-prefixed plugin API descriptor used by the context engine.
+ *
+ * @remarks
+ * This interface replaces the legacy {@link LobeChatPluginApi} name as part of the
+ * Hermes Chat enterprise rebrand. We intentionally preserve a deprecated type alias
+ * (see below) so downstream packages can adopt the new name gradually without
+ * blocking release trains. The rebrand automation (`scripts/rebrandHermesChat.ts`)
+ * enforces this rename to prevent future regressions.
+ */
+export interface HermesChatPluginApi {
   description: string;
   name: string;
   parameters: Record<string, any>;
   url?: string;
 }
 
-export interface LobeChatPluginManifest {
-  api: LobeChatPluginApi[];
+/**
+ * Canonical manifest schema for Hermes Chat plugins.
+ *
+ * @remarks
+ * Formerly exported as {@link LobeChatPluginManifest}. The compatibility alias
+ * guarantees that previously compiled bundles continue to type-check until the
+ * next major release. The rename clarifies that this manifest is specific to
+ * Hermes Chat while also unlocking future brand-specific tooling.
+ */
+export interface HermesChatPluginManifest {
+  api: HermesChatPluginApi[];
   identifier: string;
   meta: any;
   systemRole?: string;
   type?: 'default' | 'standalone' | 'markdown' | 'mcp' | 'builtin';
 }
+
+/**
+ * Transitional alias retained for compatibility with existing imports.
+ *
+ * @deprecated Use {@link HermesChatPluginApi} instead. The alias will be
+ * removed after downstream consumers migrate via the rebranding automation.
+ */
+// eslint-disable-next-line @typescript-eslint/no-redeclare -- intentional alias during migration
+export type LobeChatPluginApi = HermesChatPluginApi;
+
+/**
+ * Transitional alias retained for compatibility with existing imports.
+ *
+ * @deprecated Use {@link HermesChatPluginManifest} instead. The alias will be
+ * removed after downstream consumers migrate via the rebranding automation.
+ */
+// eslint-disable-next-line @typescript-eslint/no-redeclare -- intentional alias during migration
+export type LobeChatPluginManifest = HermesChatPluginManifest;
 
 /**
  * Tools generation context
@@ -36,7 +73,7 @@ export interface ToolsGenerationContext {
  */
 export type PluginEnableChecker = (params: {
   context?: ToolsGenerationContext;
-  manifest: LobeChatPluginManifest;
+  manifest: HermesChatPluginManifest;
   model: string;
   pluginId: string;
   provider: string;
@@ -79,7 +116,7 @@ export interface ToolsEngineOptions {
   /** Optional tool name generator function */
   generateToolName?: ToolNameGenerator;
   /** Statically injected manifest schemas */
-  manifestSchemas: LobeChatPluginManifest[];
+  manifestSchemas: HermesChatPluginManifest[];
 }
 
 /**

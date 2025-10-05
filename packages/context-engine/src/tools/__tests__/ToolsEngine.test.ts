@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { ToolsEngine } from '../ToolsEngine';
-import type { LobeChatPluginManifest } from '../types';
+import type { HermesChatPluginManifest } from '../types';
 
 // Mock manifest schemas for testing
-const mockWebBrowsingManifest: LobeChatPluginManifest = {
+const mockWebBrowsingManifest: HermesChatPluginManifest = {
   api: [
     {
       description: 'Search the web',
@@ -26,7 +26,7 @@ const mockWebBrowsingManifest: LobeChatPluginManifest = {
   type: 'builtin',
 };
 
-const mockDalleManifest: LobeChatPluginManifest = {
+const mockDalleManifest: HermesChatPluginManifest = {
   api: [
     {
       description: 'Generate images',
@@ -284,7 +284,7 @@ describe('ToolsEngine', () => {
 
   describe('ToolsEngine Integration Tests (migrated from enabledSchema)', () => {
     // Mock manifest data similar to the original tool selector tests
-    const mockManifests: LobeChatPluginManifest[] = [
+    const mockManifests: HermesChatPluginManifest[] = [
       {
         identifier: 'plugin-1',
         api: [{ name: 'api-1', description: 'API 1', parameters: {} }],
@@ -641,7 +641,7 @@ describe('ToolsEngine', () => {
    */
   describe('enabledSchema Migration to ToolsEngine', () => {
     // Sample manifest data that mimics the old toolSelectors test data
-    const sampleManifests: LobeChatPluginManifest[] = [
+    const sampleManifests: HermesChatPluginManifest[] = [
       {
         identifier: 'plugin-1',
         api: [{ name: 'api-1', description: 'API 1', parameters: {} }],
