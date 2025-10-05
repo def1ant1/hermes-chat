@@ -20,6 +20,22 @@ approvals so pre-production rollouts stay aligned with governance policy.
 > duplication leads to mismatches that our rebranding lint (`scripts/rebrand_hermes_chat.sh lint-strings`)
 > will now block in CI.
 
+## Discover metadata authorship & automation
+
+- **Metadata authors:** All Discover detail pages emit `Hermes Labs` (org) and
+  `Hermes Chat` (product) entries that link to `https://github.com/hermes-chat`
+  and `https://github.com/hermes-chat/hermes-chat` respectively. These values
+  are hard-coded in `src/app/[variants]/(main)/discover/(detail)/model/[...slugs]/page.tsx`
+  and intentionally mirror the stakeholder-approved GitHub handles.
+- **Automation guardrail:** The rebranding CLI now contains the `github-org-root`
+  rule and logs a machine-readable replacement payload so downstream audits can
+  confirm the org URLs were rewritten during migrations.
+- **CI command group:** Add
+  `bunx vitest run --silent='passed-only' 'src/app/**/__tests__/discoverMetadata.test.tsx'`
+  to your pre-merge checklist whenever Discover metadata changes are proposed.
+  The snapshot enforces the Hermes author tuples and stops regressions before
+  rollout.
+
 ## Support and escalation flow
 
 Hermes Labs Support, Customer Success, and Trust & Safety jointly ratified the

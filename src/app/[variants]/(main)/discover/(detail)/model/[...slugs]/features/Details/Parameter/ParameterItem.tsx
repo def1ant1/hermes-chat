@@ -4,10 +4,13 @@ import Link from 'next/link';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
+import urlJoin from 'url-join';
+
+import { DOCUMENTS } from '@/const/url';
 
 import Statistic from '../../../../../../components/Statistic';
 
-const DEFAULT_DOC_URL = 'https://lobehub.com/docs/usage/agents/model';
+const DEFAULT_DOC_URL = urlJoin(DOCUMENTS, 'usage/agents/model');
 
 export interface ParameterItemProps {
   defaultValue: string | number;

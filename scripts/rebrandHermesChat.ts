@@ -351,6 +351,20 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     },
   },
   {
+    description: 'Bare GitHub organization URLs included in metadata authors and footers.',
+    id: 'github-org-root',
+    pattern: /https?:\/\/github\.com\/lobehub(?!\/)/g,
+    replacement: (brand) => {
+      const host = brand.repository?.host ?? 'github.com';
+      const owner =
+        brand.repository?.owner ??
+        brand.organization?.name?.toLowerCase().replaceAll(/\s+/g, '-') ??
+        brand.name.toLowerCase().replaceAll(/\s+/g, '-');
+
+      return `https://${host}/${owner}`;
+    },
+  },
+  {
     description: 'GitHub organization slug only.',
     id: 'gh-org-generic',
     pattern: /github\.com\/lobehub/g,
@@ -968,6 +982,7 @@ async function run(): Promise<void> {
     const count = summary.replacements[rule.id] ?? 0;
     logger.info(` • ${rule.id}: ${count}`);
   }
+  logger.info(`Replacement audit payload=${JSON.stringify(summary.replacements)}`);
 
   logger.info(`Processed ${summary.filesScanned} files in ${(durationMs / 1000).toFixed(2)}s.`);
 

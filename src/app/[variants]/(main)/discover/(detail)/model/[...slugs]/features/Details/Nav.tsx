@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
 import { SOCIAL_URL } from '@/const/branding';
+import { GITHUB, GITHUB_ISSUES } from '@/const/url';
 import { ModelNavKey } from '@/types/discover';
 
 const useStyles = createStyles(({ css, token }) => {
@@ -72,16 +73,12 @@ const Nav = memo<NavProps>(({ mobile, setActiveTab, activeTab = ModelNavKey.Over
         </Link>
         <Link
           className={styles.link}
-          href={'https://github.com/lobehub/lobe-chat/tree/main/src/config/aiModels'}
+          href={`${GITHUB}/tree/main/src/config/aiModels`}
           target={'_blank'}
         >
           {t('mcp.details.nav.viewSourceCode')}
         </Link>
-        <Link
-          className={styles.link}
-          href={'https://github.com/lobehub/lobe-chat/issues/new/choose'}
-          target={'_blank'}
-        >
+        <Link className={styles.link} href={GITHUB_ISSUES} target={'_blank'}>
           {t('mcp.details.nav.reportIssue')}
         </Link>
       </Flexbox>
