@@ -89,6 +89,8 @@ export interface BrandMetadata {
    * Optional overrides for generated token names.
    */
   readonly tokens?: {
+    /** Optional override for the managed cloud provider slug (e.g., hermescloud). */
+    readonly cloudProviderSlug?: string;
     /**
      * Prefix used when generating theme cookie constants (e.g., HERMES).
      */
@@ -171,6 +173,16 @@ function deriveCloudServiceTokens(brand: BrandMetadata): {
     snake: [...baseLower, 'cloud'].join('_'),
     title: `${brand.name} Cloud`,
   };
+}
+
+function deriveCloudProviderSlug(brand: BrandMetadata): string {
+  if (brand.tokens?.cloudProviderSlug) return brand.tokens.cloudProviderSlug;
+
+  const words = splitIntoWords(brand.shortName ?? brand.name);
+  const safeWords = words.length ? words : splitIntoWords(brand.name);
+  const fallback = safeWords.length ? safeWords : ['hermes'];
+
+  return `${fallback[0].toLowerCase()}cloud`;
 }
 
 /**
@@ -385,6 +397,12 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     id: 'asset-logo',
     pattern: /\/assets\/logo\/lobehub(-light)?\.svg/g,
     replacement: (brand) => brand.assets.logo,
+  },
+  {
+    description: 'Provider slug tokens referencing the managed Hermes Cloud offer.',
+    id: 'provider-slug',
+    pattern: /(["'`])lobehub\1/g,
+    replacement: (brand) => `$1${deriveCloudProviderSlug(brand)}$1`,
   },
   {
     description: 'Favicon assets used across html configs.',

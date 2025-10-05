@@ -58,6 +58,7 @@ export interface UserKeyVaults extends SearchEngineKeyVaults {
   github?: OpenAICompatibleKeyVault;
   google?: OpenAICompatibleKeyVault;
   groq?: OpenAICompatibleKeyVault;
+  hermescloud?: any;
   higress?: OpenAICompatibleKeyVault;
   huggingface?: OpenAICompatibleKeyVault;
   hunyuan?: OpenAICompatibleKeyVault;
@@ -65,6 +66,10 @@ export interface UserKeyVaults extends SearchEngineKeyVaults {
   internlm?: OpenAICompatibleKeyVault;
   jina?: OpenAICompatibleKeyVault;
   lmstudio?: OpenAICompatibleKeyVault;
+  /**
+   * @deprecated Prefer {@link hermescloud}. Retained until upstream services
+   * stop emitting the legacy slug (target 2025-06-30).
+   */
   lobehub?: any;
   minimax?: OpenAICompatibleKeyVault;
   mistral?: OpenAICompatibleKeyVault;

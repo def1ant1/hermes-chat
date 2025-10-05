@@ -1,6 +1,7 @@
 import { resolve } from 'node:path';
 
 import { DEFAULT_MODEL_PROVIDER_LIST } from '@/config/modelProviders';
+import { isHermesCloudProviderId } from '@/const/app';
 
 export const root = resolve(__dirname, '../..');
 
@@ -23,9 +24,12 @@ export const AGENT_SPLIT = '<!-- AGENT LIST -->';
 export const PLUGIN_SPLIT = '<!-- PLUGIN LIST -->';
 export const PROVIDER_SPLIT = '<!-- PROVIDER LIST -->';
 
-export const PROVIDER_LIST = DEFAULT_MODEL_PROVIDER_LIST.filter(
-  (item) => item.chatModels.length > 0 && item.id !== 'lobehub',
-).map((item) => {
+export const PROVIDER_LIST = DEFAULT_MODEL_PROVIDER_LIST.filter((item) => {
+  const isHermesCloud = isHermesCloudProviderId(item.id);
+  // TODO(HERMES-DISCOVER-2025-06-30): Remove the legacy slug filter once
+  // automation emits `hermescloud` directly.
+  return item.chatModels.length > 0 && !isHermesCloud;
+}).map((item) => {
   return {
     id: item.id,
     name: item.name,

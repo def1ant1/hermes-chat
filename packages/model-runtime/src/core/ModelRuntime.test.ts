@@ -73,7 +73,9 @@ beforeEach(async () => {
 
 describe('ModelRuntime', () => {
   describe('should initialize with various providers', () => {
-    const providers = Object.values(ModelProvider).filter((i) => i !== 'lobehub');
+    const providers = Array.from(new Set(Object.values(ModelProvider))).filter(
+      (provider) => provider !== ModelProvider.HermesCloud,
+    );
     const specialProviderIds = [ModelProvider.VertexAI, ...specialProviders.map((p) => p.id)];
 
     const generalTestProviders = providers.filter(

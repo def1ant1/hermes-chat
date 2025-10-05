@@ -20,6 +20,7 @@ import { default as giteeai } from './giteeai';
 import { default as github } from './github';
 import { default as google } from './google';
 import { default as groq } from './groq';
+import { default as hermescloud } from './hermescloud';
 import { default as higress } from './higress';
 import { default as huggingface } from './huggingface';
 import { default as hunyuan } from './hunyuan';
@@ -105,6 +106,7 @@ export const LOBE_DEFAULT_MODEL_LIST = buildDefaultModelList({
   github,
   google,
   groq,
+  hermescloud,
   higress,
   huggingface,
   hunyuan,
@@ -171,6 +173,7 @@ export { default as giteeai } from './giteeai';
 export { default as github } from './github';
 export { default as google } from './google';
 export { default as groq } from './groq';
+export { default as hermescloud } from './hermescloud';
 export { default as higress } from './higress';
 export { default as huggingface } from './huggingface';
 export { default as hunyuan } from './hunyuan';
@@ -178,7 +181,11 @@ export { default as infiniai } from './infiniai';
 export { default as internlm } from './internlm';
 export { default as jina } from './jina';
 export { default as lmstudio } from './lmstudio';
-export { default as lobehub } from './lobehub';
+/**
+ * @deprecated Prefer {@link hermescloud}. Retained until provider migrations
+ * stop referencing the legacy slug (target 2025-06-30).
+ */
+export { default as lobehub } from './hermescloud';
 export { default as minimax } from './minimax';
 export { default as mistral } from './mistral';
 export { default as modelscope } from './modelscope';
