@@ -89,6 +89,15 @@ The ordering guarantees a deterministic path even when tenant overrides are
 partial. Embed these contacts in runbooks, customer comms, and any webhook error
 payloads you customise.
 
+Authentication runbooks now live at [docs.hermes.chat](https://docs.hermes.chat). The rebranding
+CLI enforces four `docs-auth-*` replacement rules so every NextAuth error maps
+to the sanctioned English and Simplified Chinese playbooks. When operators pass
+`--brand-domain` overrides (for example, `qa.hermes.chat`), the script derives
+locale-aware docs hosts automatically (for QA this becomes
+[docs.qa.hermes.chat](https://docs.qa.hermes.chat)). Support triage confirmed the support alias
+change to <support@hermes.chat> and noted the legacy `hello@lobehub.com`
+mailbox will retire on 2025-07-01.
+
 ## Rollout constraints
 
 - **Locale cookies:** The Hermes cookie name ships immediately. Emit the legacy
@@ -115,6 +124,9 @@ payloads you customise.
 3. Confirm locale switching tests (`src/utils/client/switchLang.test.ts`) pass so
    dual-cookie emission works in the browser and desktop shells.
 4. Update docs/user comms to reference Hermes Chat and the new support domains.
+5. Execute `bunx vitest run --silent='passed-only' 'src/app/**/__tests__/AuthErrorPage.test.tsx'`
+   whenever authentication messaging changes. The suite asserts the rendered
+   copy keeps the Hermes documentation URLs and support alias intact.
 
 Following this checklist ensures enterprise sandboxes mirror production policy
 with minimal manual intervention.
