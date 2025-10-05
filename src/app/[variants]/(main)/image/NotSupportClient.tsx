@@ -9,7 +9,8 @@ import { Trans, useTranslation } from 'react-i18next';
 import { Center, Flexbox } from 'react-layout-kit';
 
 import FeatureList from '@/components/FeatureList';
-import { LOBE_CHAT_CLOUD } from '@/const/branding';
+import { HERMES_CHAT_CLOUD } from '@/const/branding';
+// Canonical Hermes cloud label; alias remains exported for extension laggards.
 import { DATABASE_SELF_HOSTING_URL, OFFICIAL_URL, UTM_SOURCE } from '@/const/url';
 
 const BLOCK_SIZE = 100;
@@ -137,7 +138,7 @@ const NotSupportClient = () => {
             <Link
               href={`${OFFICIAL_URL}?utm_source=${UTM_SOURCE}&utm_medium=client_not_support_image`}
             >
-              {LOBE_CHAT_CLOUD}
+              {HERMES_CHAT_CLOUD}
             </Link>
           </Trans>
         </Typography.Text>

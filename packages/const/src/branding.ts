@@ -2,7 +2,23 @@
 // leads on 2025-01-14 (Slack thread #brand-refresh). Keeping the values here
 // ensures downstream services can audit which identifiers were approved.
 
-export const LOBE_CHAT_CLOUD = 'Hermes Chat Cloud';
+/**
+ * Canonical display name for the managed Hermes deployment. Refer to this constant whenever
+ * emitting UX copy or telemetry that differentiates the fully-managed cloud from self-hosted
+ * footprints so that enterprise automation keeps a single source of truth.
+ */
+export const HERMES_CHAT_CLOUD = 'Hermes Chat Cloud';
+
+/**
+ * @deprecated Prefer {@link HERMES_CHAT_CLOUD}. This alias keeps legacy extension surfaces and
+ * downstream SDKs functioning while we broadcast the rename. The migration window closes after
+ * the 2025-09-30 LTS cut (tracked in OPS-1120), at which point the alias will be removed. Until
+ * then, our automation keeps dual-emitting to avoid breaking consumers that have not yet pulled
+ * the Hermes-ready packages.
+ */
+// TODO(OPS-1120): Delete once every managed extension acknowledges HERMES_CHAT_CLOUD; the alias is
+// purposefully exported to guarantee TypeScript still surfaces deprecation warnings in the interim.
+export const LOBE_CHAT_CLOUD = HERMES_CHAT_CLOUD;
 
 // Hermes Chat always renders the customer-facing product name; leverage this
 // constant so the entire surface area stays consistent during future refreshes.

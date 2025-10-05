@@ -8,10 +8,12 @@
 
 - **branding**: retarget Hermes Chat canonical constants, URLs, and npm package metadata to the Hermes Labs namespace so downstream services consume the new brand system defaults.
 - **platform**: Introduced `packages/const/src/app.ts`, Hermes-first locale cookies, and webhook/OAuth brand descriptors to standardise automation across web, desktop, and self-hosted deployments.
+- **cloud**: Added `HERMES_CHAT_CLOUD` alongside a temporary `LOBE_CHAT_CLOUD` alias, refreshed runtime imports, and expanded the rebranding CLI coverage for constant/kebab/snake tokens.
 
 ### 📝 Docs
 
 - Documented the Hermes enterprise rollout, self-hosting configuration, and desktop transition constraints so operators can follow the automated lint/test workflow without manual guesswork.
+- Clarified how to adopt `HERMES_CHAT_CLOUD`, the OPS-1120 alias sunset, and the new automation guardrails for managing the SaaS label across enterprise and self-hosted environments.
 
 ### [Version 1.133.6](https://github.com/lobehub/lobe-chat/compare/v1.133.5...v1.133.6)
 
