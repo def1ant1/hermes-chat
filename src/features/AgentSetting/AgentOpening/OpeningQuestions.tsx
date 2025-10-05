@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Button, Input, SortableList } from '@lobehub/ui';
+import { ActionIcon, Button, Input, SortableList } from '@hermeslabs/ui';
 import { Empty, Space } from 'antd';
 import { createStyles } from 'antd-style';
 import { PlusIcon, Trash } from 'lucide-react';

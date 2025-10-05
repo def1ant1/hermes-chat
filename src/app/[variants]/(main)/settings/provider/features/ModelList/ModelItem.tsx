@@ -1,5 +1,5 @@
-import { ModelIcon } from '@lobehub/icons';
-import { ActionIcon, Tag, Text, copyToClipboard } from '@lobehub/ui';
+import { ModelIcon } from '@hermeslabs/icons';
+import { ActionIcon, Tag, Text, copyToClipboard } from '@hermeslabs/ui';
 import { App, Switch } from 'antd';
 import { createStyles, useTheme } from 'antd-style';
 import { LucidePencil, TrashIcon } from 'lucide-react';

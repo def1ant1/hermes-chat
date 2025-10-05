@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Tag } from '@lobehub/ui';
+import { Icon, Tag } from '@hermeslabs/ui';
 import { Descriptions, Divider } from 'antd';
 import { useTheme } from 'antd-style';
 import dayjs from 'dayjs';

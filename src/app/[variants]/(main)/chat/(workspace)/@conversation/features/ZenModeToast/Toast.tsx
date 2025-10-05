@@ -1,6 +1,6 @@
 'use client';
 
-import { Hotkey } from '@lobehub/ui';
+import { Hotkey } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

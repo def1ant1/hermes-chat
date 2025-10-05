@@ -1,4 +1,4 @@
-import type { HighlighterProps, MermaidProps, NeutralColors, PrimaryColors } from '@lobehub/ui';
+import type { HighlighterProps, MermaidProps, NeutralColors, PrimaryColors } from '@hermeslabs/ui';
 
 import type { ResponseAnimationStyle } from '../../aiProvider';
 

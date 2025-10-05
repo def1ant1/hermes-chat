@@ -1,5 +1,5 @@
-import { Github } from '@lobehub/icons';
-import { Grid } from '@lobehub/ui';
+import { Github } from '@hermeslabs/icons';
+import { Grid } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -6,7 +6,7 @@ import {
   NeutralColors,
   PrimaryColors,
   ThemeProvider,
-} from '@lobehub/ui';
+} from '@hermeslabs/ui';
 import { ThemeAppearance, createStyles } from 'antd-style';
 import 'antd/dist/reset.css';
 import Image from 'next/image';

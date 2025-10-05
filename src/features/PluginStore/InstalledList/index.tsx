@@ -1,4 +1,4 @@
-import { DraggablePanel } from '@lobehub/ui';
+import { DraggablePanel } from '@hermeslabs/ui';
 import { Empty } from 'antd';
 import { useTheme } from 'antd-style';
 import { memo, useRef, useState } from 'react';

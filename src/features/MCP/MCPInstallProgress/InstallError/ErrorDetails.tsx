@@ -1,4 +1,4 @@
-import { Highlighter, Icon } from '@lobehub/ui';
+import { Highlighter, Icon } from '@hermeslabs/ui';
 import { Button, Tag } from 'antd';
 import { useTheme } from 'antd-style';
 import { motion } from 'framer-motion';

@@ -1,5 +1,5 @@
-import { MCP } from '@lobehub/icons';
-import { Icon } from '@lobehub/ui';
+import { MCP } from '@hermeslabs/icons';
+import { Icon } from '@hermeslabs/ui';
 import { Bot, Brain, BrainCircuit, House } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

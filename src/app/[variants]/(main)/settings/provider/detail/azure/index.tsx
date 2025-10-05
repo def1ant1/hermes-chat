@@ -1,6 +1,6 @@
 'use client';
 
-import { AutoComplete, Markdown } from '@lobehub/ui';
+import { AutoComplete, Markdown } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { ModelProvider } from 'model-bank';
 import { useTranslation } from 'react-i18next';

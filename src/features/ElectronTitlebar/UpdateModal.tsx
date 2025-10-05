@@ -1,5 +1,5 @@
 import { ProgressInfo, UpdateInfo, useWatchBroadcast } from '@hermeslabs/electron-client-ipc';
-import { Button } from '@lobehub/ui';
+import { Button } from '@hermeslabs/ui';
 import { App, Modal, Progress, Spin } from 'antd';
 import React, { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

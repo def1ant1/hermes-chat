@@ -1,4 +1,4 @@
-import { CategoryItem, CategoryListQuery } from '@lobehub/market-sdk';
+import { CategoryItem, CategoryListQuery } from '@hermeslabs/market-sdk';
 import useSWR, { type SWRResponse } from 'swr';
 import type { StateCreator } from 'zustand/vanilla';
 

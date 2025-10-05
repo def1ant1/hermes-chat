@@ -1,6 +1,6 @@
 'use client';
 
-import { Pre, PreSingleLine } from '@lobehub/ui/mdx';
+import { Pre, PreSingleLine } from '@hermeslabs/ui/mdx';
 import { FC, PropsWithChildren } from 'react';
 
 const countLines = (str: string): number => {

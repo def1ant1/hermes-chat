@@ -1,7 +1,7 @@
 'use client';
 
-import { ProviderIcon } from '@lobehub/icons';
-import { ActionIcon, Block, Icon, Tooltip } from '@lobehub/ui';
+import { ProviderIcon } from '@hermeslabs/icons';
+import { ActionIcon, Block, Icon, Tooltip } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { BadgeCheck, BookIcon, ChevronRightIcon, KeyIcon } from 'lucide-react';
 import Link from 'next/link';

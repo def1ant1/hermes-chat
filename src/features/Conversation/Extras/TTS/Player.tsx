@@ -1,5 +1,5 @@
-import { AudioPlayer, AudioPlayerProps } from '@lobehub/tts/react';
-import { ActionIcon, Alert, Button, Highlighter } from '@lobehub/ui';
+import { AudioPlayer, AudioPlayerProps } from '@hermeslabs/tts/react';
+import { ActionIcon, Alert, Button, Highlighter } from '@hermeslabs/ui';
 import { TrashIcon } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

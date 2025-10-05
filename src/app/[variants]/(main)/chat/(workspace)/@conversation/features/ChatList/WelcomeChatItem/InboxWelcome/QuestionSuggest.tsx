@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Block } from '@lobehub/ui';
+import { ActionIcon, Block } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { shuffle } from 'lodash-es';
 import { ArrowRight } from 'lucide-react';

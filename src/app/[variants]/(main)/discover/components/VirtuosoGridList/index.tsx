@@ -1,4 +1,4 @@
-import { DivProps, Grid } from '@lobehub/ui';
+import { DivProps, Grid } from '@hermeslabs/ui';
 import { forwardRef, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 import { VirtuosoGrid, VirtuosoGridProps } from 'react-virtuoso';

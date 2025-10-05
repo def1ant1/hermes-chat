@@ -1,4 +1,4 @@
-import { Tag } from '@lobehub/ui';
+import { Tag } from '@hermeslabs/ui';
 import { ReactNode, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

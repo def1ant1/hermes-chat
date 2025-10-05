@@ -1,4 +1,4 @@
-import { useEditor } from '@lobehub/editor/react';
+import { useEditor } from '@hermeslabs/editor/react';
 import { ReactNode, memo, useRef } from 'react';
 
 import StoreUpdater, { StoreUpdaterProps } from './StoreUpdater';

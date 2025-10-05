@@ -1,4 +1,4 @@
-import { ModelTag } from '@lobehub/icons';
+import { ModelTag } from '@hermeslabs/icons';
 import { Skeleton } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { memo } from 'react';

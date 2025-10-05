@@ -1,5 +1,5 @@
+import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
 import { pluginPrompts } from '@hermeslabs/prompts';
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
 
 import { MetaData } from '@/types/meta';
 import { LobeToolMeta } from '@/types/tool/tool';

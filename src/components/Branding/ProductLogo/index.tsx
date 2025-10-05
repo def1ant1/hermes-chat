@@ -1,4 +1,4 @@
-import { LobeHub, LobeHubProps } from '@lobehub/ui/brand';
+import { LobeHub, LobeHubProps } from '@hermeslabs/ui/brand';
 import { memo } from 'react';
 
 import { isCustomBranding } from '@/const/version';

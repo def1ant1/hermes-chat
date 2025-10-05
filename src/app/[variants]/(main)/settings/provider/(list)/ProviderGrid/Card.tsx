@@ -1,5 +1,5 @@
-import { ProviderCombine, ProviderIcon } from '@lobehub/icons';
-import { Avatar, Text } from '@lobehub/ui';
+import { ProviderCombine, ProviderIcon } from '@hermeslabs/icons';
+import { Avatar, Text } from '@hermeslabs/ui';
 import { Divider, Skeleton } from 'antd';
 import Link from 'next/link';
 import { memo } from 'react';

@@ -1,7 +1,7 @@
 'use client';
 
-import { VoiceList } from '@lobehub/tts';
-import { Form, type FormGroupItemType, Select } from '@lobehub/ui';
+import { VoiceList } from '@hermeslabs/tts';
+import { Form, type FormGroupItemType, Select } from '@hermeslabs/ui';
 import { Switch } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { Mic } from 'lucide-react';

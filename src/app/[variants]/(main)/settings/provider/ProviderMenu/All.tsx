@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { WalletCards } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { memo } from 'react';

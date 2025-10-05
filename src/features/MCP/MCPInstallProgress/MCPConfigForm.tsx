@@ -1,4 +1,4 @@
-import { Form, Markdown } from '@lobehub/ui';
+import { Form, Markdown } from '@hermeslabs/ui';
 import { Form as AForm, Button } from 'antd';
 import { createStyles } from 'antd-style';
 import { motion } from 'framer-motion';

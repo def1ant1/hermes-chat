@@ -1,4 +1,4 @@
-import { Block, Icon } from '@lobehub/ui';
+import { Block, Icon } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { LucideIcon } from 'lucide-react';
 import Link from 'next/link';

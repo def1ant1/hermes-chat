@@ -1,5 +1,5 @@
-import { ModelIcon } from '@lobehub/icons';
-import { Icon, Segmented, Tooltip } from '@lobehub/ui';
+import { ModelIcon } from '@hermeslabs/icons';
+import { Icon, Segmented, Tooltip } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { ArrowDownToDot, ArrowUpFromDot, BookUp2Icon, CircleFadingArrowUp } from 'lucide-react';
 import { memo } from 'react';
@@ -9,8 +9,9 @@ import { Flexbox } from 'react-layout-kit';
 import { getPrice } from '@/features/Conversation/Extras/Usage/UsageDetail/pricing';
 import { useGlobalStore } from '@/store/global';
 import { systemStatusSelectors } from '@/store/global/selectors';
-import { LobeDefaultAiModelListItem } from '../../../../../../packages/model-bank/src/types/aiModel';
 import { getCachedTextInputUnitRate, getWriteCacheInputUnitRate } from '@/utils/pricing';
+
+import { LobeDefaultAiModelListItem } from '../../../../../../packages/model-bank/src/types/aiModel';
 
 export const useStyles = createStyles(({ css, token }) => {
   return {

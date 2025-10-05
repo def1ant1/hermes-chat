@@ -1,4 +1,4 @@
-import { ActionIconGroup } from '@lobehub/ui';
+import { ActionIconGroup } from '@hermeslabs/ui';
 import { memo } from 'react';
 
 import { useChatListActionsBar } from '../hooks/useChatListActionsBar';

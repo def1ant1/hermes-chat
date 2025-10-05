@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert, Button, CodeEditor, Icon, Text } from '@lobehub/ui';
+import { Alert, Button, CodeEditor, Icon, Text } from '@hermeslabs/ui';
 import { Card, List } from 'antd';
 import { createStyles } from 'antd-style';
 import dayjs from 'dayjs';

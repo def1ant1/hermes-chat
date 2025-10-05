@@ -1,5 +1,5 @@
-import { ProviderIcon } from '@lobehub/icons';
-import { Button } from '@lobehub/ui';
+import { ProviderIcon } from '@hermeslabs/icons';
+import { Button } from '@hermeslabs/ui';
 import { ModelProvider } from 'model-bank';
 import { memo, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

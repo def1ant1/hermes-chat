@@ -1,6 +1,6 @@
 'use client';
 
-import { ChatInput, ChatInputActionBar } from '@lobehub/editor/react';
+import { ChatInput, ChatInputActionBar } from '@hermeslabs/editor/react';
 import { createStyles } from 'antd-style';
 import dynamic from 'next/dynamic';
 import { memo } from 'react';

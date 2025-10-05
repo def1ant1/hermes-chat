@@ -1,4 +1,4 @@
-import { Icon, SliderWithInput } from '@lobehub/ui';
+import { Icon, SliderWithInput } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { AtomIcon, RepeatIcon } from 'lucide-react';
 import { memo } from 'react';

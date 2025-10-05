@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs as TabsNav } from '@lobehub/ui';
+import { Tabs as TabsNav } from '@hermeslabs/ui';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 

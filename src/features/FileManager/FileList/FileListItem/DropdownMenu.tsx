@@ -1,4 +1,4 @@
-import { ActionIcon, Dropdown, Icon, copyToClipboard } from '@lobehub/ui';
+import { ActionIcon, Dropdown, Icon, copyToClipboard } from '@hermeslabs/ui';
 import { App } from 'antd';
 import { ItemType } from 'antd/es/menu/interface';
 import {

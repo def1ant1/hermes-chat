@@ -1,4 +1,4 @@
-import { ActionIcon, Button, Dropdown, type MenuProps } from '@lobehub/ui';
+import { ActionIcon, Button, Dropdown, type MenuProps } from '@hermeslabs/ui';
 import { HardDriveDownload } from 'lucide-react';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';

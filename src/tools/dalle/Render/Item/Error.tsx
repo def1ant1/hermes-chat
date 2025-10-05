@@ -1,4 +1,4 @@
-import { Alert, Button, Highlighter } from '@lobehub/ui';
+import { Alert, Button, Highlighter } from '@hermeslabs/ui';
 import { LucideRefreshCw } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

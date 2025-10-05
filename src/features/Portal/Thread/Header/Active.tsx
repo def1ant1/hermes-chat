@@ -1,4 +1,4 @@
-import { Icon, Text } from '@lobehub/ui';
+import { Icon, Text } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { ListTree } from 'lucide-react';

@@ -1,4 +1,4 @@
-const { defineConfig } = require('@lobehub/seo-cli');
+const { defineConfig } = require('@hermeslabs/seo-cli');
 
 module.exports = defineConfig({
   entry: ['./docs/**/*.mdx'],

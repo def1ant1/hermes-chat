@@ -1,5 +1,5 @@
-import { ActionIconGroup, Block } from '@lobehub/ui';
-import { ChatItem } from '@lobehub/ui/chat';
+import { ActionIconGroup, Block } from '@hermeslabs/ui';
+import { ChatItem } from '@hermeslabs/ui/chat';
 import { useTheme } from 'antd-style';
 import { RotateCwIcon } from 'lucide-react';
 import { memo, useEffect, useMemo, useState } from 'react';

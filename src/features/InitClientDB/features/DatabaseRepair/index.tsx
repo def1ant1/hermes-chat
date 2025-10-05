@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Segmented } from '@lobehub/ui';
+import { Button, Segmented } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { AlertCircle, ArrowLeft, PenToolIcon as Tool } from 'lucide-react';
 import { memo, useState } from 'react';

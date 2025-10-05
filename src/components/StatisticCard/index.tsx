@@ -2,7 +2,7 @@ import {
   StatisticCard as AntdStatisticCard,
   StatisticCardProps as AntdStatisticCardProps,
 } from '@ant-design/pro-components';
-import { Text } from '@lobehub/ui';
+import { Text } from '@hermeslabs/ui';
 import { Spin } from 'antd';
 import { createStyles, useResponsive } from 'antd-style';
 import { adjustHue } from 'polished';

@@ -1,5 +1,5 @@
 import { WriteLocalFileParams } from '@hermeslabs/electron-client-ipc';
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { ChevronRight } from 'lucide-react';
 import path from 'path-browserify-esm';

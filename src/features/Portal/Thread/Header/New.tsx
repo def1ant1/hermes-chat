@@ -1,4 +1,4 @@
-import { Icon, Text } from '@lobehub/ui';
+import { Icon, Text } from '@hermeslabs/ui';
 import { Switch } from 'antd';
 import { GitBranch } from 'lucide-react';
 import { useTranslation } from 'react-i18next';

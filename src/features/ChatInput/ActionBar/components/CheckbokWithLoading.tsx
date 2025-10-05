@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { Checkbox } from 'antd';
 import { Loader2 } from 'lucide-react';
 import { ReactNode, memo, useState } from 'react';

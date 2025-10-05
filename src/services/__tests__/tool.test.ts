@@ -35,7 +35,7 @@ describe('ToolService', () => {
       const manifestUrl = 'http://fake-url.com/manifest.json';
 
       const fakeManifest = {
-        $schema: '../node_modules/@lobehub/chat-plugin-sdk/schema.json',
+        $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
         api: [
           {
             url: 'https://realtime-weather.chat-plugin.lobehub.com/api/v1',
@@ -146,7 +146,7 @@ describe('ToolService', () => {
         const openapiUrl = 'http://fake-url.com/openapiUrl.json';
 
         const fakeManifest = {
-          $schema: '../node_modules/@lobehub/chat-plugin-sdk/schema.json',
+          $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
           api: [],
           openapi: openapiUrl,
           author: 'LobeHub',
@@ -183,7 +183,7 @@ describe('ToolService', () => {
         const openapiUrl = 'http://fake-url.com/openapiUrl.json';
         const manifestUrl = 'http://fake-url.com/manifest.json';
         const fakeManifest = {
-          $schema: '../node_modules/@lobehub/chat-plugin-sdk/schema.json',
+          $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
           api: [],
           openapi: openapiUrl,
           author: 'LobeHub',

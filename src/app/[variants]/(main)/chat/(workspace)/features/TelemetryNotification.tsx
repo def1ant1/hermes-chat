@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, Button, Icon } from '@lobehub/ui';
+import { Avatar, Button, Icon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { LucideArrowUpRightFromSquare, TelescopeIcon } from 'lucide-react';
 import Link from 'next/link';

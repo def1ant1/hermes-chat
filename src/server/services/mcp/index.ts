@@ -1,5 +1,9 @@
-import { LobeChatPluginApi, LobeChatPluginManifest, PluginSchema } from '@lobehub/chat-plugin-sdk';
-import { DeploymentOption } from '@lobehub/market-sdk';
+import {
+  LobeChatPluginApi,
+  LobeChatPluginManifest,
+  PluginSchema,
+} from '@hermeslabs/chat-plugin-sdk';
+import { DeploymentOption } from '@hermeslabs/market-sdk';
 import { McpError } from '@modelcontextprotocol/sdk/types.js';
 import { TRPCError } from '@trpc/server';
 import debug from 'debug';

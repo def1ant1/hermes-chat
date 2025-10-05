@@ -1,4 +1,4 @@
-import { Avatar, Button } from '@lobehub/ui';
+import { Avatar, Button } from '@hermeslabs/ui';
 import { Divider } from 'antd';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';

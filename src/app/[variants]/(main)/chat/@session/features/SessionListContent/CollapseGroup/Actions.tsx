@@ -1,4 +1,4 @@
-import { ActionIcon, Dropdown, type DropdownProps, Icon, type MenuProps } from '@lobehub/ui';
+import { ActionIcon, Dropdown, type DropdownProps, Icon, type MenuProps } from '@hermeslabs/ui';
 import { App } from 'antd';
 import { createStyles } from 'antd-style';
 import { MoreVertical, PencilLine, Plus, Settings2, Trash } from 'lucide-react';

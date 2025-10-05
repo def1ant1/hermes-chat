@@ -1,7 +1,7 @@
 'use client';
 
-import { ActionIcon } from '@lobehub/ui';
-import { ChatHeader } from '@lobehub/ui/chat';
+import { ActionIcon } from '@hermeslabs/ui';
+import { ChatHeader } from '@hermeslabs/ui/chat';
 import { Drawer, type DrawerProps } from 'antd';
 import { createStyles } from 'antd-style';
 import { Menu } from 'lucide-react';

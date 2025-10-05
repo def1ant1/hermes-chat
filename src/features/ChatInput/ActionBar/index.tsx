@@ -1,4 +1,4 @@
-import { ChatInputActions, type ChatInputActionsProps } from '@lobehub/editor/react';
+import { ChatInputActions, type ChatInputActionsProps } from '@hermeslabs/editor/react';
 import { memo, useMemo } from 'react';
 
 import { useGlobalStore } from '@/store/global';

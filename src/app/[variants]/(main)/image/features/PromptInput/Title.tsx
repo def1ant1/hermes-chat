@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Text } from '@lobehub/ui';
+import { Icon, Text } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { Palette } from 'lucide-react';
 import { useTranslation } from 'react-i18next';

@@ -1,6 +1,6 @@
 'use client';
 
-import { GuideCard } from '@lobehub/ui';
+import { GuideCard } from '@hermeslabs/ui';
 import { useThemeMode } from 'antd-style';
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';

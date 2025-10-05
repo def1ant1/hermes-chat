@@ -1,5 +1,5 @@
-import { AudioPlayer } from '@lobehub/tts/react';
-import { Alert, Button, Highlighter, Select, SelectProps } from '@lobehub/ui';
+import { AudioPlayer } from '@hermeslabs/tts/react';
+import { Alert, Button, Highlighter, Select, SelectProps } from '@hermeslabs/ui';
 import { RefSelectProps } from 'antd';
 import { useTheme } from 'antd-style';
 import { forwardRef, useCallback, useState } from 'react';

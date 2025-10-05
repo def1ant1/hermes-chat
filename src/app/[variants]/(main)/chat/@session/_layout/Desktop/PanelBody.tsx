@@ -1,6 +1,6 @@
 'use client';
 
-import { ScrollShadow } from '@lobehub/ui';
+import { ScrollShadow } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { PropsWithChildren, memo } from 'react';
 

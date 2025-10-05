@@ -1,4 +1,4 @@
-import { DatePicker } from '@lobehub/ui';
+import { DatePicker } from '@hermeslabs/ui';
 import { DatePickerProps, Flex } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { FC } from 'react';

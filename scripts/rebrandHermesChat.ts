@@ -170,16 +170,16 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => brand.organization?.name ?? brand.name,
   },
   {
-    description: 'Scoped package identifiers such as @lobehub/ui.',
+    description: 'Scoped package identifiers such as @hermeslabs/ui.',
     id: 'organization-scope',
-    pattern: /@lobehub\//g,
+    pattern: /@hermeslabs\//g,
     replacement: (brand) =>
       `@${sanitizeHandleSlug(brand.organization?.name ?? brand.shortName ?? brand.name)}/`,
   },
   {
     description: 'Bare organization handles (e.g., social usernames).',
     id: 'organization-handle',
-    pattern: /@lobehub(?!\.com)/g,
+    pattern: /@hermeslabs(?!\.com)/g,
     replacement: (brand) =>
       `@${sanitizeHandleSlug(brand.organization?.name ?? brand.shortName ?? brand.name)}`,
   },

@@ -1,6 +1,6 @@
 'use client';
 
-import { ProviderCombine } from '@lobehub/icons';
+import { ProviderCombine } from '@hermeslabs/icons';
 import {
   Form,
   type FormGroupItemType,
@@ -9,7 +9,7 @@ import {
   Input,
   InputPassword,
   Tooltip,
-} from '@lobehub/ui';
+} from '@hermeslabs/ui';
 import { Switch } from 'antd';
 import { createStyles } from 'antd-style';
 import { debounce } from 'lodash-es';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Tooltip } from '@lobehub/ui';
+import { Icon, Tooltip } from '@hermeslabs/ui';
 import { Badge } from 'antd';
 import { createStyles } from 'antd-style';
 import { isUndefined } from 'lodash-es';

@@ -1,4 +1,4 @@
-import { Icon, Text, Tooltip } from '@lobehub/ui';
+import { Icon, Text, Tooltip } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { HelpCircleIcon } from 'lucide-react';
 import { CSSProperties, ReactNode, memo } from 'react';

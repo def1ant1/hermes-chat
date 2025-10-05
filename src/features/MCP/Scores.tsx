@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Tooltip } from '@lobehub/ui';
+import { Icon, Tooltip } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { CircleDashedIcon, HammerIcon, LayersIcon, MessageSquareQuoteIcon } from 'lucide-react';
 import Link from 'next/link';

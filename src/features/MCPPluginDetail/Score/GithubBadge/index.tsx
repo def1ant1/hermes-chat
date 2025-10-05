@@ -1,4 +1,4 @@
-import { Markdown, Select, Snippet, Tag } from '@lobehub/ui';
+import { Markdown, Select, Snippet, Tag } from '@hermeslabs/ui';
 import { Divider } from 'antd';
 import { useTheme } from 'antd-style';
 import { memo, useState } from 'react';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, Button, Text } from '@lobehub/ui';
+import { Avatar, Button, Text } from '@hermeslabs/ui';
 import { Card, Skeleton } from 'antd';
 import { createStyles } from 'antd-style';
 import React, { memo } from 'react';

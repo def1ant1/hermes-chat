@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { Tooltip } from 'antd';
 import { createStyles, useTheme } from 'antd-style';
 import { ChevronDown, ChevronUp } from 'lucide-react';

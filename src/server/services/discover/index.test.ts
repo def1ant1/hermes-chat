@@ -10,7 +10,7 @@ import { DiscoverService } from './index';
 // Mock external dependencies
 vi.mock('@/server/modules/AssistantStore');
 vi.mock('@/server/modules/PluginStore');
-vi.mock('@lobehub/market-sdk');
+vi.mock('@hermeslabs/market-sdk');
 vi.mock('@/utils/toolManifest');
 vi.mock('@/locales/resources', () => ({
   normalizeLocale: vi.fn((locale) => {

@@ -1,4 +1,4 @@
-import { ActionIcon } from '@lobehub/ui';
+import { ActionIcon } from '@hermeslabs/ui';
 import { Popover, type PopoverProps } from 'antd';
 import { Languages } from 'lucide-react';
 import { memo, useMemo } from 'react';

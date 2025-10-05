@@ -1,4 +1,4 @@
-import { ActionIcon, Dropdown, Icon } from '@lobehub/ui';
+import { ActionIcon, Dropdown, Icon } from '@hermeslabs/ui';
 import { App } from 'antd';
 import { createStyles } from 'antd-style';
 import { ItemType } from 'antd/es/menu/interface';

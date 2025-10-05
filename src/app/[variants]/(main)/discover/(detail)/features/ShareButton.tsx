@@ -8,7 +8,7 @@ import {
   Modal,
   Tag,
   Text,
-} from '@lobehub/ui';
+} from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { createStyles } from 'antd-style';
 import { startCase } from 'lodash-es';

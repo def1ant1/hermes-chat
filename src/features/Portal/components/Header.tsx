@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon } from '@lobehub/ui';
+import { ActionIcon } from '@hermeslabs/ui';
 import { XIcon } from 'lucide-react';
 import { ReactNode, memo } from 'react';
 

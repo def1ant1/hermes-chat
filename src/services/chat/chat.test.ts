@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
 import { act } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 

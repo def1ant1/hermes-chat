@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, ScrollShadow, Text } from '@lobehub/ui';
+import { ActionIcon, ScrollShadow, Text } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { ArrowDownUpIcon } from 'lucide-react';
 import { useState } from 'react';

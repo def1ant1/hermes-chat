@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, type ActionIconProps } from '@lobehub/ui';
+import { ActionIcon, type ActionIconProps } from '@hermeslabs/ui';
 import { isUndefined } from 'lodash-es';
 import { memo } from 'react';
 import useMergeState from 'use-merge-value';

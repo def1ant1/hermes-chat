@@ -1,4 +1,4 @@
-import type { IconType } from '@lobehub/icons';
+import type { IconType } from '@hermeslabs/icons';
 import { createStyles } from 'antd-style';
 import { forwardRef, memo } from 'react';
 import { Trans } from 'react-i18next';

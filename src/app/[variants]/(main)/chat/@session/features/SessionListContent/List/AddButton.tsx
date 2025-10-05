@@ -1,4 +1,4 @@
-import { Button } from '@lobehub/ui';
+import { Button } from '@hermeslabs/ui';
 import { Plus } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

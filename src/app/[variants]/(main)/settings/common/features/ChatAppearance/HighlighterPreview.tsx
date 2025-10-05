@@ -1,5 +1,5 @@
-import { Block, HighlighterProps } from '@lobehub/ui';
-import { ChatItem } from '@lobehub/ui/chat';
+import { Block, HighlighterProps } from '@hermeslabs/ui';
+import { ChatItem } from '@hermeslabs/ui/chat';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';
 

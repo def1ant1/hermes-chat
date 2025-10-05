@@ -12423,7 +12423,7 @@
 
 #### 💄 Styles
 
-- **misc**: Switch Modal components to @lobehub/ui.
+- **misc**: Switch Modal components to @hermeslabs/ui.
 
 <br />
 
@@ -12432,7 +12432,7 @@
 
 #### Styles
 
-- **misc**: Switch Modal components to @lobehub/ui ([d056015](https://github.com/lobehub/lobe-chat/commit/d056015))
+- **misc**: Switch Modal components to @hermeslabs/ui ([d056015](https://github.com/lobehub/lobe-chat/commit/d056015))
 
 </details>
 
@@ -13959,7 +13959,7 @@
 
 #### ♻ Code Refactoring
 
-- **misc**: Refactor plugin api with @lobehub/chat-plugins-gateway.
+- **misc**: Refactor plugin api with @hermeslabs/chat-plugins-gateway.
 
 <br />
 
@@ -13968,7 +13968,7 @@
 
 #### Code refactoring
 
-- **misc**: Refactor plugin api with @lobehub/chat-plugins-gateway, closes [#100](https://github.com/lobehub/lobe-chat/issues/100) ([b88d0db](https://github.com/lobehub/lobe-chat/commit/b88d0db))
+- **misc**: Refactor plugin api with @hermeslabs/chat-plugins-gateway, closes [#100](https://github.com/lobehub/lobe-chat/issues/100) ([b88d0db](https://github.com/lobehub/lobe-chat/commit/b88d0db))
 
 </details>
 

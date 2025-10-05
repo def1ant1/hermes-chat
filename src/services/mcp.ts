@@ -1,5 +1,5 @@
-import { PluginManifest } from '@lobehub/market-sdk';
-import { CallReportRequest } from '@lobehub/market-types';
+import { PluginManifest } from '@hermeslabs/market-sdk';
+import { CallReportRequest } from '@hermeslabs/market-types';
 
 import { CURRENT_VERSION, isDesktop } from '@/const/version';
 import { desktopClient, toolsClient } from '@/libs/trpc/client';

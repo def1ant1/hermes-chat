@@ -1,4 +1,4 @@
-import { Tag } from '@lobehub/ui';
+import { Tag } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import Link from 'next/link';
 import { memo } from 'react';

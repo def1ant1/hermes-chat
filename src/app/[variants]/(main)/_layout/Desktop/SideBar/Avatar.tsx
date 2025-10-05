@@ -1,4 +1,4 @@
-import { ActionIcon } from '@lobehub/ui';
+import { ActionIcon } from '@hermeslabs/ui';
 import { Tooltip } from 'antd';
 import { LucideX } from 'lucide-react';
 import { Suspense, memo } from 'react';

@@ -1,5 +1,5 @@
-import { MCP } from '@lobehub/icons';
-import { Avatar } from '@lobehub/ui';
+import { MCP } from '@hermeslabs/icons';
+import { Avatar } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { CSSProperties, memo } from 'react';
 

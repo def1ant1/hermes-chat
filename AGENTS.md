@@ -7,7 +7,7 @@ This document serves as a comprehensive guide for all team members when developi
 Built with modern technologies:
 
 - **Frontend**: Next.js 15, React 19, TypeScript
-- **UI Components**: Ant Design, @lobehub/ui, antd-style
+- **UI Components**: Ant Design, @hermeslabs/ui, antd-style
 - **State Management**: Zustand, SWR
 - **Database**: PostgreSQL, PGLite, Drizzle ORM
 - **Testing**: Vitest, Testing Library

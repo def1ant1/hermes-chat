@@ -1,4 +1,4 @@
-import { Tag } from '@lobehub/ui';
+import { Tag } from '@hermeslabs/ui';
 import { memo } from 'react';
 
 import { useTokenCount } from '@/hooks/useTokenCount';

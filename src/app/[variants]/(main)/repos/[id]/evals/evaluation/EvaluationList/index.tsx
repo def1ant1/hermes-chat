@@ -2,7 +2,7 @@
 
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
 import { EvalEvaluationStatus, RAGEvalEvaluationItem } from '@hermeslabs/types';
-import { ActionIcon, Button, ButtonProps, Icon } from '@lobehub/ui';
+import { ActionIcon, Button, ButtonProps, Icon } from '@hermeslabs/ui';
 import { App } from 'antd';
 import { createStyles } from 'antd-style';
 import { DownloadIcon, PlayIcon, RotateCcwIcon, Trash2Icon } from 'lucide-react';

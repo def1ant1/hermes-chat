@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Tabs, TabsProps } from '@lobehub/ui';
+import { Icon, Tabs, TabsProps } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { BookOpenIcon, HammerIcon } from 'lucide-react';
 import { memo } from 'react';

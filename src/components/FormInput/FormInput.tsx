@@ -1,4 +1,4 @@
-import { Input, InputProps as Props } from '@lobehub/ui';
+import { Input, InputProps as Props } from '@hermeslabs/ui';
 import { InputRef } from 'antd/es/input/Input';
 import { memo, useEffect, useRef, useState } from 'react';
 

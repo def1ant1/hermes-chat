@@ -1,5 +1,5 @@
-import { ActionIconGroup } from '@lobehub/ui';
-import type { ActionIconGroupItemType } from '@lobehub/ui';
+import { ActionIconGroup } from '@hermeslabs/ui';
+import type { ActionIconGroupItemType } from '@hermeslabs/ui';
 import { memo, useContext, useMemo } from 'react';
 
 import { useChatStore } from '@/store/chat';

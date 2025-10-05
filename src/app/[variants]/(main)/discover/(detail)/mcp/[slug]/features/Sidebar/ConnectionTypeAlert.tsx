@@ -1,4 +1,4 @@
-import { Alert, Icon } from '@lobehub/ui';
+import { Alert, Icon } from '@hermeslabs/ui';
 import { Blend, Cloud, LaptopMinimalIcon } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,8 +1,8 @@
 'use client';
 
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { ModelTag } from '@lobehub/icons';
-import { ActionIconGroup, Block, Grid, Markdown, Tag, Text } from '@lobehub/ui';
+import { ModelTag } from '@hermeslabs/icons';
+import { ActionIconGroup, Block, Grid, Markdown, Tag, Text } from '@hermeslabs/ui';
 import { App } from 'antd';
 import { createStyles } from 'antd-style';
 import dayjs from 'dayjs';

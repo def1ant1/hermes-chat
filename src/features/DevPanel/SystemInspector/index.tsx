@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs } from '@lobehub/ui';
+import { Tabs } from '@hermeslabs/ui';
 import { useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

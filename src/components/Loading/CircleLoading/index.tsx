@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Text } from '@lobehub/ui';
+import { Icon, Text } from '@hermeslabs/ui';
 import { LoaderCircle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Center, Flexbox } from 'react-layout-kit';

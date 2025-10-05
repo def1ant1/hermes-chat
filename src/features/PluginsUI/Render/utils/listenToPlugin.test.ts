@@ -1,4 +1,4 @@
-import { PluginChannel } from '@lobehub/chat-plugin-sdk/client';
+import { PluginChannel } from '@hermeslabs/chat-plugin-sdk/client';
 import { renderHook } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 

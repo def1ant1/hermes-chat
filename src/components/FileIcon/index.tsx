@@ -1,4 +1,4 @@
-import { FileTypeIcon, MaterialFileTypeIcon } from '@lobehub/ui';
+import { FileTypeIcon, MaterialFileTypeIcon } from '@hermeslabs/ui';
 import React, { memo } from 'react';
 
 import { mimeTypeMap } from './config';

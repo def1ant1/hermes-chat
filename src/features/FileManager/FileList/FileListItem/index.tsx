@@ -1,4 +1,4 @@
-import { Button, Tooltip } from '@lobehub/ui';
+import { Button, Tooltip } from '@hermeslabs/ui';
 import { Checkbox } from 'antd';
 import { createStyles } from 'antd-style';
 import dayjs from 'dayjs';

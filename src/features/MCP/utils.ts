@@ -1,4 +1,4 @@
-import { ConnectionConfig, DeploymentOption } from '@lobehub/market-types';
+import { ConnectionConfig, DeploymentOption } from '@hermeslabs/market-types';
 
 export const genServerConfig = (identifier?: string, connection?: ConnectionConfig) =>
   JSON.stringify(

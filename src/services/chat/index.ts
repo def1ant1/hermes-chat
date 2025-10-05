@@ -1,6 +1,6 @@
+import { PluginRequestPayload, createHeadersWithPluginSettings } from '@hermeslabs/chat-plugin-sdk';
 import { AgentRuntimeError, ChatCompletionErrorPayload } from '@hermeslabs/model-runtime';
 import { ChatErrorType, TracePayload, TraceTagMap } from '@hermeslabs/types';
-import { PluginRequestPayload, createHeadersWithPluginSettings } from '@lobehub/chat-plugin-sdk';
 import { merge } from 'lodash-es';
 import { ModelProvider } from 'model-bank';
 

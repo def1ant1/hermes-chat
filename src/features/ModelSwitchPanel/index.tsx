@@ -1,4 +1,4 @@
-import { ActionIcon, Icon } from '@lobehub/ui';
+import { ActionIcon, Icon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import type { ItemType } from 'antd/es/menu/interface';
 import { LucideArrowRight, LucideBolt } from 'lucide-react';

@@ -1,4 +1,4 @@
-import { Button, Icon } from '@lobehub/ui';
+import { Button, Icon } from '@hermeslabs/ui';
 import { App } from 'antd';
 import { ScanFace } from 'lucide-react';
 import { memo, useCallback } from 'react';

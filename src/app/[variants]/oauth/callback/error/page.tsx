@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Highlighter, Icon } from '@lobehub/ui';
+import { Button, Highlighter, Icon } from '@hermeslabs/ui';
 import { Card, Result } from 'antd';
 import { ShieldX } from 'lucide-react';
 import Link from 'next/link';

@@ -1,4 +1,4 @@
-import { Avatar, Icon, Text } from '@lobehub/ui';
+import { Avatar, Icon, Text } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { InboxIcon } from 'lucide-react';

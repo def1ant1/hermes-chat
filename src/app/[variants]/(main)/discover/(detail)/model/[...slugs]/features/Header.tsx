@@ -1,7 +1,7 @@
 'use client';
 
-import { ModelIcon } from '@lobehub/icons';
-import { Icon, Text } from '@lobehub/ui';
+import { ModelIcon } from '@hermeslabs/icons';
+import { Icon, Text } from '@hermeslabs/ui';
 import { createStyles, useResponsive } from 'antd-style';
 import { DotIcon } from 'lucide-react';
 import { memo } from 'react';

@@ -1,4 +1,4 @@
-import { ConnectionType } from '@lobehub/market-sdk';
+import { ConnectionType } from '@hermeslabs/market-sdk';
 
 interface PluginCompatibility {
   maxAppVersion?: string;

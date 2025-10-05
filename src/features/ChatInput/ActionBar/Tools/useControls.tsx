@@ -1,4 +1,4 @@
-import { Avatar, Icon, ItemType } from '@lobehub/ui';
+import { Avatar, Icon, ItemType } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { ArrowRight, Store, ToyBrick } from 'lucide-react';
 import { useTranslation } from 'react-i18next';

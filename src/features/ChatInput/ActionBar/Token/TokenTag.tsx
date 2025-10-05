@@ -1,5 +1,5 @@
-import { Tooltip } from '@lobehub/ui';
-import { TokenTag } from '@lobehub/ui/chat';
+import { Tooltip } from '@hermeslabs/ui';
+import { TokenTag } from '@hermeslabs/ui/chat';
 import { useTheme } from 'antd-style';
 import numeral from 'numeral';
 import { memo, useMemo } from 'react';

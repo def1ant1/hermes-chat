@@ -1,3 +1,4 @@
+import { getSingletonAnalyticsOptional } from '@hermeslabs/analytics';
 import {
   chainPickEmoji,
   chainSummaryAgentName,
@@ -5,7 +6,6 @@ import {
   chainSummaryTags,
 } from '@hermeslabs/prompts';
 import { TraceNameMap, TracePayload, TraceTopicType } from '@hermeslabs/types';
-import { getSingletonAnalyticsOptional } from '@lobehub/analytics';
 import type { PartialDeep } from 'type-fest';
 import { StateCreator } from 'zustand/vanilla';
 

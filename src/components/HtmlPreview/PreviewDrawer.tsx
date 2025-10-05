@@ -1,5 +1,5 @@
+import { Block, Button, Highlighter, Segmented } from '@hermeslabs/ui';
 import { exportFile } from '@hermeslabs/utils/client';
-import { Block, Button, Highlighter, Segmented } from '@lobehub/ui';
 import { Drawer } from 'antd';
 import { createStyles } from 'antd-style';
 import { Code2, Download, Eye } from 'lucide-react';

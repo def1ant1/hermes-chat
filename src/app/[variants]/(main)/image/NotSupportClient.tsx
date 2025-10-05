@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { Typography } from 'antd';
 import { createStyles, useTheme } from 'antd-style';
 import { Database, FileImage, Network, Sparkles } from 'lucide-react';

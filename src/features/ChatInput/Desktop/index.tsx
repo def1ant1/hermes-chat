@@ -1,7 +1,7 @@
 'use client';
 
-import { ChatInput, ChatInputActionBar } from '@lobehub/editor/react';
-import { Text } from '@lobehub/ui';
+import { ChatInput, ChatInputActionBar } from '@hermeslabs/editor/react';
+import { Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';

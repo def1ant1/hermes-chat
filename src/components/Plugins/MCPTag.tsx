@@ -1,5 +1,5 @@
-import { MCP } from '@lobehub/icons';
-import { Tag } from '@lobehub/ui';
+import { MCP } from '@hermeslabs/icons';
+import { Tag } from '@hermeslabs/ui';
 import { memo } from 'react';
 
 interface MCPTagProps {

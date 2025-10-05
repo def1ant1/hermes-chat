@@ -1,7 +1,7 @@
 'use client';
 
-import { ProviderIcon } from '@lobehub/icons';
-import { Button, Icon } from '@lobehub/ui';
+import { ProviderIcon } from '@hermeslabs/icons';
+import { Button, Icon } from '@hermeslabs/ui';
 import { Dropdown } from 'antd';
 import { createStyles } from 'antd-style';
 import { ChevronDownIcon } from 'lucide-react';

@@ -1,4 +1,4 @@
-import { ActionIcon, Icon, Text, Tooltip } from '@lobehub/ui';
+import { ActionIcon, Icon, Text, Tooltip } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import dayjs from 'dayjs';
 import isEqual from 'fast-deep-equal';

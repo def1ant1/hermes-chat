@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { Globe, Laptop } from 'lucide-react';

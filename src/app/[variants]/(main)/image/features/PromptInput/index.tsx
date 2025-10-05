@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, TextArea } from '@lobehub/ui';
+import { Button, TextArea } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Sparkles } from 'lucide-react';
 import type { KeyboardEvent } from 'react';

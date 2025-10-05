@@ -1,6 +1,6 @@
 import { StorageMode, StorageModeEnum } from '@hermeslabs/electron-client-ipc';
-import { Button, Input } from '@lobehub/ui';
-import { LobeHub } from '@lobehub/ui/brand';
+import { Button, Input } from '@hermeslabs/ui';
+import { LobeHub } from '@hermeslabs/ui/brand';
 import { createStyles } from 'antd-style';
 import { ComputerIcon, Server } from 'lucide-react';
 import { memo, useCallback, useState } from 'react';

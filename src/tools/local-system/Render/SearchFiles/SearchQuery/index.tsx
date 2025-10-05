@@ -1,5 +1,5 @@
 import { LocalSearchFilesParams } from '@hermeslabs/electron-client-ipc';
-import { ActionIcon, Button, Icon, SearchBar } from '@lobehub/ui';
+import { ActionIcon, Button, Icon, SearchBar } from '@hermeslabs/ui';
 import { SearchIcon, XIcon } from 'lucide-react';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

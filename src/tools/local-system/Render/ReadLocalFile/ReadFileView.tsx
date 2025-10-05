@@ -1,5 +1,5 @@
 import { LocalReadFileResult } from '@hermeslabs/electron-client-ipc';
-import { ActionIcon, Icon, Markdown, Text } from '@lobehub/ui';
+import { ActionIcon, Icon, Markdown, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { AlignLeft, Asterisk, ChevronDownIcon, ExternalLink, FolderOpen } from 'lucide-react';
 import React, { memo, useState } from 'react';

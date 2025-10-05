@@ -1,5 +1,5 @@
-import { CategoryItem, CategoryListQuery, PluginManifest } from '@lobehub/market-sdk';
-import { CallReportRequest, InstallReportRequest } from '@lobehub/market-types';
+import { CategoryItem, CategoryListQuery, PluginManifest } from '@hermeslabs/market-sdk';
+import { CallReportRequest, InstallReportRequest } from '@hermeslabs/market-types';
 
 import { lambdaClient } from '@/libs/trpc/client';
 import { globalHelpers } from '@/store/global/helpers';

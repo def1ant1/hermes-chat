@@ -1,6 +1,6 @@
 'use client';
 
-import { Block } from '@lobehub/ui';
+import { Block } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

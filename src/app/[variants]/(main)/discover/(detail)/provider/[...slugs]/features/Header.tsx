@@ -1,7 +1,7 @@
 'use client';
 
-import { Github, ProviderCombine } from '@lobehub/icons';
-import { ActionIcon } from '@lobehub/ui';
+import { Github, ProviderCombine } from '@hermeslabs/icons';
+import { ActionIcon } from '@hermeslabs/ui';
 import { createStyles, useResponsive } from 'antd-style';
 import { GlobeIcon } from 'lucide-react';
 import Link from 'next/link';

@@ -1,5 +1,5 @@
-import { Hotkey, Icon } from '@lobehub/ui';
-import { DiscordIcon } from '@lobehub/ui/icons';
+import { Hotkey, Icon } from '@hermeslabs/ui';
+import { DiscordIcon } from '@hermeslabs/ui/icons';
 import { Badge } from 'antd';
 import { ItemType } from 'antd/es/menu/interface';
 import {

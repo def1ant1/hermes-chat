@@ -1,4 +1,4 @@
-import { Google } from '@lobehub/icons';
+import { Google } from '@hermeslabs/icons';
 import {
   Auth0,
   Authelia,
@@ -10,7 +10,7 @@ import {
   MicrosoftEntra,
   NextAuth,
   Zitadel,
-} from '@lobehub/ui/icons';
+} from '@hermeslabs/ui/icons';
 import React from 'react';
 
 const iconComponents: { [key: string]: React.ElementType } = {

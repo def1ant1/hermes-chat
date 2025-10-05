@@ -1,4 +1,4 @@
-import { PluginQueryParams, SystemDependency } from '@lobehub/market-sdk';
+import { PluginQueryParams, SystemDependency } from '@hermeslabs/market-sdk';
 
 import { MCPErrorType } from '@/libs/mcp';
 

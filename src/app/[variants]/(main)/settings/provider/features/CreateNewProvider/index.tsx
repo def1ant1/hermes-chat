@@ -1,4 +1,4 @@
-import { ProviderIcon } from '@lobehub/icons';
+import { ProviderIcon } from '@hermeslabs/icons';
 import {
   type FormItemProps,
   FormModal,
@@ -7,7 +7,7 @@ import {
   InputPassword,
   Select,
   TextArea,
-} from '@lobehub/ui';
+} from '@hermeslabs/ui';
 import { App } from 'antd';
 import { BrainIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -18,8 +18,8 @@ import { Flexbox } from 'react-layout-kit';
 import { useAiInfraStore } from '@/store/aiInfra/store';
 import { CreateAiProviderParams } from '@/types/aiProvider';
 
-import { CUSTOM_PROVIDER_SDK_OPTIONS } from '../customProviderSdkOptions';
 import { KeyVaultsConfigKey, LLMProviderApiTokenKey, LLMProviderBaseUrlKey } from '../../const';
+import { CUSTOM_PROVIDER_SDK_OPTIONS } from '../customProviderSdkOptions';
 
 interface CreateNewProviderProps {
   onClose?: () => void;

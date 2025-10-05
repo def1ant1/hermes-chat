@@ -1,6 +1,6 @@
+import { IconAvatarProps, ModelIcon, ProviderIcon } from '@hermeslabs/icons';
 import { ChatModelCard } from '@hermeslabs/types';
-import { IconAvatarProps, ModelIcon, ProviderIcon } from '@lobehub/icons';
-import { Avatar, Icon, Tag, Text, Tooltip } from '@lobehub/ui';
+import { Avatar, Icon, Tag, Text, Tooltip } from '@hermeslabs/ui';
 import { createStyles, useResponsive } from 'antd-style';
 import {
   Infinity,

@@ -1,4 +1,4 @@
-import { DeploymentOption } from '@lobehub/market-types';
+import { DeploymentOption } from '@hermeslabs/market-types';
 
 import { DiscoverMcpDetail } from '@/types/discover';
 

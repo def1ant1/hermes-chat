@@ -4,7 +4,7 @@ import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 export default defineConfig({
   optimizeDeps: {
     exclude: ['crypto', 'util', 'tty'],
-    include: ['@lobehub/tts'],
+    include: ['@hermeslabs/tts'],
   },
   test: {
     alias: {

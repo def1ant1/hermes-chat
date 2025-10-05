@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert } from '@lobehub/ui';
+import { Alert } from '@hermeslabs/ui';
 import Link from 'next/link';
 import { memo } from 'react';
 import { Trans } from 'react-i18next';

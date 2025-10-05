@@ -1,5 +1,5 @@
-import { Github, ModelTag, ProviderCombine } from '@lobehub/icons';
-import { ActionIcon, Block, MaskShadow, Text } from '@lobehub/ui';
+import { Github, ModelTag, ProviderCombine } from '@hermeslabs/icons';
+import { ActionIcon, Block, MaskShadow, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { GlobeIcon } from 'lucide-react';
 import Link from 'next/link';

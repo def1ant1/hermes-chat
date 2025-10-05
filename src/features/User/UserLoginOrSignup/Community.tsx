@@ -1,5 +1,5 @@
-import { useAnalytics } from '@lobehub/analytics/react';
-import { Button } from '@lobehub/ui';
+import { useAnalytics } from '@hermeslabs/analytics/react';
+import { Button } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';

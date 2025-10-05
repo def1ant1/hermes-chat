@@ -1,4 +1,4 @@
-import { Button, Modal } from '@lobehub/ui';
+import { Button, Modal } from '@hermeslabs/ui';
 import { FormInstance } from 'antd';
 import { memo, use, useState } from 'react';
 import { useTranslation } from 'react-i18next';

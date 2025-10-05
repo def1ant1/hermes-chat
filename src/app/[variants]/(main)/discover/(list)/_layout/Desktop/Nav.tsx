@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs } from '@lobehub/ui';
+import { Tabs } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { usePathname } from 'next/navigation';
 import { rgba } from 'polished';

@@ -1,4 +1,4 @@
-import { Text } from '@lobehub/ui';
+import { Text } from '@hermeslabs/ui';
 import { Progress } from 'antd';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';

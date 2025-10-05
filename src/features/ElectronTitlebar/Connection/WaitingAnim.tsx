@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { createStyles, cx, keyframes } from 'antd-style';
 import { WifiIcon } from 'lucide-react';
 import { memo } from 'react';

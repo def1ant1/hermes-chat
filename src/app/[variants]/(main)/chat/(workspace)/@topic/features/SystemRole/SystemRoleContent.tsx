@@ -1,7 +1,7 @@
 'use client';
 
-import { ActionIcon, ScrollShadow } from '@lobehub/ui';
-import { EditableMessage } from '@lobehub/ui/chat';
+import { ActionIcon, ScrollShadow } from '@hermeslabs/ui';
+import { EditableMessage } from '@hermeslabs/ui/chat';
 import { Skeleton } from 'antd';
 import { Edit } from 'lucide-react';
 import { MouseEvent, memo, useState } from 'react';

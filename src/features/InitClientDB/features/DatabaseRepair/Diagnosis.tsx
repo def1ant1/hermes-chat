@@ -1,4 +1,4 @@
-import { Highlighter, Tag } from '@lobehub/ui';
+import { Highlighter, Tag } from '@hermeslabs/ui';
 import { Card, List, Popover } from 'antd';
 import { createStyles } from 'antd-style';
 import dayjs from 'dayjs';

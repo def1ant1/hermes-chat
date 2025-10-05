@@ -1,4 +1,4 @@
-import { Icon, Segmented } from '@lobehub/ui';
+import { Icon, Segmented } from '@hermeslabs/ui';
 import { SegmentedLabeledOption } from 'antd/es/segmented';
 import { AsteriskSquare, KeySquare, ScanFace } from 'lucide-react';
 import { memo, useState } from 'react';

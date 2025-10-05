@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Icon } from '@lobehub/ui';
+import { Button, Icon } from '@hermeslabs/ui';
 import { useSize } from 'ahooks';
 import { createStyles } from 'antd-style';
 import { ArrowRightIcon } from 'lucide-react';

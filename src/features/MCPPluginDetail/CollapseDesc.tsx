@@ -1,4 +1,4 @@
-import { Text } from '@lobehub/ui';
+import { Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { PropsWithChildren, memo } from 'react';
 

@@ -3572,7 +3572,7 @@
   },
   {
     "children": {
-      "improvements": ["Switch Modal components to @lobehub/ui."]
+      "improvements": ["Switch Modal components to @hermeslabs/ui."]
     },
     "date": "2023-09-27",
     "version": "0.80.2"
@@ -4005,7 +4005,7 @@
   },
   {
     "children": {
-      "improvements": ["Refactor plugin api with @lobehub/chat-plugins-gateway."]
+      "improvements": ["Refactor plugin api with @hermeslabs/chat-plugins-gateway."]
     },
     "date": "2023-08-22",
     "version": "0.55.1"

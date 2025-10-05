@@ -1,4 +1,4 @@
-import { ActionIcon } from '@lobehub/ui';
+import { ActionIcon } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { ArrowLeftRight, XIcon } from 'lucide-react';
 import { memo } from 'react';

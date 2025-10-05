@@ -1,4 +1,4 @@
-import { Icon, Text } from '@lobehub/ui';
+import { Icon, Text } from '@hermeslabs/ui';
 import { Space } from 'antd';
 import { createStyles } from 'antd-style';
 import { Puzzle } from 'lucide-react';

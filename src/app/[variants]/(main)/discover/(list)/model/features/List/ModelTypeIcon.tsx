@@ -1,4 +1,4 @@
-import { Icon, Tooltip } from '@lobehub/ui';
+import { Icon, Tooltip } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { startCase } from 'lodash-es';
 import {

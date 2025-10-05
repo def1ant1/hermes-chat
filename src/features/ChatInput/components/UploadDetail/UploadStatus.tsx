@@ -1,5 +1,5 @@
 import { CheckCircleFilled } from '@ant-design/icons';
-import { Icon, Text } from '@lobehub/ui';
+import { Icon, Text } from '@hermeslabs/ui';
 import { Progress } from 'antd';
 import { useTheme } from 'antd-style';
 import { Loader2Icon } from 'lucide-react';

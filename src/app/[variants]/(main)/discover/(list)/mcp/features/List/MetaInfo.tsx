@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { DownloadIcon, StarIcon } from 'lucide-react';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { FileImage, FileText, FileUpIcon } from 'lucide-react';
 import { darken, lighten } from 'polished';

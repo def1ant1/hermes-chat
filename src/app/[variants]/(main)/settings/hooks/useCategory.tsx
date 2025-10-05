@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import {
   Bot,
   Brain,

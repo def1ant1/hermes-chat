@@ -1,4 +1,4 @@
-import { PluginItem } from '@lobehub/market-sdk';
+import { PluginItem } from '@hermeslabs/market-sdk';
 
 import { MCPInstallProgressMap } from '@/types/plugins';
 

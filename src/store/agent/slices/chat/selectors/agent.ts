@@ -1,4 +1,4 @@
-import { VoiceList } from '@lobehub/tts';
+import { VoiceList } from '@hermeslabs/tts';
 
 import { INBOX_SESSION_ID } from '@/const/session';
 import {

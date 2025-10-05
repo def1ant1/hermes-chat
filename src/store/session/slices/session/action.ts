@@ -1,4 +1,4 @@
-import { getSingletonAnalyticsOptional } from '@lobehub/analytics';
+import { getSingletonAnalyticsOptional } from '@hermeslabs/analytics';
 import isEqual from 'fast-deep-equal';
 import { t } from 'i18next';
 import useSWR, { SWRResponse, mutate } from 'swr';

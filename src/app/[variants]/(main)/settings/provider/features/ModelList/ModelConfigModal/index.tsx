@@ -1,4 +1,4 @@
-import { Button, Modal } from '@lobehub/ui';
+import { Button, Modal } from '@hermeslabs/ui';
 import { FormInstance } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { memo, use, useState } from 'react';

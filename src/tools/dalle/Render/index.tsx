@@ -1,4 +1,4 @@
-import { ActionIcon, PreviewGroup } from '@lobehub/ui';
+import { ActionIcon, PreviewGroup } from '@hermeslabs/ui';
 import { Download } from 'lucide-react';
 import { memo, useRef } from 'react';
 import { Flexbox } from 'react-layout-kit';

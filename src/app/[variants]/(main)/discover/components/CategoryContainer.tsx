@@ -1,4 +1,4 @@
-import { ScrollShadow } from '@lobehub/ui';
+import { ScrollShadow } from '@hermeslabs/ui';
 import { PropsWithChildren, memo } from 'react';
 
 const CategoryContainer = memo<PropsWithChildren<{ top?: number }>>(({ children, top = 64 }) => {

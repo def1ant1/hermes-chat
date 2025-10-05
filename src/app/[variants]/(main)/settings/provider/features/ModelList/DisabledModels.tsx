@@ -1,4 +1,4 @@
-import { Button, Text } from '@lobehub/ui';
+import { Button, Text } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { ChevronDown } from 'lucide-react';
 import { memo, useMemo, useState } from 'react';

@@ -1,4 +1,4 @@
-import { Alert, FormItem, Input, InputPassword } from '@lobehub/ui';
+import { Alert, FormItem, Input, InputPassword } from '@hermeslabs/ui';
 import { Button, Divider, Form, FormInstance, Radio } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { useState } from 'react';

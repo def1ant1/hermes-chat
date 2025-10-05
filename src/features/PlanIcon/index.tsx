@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { Tag } from 'antd';
 import { createStyles } from 'antd-style';
 import { Atom, Box, CircleSlash, Sparkle, Zap } from 'lucide-react';

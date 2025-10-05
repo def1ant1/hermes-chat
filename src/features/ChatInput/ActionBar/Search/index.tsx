@@ -1,4 +1,4 @@
-import { GlobeOffIcon } from '@lobehub/ui/icons';
+import { GlobeOffIcon } from '@hermeslabs/ui/icons';
 import { useTheme } from 'antd-style';
 import { Globe } from 'lucide-react';
 import { memo } from 'react';
@@ -36,11 +36,11 @@ const Search = memo(() => {
         isMobile
           ? undefined
           : async (e) => {
-            e?.preventDefault?.();
-            e?.stopPropagation?.();
-            const next = mode === 'off' ? 'auto' : 'off';
-            await updateAgentChatConfig({ searchMode: next });
-          }
+              e?.preventDefault?.();
+              e?.stopPropagation?.();
+              const next = mode === 'off' ? 'auto' : 'off';
+              await updateAgentChatConfig({ searchMode: next });
+            }
       }
       popover={{
         content: <Controls />,

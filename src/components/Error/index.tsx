@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, FluentEmoji } from '@lobehub/ui';
+import { Button, FluentEmoji } from '@hermeslabs/ui';
 import Link from 'next/link';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,4 +1,4 @@
-import { Block, Button, Form, MaterialFileTypeIcon, Select } from '@lobehub/ui';
+import { Block, Button, Form, MaterialFileTypeIcon, Select } from '@hermeslabs/ui';
 import { App } from 'antd';
 import Link from 'next/link';
 import { memo, useState } from 'react';

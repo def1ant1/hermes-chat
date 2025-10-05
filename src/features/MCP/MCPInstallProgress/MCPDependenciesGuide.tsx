@@ -1,4 +1,4 @@
-import { Button, Markdown, Snippet, Text } from '@lobehub/ui';
+import { Button, Markdown, Snippet, Text } from '@hermeslabs/ui';
 import { Card, Space } from 'antd';
 import { createStyles } from 'antd-style';
 import { motion } from 'framer-motion';

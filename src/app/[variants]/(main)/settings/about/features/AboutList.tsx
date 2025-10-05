@@ -1,6 +1,6 @@
 'use client';
 
-import { Grid } from '@lobehub/ui';
+import { Grid } from '@hermeslabs/ui';
 import { FC, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

@@ -1,4 +1,4 @@
-import { FormModal, Input } from '@lobehub/ui';
+import { FormModal, Input } from '@hermeslabs/ui';
 import { Dayjs } from 'dayjs';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,4 +1,4 @@
-import { ActionIcon, Button } from '@lobehub/ui';
+import { ActionIcon, Button } from '@hermeslabs/ui';
 import { LucideNotepadText, PlusSquareIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';

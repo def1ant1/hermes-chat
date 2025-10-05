@@ -1,5 +1,5 @@
-import { MarkdownProps } from '@lobehub/ui';
-import { EditableMessage } from '@lobehub/ui/chat';
+import { MarkdownProps } from '@hermeslabs/ui';
+import { EditableMessage } from '@hermeslabs/ui/chat';
 import { useResponsive } from 'antd-style';
 import { type ReactNode, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';

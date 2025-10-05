@@ -1,4 +1,4 @@
-import { Button } from '@lobehub/ui';
+import { Button } from '@hermeslabs/ui';
 import { memo, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Center, Flexbox } from 'react-layout-kit';

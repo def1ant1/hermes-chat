@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Form, type FormGroupItemType, Icon } from '@lobehub/ui';
+import { Button, Form, type FormGroupItemType, Icon } from '@hermeslabs/ui';
 import { App } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { HardDriveDownload, HardDriveUpload } from 'lucide-react';

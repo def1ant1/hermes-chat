@@ -1,4 +1,4 @@
-import { Icon, Text } from '@lobehub/ui';
+import { Icon, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Puzzle } from 'lucide-react';
 import { memo } from 'react';
@@ -8,7 +8,7 @@ import { Center, Flexbox } from 'react-layout-kit';
 const useStyles = createStyles(({ css, token }) => ({
   container: css`
     padding-block: ${token.paddingXL}px;
-padding-inline: ${token.paddingLG}px;
+    padding-inline: ${token.paddingLG}px;
   `,
   description: css`
     max-width: 240px;

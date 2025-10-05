@@ -1,4 +1,4 @@
-import { Markdown } from '@lobehub/ui';
+import { Markdown } from '@hermeslabs/ui';
 import { css, cx } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { useEffect } from 'react';

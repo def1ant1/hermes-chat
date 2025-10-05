@@ -1,6 +1,4 @@
 import { isDesktop } from '@hermeslabs/const';
-import { HotkeyEnum, KeyEnum } from '@hermeslabs/types';
-import { isCommandPressed } from '@hermeslabs/utils';
 import {
   ReactCodePlugin,
   ReactCodeblockPlugin,
@@ -9,9 +7,11 @@ import {
   ReactListPlugin,
   ReactMathPlugin,
   ReactTablePlugin,
-} from '@lobehub/editor';
-import { Editor, FloatMenu, SlashMenu, useEditorState } from '@lobehub/editor/react';
-import { combineKeys } from '@lobehub/ui';
+} from '@hermeslabs/editor';
+import { Editor, FloatMenu, SlashMenu, useEditorState } from '@hermeslabs/editor/react';
+import { HotkeyEnum, KeyEnum } from '@hermeslabs/types';
+import { combineKeys } from '@hermeslabs/ui';
+import { isCommandPressed } from '@hermeslabs/utils';
 import { memo, useEffect, useRef } from 'react';
 import { useHotkeysContext } from 'react-hotkeys-hook';
 

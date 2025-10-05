@@ -1,6 +1,6 @@
 'use client';
 
-import { Collapse, Icon, Tag } from '@lobehub/ui';
+import { Collapse, Icon, Tag } from '@hermeslabs/ui';
 import {
   ChartColumnBig,
   Delete,

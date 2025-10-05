@@ -1,4 +1,4 @@
-import { ActionIcon } from '@lobehub/ui';
+import { ActionIcon } from '@hermeslabs/ui';
 import { uniq } from 'lodash-es';
 import { XIcon } from 'lucide-react';
 import { memo } from 'react';

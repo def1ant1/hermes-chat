@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { BanIcon, CircleCheckBigIcon, CircleDashedIcon } from 'lucide-react';
 import { ReactNode, memo } from 'react';

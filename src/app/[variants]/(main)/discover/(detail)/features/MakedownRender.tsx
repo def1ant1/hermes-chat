@@ -1,4 +1,4 @@
-import { Markdown } from '@lobehub/ui';
+import { Markdown } from '@hermeslabs/ui';
 import { Empty } from 'antd';
 import Link from 'next/link';
 import { ReactNode, memo } from 'react';

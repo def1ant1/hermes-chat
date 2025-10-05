@@ -1,4 +1,4 @@
-import { Avatar as A } from '@lobehub/ui';
+import { Avatar as A } from '@hermeslabs/ui';
 import { type CSSProperties, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

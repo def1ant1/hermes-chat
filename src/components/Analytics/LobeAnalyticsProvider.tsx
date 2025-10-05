@@ -4,8 +4,8 @@ import {
   GoogleAnalyticsProviderConfig,
   PostHogProviderAnalyticsConfig,
   createSingletonAnalytics,
-} from '@lobehub/analytics';
-import { AnalyticsProvider } from '@lobehub/analytics/react';
+} from '@hermeslabs/analytics';
+import { AnalyticsProvider } from '@hermeslabs/analytics/react';
 import { ReactNode, memo, useMemo } from 'react';
 
 import { BUSINESS_LINE } from '@/const/analytics';

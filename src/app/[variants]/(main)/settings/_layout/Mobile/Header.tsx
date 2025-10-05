@@ -1,6 +1,6 @@
 'use client';
 
-import { ChatHeader } from '@lobehub/ui/mobile';
+import { ChatHeader } from '@hermeslabs/ui/mobile';
 import { useQueryState } from 'nuqs';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

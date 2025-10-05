@@ -1,4 +1,4 @@
-import { Avatar, Block, Text } from '@lobehub/ui';
+import { Avatar, Block, Text } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';

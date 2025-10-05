@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { FileText, GaugeIcon } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

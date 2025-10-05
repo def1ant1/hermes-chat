@@ -1,5 +1,5 @@
-import { type ActionIconGroupEvent } from '@lobehub/ui';
-import { type ChatItemProps } from '@lobehub/ui/chat';
+import { type ActionIconGroupEvent } from '@hermeslabs/ui';
+import { type ChatItemProps } from '@hermeslabs/ui/chat';
 import { FC, ReactNode } from 'react';
 
 import { LLMRoleType } from '@/types/llm';

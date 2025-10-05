@@ -80,7 +80,7 @@ getWolframCloudResults guidelines:
 
 exports[`ToolService > getToolManifest > support OpenAPI manifest > should get plugin manifest 1`] = `
 {
-  "$schema": "../node_modules/@lobehub/chat-plugin-sdk/schema.json",
+  "$schema": "../node_modules/@hermeslabs/chat-plugin-sdk/schema.json",
   "api": [
     {
       "description": "Read Course Segments",

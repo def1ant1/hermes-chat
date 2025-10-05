@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
 
 import { LobeTool } from '@/types/tool';
 import { LobeToolCustomPlugin } from '@/types/tool/plugin';

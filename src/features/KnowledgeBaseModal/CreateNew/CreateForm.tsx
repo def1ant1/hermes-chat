@@ -1,4 +1,4 @@
-import { Button, Form, Input, TextArea } from '@lobehub/ui';
+import { Button, Form, Input, TextArea } from '@hermeslabs/ui';
 import { useRouter } from 'next/navigation';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

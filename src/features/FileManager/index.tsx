@@ -1,6 +1,6 @@
 'use client';
 
-import { Text } from '@lobehub/ui';
+import { Text } from '@hermeslabs/ui';
 import dynamic from 'next/dynamic';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';

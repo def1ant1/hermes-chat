@@ -1,4 +1,4 @@
-import { PluginChannel } from '@lobehub/chat-plugin-sdk/client';
+import { PluginChannel } from '@hermeslabs/chat-plugin-sdk/client';
 import { useEffect } from 'react';
 
 export const useOnPluginStateUpdate = (callback: (key: string, value: any) => void) => {

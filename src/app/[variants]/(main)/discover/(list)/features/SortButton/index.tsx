@@ -1,4 +1,4 @@
-import { Dropdown, DropdownMenuItemType, Icon } from '@lobehub/ui';
+import { Dropdown, DropdownMenuItemType, Icon } from '@hermeslabs/ui';
 import { Button } from 'antd';
 import { ArrowDownWideNarrow, ChevronDown } from 'lucide-react';
 import { usePathname } from 'next/navigation';

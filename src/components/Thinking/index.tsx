@@ -1,5 +1,5 @@
 import { ChatCitationItem } from '@hermeslabs/types';
-import { ActionIcon, CopyButton, Icon, Markdown, ScrollShadow } from '@lobehub/ui';
+import { ActionIcon, CopyButton, Icon, Markdown, ScrollShadow } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AtomIcon, ChevronDown, ChevronRight } from 'lucide-react';

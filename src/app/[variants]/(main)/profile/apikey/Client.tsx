@@ -1,7 +1,7 @@
 'use client';
 
 import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
-import { Button } from '@lobehub/ui';
+import { Button } from '@hermeslabs/ui';
 import { useMutation } from '@tanstack/react-query';
 import { Popconfirm, Switch } from 'antd';
 import { createStyles } from 'antd-style';

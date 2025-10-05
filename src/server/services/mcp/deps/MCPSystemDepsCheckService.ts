@@ -1,4 +1,4 @@
-import { DeploymentOption, SystemDependency } from '@lobehub/market-sdk';
+import { DeploymentOption, SystemDependency } from '@hermeslabs/market-sdk';
 import debug from 'debug';
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';

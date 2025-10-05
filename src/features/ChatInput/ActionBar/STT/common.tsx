@@ -1,4 +1,4 @@
-import { Alert, Button, Highlighter } from '@lobehub/ui';
+import { Alert, Button, Highlighter } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Mic, MicOff } from 'lucide-react';
 import { memo, useState } from 'react';

@@ -35,8 +35,8 @@ const nextConfig: NextConfig = {
       '@emoji-mart/react',
       '@emoji-mart/data',
       '@icons-pack/react-simple-icons',
-      '@lobehub/ui',
-      '@lobehub/icons',
+      '@hermeslabs/ui',
+      '@hermeslabs/icons',
       'gpt-tokenizer',
     ],
     // oidc provider depend on constructor.name

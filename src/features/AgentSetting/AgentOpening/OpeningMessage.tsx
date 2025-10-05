@@ -1,7 +1,7 @@
 'use client';
 
-import { Button } from '@lobehub/ui';
-import { EditableMessage } from '@lobehub/ui/chat';
+import { Button } from '@hermeslabs/ui';
+import { EditableMessage } from '@hermeslabs/ui/chat';
 import { createStyles } from 'antd-style';
 import { PencilLine } from 'lucide-react';
 import { memo, useCallback, useState } from 'react';

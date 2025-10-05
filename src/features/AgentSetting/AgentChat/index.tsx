@@ -1,6 +1,12 @@
 'use client';
 
-import { Form, type FormGroupItemType, ImageSelect, SliderWithInput, TextArea } from '@lobehub/ui';
+import {
+  Form,
+  type FormGroupItemType,
+  ImageSelect,
+  SliderWithInput,
+  TextArea,
+} from '@hermeslabs/ui';
 import { Switch } from 'antd';
 import { useThemeMode } from 'antd-style';
 import isEqual from 'fast-deep-equal';

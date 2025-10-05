@@ -1,4 +1,4 @@
-import { Segmented, Tag } from '@lobehub/ui';
+import { Segmented, Tag } from '@hermeslabs/ui';
 import { ReactNode, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';

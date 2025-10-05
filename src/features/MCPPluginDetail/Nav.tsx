@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Tabs, TabsProps, Tag } from '@lobehub/ui';
+import { Icon, Tabs, TabsProps, Tag } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import {
   BookOpenIcon,

@@ -1,4 +1,4 @@
-import { CategoryItem, CategoryListQuery } from '@lobehub/market-sdk';
+import { CategoryItem, CategoryListQuery } from '@hermeslabs/market-sdk';
 import { type SWRResponse } from 'swr';
 import type { StateCreator } from 'zustand/vanilla';
 
@@ -6,11 +6,7 @@ import { useClientDataSWR } from '@/libs/swr';
 import { discoverService } from '@/services/discover';
 import { DiscoverStore } from '@/store/discover';
 import { globalHelpers } from '@/store/global/helpers';
-import {
-  DiscoverMcpDetail,
-  McpListResponse,
-  McpQueryParams,
-} from '@/types/discover';
+import { DiscoverMcpDetail, McpListResponse, McpQueryParams } from '@/types/discover';
 
 export interface MCPAction {
   useFetchMcpDetail: (params: {

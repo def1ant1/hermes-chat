@@ -1,4 +1,4 @@
-import type { ActionIconGroupItemType } from '@lobehub/ui';
+import type { ActionIconGroupItemType } from '@hermeslabs/ui';
 import {
   Copy,
   DownloadIcon,

@@ -1,5 +1,5 @@
-import type { IconType } from '@lobehub/icons';
-import type { LobeChatProps } from '@lobehub/ui/brand';
+import type { IconType } from '@hermeslabs/icons';
+import type { LobeChatProps } from '@hermeslabs/ui/brand';
 import { createStyles, useTheme } from 'antd-style';
 import Image, { ImageProps } from 'next/image';
 import { ReactNode, forwardRef, memo } from 'react';

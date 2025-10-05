@@ -1,4 +1,4 @@
-import { IEditor } from '@lobehub/editor';
+import { IEditor } from '@hermeslabs/editor';
 import { useMemo } from 'react';
 
 import { useChatInputStore } from '@/features/ChatInput/store';

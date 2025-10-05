@@ -1,7 +1,7 @@
 'use client';
 
-import { ActionIcon } from '@lobehub/ui';
-import { ChatHeader } from '@lobehub/ui/mobile';
+import { ActionIcon } from '@hermeslabs/ui';
+import { ChatHeader } from '@hermeslabs/ui/mobile';
 import { MessageSquarePlus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';

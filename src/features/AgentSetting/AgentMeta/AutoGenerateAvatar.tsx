@@ -1,4 +1,4 @@
-import { ActionIcon } from '@lobehub/ui';
+import { ActionIcon } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { Wand2 } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -9,7 +9,7 @@ import { Flexbox } from 'react-layout-kit';
 import { useGlobalStore } from '@/store/global';
 import { globalGeneralSelectors } from '@/store/global/selectors';
 
-const EmojiPicker = dynamic(() => import('@lobehub/ui/es/EmojiPicker'), { ssr: false });
+const EmojiPicker = dynamic(() => import('@hermeslabs/ui/es/EmojiPicker'), { ssr: false });
 
 export interface AutoGenerateAvatarProps {
   background?: string;

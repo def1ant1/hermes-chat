@@ -1,4 +1,4 @@
-import { ActionIcon, Text } from '@lobehub/ui';
+import { ActionIcon, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { RotateCwIcon, Trash2 } from 'lucide-react';

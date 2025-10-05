@@ -1,5 +1,5 @@
-import { CategoryItem, CategoryListQuery, MarketSDK } from '@lobehub/market-sdk';
-import { CallReportRequest, InstallReportRequest } from '@lobehub/market-types';
+import { CategoryItem, CategoryListQuery, MarketSDK } from '@hermeslabs/market-sdk';
+import { CallReportRequest, InstallReportRequest } from '@hermeslabs/market-types';
 import dayjs from 'dayjs';
 import debug from 'debug';
 import matter from 'gray-matter';
@@ -609,7 +609,7 @@ export class DiscoverService {
     }
 
     // 在 Edge Runtime 环境中使用了 Node.js 的 path 模块，但 Edge Runtime 不支持所有 Node.js API
-    // 这个函数使用了 @lobehub/chat-plugin-sdk/openapi，该包最终依赖了 @apidevtools/swagger-parser，而这个包在 Edge Runtime 环境中使用了不被支持的 Node.js path 模块。
+    // 这个函数使用了 @hermeslabs/chat-plugin-sdk/openapi，该包最终依赖了 @apidevtools/swagger-parser，而这个包在 Edge Runtime 环境中使用了不被支持的 Node.js path 模块。
     // try {
     //   const manifest = await getToolManifest(plugin.manifest);
     //

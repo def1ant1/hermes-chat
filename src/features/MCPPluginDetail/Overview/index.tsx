@@ -1,4 +1,4 @@
-import { Collapse, Markdown } from '@lobehub/ui';
+import { Collapse, Markdown } from '@hermeslabs/ui';
 import qs from 'query-string';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

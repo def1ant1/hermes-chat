@@ -1,4 +1,8 @@
-import { ActionIconGroup, type ActionIconGroupEvent, type ActionIconGroupProps } from '@lobehub/ui';
+import {
+  ActionIconGroup,
+  type ActionIconGroupEvent,
+  type ActionIconGroupProps,
+} from '@hermeslabs/ui';
 import { App } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { useSearchParams } from 'next/navigation';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Tooltip } from '@lobehub/ui';
+import { Button, Tooltip } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { SettingsIcon } from 'lucide-react';
 import { memo, useState } from 'react';

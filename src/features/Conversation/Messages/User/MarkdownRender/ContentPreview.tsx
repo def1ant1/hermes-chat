@@ -1,4 +1,4 @@
-import { Button, Markdown, MaskShadow } from '@lobehub/ui';
+import { Button, Markdown, MaskShadow } from '@hermeslabs/ui';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 

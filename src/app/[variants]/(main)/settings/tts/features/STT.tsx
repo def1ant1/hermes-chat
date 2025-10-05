@@ -1,6 +1,6 @@
 'use client';
 
-import { Form, type FormGroupItemType, Icon, Select } from '@lobehub/ui';
+import { Form, type FormGroupItemType, Icon, Select } from '@hermeslabs/ui';
 import { Skeleton, Switch } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { Loader2Icon } from 'lucide-react';

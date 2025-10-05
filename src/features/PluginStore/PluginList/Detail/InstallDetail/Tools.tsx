@@ -1,4 +1,4 @@
-import { Block, Collapse, Highlighter, Markdown, Tag } from '@lobehub/ui';
+import { Block, Collapse, Highlighter, Markdown, Tag } from '@hermeslabs/ui';
 import { Empty } from 'antd';
 import { isString } from 'lodash-es';
 import { markdownToTxt } from 'markdown-to-txt';

@@ -1,4 +1,4 @@
-import { useAudioPlayer } from '@lobehub/tts/react';
+import { useAudioPlayer } from '@hermeslabs/tts/react';
 import { memo, useCallback } from 'react';
 
 import { useChatStore } from '@/store/chat';

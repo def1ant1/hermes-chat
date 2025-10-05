@@ -1,4 +1,4 @@
-import { Markdown, Mermaid } from '@lobehub/ui';
+import { Markdown, Mermaid } from '@hermeslabs/ui';
 import dynamic from 'next/dynamic';
 import { memo } from 'react';
 

@@ -1,12 +1,13 @@
-import { Input } from '@lobehub/ui';
+import { Input } from '@hermeslabs/ui';
 import { Checkbox, Form, FormInstance } from 'antd';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import MaxTokenSlider from '@/components/MaxTokenSlider';
 import { useIsMobile } from '@/hooks/useIsMobile';
-import { AiModelType } from '../../../../../../../../../packages/model-bank/src/types/aiModel';
 import { ChatModelCard } from '@/types/llm';
+
+import { AiModelType } from '../../../../../../../../../packages/model-bank/src/types/aiModel';
 
 interface ModelConfigFormProps {
   idEditable?: boolean;

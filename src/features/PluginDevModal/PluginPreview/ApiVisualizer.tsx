@@ -1,6 +1,6 @@
 'use client';
 
-import { Block, Icon, Tag } from '@lobehub/ui';
+import { Block, Icon, Tag } from '@hermeslabs/ui';
 import { Input, Space } from 'antd';
 import { createStyles } from 'antd-style';
 import { ChevronDown, ChevronRight } from 'lucide-react';

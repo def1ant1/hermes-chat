@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { ChartColumnBigIcon, KeyIcon, ShieldCheck, UserCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';

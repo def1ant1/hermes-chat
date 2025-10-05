@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Modal, Text } from '@lobehub/ui';
+import { Button, Modal, Text } from '@hermeslabs/ui';
 import { Table } from 'antd';
 import { createStyles } from 'antd-style';
 import { Info } from 'lucide-react';

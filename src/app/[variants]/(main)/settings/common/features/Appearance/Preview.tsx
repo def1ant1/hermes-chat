@@ -1,4 +1,4 @@
-import { Block } from '@lobehub/ui';
+import { Block } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { rgba } from 'polished';
 import { memo } from 'react';

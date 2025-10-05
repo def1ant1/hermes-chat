@@ -1,4 +1,4 @@
-import { Icon, Markdown, Segmented } from '@lobehub/ui';
+import { Icon, Markdown, Segmented } from '@hermeslabs/ui';
 import { BoltIcon, FileIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

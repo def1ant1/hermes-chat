@@ -1,6 +1,6 @@
 'use client';
 
-import { ChatHeader } from '@lobehub/ui/mobile';
+import { ChatHeader } from '@hermeslabs/ui/mobile';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'nextjs-toploader/app';
 import { memo } from 'react';

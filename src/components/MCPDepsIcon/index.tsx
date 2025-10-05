@@ -1,5 +1,6 @@
 'use client';
 
+import { Icon, Tooltip } from '@hermeslabs/ui';
 import {
   SiApachemaven,
   SiBlender,
@@ -18,7 +19,6 @@ import {
   SiRust,
   SiYarn,
 } from '@icons-pack/react-simple-icons';
-import { Icon, Tooltip } from '@lobehub/ui';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';
 

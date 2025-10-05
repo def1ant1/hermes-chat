@@ -1,4 +1,4 @@
-import { copyToClipboard } from '@lobehub/ui';
+import { copyToClipboard } from '@hermeslabs/ui';
 import { App } from 'antd';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';

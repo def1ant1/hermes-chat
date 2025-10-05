@@ -1,4 +1,4 @@
-const config = require('@lobehub/lint').semanticRelease;
+const config = require('@hermeslabs/lint').semanticRelease;
 
 config.plugins.push([
   '@semantic-release/exec',

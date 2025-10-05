@@ -1,5 +1,5 @@
-import { ActionIconGroup } from '@lobehub/ui';
-import type { ChatActionsBarProps } from '@lobehub/ui/chat';
+import { ActionIconGroup } from '@hermeslabs/ui';
+import type { ChatActionsBarProps } from '@hermeslabs/ui/chat';
 import { memo } from 'react';
 
 import { useChatListActionsBar } from '../hooks/useChatListActionsBar';

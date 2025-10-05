@@ -1,4 +1,4 @@
-import { ActionIcon, Button, Tag } from '@lobehub/ui';
+import { ActionIcon, Button, Tag } from '@hermeslabs/ui';
 import { Badge } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { LucideRotateCw, LucideTrash2, RotateCwIcon } from 'lucide-react';

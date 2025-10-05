@@ -1,4 +1,4 @@
-const config = require('@lobehub/lint').remarklint;
+const config = require('@hermeslabs/lint').remarklint;
 
 module.exports = {
   ...config,

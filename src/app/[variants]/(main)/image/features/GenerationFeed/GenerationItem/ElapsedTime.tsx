@@ -1,6 +1,6 @@
 'use client';
 
-import { Text } from '@lobehub/ui';
+import { Text } from '@hermeslabs/ui';
 import { useEffect, useRef, useState } from 'react';
 
 interface ElapsedTimeProps {
