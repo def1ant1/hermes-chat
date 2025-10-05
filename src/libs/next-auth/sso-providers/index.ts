@@ -1,3 +1,5 @@
+import { HERMES_OAUTH_BRAND_KEY } from '@/const/app';
+
 import Auth0 from './auth0';
 import Authelia from './authelia';
 import Authentik from './authentik';
@@ -15,7 +17,7 @@ import Okta from './okta';
 import WeChat from './wechat';
 import Zitadel from './zitadel';
 
-export const ssoProviders = [
+const rawProviders = [
   Auth0,
   Authentik,
   AzureAD,
@@ -32,4 +34,9 @@ export const ssoProviders = [
   Google,
   Cognito,
   Okta,
-];
+] as const;
+
+export const ssoProviders = rawProviders.map((descriptor) => ({
+  ...descriptor,
+  brand: HERMES_OAUTH_BRAND_KEY,
+}));

@@ -7,6 +7,11 @@
 ### 🔄 Refactors
 
 - **branding**: retarget Hermes Chat canonical constants, URLs, and npm package metadata to the Hermes Labs namespace so downstream services consume the new brand system defaults.
+- **platform**: Introduced `packages/const/src/app.ts`, Hermes-first locale cookies, and webhook/OAuth brand descriptors to standardise automation across web, desktop, and self-hosted deployments.
+
+### 📝 Docs
+
+- Documented the Hermes enterprise rollout, self-hosting configuration, and desktop transition constraints so operators can follow the automated lint/test workflow without manual guesswork.
 
 ### [Version 1.133.6](https://github.com/lobehub/lobe-chat/compare/v1.133.5...v1.133.6)
 

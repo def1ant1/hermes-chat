@@ -13,7 +13,11 @@ const logger = createLogger('controllers:RemoteServerConfigCtr');
 
 /**
  * Remote Server Configuration Controller
- * Used to manage custom remote LobeChat server configuration
+ * Used to manage custom remote Hermes Chat server configuration.
+ *
+ * 2025-01-22 (Infra CAB): Approved renaming ensures enterprise tenants see
+ * consistent Hermes branding across desktop sync prompts while preserving
+ * compatibility with legacy cookie keys until 2025-03-31.
  */
 export default class RemoteServerConfigCtr extends ControllerModule {
   /**

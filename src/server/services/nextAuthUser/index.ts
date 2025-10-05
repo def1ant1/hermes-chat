@@ -3,6 +3,7 @@ import { and, eq } from 'drizzle-orm';
 import { Adapter, AdapterAccount } from 'next-auth/adapters';
 import { NextResponse } from 'next/server';
 
+import { HERMES_OAUTH_BRAND_KEY } from '@/const/app';
 import { UserModel } from '@/database/models/user';
 import {
   UserItem,
@@ -56,7 +57,10 @@ export class NextAuthUserService {
         `[${provider}]: Webhooks handler user "${JSON.stringify({ provider, providerAccountId })}" update for "${JSON.stringify(data)}", but no user was found by the providerAccountId.`,
       );
     }
-    return NextResponse.json({ message: 'user updated', success: true }, { status: 200 });
+    return NextResponse.json(
+      { brand: HERMES_OAUTH_BRAND_KEY, message: 'user updated', success: true },
+      { status: 200 },
+    );
   };
 
   safeSignOutUser = async ({
@@ -81,7 +85,10 @@ export class NextAuthUserService {
         `[${provider}]: Webhooks handler user "${JSON.stringify({ provider, providerAccountId })}" to signout", but no user was found by the providerAccountId.`,
       );
     }
-    return NextResponse.json({ message: 'user signed out', success: true }, { status: 200 });
+    return NextResponse.json(
+      { brand: HERMES_OAUTH_BRAND_KEY, message: 'user signed out', success: true },
+      { status: 200 },
+    );
   };
 
   createAuthenticator: NonNullable<Adapter['createAuthenticator']> = async (authenticator) => {

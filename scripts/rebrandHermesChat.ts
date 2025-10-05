@@ -129,6 +129,13 @@ function splitIntoWords(source: string): string[] {
     .filter(Boolean);
 }
 
+function toPascalCase(words: string[]): string {
+  return words
+    .map((word) => word.toLowerCase())
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('');
+}
+
 function deriveThemePrefixVariants(brand: BrandMetadata): {
   constant: string;
   kebab: string;
@@ -452,6 +459,25 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => {
       const prefix = deriveThemePrefixVariants(brand);
       return `${prefix.snake}_theme_neutral_color`;
+    },
+  },
+  {
+    description: 'Locale cookie constants adopt Hermes prefixes.',
+    id: 'locale-cookie-constant',
+    pattern: /\bLOBE_LOCALE\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.constant}_LOCALE`;
+    },
+  },
+  {
+    description: 'Desktop user-agent strings follow the Hermes product handle.',
+    id: 'desktop-user-agent-handle',
+    pattern: /LobeChat-Desktop/g,
+    replacement: (brand) => {
+      const base = splitIntoWords(brand.name);
+      const fallback = base.length ? base : ['hermes', 'chat'];
+      return `${toPascalCase(fallback)}-Desktop`;
     },
   },
 ];

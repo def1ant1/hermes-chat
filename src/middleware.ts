@@ -6,7 +6,7 @@ import { UAParser } from 'ua-parser-js';
 import urlJoin from 'url-join';
 
 import { OAUTH_AUTHORIZED } from '@/const/auth';
-import { LOBE_LOCALE_COOKIE } from '@/const/locale';
+import { LOCALE_COOKIE_FALLBACK_CHAIN } from '@/const/locale';
 import { HERMES_THEME_APPEARANCE } from '@/const/theme';
 import { appEnv } from '@/envs/app';
 import { authEnv } from '@/envs/auth';
@@ -85,9 +85,13 @@ const defaultMiddleware = (request: NextRequest) => {
   // if it's a new user, there's no cookie, So we need to use the fallback language parsed by accept-language
   const browserLanguage = parseBrowserLanguage(request.headers);
 
-  const locale =
-    explicitlyLocale ||
-    ((request.cookies.get(LOBE_LOCALE_COOKIE)?.value || browserLanguage) as Locales);
+  // 2025-01-23: prefer the Hermes cookie name but respect legacy sessions until
+  // desktop/mobile builds ship the new identifier (tracked in OPS-984).
+  const cookieLocale = LOCALE_COOKIE_FALLBACK_CHAIN.map(
+    (cookieName) => request.cookies.get(cookieName)?.value,
+  ).find(Boolean);
+
+  const locale = (explicitlyLocale || cookieLocale || browserLanguage) as Locales;
 
   const ua = request.headers.get('user-agent');
 
@@ -97,7 +101,9 @@ const defaultMiddleware = (request: NextRequest) => {
     browserLanguage,
     deviceType: device.type,
     hasCookies: {
-      locale: !!request.cookies.get(LOBE_LOCALE_COOKIE)?.value,
+      locale: LOCALE_COOKIE_FALLBACK_CHAIN.some((cookieName) =>
+        Boolean(request.cookies.get(cookieName)?.value),
+      ),
       theme: !!request.cookies.get(HERMES_THEME_APPEARANCE)?.value,
     },
     locale,

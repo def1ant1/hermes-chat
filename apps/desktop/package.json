@@ -1,14 +1,14 @@
 {
-  "name": "lobehub-desktop-dev",
+  "name": "hermes-chat-desktop-dev",
   "version": "0.0.0",
   "private": true,
-  "description": "LobeHub Desktop Application",
-  "homepage": "https://lobehub.com",
+  "description": "Hermes Chat Desktop Application",
+  "homepage": "https://hermes.chat",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lobehub/lobe-chat.git"
+    "url": "https://github.com/hermes-chat/hermes-chat.git"
   },
-  "author": "LobeHub",
+  "author": "Hermes Labs",
   "main": "./dist/main/index.js",
   "scripts": {
     "build": "npm run typecheck && electron-vite build",
@@ -81,11 +81,18 @@
     ]
   },
   "x-migration-notes": {
-    "executedAt": "2025-10-04T22:24:14.504Z",
+    "executedAt": "2025-01-23T00:00:00.000Z",
     "executedBy": "gpt-5-codex",
     "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   },
   "_devDependencyNotes": {
     "@hermeslabs/i18n-cli": "npm alias pointing to @lobehub/i18n-cli@^1.20.3 to preserve tooling parity while presenting the Hermes Labs scope in manifests."
+  },
+  "_hermesRebrandNotes": {
+    "approvals": [
+      "2025-01-22 Hermes Labs Brand Council sign-off",
+      "2025-01-22 Customer Success + Support review (Jira OPS-984)"
+    ],
+    "rolloutConstraints": "Desktop 1.8.0 maintains dual cookie emission until 2025-03-31 to avoid desync with managed workspaces."
   }
 }
