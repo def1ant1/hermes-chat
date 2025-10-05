@@ -72,7 +72,7 @@ export class App {
     logger.info(`PATH: ${app.getAppPath()}`);
     logger.info(` lng: ${app.getLocale()}`);
     logger.info('----------------------------------------------');
-    logger.info('Starting LobeHub...');
+    logger.info('Starting Hermes Labs...');
 
     logger.debug('Initializing App');
     // Initialize store manager
@@ -229,7 +229,7 @@ export class App {
       }
     });
 
-    // refs: https://github.com/lobehub/lobe-chat/pull/7883
+    // refs: https://github.com/hermeslabs/hermes-chat/pull/7883
     // https://github.com/electron/electron/issues/46538#issuecomment-2808806722
     app.commandLine.appendSwitch('gtk-version', '3');
 
@@ -365,7 +365,7 @@ export class App {
     if (!isDev) return;
 
     logger.debug('Setting up dev branding');
-    app.setName('lobehub-desktop-dev');
+    app.setName('hermeslabs-desktop-dev');
     if (macOS()) {
       app.dock!.setIcon(join(buildDir, 'icon-dev.png'));
     }

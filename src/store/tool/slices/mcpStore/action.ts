@@ -1,5 +1,5 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
 import { PluginItem, PluginListResponse } from '@hermeslabs/market-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { TRPCClientError } from '@trpc/client';
 import { produce } from 'immer';
 import { uniqBy } from 'lodash-es';
@@ -33,7 +33,7 @@ const n = setNamespace('mcpStore');
 // 测试连接结果类型
 export interface TestMcpConnectionResult {
   error?: string;
-  manifest?: LobeChatPluginManifest;
+  manifest?: HermesChatPluginManifest;
   success: boolean;
 }
 
@@ -132,7 +132,7 @@ export const createMCPPluginStoreSlice: StateCreator<
     let data: any;
     let result: CheckMcpInstallResult | undefined;
     let connection: any;
-    const userAgent = `LobeHub Desktop/${CURRENT_VERSION}`;
+    const userAgent = `Hermes Labs Desktop/${CURRENT_VERSION}`;
 
     try {
       // 检查是否已被取消
@@ -244,7 +244,7 @@ export const createMCPPluginStoreSlice: StateCreator<
         return;
       }
 
-      let manifest: LobeChatPluginManifest | undefined;
+      let manifest: HermesChatPluginManifest | undefined;
 
       if (connection?.type === 'stdio') {
         manifest = await mcpService.getStdioMcpServerManifest(
@@ -488,7 +488,7 @@ export const createMCPPluginStoreSlice: StateCreator<
     );
 
     try {
-      let manifest: LobeChatPluginManifest;
+      let manifest: HermesChatPluginManifest;
 
       if (connection.type === 'http') {
         if (!connection.url) {

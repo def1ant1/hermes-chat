@@ -1,6 +1,5 @@
 import { and, eq, inArray, lt } from 'drizzle-orm';
 
-import { LobeChatDatabase } from '../type';
 import {
   AsyncTaskError,
   AsyncTaskErrorType,
@@ -9,15 +8,16 @@ import {
 } from '@/types/asyncTask';
 
 import { AsyncTaskSelectItem, NewAsyncTaskItem, asyncTasks } from '../schemas';
+import { HermesChatDatabase } from '../type';
 
 // set timeout to about 5 minutes, and give 2s padding time
 export const ASYNC_TASK_TIMEOUT = 298 * 1000;
 
 export class AsyncTaskModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

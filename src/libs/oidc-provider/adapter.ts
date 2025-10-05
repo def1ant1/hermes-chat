@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import {
   oidcAccessTokens,
   oidcAuthorizationCodes,
@@ -16,10 +16,10 @@ import { eq, sql } from 'drizzle-orm';
 const log = debug('lobe-oidc:adapter');
 
 class OIDCAdapter {
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
   private name: string;
 
-  constructor(name: string, db: LobeChatDatabase) {
+  constructor(name: string, db: HermesChatDatabase) {
     log('[%s] Constructor called with name: %s', name, name);
 
     this.name = name;
@@ -529,7 +529,7 @@ class OIDCAdapter {
   /**
    * 创建适配器工厂
    */
-  static createAdapterFactory = (db: LobeChatDatabase) => {
+  static createAdapterFactory = (db: HermesChatDatabase) => {
     log('Creating adapter factory with database instance');
     return (name: string) => new OIDCAdapter(name, db);
   };

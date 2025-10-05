@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { ClientSecretPayload } from '@hermeslabs/types';
 
 import { AsyncTaskModel } from '@/database/models/asyncTask';
@@ -18,7 +18,7 @@ export class ChunkService {
   private fileModel: FileModel;
   private asyncTaskModel: AsyncTaskModel;
 
-  constructor(serverDB: LobeChatDatabase, userId: string) {
+  constructor(serverDB: HermesChatDatabase, userId: string) {
     this.userId = userId;
 
     this.chunkClient = new ContentChunk();

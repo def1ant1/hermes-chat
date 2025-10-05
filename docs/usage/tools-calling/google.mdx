@@ -31,11 +31,11 @@ Overview of Google Gemini series model Tools Calling capabilities:
 
 Test Instruction: Instruction ①
 
-<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/a5a35431-2a15-4e79-97d5-502637f829bc" />
+<Video src="https://github.com/hermeslabs/hermes-chat/assets/28616219/a5a35431-2a15-4e79-97d5-502637f829bc" />
 
 In the json output from Gemini, the name is incorrect, so Hermes Chat cannot recognize which plugin it called. (In the input, the name of the weather plugin is `realtime-weather____fetchCurrentWeather`, while Gemini returns `weather____fetchCurrentWeather`).
 
-<Image alt="Tools Calling for Simple Instruction in Gemini 1.5 Pro" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/1e077799-c25e-43c7-8492-c5c0bb9aed9b" />
+<Image alt="Tools Calling for Simple Instruction in Gemini 1.5 Pro" src="https://github.com/hermeslabs/hermes-chat/assets/28616219/1e077799-c25e-43c7-8492-c5c0bb9aed9b" />
 
 <details>
   <summary>Original Tools Calling Output:</summary>
@@ -59,7 +59,7 @@ In the json output from Gemini, the name is incorrect, so Hermes Chat cannot rec
 
 Test Instruction: Instruction ②
 
-<Image alt="Tools Calling for Complex Instruction in Gemini 1.5 Pro" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/a2454a60-3271-4786-861f-d49ceac1316e" />
+<Image alt="Tools Calling for Complex Instruction in Gemini 1.5 Pro" src="https://github.com/hermeslabs/hermes-chat/assets/28616219/a2454a60-3271-4786-861f-d49ceac1316e" />
 
 When testing a set of complex instructions, Google throws an error directly:
 
@@ -74,7 +74,7 @@ The error above mentions that it does not support a schema containing `maxItems`
 Related issues:
 
 - [Support for minItems and maxItems for FunctionDeclarationSchemaType.ARRAY?](https://github.com/google-gemini/generative-ai-js/issues/200)
-- [Gemini Models unusable when dalle plugin is enabled](https://github.com/hermeslabs/lobe-chat/issues/2537)
+- [Gemini Models unusable when dalle plugin is enabled](https://github.com/hermeslabs/hermes-chat/issues/2537)
 
 Based on the above two tests, Google's Tool Calling capability seems to be supported, but it is almost unusable in daily use. I personally think it is equivalent to false advertising.
 
@@ -84,7 +84,7 @@ Based on the above two tests, Google's Tool Calling capability seems to be suppo
 
 Test Command: Command ①
 
-<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/6cab77e8-d761-4a91-8325-a61748cebac1" />
+<Video src="https://github.com/hermeslabs/hermes-chat/assets/28616219/6cab77e8-d761-4a91-8325-a61748cebac1" />
 
 Gemini 1.5 Flash is more abstract, and the call ends as soon as it is made. Combining the original output below, it can be seen that Gemini 1.5 Flash does not output Tool Calling data, so it can be considered completely unusable.
 

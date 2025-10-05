@@ -1,4 +1,4 @@
-name: lobe-chat-development
+name: hermes-chat-development
 services:
   network-service:
     image: alpine

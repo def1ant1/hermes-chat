@@ -1,6 +1,6 @@
 import { createStore, del, get, set } from 'idb-keyval';
 
-const BROWSER_S3_DB_NAME = 'lobechat-local-s3';
+const BROWSER_S3_DB_NAME = 'hermes-chat-local-s3';
 
 export class BrowserS3Storage {
   private store;

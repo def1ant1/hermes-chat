@@ -62,7 +62,7 @@ export const LobeNewAPIAI = createRouterRuntime({
     chatCompletion: () => process.env.DEBUG_NEWAPI_CHAT_COMPLETION === '1',
   },
   defaultHeaders: {
-    'X-Client': 'LobeHub',
+    'X-Client': 'Hermes Labs',
   },
   id: ModelProvider.NewAPI,
   models: async ({ client: openAIClient }) => {
@@ -108,7 +108,7 @@ export const LobeNewAPIAI = createRouterRuntime({
         // - model_price: 直接指定的价格（优先使用）
         // - completion_ratio: 输出价格相对于输入价格的倍率
         //
-        // LobeChat 需要的格式：美元/百万 token
+        // Hermes Chat 需要的格式：美元/百万 token
 
         let inputPrice: number | undefined;
         let outputPrice: number | undefined;
@@ -120,7 +120,7 @@ export const LobeNewAPIAI = createRouterRuntime({
             // Assumption: model_price is the price per 1,000 tokens (i.e., $/1K tokens).
             // To convert to price per 1,000,000 tokens ($/1M tokens), multiply by 1,000,000 / 1,000 = 1,000.
             // Since the base price is $0.002/1K tokens, multiplying by 2 gives $2/1M tokens.
-            // Therefore, inputPrice = model_price * 2 converts the price to $/1M tokens for LobeChat.
+            // Therefore, inputPrice = model_price * 2 converts the price to $/1M tokens for Hermes Chat.
             inputPrice = pricing.model_price * 2;
           } else if (pricing.model_ratio) {
             // model_ratio × $0.002/1K = model_ratio × $2/1M

@@ -78,7 +78,7 @@ export default class McpInstallController extends ControllerModule {
 
       // 映射协议来源
 
-      const isOfficialMarket = marketId === 'lobehub';
+      const isOfficialMarket = marketId === 'hermescloud';
 
       // 对于官方市场，schema 是可选的；对于第三方市场，schema 是必需的
       if (!isOfficialMarket && !schemaParam) {

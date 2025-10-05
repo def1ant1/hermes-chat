@@ -1,14 +1,14 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 
 import { BaseModel } from '@/database/_deprecated/core';
-import { LobeTool } from '@/types/tool';
+import { HermesTool } from '@/types/tool';
 import { merge } from '@/utils/merge';
 
 import { DB_Plugin, DB_PluginSchema } from '../schemas/plugin';
 
 export interface InstallPluginParams {
   identifier: string;
-  manifest?: LobeChatPluginManifest;
+  manifest?: HermesChatPluginManifest;
   type: 'plugin' | 'customPlugin';
 }
 
@@ -30,7 +30,7 @@ class _PluginModel extends BaseModel {
     return this._putWithSync(merge(old, dbPlugin), plugin.identifier);
   };
 
-  batchCreate = async (plugins: LobeTool[]) => {
+  batchCreate = async (plugins: HermesTool[]) => {
     const dbPlugins = plugins.map((item) => this.mapToDBPlugin(item));
 
     return this._batchAdd(dbPlugins);
@@ -54,7 +54,7 @@ class _PluginModel extends BaseModel {
 
   // **************** Helper *************** //
 
-  mapToDBPlugin(plugin: LobeTool) {
+  mapToDBPlugin(plugin: HermesTool) {
     return { ...plugin, id: plugin.identifier } as DB_Plugin;
   }
 }

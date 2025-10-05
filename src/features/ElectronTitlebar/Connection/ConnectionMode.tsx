@@ -1,6 +1,6 @@
 import { StorageMode, StorageModeEnum } from '@hermeslabs/electron-client-ipc';
 import { Button, Input } from '@hermeslabs/ui';
-import { LobeHub } from '@hermeslabs/ui/brand';
+import { LobeHub as HermesLabs } from '@hermeslabs/ui/brand';
 import { createStyles } from 'antd-style';
 import { ComputerIcon, Server } from 'lucide-react';
 import { memo, useCallback, useState } from 'react';
@@ -151,10 +151,10 @@ const ConnectionMode = memo<ConnectionModeProps>(({ setIsOpen, setWaiting }) => 
             </div>
           </Flexbox>
           <Option
-            description={t('sync.lobehubCloud.description')}
-            icon={LobeHub}
+            description={t('sync.HermesLabsCloud.description')}
+            icon={HermesLabs}
             isSelected={selectedOption === 'cloud'}
-            label={t('sync.lobehubCloud.title')}
+            label={t('sync.HermesLabsCloud.title')}
             onClick={handleSelectOption}
             value={StorageModeEnum.Cloud}
           />
@@ -178,7 +178,7 @@ const ConnectionMode = memo<ConnectionModeProps>(({ setIsOpen, setWaiting }) => 
                       setUrlError(validateUrl(newUrl));
                     }}
                     onClick={(e) => e.stopPropagation()}
-                    placeholder="https://your-lobechat.com"
+                    placeholder="https://your-hermes.chat"
                     status={urlError ? 'error' : undefined}
                     value={selfHostedUrl}
                   />

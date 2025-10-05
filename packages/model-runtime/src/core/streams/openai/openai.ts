@@ -285,8 +285,8 @@ const transformOpenAIStream = (
       // DeepSeek reasoner will put thinking in the reasoning_content field
       // litellm and not set content = null when processing reasoning content
       // en: siliconflow and aliyun bailian has encountered a situation where both content and reasoning_content are present, so need to handle it
-      // refs: https://github.com/lobehub/lobe-chat/issues/5681 (siliconflow)
-      // refs: https://github.com/lobehub/lobe-chat/issues/5956 (aliyun bailian)
+      // refs: https://github.com/hermeslabs/hermes-chat/issues/5681 (siliconflow)
+      // refs: https://github.com/hermeslabs/hermes-chat/issues/5956 (aliyun bailian)
       if (typeof content === 'string' && typeof reasoning_content === 'string') {
         if (content === '' && reasoning_content === '') {
           content = null;

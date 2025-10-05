@@ -74,11 +74,11 @@ describe('userProfileSelectors', () => {
     it('should return email when signed in but username is not existed in UserStore', () => {
       const store: UserStore = {
         isSignedIn: true,
-        user: { email: 'demo@lobehub.com' },
+        user: { email: 'demo@hermes.chat' },
         enableAuth: () => true,
       } as UserStore;
 
-      expect(userProfileSelectors.displayUserName(store)).toBe('demo@lobehub.com');
+      expect(userProfileSelectors.displayUserName(store)).toBe('demo@hermes.chat');
     });
 
     it('should return "anonymous" when not signed in', () => {
@@ -95,10 +95,10 @@ describe('userProfileSelectors', () => {
   describe('email', () => {
     it('should return user email if exist', () => {
       const store: UserStore = {
-        user: { email: 'demo@lobehub.com' },
+        user: { email: 'demo@hermes.chat' },
       } as UserStore;
 
-      expect(userProfileSelectors.email(store)).toBe('demo@lobehub.com');
+      expect(userProfileSelectors.email(store)).toBe('demo@hermes.chat');
     });
 
     it('should return empty string if not exist', () => {

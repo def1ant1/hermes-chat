@@ -5,9 +5,9 @@ Hermes Chat's built-in web crawling module for intelligent extraction of web con
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – install with `npm install @hermeslabs/web-crawler` to ensure the crawler stays patched.
-> - **Compatibility window:** Mirrored releases continue for `@lobechat/web-crawler` until 2025-09-30, after which the legacy scope will no longer receive updates.
+> - **Compatibility window:** Mirrored releases continue for `@hermeslabs/web-crawler` until 2025-09-30, after which the legacy scope will no longer receive updates.
 > - **Rollback path:** See the [official rollback plan](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) for emergency reversions.
-> - **Breaking-change watch-outs:** Automation scripts that pin allowlists to `@lobechat` must be updated to add `@hermeslabs` before the compatibility deadline.
+> - **Breaking-change watch-outs:** Automation scripts that pin allowlists to `@hermeschat` must be updated to add `@hermeslabs` before the compatibility deadline.
 
 ## 📝 Introduction
 

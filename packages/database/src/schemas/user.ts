@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix  */
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { boolean, jsonb, pgTable, primaryKey, text } from 'drizzle-orm/pg-core';
 
 import { DEFAULT_PREFERENCE } from '@/const/user';
@@ -58,7 +58,7 @@ export const userInstalledPlugins = pgTable(
 
     identifier: text('identifier').notNull(),
     type: text('type', { enum: ['plugin', 'customPlugin'] }).notNull(),
-    manifest: jsonb('manifest').$type<LobeChatPluginManifest>(),
+    manifest: jsonb('manifest').$type<HermesChatPluginManifest>(),
     settings: jsonb('settings'),
     customParams: jsonb('custom_params').$type<CustomPluginParams>(),
 

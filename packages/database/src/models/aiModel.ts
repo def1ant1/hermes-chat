@@ -8,13 +8,13 @@ import {
 } from 'model-bank';
 
 import { AiModelSelectItem, NewAiModelItem, aiModels } from '../schemas';
-import { LobeChatDatabase } from '../type';
+import { HermesChatDatabase } from '../type';
 
 export class AiModelModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

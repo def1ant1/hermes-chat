@@ -5,7 +5,7 @@
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – install via `npm install @hermeslabs/file-loaders` to align with the new namespace.
-> - **Compatibility window:** Legacy `@lobechat/file-loaders` artifacts receive mirrored releases until 2025-09-30; pinning beyond that date will produce 404 errors from npm.
+> - **Compatibility window:** Legacy `@hermeslabs/file-loaders` artifacts receive mirrored releases until 2025-09-30; pinning beyond that date will produce 404 errors from npm.
 > - **Rollback path:** See the [scope migration rollback guide](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) to revert if downstream consumers are not yet ready.
 > - **Breaking-change watch-outs:** Custom bundlers that whitelist package scopes must add `@hermeslabs` before the compatibility sunset to avoid tree-shaking outages.
 

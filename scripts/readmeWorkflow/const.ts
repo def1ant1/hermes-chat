@@ -13,12 +13,12 @@ export interface DataItem {
   meta: { avatar: string; description: string; tags: string[]; title: string };
 }
 
-export const AGENT_URL = 'https://chat-agents.lobehub.com/index.json';
+export const AGENT_URL = 'https://chat-agents.hermes.chat/index.json';
 export const AGENT_I18N_URL = (lang: string) =>
-  `https://chat-agents.lobehub.com/index.${lang}.json`;
-export const PLUGIN_URL = 'https://chat-plugins.lobehub.com/index.json';
+  `https://chat-agents.hermes.chat/index.${lang}.json`;
+export const PLUGIN_URL = 'https://chat-plugins.hermes.chat/index.json';
 export const PLUGIN_I18N_URL = (lang: string) =>
-  `https://chat-plugins.lobehub.com/index.${lang}.json`;
+  `https://chat-plugins.hermes.chat/index.${lang}.json`;
 
 export const AGENT_SPLIT = '<!-- AGENT LIST -->';
 export const PLUGIN_SPLIT = '<!-- PLUGIN LIST -->';

@@ -357,8 +357,8 @@
       "version": "Sürüm"
     },
     "official": {
-      "badge": "LobeHub Resmi Eklentisi",
-      "description": "Bu eklenti LobeHub tarafından resmi olarak geliştirilmiş ve bakımı yapılmaktadır, sıkı güvenlik denetiminden geçmiştir, güvenle kullanabilirsiniz.",
+      "badge": "Hermes Labs Resmi Eklentisi",
+      "description": "Bu eklenti Hermes Labs tarafından resmi olarak geliştirilmiş ve bakımı yapılmaktadır, sıkı güvenlik denetiminden geçmiştir, güvenle kullanabilirsiniz.",
       "loadingMessage": "Eklenti detayları alınıyor...",
       "loadingTitle": "Yükleniyor",
       "title": "Resmi Eklenti Yükle"
@@ -461,7 +461,7 @@
     "tabs": {
       "installed": "Yüklü",
       "mcp": "MCP Eklentileri",
-      "old": "LobeChat Eklentileri"
+      "old": "Hermes Chat Eklentileri"
     },
     "title": "Eklenti Mağazası"
   },

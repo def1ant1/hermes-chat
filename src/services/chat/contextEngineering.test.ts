@@ -273,8 +273,8 @@ describe('contextEngineering', () => {
     const systemMessage = result.find((msg) => msg.role === 'system');
     expect(systemMessage).toBeDefined();
     // Check for characteristic content of the actual INBOX_GUIDE_SYSTEMROLE
-    expect(systemMessage!.content).toContain('LobeChat Support Assistant');
-    expect(systemMessage!.content).toContain('LobeHub');
+    expect(systemMessage!.content).toContain('Hermes Chat Support Assistant');
+    expect(systemMessage!.content).toContain('Hermes Labs');
     expect(Object.keys(systemMessage!).length).toEqual(2);
   });
 

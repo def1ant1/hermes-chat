@@ -10,7 +10,7 @@ strings, so update the script alongside any code edits.
 
 | Token                        | Purpose                                                              | Notes                                                                                            |
 | ---------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `HERMES_THEME_APPEARANCE`    | Stores the resolved appearance (`light`, `dark`, or `auto` fallback) | Legacy `LOBE_THEME_APPEARANCE` alias ships until 2025-Q4 for downstream compatibility.           |
+| `HERMES_THEME_APPEARANCE`    | Stores the resolved appearance (`light`, `dark`, or `auto` fallback) | Legacy `HERMES_THEME_APPEARANCE` alias ships until 2025-Q4 for downstream compatibility.         |
 | `HERMES_THEME_PRIMARY_COLOR` | Persists user-selected accent color                                  | Written from the client via `AppTheme` and validated through `tests/unit/themeCookies.test.tsx`. |
 | `HERMES_THEME_NEUTRAL_COLOR` | Persists neutral palette selection                                   | Middleware consumes this value to initialize CSS variables before hydration.                     |
 

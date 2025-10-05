@@ -14,12 +14,12 @@ import {
   topics,
   users,
 } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { idGenerator } from '../../utils/idGenerator';
 import { SessionModel } from '../session';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'session-user';
 const sessionModel = new SessionModel(serverDB, userId);
@@ -248,7 +248,7 @@ describe('SessionModel', () => {
 
     it('should return sessions with matching description', async () => {
       // The sessions has no title and desc,
-      // see: https://github.com/lobehub/lobe-chat/pull/4725
+      // see: https://github.com/hermeslabs/hermes-chat/pull/4725
       await serverDB.insert(sessions).values([
         { id: '1', userId },
         { id: '2', userId },

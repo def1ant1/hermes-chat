@@ -16,8 +16,8 @@ export default [
     extra: [
       {
         links: {
-          cn: 'https://github.com/lobehub/lobe-chat-agents/blob/main/README.zh-CN.md',
-          en: 'https://github.com/lobehub/lobe-chat-agents',
+          cn: 'https://github.com/hermeslabs/hermes-chat-agents/blob/main/README.zh-CN.md',
+          en: 'https://github.com/hermeslabs/hermes-chat-agents',
         },
         titles: {
           cn: '助手索引与提交',
@@ -32,8 +32,8 @@ export default [
     extra: [
       {
         links: {
-          cn: 'https://chat-plugin-sdk.lobehub.com',
-          en: 'https://chat-plugin-sdk.lobehub.com',
+          cn: 'https://chat-plugin-sdk.hermes.chat',
+          en: 'https://chat-plugin-sdk.hermes.chat',
         },
         titles: {
           cn: '插件 SDK 文档',
@@ -42,8 +42,8 @@ export default [
       },
       {
         links: {
-          cn: 'https://github.com/lobehub/lobe-chat-plugins/blob/main/README.zh-CN.md',
-          en: 'https://github.com/lobehub/lobe-chat-plugins',
+          cn: 'https://github.com/hermeslabs/hermes-chat-plugins/blob/main/README.zh-CN.md',
+          en: 'https://github.com/hermeslabs/hermes-chat-plugins',
         },
         titles: {
           cn: '插件索引与提交',

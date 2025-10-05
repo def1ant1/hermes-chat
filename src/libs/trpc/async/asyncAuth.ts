@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { TRPCError } from '@trpc/server';
 import debug from 'debug';
 
@@ -23,7 +23,7 @@ export const asyncAuth = asyncTrpc.middleware(async (opts) => {
 
   try {
     log('Looking up user in database: %s', ctx.userId);
-    const result = await UserModel.findById(ctx.serverDB as LobeChatDatabase, ctx.userId);
+    const result = await UserModel.findById(ctx.serverDB as HermesChatDatabase, ctx.userId);
 
     if (!result) {
       log('User not found in database: %s', ctx.userId);

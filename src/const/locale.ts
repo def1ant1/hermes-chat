@@ -14,7 +14,7 @@ export const HERMES_LOCALE_COOKIE = 'HERMES_LOCALE';
  * historical cookie name. Remove after the desktop + mobile clients complete
  * their Hermes cookie rollout (target Q3 2025).
  */
-export const LEGACY_LOBE_LOCALE_COOKIE = 'LOBE_LOCALE';
+export const LEGACY_LOBE_LOCALE_COOKIE = 'HERMES_LOCALE';
 
 /**
  * Temporary alias that keeps automation and unit tests stable while we phase

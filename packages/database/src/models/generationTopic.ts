@@ -1,17 +1,17 @@
 import { and, desc, eq } from 'drizzle-orm';
 
-import { LobeChatDatabase } from '../type';
 import { FileService } from '@/server/services/file';
 import { GenerationAsset, ImageGenerationTopic } from '@/types/generation';
 
 import { GenerationTopicItem, generationTopics } from '../schemas/generation';
+import { HermesChatDatabase } from '../type';
 
 export class GenerationTopicModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
   private fileService: FileService;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
     this.fileService = new FileService(db, userId);

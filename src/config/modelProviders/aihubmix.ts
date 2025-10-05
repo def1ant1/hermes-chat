@@ -25,7 +25,7 @@ const AiHubMix: ModelProviderCard = {
     showModelFetcher: true,
   },
   // Growth asked us to hold a short-lived redirect here while their analytics
-  // warehouse migrates dashboards off of the lobehub source. Once Segment is
+  // warehouse migrates dashboards off of the hermeslabs source. Once Segment is
   // re-keyed we can collapse this into a direct AiHubMix deep link.
   url: AIHUBMIX_LANDING_REFERRAL,
 };

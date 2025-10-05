@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { loadFile } from '@hermeslabs/file-loaders';
 import debug from 'debug';
 
@@ -8,7 +8,7 @@ import { LobeDocument } from '@/types/document';
 
 import { FileService } from '../file';
 
-const log = debug('lobe-chat:service:document');
+const log = debug('hermes-chat:service:document');
 
 export class DocumentService {
   userId: string;
@@ -16,7 +16,7 @@ export class DocumentService {
   private documentModel: DocumentModel;
   private fileService: FileService;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.fileModel = new FileModel(db, userId);
     this.fileService = new FileService(db, userId);

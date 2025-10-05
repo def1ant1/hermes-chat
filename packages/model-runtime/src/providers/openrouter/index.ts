@@ -47,8 +47,8 @@ export const LobeOpenRouterAI = createOpenAICompatibleRuntime({
   },
   constructorOptions: {
     defaultHeaders: {
-      'HTTP-Referer': 'https://lobehub.com',
-      'X-Title': 'LobeHub',
+      'HTTP-Referer': 'https://hermes.chat',
+      'X-Title': 'Hermes Labs',
     },
   },
   debug: {
@@ -75,9 +75,11 @@ export const LobeOpenRouterAI = createOpenAICompatibleRuntime({
 
       const inputModalities = endpointModel?.input_modalities || model.input_modalities;
 
-      let displayName = model.slug?.toLowerCase().includes('deepseek') && !model.short_name?.toLowerCase().includes('deepseek')
-        ? (model.name ?? model.slug)
-        : (model.short_name ?? model.name ?? model.slug);
+      let displayName =
+        model.slug?.toLowerCase().includes('deepseek') &&
+        !model.short_name?.toLowerCase().includes('deepseek')
+          ? (model.name ?? model.slug)
+          : (model.short_name ?? model.name ?? model.slug);
 
       const inputPrice = formatPrice(endpoint?.pricing?.prompt);
       const outputPrice = formatPrice(endpoint?.pricing?.completion);

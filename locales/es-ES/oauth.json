@@ -21,7 +21,7 @@
     "scope": {
       "email": "Acceder a su dirección de correo electrónico",
       "offline_access": "Permitir que el cliente acceda a sus datos",
-      "openid": "Autenticarse con su cuenta de LobeChat",
+      "openid": "Autenticarse con su cuenta de Hermes Chat",
       "profile": "Acceder a su información básica de perfil (nombre, foto, etc.)",
       "sync-read": "Leer sus datos sincronizados",
       "sync-write": "Escribir y actualizar sus datos sincronizados"

@@ -9,7 +9,7 @@ export interface WindowsDispatchEvents {
   interceptRoute: (params: InterceptRouteParams) => InterceptRouteResponse;
 
   /**
-   * open the LobeHub Devtools
+   * open the Hermes Labs Devtools
    */
   openDevtools: () => void;
 

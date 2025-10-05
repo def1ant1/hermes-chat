@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /**
- * 本动态加载模块使用 SystemJS 实现，在 Lobe Chat 中缓存了 React、ReactDOM、antd、antd-style 四个模块。
+ * 本动态加载模块使用 SystemJS 实现，在 Hermes Chat 中缓存了 React、ReactDOM、antd、antd-style 四个模块。
  */
 import * as antd from 'antd';
 import * as AntdStyle from 'antd-style';

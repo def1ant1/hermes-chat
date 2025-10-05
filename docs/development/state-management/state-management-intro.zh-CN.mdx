@@ -169,7 +169,7 @@ export const useSessionStore = createWithEqualityFn<SessionStore>()(
   persist(
     subscribeWithSelector(
       devtools(createStore, {
-        name: 'LobeChat_Session' + (isDev ? '_DEV' : ''),
+        name: 'HermesChat_Session' + (isDev ? '_DEV' : ''),
       }),
     ),
     persistOptions,

@@ -1,7 +1,7 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { uniq } from 'lodash-es';
 
-import { InstallPluginMeta, LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { HermesToolCustomPlugin, InstallPluginMeta } from '@/types/tool/plugin';
 
 import type { ToolStoreState } from '../../initialState';
 
@@ -33,7 +33,7 @@ const getPluginMetaById = (id: string) => (s: ToolStoreState) => {
 
 const getCustomPluginById = (id: string) => (s: ToolStoreState) =>
   installedPlugins(s).find((i) => i.identifier === id && i.type === 'customPlugin') as
-    | LobeToolCustomPlugin
+    | HermesToolCustomPlugin
     | undefined;
 
 const getToolManifestById = (id: string) => (s: ToolStoreState) =>
@@ -49,7 +49,7 @@ const storeAndInstallPluginsIdList = (s: ToolStoreState) =>
 
 const installedPluginManifestList = (s: ToolStoreState) =>
   installedPlugins(s)
-    .map((i) => i.manifest as LobeChatPluginManifest)
+    .map((i) => i.manifest as HermesChatPluginManifest)
     .filter((i) => !!i);
 
 const installedPluginMetaList = (s: ToolStoreState) =>

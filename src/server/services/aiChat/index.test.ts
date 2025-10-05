@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { describe, expect, it, vi } from 'vitest';
 
 import { MessageModel } from '@/database/models/message';
@@ -13,7 +13,7 @@ vi.mock('@/server/services/file');
 
 describe('AiChatService', () => {
   it('getMessagesAndTopics should fetch messages and topics concurrently', async () => {
-    const serverDB = {} as unknown as LobeChatDatabase;
+    const serverDB = {} as unknown as HermesChatDatabase;
 
     const mockQueryMessages = vi.fn().mockResolvedValue([{ id: 'm1' }]);
     const mockQueryTopics = vi.fn().mockResolvedValue([{ id: 't1' }]);
@@ -38,7 +38,7 @@ describe('AiChatService', () => {
   });
 
   it('getMessagesAndTopics should not query topics when includeTopic is false', async () => {
-    const serverDB = {} as unknown as LobeChatDatabase;
+    const serverDB = {} as unknown as HermesChatDatabase;
 
     const mockQueryMessages = vi.fn().mockResolvedValue([]);
     vi.mocked(MessageModel).mockImplementation(() => ({ query: mockQueryMessages }) as any);

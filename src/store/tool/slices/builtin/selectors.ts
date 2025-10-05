@@ -1,18 +1,18 @@
 import { DalleManifest } from '@/tools/dalle';
-import { LobeToolMeta } from '@/types/tool/tool';
+import { HermesToolMeta } from '@/types/tool/tool';
 
 import type { ToolStoreState } from '../../initialState';
 
 const metaList =
   (showDalle?: boolean) =>
-  (s: ToolStoreState): LobeToolMeta[] =>
+  (s: ToolStoreState): HermesToolMeta[] =>
     s.builtinTools
       .filter(
         (item) =>
           !item.hidden && (!showDalle ? item.identifier !== DalleManifest.identifier : true),
       )
       .map((t) => ({
-        author: 'LobeHub',
+        author: 'Hermes Labs',
         identifier: t.identifier,
         meta: t.manifest.meta,
         type: 'builtin',

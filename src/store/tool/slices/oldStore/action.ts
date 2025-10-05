@@ -10,7 +10,7 @@ import { toolService } from '@/services/tool';
 import { globalHelpers } from '@/store/global/helpers';
 import { pluginStoreSelectors } from '@/store/tool/selectors';
 import { DiscoverPluginItem, PluginListResponse, PluginQueryParams } from '@/types/discover';
-import { LobeTool } from '@/types/tool';
+import { HermesTool } from '@/types/tool';
 import { PluginInstallError } from '@/types/tool/plugin';
 import { sleep } from '@/utils/sleep';
 import { setNamespace } from '@/utils/storeDebug';
@@ -38,7 +38,7 @@ export interface PluginStoreAction {
     progress: PluginInstallProgress | undefined,
   ) => void;
 
-  useFetchInstalledPlugins: (enabled: boolean) => SWRResponse<LobeTool[]>;
+  useFetchInstalledPlugins: (enabled: boolean) => SWRResponse<HermesTool[]>;
   useFetchPluginList: (params: PluginQueryParams) => SWRResponse<PluginListResponse>;
   useFetchPluginStore: () => SWRResponse<DiscoverPluginItem[]>;
 }
@@ -209,7 +209,7 @@ export const createPluginStoreSlice: StateCreator<
   },
 
   useFetchInstalledPlugins: (enabled: boolean) =>
-    useSWR<LobeTool[]>(enabled ? INSTALLED_PLUGINS : null, pluginService.getInstalledPlugins, {
+    useSWR<HermesTool[]>(enabled ? INSTALLED_PLUGINS : null, pluginService.getInstalledPlugins, {
       fallbackData: [],
       onSuccess: (data) => {
         set(

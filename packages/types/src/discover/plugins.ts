@@ -1,5 +1,8 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
-import { LobeChatPluginMeta, Meta } from '@hermeslabs/chat-plugin-sdk/lib/types/market';
+import type {
+  HermesChatPluginManifest,
+  HermesChatPluginMeta,
+  HermesChatPluginMetaSummary,
+} from '../plugins/meta';
 
 export enum PluginCategory {
   All = 'all',
@@ -24,7 +27,9 @@ export enum PluginSorts {
   Title = 'title',
 }
 
-export interface DiscoverPluginItem extends Omit<LobeChatPluginMeta, 'meta'>, Meta {
+export interface DiscoverPluginItem
+  extends Omit<HermesChatPluginMeta, 'meta'>,
+    HermesChatPluginMetaSummary {
   category?: PluginCategory;
 }
 
@@ -47,6 +52,6 @@ export interface PluginListResponse {
 }
 
 export interface DiscoverPluginDetail extends Omit<DiscoverPluginItem, 'manifest'> {
-  manifest?: LobeChatPluginManifest | string;
+  manifest?: HermesChatPluginManifest | string;
   related: DiscoverPluginItem[];
 }

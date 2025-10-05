@@ -47,13 +47,13 @@ export const generateMetadata = async (props: DiscoverPageProps) => {
   return {
     authors: [
       { name: author, url: homepage },
-      { name: 'LobeHub', url: 'https://github.com/lobehub' },
-      { name: 'LobeChat', url: 'https://github.com/lobehub/lobe-chat' },
+      { name: 'Hermes Labs', url: 'https://github.com/hermeslabs' },
+      { name: 'Hermes Chat', url: 'https://github.com/hermeslabs/hermes-chat' },
     ],
     keywords: tags,
     ...metadataModule.generate({
       alternate: true,
-      canonical: urlJoin('https://lobehub.com/agent', identifier),
+      canonical: urlJoin('https://hermes.chat/agent', identifier),
       description: description,
       locale,
       tags: tags,

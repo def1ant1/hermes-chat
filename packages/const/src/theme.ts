@@ -24,8 +24,8 @@ export const HERMES_THEME_NEUTRAL_COLOR = 'HERMES_THEME_NEUTRAL_COLOR';
  * `HERMES_THEME_*` constants.
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention -- preserving historical export casing until removal window closes
-export const LOBE_THEME_APPEARANCE = HERMES_THEME_APPEARANCE;
+export { HERMES_THEME_APPEARANCE as LOBE_THEME_APPEARANCE };
 // eslint-disable-next-line @typescript-eslint/naming-convention -- preserving historical export casing until removal window closes
-export const LOBE_THEME_PRIMARY_COLOR = HERMES_THEME_PRIMARY_COLOR;
+export { HERMES_THEME_PRIMARY_COLOR as LOBE_THEME_PRIMARY_COLOR };
 // eslint-disable-next-line @typescript-eslint/naming-convention -- preserving historical export casing until removal window closes
-export const LOBE_THEME_NEUTRAL_COLOR = HERMES_THEME_NEUTRAL_COLOR;
+export { HERMES_THEME_NEUTRAL_COLOR as LOBE_THEME_NEUTRAL_COLOR };

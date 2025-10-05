@@ -11,7 +11,7 @@ const execFileAsync = promisify(execFile);
  * This dramatically reduces the chance of skew between automation steps and keeps future migrations
  * trivial—change the constants here and every consumer will inherit the update.
  */
-export const LEGACY_SCOPE = '@lobechat/';
+export const LEGACY_SCOPE = '@hermeslabs/';
 export const TARGET_SCOPE = '@hermeslabs/';
 
 /**

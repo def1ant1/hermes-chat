@@ -16,7 +16,7 @@ const updateDayjs = async (lang: string) => {
   let dayJSLocale;
   try {
     // dayjs locale is using `en` instead of `en-US`
-    // refs: https://github.com/lobehub/lobe-chat/issues/3396
+    // refs: https://github.com/hermeslabs/hermes-chat/issues/3396
     const locale = lang!.toLowerCase() === 'en-us' ? 'en' : lang!.toLowerCase();
 
     dayJSLocale = await import(`dayjs/locale/${locale}.js`);

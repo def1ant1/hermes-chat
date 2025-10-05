@@ -23,7 +23,7 @@ tags:
 
 A Hermes Chat plugin consists of the following components:
 
-1. **Plugin Index**: Used to display basic information about the plugin, including the plugin name, description, author, version, and a link to the plugin manifest. The official plugin index can be found at [lobe-chat-plugins](https://github.com/hermeslabs/lobe-chat-plugins). If you want to publish a plugin to the official plugin marketplace, you need to [submit a PR](https://github.com/hermeslabs/lobe-chat-plugins/pulls) to this repository.
+1. **Plugin Index**: Used to display basic information about the plugin, including the plugin name, description, author, version, and a link to the plugin manifest. The official plugin index can be found at [hermes-chat-plugins](https://github.com/hermeslabs/hermes-chat-plugins). If you want to publish a plugin to the official plugin marketplace, you need to [submit a PR](https://github.com/hermeslabs/hermes-chat-plugins/pulls) to this repository.
 2. **Plugin Manifest**: Used to describe the functionality of the plugin, including the server-side description, frontend display information, and version number. For a detailed introduction to the manifest, see [manifest][manifest-docs-url].
 3. **Plugin Services**: Used to implement the server-side and frontend modules described in the plugin manifest, as follows:
    - **Server-side**: Needs to implement the interface capabilities described in the `api` section of the manifest.
@@ -36,7 +36,7 @@ This section will introduce how to add and use a custom plugin in Hermes Chat.
 <Steps>
   ### Create and Launch Plugin Project
 
-  You need to first create a plugin project locally, you can use the template we have prepared [lobe-chat-plugin-template][lobe-chat-plugin-template-url]
+  You need to first create a plugin project locally, you can use the template we have prepared [hermes-chat-plugin-template][hermes-chat-plugin-template-url]
 
   ```bash
   $ git clone https://github.com/hermeslabs/chat-plugin-template.git
@@ -141,7 +141,7 @@ In actual development, you can modify the plugin's description list according to
 
 ### Project Structure
 
-The [lobe-chat-plugin-template][lobe-chat-plugin-template-url] template project uses Next.js as the development framework, and its core directory structure is as follows:
+The [hermes-chat-plugin-template][hermes-chat-plugin-template-url] template project uses Next.js as the development framework, and its core directory structure is as follows:
 
 ```
 ➜  chat-plugin-template
@@ -208,7 +208,7 @@ export default createLobeChatPluginGateway();
 > \[!NOTE]
 > The helper currently exports `createLobeChatPluginGateway`. An aligned `createHermesChatPluginGateway` alias is scheduled for release; adopt it once published to avoid future breaking changes.
 
-[`@hermeslabs/chat-plugins-gateway`](https://github.com/hermeslabs/chat-plugins-gateway) contains the implementation of the plugin gateway in Hermes Chat [here](https://github.com/hermeslabs/lobe-chat/blob/main/src/pages/api/plugins.api.ts). You can use this package directly to create a gateway, allowing Hermes Chat to access the local plugin service.
+[`@hermeslabs/chat-plugins-gateway`](https://github.com/hermeslabs/chat-plugins-gateway) contains the implementation of the plugin gateway in Hermes Chat [here](https://github.com/hermeslabs/hermes-chat/blob/main/src/pages/api/plugins.api.ts). You can use this package directly to create a gateway, allowing Hermes Chat to access the local plugin service.
 
 ### Plugin UI Interface
 
@@ -231,7 +231,7 @@ In the template we provide, we use React + Next.js + [antd](https://ant.design/)
 As for plugin communication, we provide relevant methods in [`@hermeslabs/chat-plugin-sdk`](https://github.com/hermeslabs/chat-plugin-sdk) to simplify communication between the plugin and Hermes Chat. You can actively retrieve the current message data from Hermes Chat using the `fetchPluginMessage` method. For detailed information about this method, see: [fetchPluginMessage][fetch-plugin-message-url].
 
 ```tsx
-import { fetchPluginMessage } from '@hermeslabs/chat-plugin-sdk';
+import { fetchPluginMessage } from '@hermeslabs/types';
 import { memo, useEffect, useState } from 'react';
 
 import { ResponseData } from '@/type';
@@ -256,16 +256,16 @@ export default Render;
 
 Once you have finished developing the plugin, you can deploy it using your preferred method, such as using Vercel or packaging it as a Docker container for release, and so on.
 
-If you want more people to use your plugin, feel free to [submit it for listing](https://github.com/hermeslabs/lobe-chat-plugins) on the plugin marketplace.
+If you want more people to use your plugin, feel free to [submit it for listing](https://github.com/hermeslabs/hermes-chat-plugins) on the plugin marketplace.
 
 [![][submit-plugin-shield]][submit-plugin-url]
 
 ### Plugin Shield
 
-[![lobe-chat-plugin](https://img.shields.io/badge/%F0%9F%A4%AF%20%26%20%F0%9F%A7%A9%20Hermes%20Labs-Plugin-95f3d9?labelColor=black\&style=flat-square)](https://github.com/hermeslabs/lobe-chat-plugins)
+[![hermes-chat-plugin](https://img.shields.io/badge/%F0%9F%A4%AF%20%26%20%F0%9F%A7%A9%20Hermes%20Labs-Plugin-95f3d9?labelColor=black\&style=flat-square)](https://github.com/hermeslabs/hermes-chat-plugins)
 
 ```md
-[![lobe-chat-plugin](https://img.shields.io/badge/%F0%9F%A4%AF%20%26%20%F0%9F%A7%A9%20Hermes%20Labs-Plugin-95f3d9?labelColor=black&style=flat-square)](https://github.com/hermeslabs/lobe-chat-plugins)
+[![hermes-chat-plugin](https://img.shields.io/badge/%F0%9F%A4%AF%20%26%20%F0%9F%A7%A9%20Hermes%20Labs-Plugin-95f3d9?labelColor=black&style=flat-square)](https://github.com/hermeslabs/hermes-chat-plugins)
 ```
 
 ## Links
@@ -274,11 +274,11 @@ If you want more people to use your plugin, feel free to [submit it for listing]
 - **🚀 chat-plugin-template**: [https://github.com/hermeslabs/chat-plugin-template](https://github.com/hermeslabs/chat-plugin-template)
 - **🧩 chat-plugin-sdk**: [https://github.com/hermeslabs/chat-plugin-sdk](https://github.com/hermeslabs/chat-plugin-sdk)
 - **🚪 chat-plugin-gateway**: [https://github.com/hermeslabs/chat-plugins-gateway](https://github.com/hermeslabs/chat-plugins-gateway)
-- **🏪 lobe-chat-plugins**: [https://github.com/hermeslabs/lobe-chat-plugins](https://github.com/hermeslabs/lobe-chat-plugins)
+- **🏪 hermes-chat-plugins**: [https://github.com/hermeslabs/hermes-chat-plugins](https://github.com/hermeslabs/hermes-chat-plugins)
 
 [fetch-plugin-message-url]: https://github.com/hermeslabs/chat-plugin-template
-[lobe-chat-plugin-template-url]: https://github.com/hermeslabs/chat-plugin-template
+[hermes-chat-plugin-template-url]: https://github.com/hermeslabs/chat-plugin-template
 [manifest-docs-url]: https://chat-plugin-sdk.hermes.chat/guides/plugin-manifest
 [plugin-error-type-url]: https://github.com/hermeslabs/chat-plugin-template
 [submit-plugin-shield]: https://img.shields.io/badge/🧩/🏪_submit_plugin-%E2%86%92-95f3d9?labelColor=black&style=for-the-badge
-[submit-plugin-url]: https://github.com/hermeslabs/lobe-chat-plugins
+[submit-plugin-url]: https://github.com/hermeslabs/hermes-chat-plugins

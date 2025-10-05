@@ -51,8 +51,8 @@ We provide a [Docker image][docker-release-link] for you to deploy the Hermes Ch
   $ docker run -d -p 3210:3210 \
     -e OPENAI_API_KEY=sk-xxxx \
     -e ACCESS_CODE=lobe66 \
-    --name lobe-chat \
-    hermeslabs/lobe-chat
+    --name hermes-chat \
+    hermeslabs/hermes-chat
   ```
 
   Command explanation:
@@ -71,7 +71,7 @@ We provide a [Docker image][docker-release-link] for you to deploy the Hermes Ch
   <Callout type="warning">
     The official Docker image does not have a password set. It is strongly recommended to add a
     password to enhance security, otherwise you may encounter situations like [My API Key was
-    stolen!!!](https://github.com/hermeslabs/lobe-chat/issues/1123).
+    stolen!!!](https://github.com/hermeslabs/hermes-chat/issues/1123).
   </Callout>
 
   <Callout type="important">
@@ -89,8 +89,8 @@ We provide a [Docker image][docker-release-link] for you to deploy the Hermes Ch
     -e OPENAI_API_KEY=sk-xxxx \
     -e OPENAI_PROXY_URL=https://api-proxy.com/v1 \
     -e ACCESS_CODE=lobe66 \
-    --name lobe-chat \
-    hermeslabs/lobe-chat
+    --name hermes-chat \
+    hermeslabs/hermes-chat
   ```
 
   ### Crontab Automatic Update Script (Optional)
@@ -110,13 +110,13 @@ We provide a [Docker image][docker-release-link] for you to deploy the Hermes Ch
 
   ```bash
   #!/bin/bash
-  # auto-update-lobe-chat.sh
+  # auto-update-hermes-chat.sh
 
   # Set up proxy (optional)
   export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
   # Pull the latest image and store the output in a variable
-  output=$(docker pull hermeslabs/lobe-chat:latest 2>&1)
+  output=$(docker pull hermeslabs/hermes-chat:latest 2>&1)
 
   # Check if the pull command was executed successfully
   if [ $? -ne 0 ]; then
@@ -124,7 +124,7 @@ We provide a [Docker image][docker-release-link] for you to deploy the Hermes Ch
   fi
 
   # Check if the output contains a specific string
-  echo "$output" | grep -q "Image is up to date for hermeslabs/lobe-chat:latest"
+  echo "$output" | grep -q "Image is up to date for hermeslabs/hermes-chat:latest"
 
   # If the image is already up to date, do nothing
   if [ $? -eq 0 ]; then
@@ -137,14 +137,14 @@ We provide a [Docker image][docker-release-link] for you to deploy the Hermes Ch
   echo "Removed: $(docker rm -f Hermes Chat)"
 
   # Run the new container
-  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=Hermes Chat --restart=always hermeslabs/lobe-chat)"
+  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=Hermes Chat --restart=always hermeslabs/hermes-chat)"
 
   # Print the update time and version
   echo "Update time: $(date)"
-  echo "Version: $(docker inspect hermeslabs/lobe-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
+  echo "Version: $(docker inspect hermeslabs/hermes-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
 
   # Clean up unused images
-  docker images | grep 'hermeslabs/lobe-chat' | grep -v 'hermeslabs/lobe-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
+  docker images | grep 'hermeslabs/hermes-chat' | grep -v 'hermeslabs/hermes-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
   echo "Removed old images."
   ```
 
@@ -153,13 +153,13 @@ We provide a [Docker image][docker-release-link] for you to deploy the Hermes Ch
   Configure Crontab to execute the script every 5 minutes:
 
   ```bash
-  */5 * * * * /path/to/auto-update-lobe-chat.sh >> /path/to/auto-update-lobe-chat.log 2>&1
+  */5 * * * * /path/to/auto-update-hermes-chat.sh >> /path/to/auto-update-hermes-chat.log 2>&1
   ```
 </Steps>
 
-[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/lobe-chat?color=45cc11&labelColor=black&style=flat-square
-[docker-release-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/lobe-chat?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
-[docker-size-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/lobe-chat?color=369eff&labelColor=black&style=flat-square&sort=semver
+[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/hermes-chat?color=45cc11&labelColor=black&style=flat-square
+[docker-release-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/hermes-chat?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
+[docker-size-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/hermes-chat?color=369eff&labelColor=black&style=flat-square&sort=semver

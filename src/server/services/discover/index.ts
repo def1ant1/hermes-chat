@@ -88,7 +88,7 @@ export class DiscoverService {
     const deviceId = await getDeviceId();
 
     const { client_id, client_secret } = await this.market.registerClient({
-      clientName: `LobeHub ${isDesktop ? 'Desktop' : 'Web'}`,
+      clientName: `Hermes Labs ${isDesktop ? 'Desktop' : 'Web'}`,
       clientType: isDesktop ? 'desktop' : 'web',
       deviceId,
       platform: isDesktop ? process.platform : userAgent,
@@ -778,7 +778,7 @@ export class DiscoverService {
       try {
         const normalizedLocale = normalizeLocale(locale);
         const readmeUrl = urlJoin(
-          'https://raw.githubusercontent.com/lobehub/lobe-chat/refs/heads/main/docs/usage/providers',
+          'https://cdn.hermes.chat/hermes-chat/hermes-chat/refs/heads/main/docs/usage/providers',
           normalizedLocale === 'zh-CN' ? `${identifier}.zh-CN.mdx` : `${identifier}.mdx`,
         );
         log('getProviderDetail: readme URL=%s', readmeUrl);

@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 
 import { MessageModel } from '@/database/models/message';
 import { TopicModel } from '@/database/models/topic';
@@ -10,7 +10,7 @@ export class AiChatService {
   private fileService: FileService;
   private topicModel: TopicModel;
 
-  constructor(serverDB: LobeChatDatabase, userId: string) {
+  constructor(serverDB: HermesChatDatabase, userId: string) {
     this.userId = userId;
 
     this.messageModel = new MessageModel(serverDB, userId);

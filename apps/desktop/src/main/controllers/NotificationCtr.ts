@@ -39,7 +39,7 @@ export default class NotificationCtr extends ControllerModule {
 
       // 在 Windows 上设置应用用户模型 ID
       if (windows()) {
-        app.setAppUserModelId('com.lobehub.chat');
+        app.setAppUserModelId('com.hermeslabs.chat');
         logger.debug('Set Windows App User Model ID for notifications');
       }
 

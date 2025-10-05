@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { ClientSecretPayload } from '@hermeslabs/types';
 import debug from 'debug';
 import { NextRequest } from 'next/server';
@@ -11,7 +11,7 @@ const log = debug('lobe-async:context');
 export interface AsyncAuthContext {
   jwtPayload: ClientSecretPayload;
   secret: string;
-  serverDB?: LobeChatDatabase;
+  serverDB?: HermesChatDatabase;
   userId?: string | null;
 }
 
@@ -40,7 +40,7 @@ export const createAsyncRouteContext = async (request: NextRequest): Promise<Asy
   const lobeChatAuthorization = request.headers.get(LOBE_CHAT_AUTH_HEADER);
 
   log('Authorization header present: %s', !!authorization);
-  log('LobeChat auth header present: %s', !!lobeChatAuthorization);
+  log('Hermes Chat auth header present: %s', !!lobeChatAuthorization);
 
   if (!authorization) {
     log('No authorization header found');
@@ -48,8 +48,8 @@ export const createAsyncRouteContext = async (request: NextRequest): Promise<Asy
   }
 
   if (!lobeChatAuthorization) {
-    log('No LobeChat authorization header found');
-    throw new Error('No LobeChat authorization header found');
+    log('No Hermes Chat authorization header found');
+    throw new Error('No Hermes Chat authorization header found');
   }
 
   const secret = authorization?.split(' ')[1];
@@ -59,7 +59,7 @@ export const createAsyncRouteContext = async (request: NextRequest): Promise<Asy
     log('Initializing KeyVaultsGateKeeper');
     const gateKeeper = await KeyVaultsGateKeeper.initWithEnvKey();
 
-    log('Decrypting LobeChat authorization');
+    log('Decrypting Hermes Chat authorization');
     const { plaintext } = await gateKeeper.decrypt(lobeChatAuthorization);
 
     log('Parsing decrypted authorization data');

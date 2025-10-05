@@ -1,5 +1,7 @@
-import { LobeChatPluginManifest, LobeChatPluginMeta } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { describe, expect, it } from 'vitest';
+
+import type { DiscoverPluginItem } from '@/types/discover';
 
 import { ToolStoreState, initialState } from '../../initialState';
 import { customPluginSelectors } from './selectors';
@@ -18,7 +20,7 @@ const mockState = {
         identifier: 'plugin-1',
         api: [{ name: 'api-1' }],
         type: 'default',
-      } as LobeChatPluginManifest,
+      } as HermesChatPluginManifest,
     },
     {
       identifier: 'plugin-2',
@@ -37,14 +39,22 @@ const mockState = {
       createdAt: '2021-01-01',
       meta: { avatar: 'avatar-url-1', title: 'Plugin 1' },
       homepage: 'http://homepage-1.com',
-    } as LobeChatPluginMeta,
+      manifest: 'https://plugins.hermes.chat/plugin-1/manifest.json',
+      schemaVersion: 1,
+      avatar: 'avatar-url-1',
+      title: 'Plugin 1',
+    } as DiscoverPluginItem,
     {
       identifier: 'plugin-2',
       author: 'Author 2',
       createdAt: '2022-02-02',
       meta: { avatar: 'avatar-url-2', title: 'Plugin 2' },
       homepage: 'http://homepage-2.com',
-    },
+      manifest: 'https://plugins.hermes.chat/plugin-2/manifest.json',
+      schemaVersion: 1,
+      avatar: 'avatar-url-2',
+      title: 'Plugin 2',
+    } as DiscoverPluginItem,
   ],
 } as ToolStoreState;
 

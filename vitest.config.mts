@@ -26,7 +26,7 @@ export default defineConfig({
     coverage: {
       all: false,
       exclude: [
-        // https://github.com/lobehub/lobe-chat/pull/7265
+        // https://github.com/hermeslabs/hermes-chat/pull/7265
         ...coverageConfigDefaults.exclude,
         '__mocks__/**',
         '**/packages/**',

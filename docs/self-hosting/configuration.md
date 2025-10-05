@@ -17,7 +17,7 @@ when preparing production or enterprise sandboxes.
   explicitly overrides every contact.
 - **Cloud labelling:** Reference `HERMES_CHAT_CLOUD` when drawing attention to
   the managed SaaS tier inside banners, onboarding flows, or feature flags. The
-  transitional alias `LOBE_CHAT_CLOUD` remains available only until OPS-1120
+  transitional alias `HERMES_CHAT_CLOUD` remains available only until OPS-1120
   closes (2025-09-30) to give extensions and custom shells time to upgrade.
 
 ## Referral tracking
@@ -36,12 +36,12 @@ when preparing production or enterprise sandboxes.
   `bunx vitest run --silent='passed-only' 'src/config/modelProviders/__tests__/referralLinks.test.ts'`
   to confirm provider configs emit Hermes shortlinks (invite codes included).
   Self-hosters inheriting custom forks should gate release pipelines on this
-  suite to avoid reintroducing lobehub parameters.
+  suite to avoid reintroducing hermeslabs parameters.
 
 ## Locale management
 
 Hermes Chat now writes the locale cookie under `HERMES_LOCALE`. For backwards
-compatibility the application mirrors values to `LOBE_LOCALE` until 2025-03-31.
+compatibility the application mirrors values to `HERMES_LOCALE` until 2025-03-31.
 When custom deployments expose their own middleware or CDN, ensure both cookie
 names are forwarded so hybrid fleets stay synchronised.
 
@@ -56,7 +56,7 @@ names are forwarded so hybrid fleets stay synchronised.
   `oauth-openid-scope-*` rules keep OAuth prompts Hermes-branded during future
   rebrands.
 - **Manual follow-up:** Non-Chinese locale files under `locales/*/oauth.json`
-  still require human review to swap out legacy "LobeChat" phrasing. Track the
+  still require human review to swap out legacy "Hermes Chat" phrasing. Track the
   outstanding work in the localisation backlog (Jira L10N-588) and update the
   bundles as translations land.
 
@@ -64,7 +64,7 @@ names are forwarded so hybrid fleets stay synchronised.
 
 Hermes Chat Desktop 1.8.0 updates its network tooling to emit the
 `HermesChat-Desktop/<version>` user agent. Update proxy allowlists or logging
-pipelines accordingly. The previous `LobeChat-Desktop` identifier will disappear
+pipelines accordingly. The previous `HermesChat-Desktop` identifier will disappear
 once the dual-emission deadline is reached.
 
 ## Automation checklist

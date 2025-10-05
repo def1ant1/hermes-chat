@@ -38,7 +38,7 @@ describe('ToolService', () => {
         $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
         api: [
           {
-            url: 'https://realtime-weather.chat-plugin.lobehub.com/api/v1',
+            url: 'https://realtime-weather.chat-plugin.hermes.chat/api/v1',
             name: 'fetchCurrentWeather',
             description: '获取当前天气情况',
             parameters: {
@@ -53,9 +53,9 @@ describe('ToolService', () => {
             },
           },
         ],
-        author: 'LobeHub',
+        author: 'Hermes Labs',
         createAt: '2023-08-12',
-        homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
+        homepage: 'https://github.com/hermeslabs/chat-plugin-realtime-weather',
         identifier: 'realtime-weather',
         meta: {
           avatar: '🌈',
@@ -64,7 +64,7 @@ describe('ToolService', () => {
           description: 'Get realtime weather information',
         },
         ui: {
-          url: 'https://realtime-weather.chat-plugin.lobehub.com/iframe',
+          url: 'https://realtime-weather.chat-plugin.hermes.chat/iframe',
           height: 310,
         },
         version: '1',
@@ -149,9 +149,9 @@ describe('ToolService', () => {
           $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
           api: [],
           openapi: openapiUrl,
-          author: 'LobeHub',
+          author: 'Hermes Labs',
           createAt: '2023-08-12',
-          homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
+          homepage: 'https://github.com/hermeslabs/chat-plugin-realtime-weather',
           identifier: 'realtime-weather',
           meta: {
             avatar: '🌈',
@@ -160,7 +160,7 @@ describe('ToolService', () => {
             description: 'Get realtime weather information',
           },
           ui: {
-            url: 'https://realtime-weather.chat-plugin.lobehub.com/iframe',
+            url: 'https://realtime-weather.chat-plugin.hermes.chat/iframe',
             height: 310,
           },
           version: '1',
@@ -186,9 +186,9 @@ describe('ToolService', () => {
           $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
           api: [],
           openapi: openapiUrl,
-          author: 'LobeHub',
+          author: 'Hermes Labs',
           createAt: '2023-08-12',
-          homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
+          homepage: 'https://github.com/hermeslabs/chat-plugin-realtime-weather',
           identifier: 'realtime-weather',
           meta: {
             avatar: '🌈',
@@ -197,7 +197,7 @@ describe('ToolService', () => {
             description: 'Get realtime weather information',
           },
           ui: {
-            url: 'https://realtime-weather.chat-plugin.lobehub.com/iframe',
+            url: 'https://realtime-weather.chat-plugin.hermes.chat/iframe',
             height: 310,
           },
           version: '1',

@@ -44,7 +44,7 @@
   "remoteServer": {
     "authError": "فشل التفويض: {{error}}",
     "authPending": "يرجى إكمال التفويض في المتصفح",
-    "configDesc": "الاتصال بخادم LobeChat البعيد، تمكين مزامنة البيانات",
+    "configDesc": "الاتصال بخادم Hermes Chat البعيد، تمكين مزامنة البيانات",
     "configError": "خطأ في التكوين",
     "configTitle": "تكوين المزامنة السحابية",
     "connect": "الاتصال والتفويض",
@@ -64,9 +64,9 @@
     "inCloud": "تستخدم حاليًا المزامنة السحابية",
     "inLocalStorage": "تستخدم حاليًا التخزين المحلي",
     "isIniting": "جارٍ التهيئة...",
-    "lobehubCloud": {
+    "HermesLabsCloud": {
       "description": "الإصدار السحابي المقدم رسميًا",
-      "title": "LobeHub Cloud"
+      "title": "Hermes Labs Cloud"
     },
     "local": {
       "description": "استخدام قاعدة بيانات محلية، متاحة بالكامل دون اتصال",

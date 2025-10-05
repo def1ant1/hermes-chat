@@ -185,7 +185,7 @@ export { default as lmstudio } from './lmstudio';
  * @deprecated Prefer {@link hermescloud}. Retained until provider migrations
  * stop referencing the legacy slug (target 2025-06-30).
  */
-export { default as lobehub } from './hermescloud';
+export { default as hermeslabs } from './hermescloud';
 export { default as minimax } from './minimax';
 export { default as mistral } from './mistral';
 export { default as modelscope } from './modelscope';

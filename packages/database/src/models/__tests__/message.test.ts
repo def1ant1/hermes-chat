@@ -22,11 +22,11 @@ import {
   topics,
   users,
 } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { MessageModel } from '../message';
 import { codeEmbedding } from './fixtures/embedding';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'message-db';
 const messageModel = new MessageModel(serverDB, userId);

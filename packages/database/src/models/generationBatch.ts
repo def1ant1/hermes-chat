@@ -10,18 +10,18 @@ import {
   NewGenerationBatch,
   generationBatches,
 } from '../schemas/generation';
-import { LobeChatDatabase } from '../type';
+import { HermesChatDatabase } from '../type';
 import { GenerationModel } from './generation';
 
 const log = debug('lobe-image:generation-batch-model');
 
 export class GenerationBatchModel {
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
   private userId: string;
   private fileService: FileService;
   private generationModel: GenerationModel;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.db = db;
     this.userId = userId;
     this.fileService = new FileService(db, userId);

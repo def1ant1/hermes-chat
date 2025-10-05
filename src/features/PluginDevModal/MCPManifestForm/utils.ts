@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 
 import { safeParseJSON } from '@/utils/safeParseJSON';
 
@@ -14,7 +14,7 @@ interface McpServers {
 }
 
 interface ParsedMcpInput {
-  manifest?: LobeChatPluginManifest;
+  manifest?: HermesChatPluginManifest;
   mcpServers?: McpServers;
 }
 

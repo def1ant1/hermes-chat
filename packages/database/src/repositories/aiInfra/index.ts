@@ -19,19 +19,19 @@ import { merge, mergeArrayById } from '@/utils/merge';
 
 import { AiModelModel } from '../../models/aiModel';
 import { AiProviderModel } from '../../models/aiProvider';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 
 type DecryptUserKeyVaults = (encryptKeyVaultsStr: string | null) => Promise<any>;
 
 export class AiInfraRepos {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
   aiProviderModel: AiProviderModel;
   private readonly providerConfigs: Record<string, ProviderConfig>;
   aiModelModel: AiModelModel;
 
   constructor(
-    db: LobeChatDatabase,
+    db: HermesChatDatabase,
     userId: string,
     providerConfigs: Record<string, ProviderConfig>,
   ) {

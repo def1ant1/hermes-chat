@@ -7,14 +7,14 @@ approvals so pre-production rollouts stay aligned with governance policy.
 
 ## Canonical identifiers
 
-| Asset                         | Value                                                                        | Notes                                                                       |
-| ----------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| Product slug (OAuth/Webhooks) | `hermes-chat`                                                                | Mirrors `HERMES_OAUTH_BRAND_KEY` in `packages/const/src/app.ts`.            |
-| Marketing name                | Hermes Chat                                                                  | Exported via `BRANDING_NAME`.                                               |
-| Enterprise tagline            | Enterprise-grade AI workspace with governed automations and zero-trust sync. | Approved 2025-01-20 by GTM leadership.                                      |
-| Locale cookie                 | `HERMES_LOCALE`                                                              | Dual-emits `LOBE_LOCALE` until 2025-03-31 for backwards compatibility.      |
-| Managed cloud constant        | `HERMES_CHAT_CLOUD`                                                          | Alias `LOBE_CHAT_CLOUD` stays exported until OPS-1120 closes on 2025-09-30. |
-| Desktop user agent            | `HermesChat-Desktop/<ver>`                                                   | Analytics migration window tracked in Jira OPS-984.                         |
+| Asset                         | Value                                                                        | Notes                                                                         |
+| ----------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Product slug (OAuth/Webhooks) | `hermes-chat`                                                                | Mirrors `HERMES_OAUTH_BRAND_KEY` in `packages/const/src/app.ts`.              |
+| Marketing name                | Hermes Chat                                                                  | Exported via `BRANDING_NAME`.                                                 |
+| Enterprise tagline            | Enterprise-grade AI workspace with governed automations and zero-trust sync. | Approved 2025-01-20 by GTM leadership.                                        |
+| Locale cookie                 | `HERMES_LOCALE`                                                              | Dual-emits `HERMES_LOCALE` until 2025-03-31 for backwards compatibility.      |
+| Managed cloud constant        | `HERMES_CHAT_CLOUD`                                                          | Alias `HERMES_CHAT_CLOUD` stays exported until OPS-1120 closes on 2025-09-30. |
+| Desktop user agent            | `HermesChat-Desktop/<ver>`                                                   | Analytics migration window tracked in Jira OPS-984.                           |
 
 > \[!IMPORTANT]
 > Always source these values from `@/const/app` or `@/const/branding`. Manual
@@ -32,7 +32,7 @@ approvals so pre-production rollouts stay aligned with governance policy.
   rebrands (or tenant-specific names) update OAuth scope strings automatically.
   The CI helper `scripts/rebrand_hermes_chat.sh lint-strings` executes the CLI
   in dry-run mode to guarantee these rules stay exercised.
-- **Manual backlog:** Languages beyond zh-CN/en-US still surface "LobeChat" in
+- **Manual backlog:** Languages beyond zh-CN/en-US still surface "Hermes Chat" in
   their OAuth packs. Track remediation in Jira L10N-588 and only mark the task
   complete once linguists deliver parity strings.
 - **Verification:** `bunx vitest run --silent='passed-only' 'src/utils/client/switchLang.test.ts'`
@@ -59,7 +59,7 @@ approvals so pre-production rollouts stay aligned with governance policy.
 
 - **Type migration:** `packages/context-engine/src/tools/types.ts` now exposes
   `HermesChatPluginApi` and `HermesChatPluginManifest`. The legacy
-  `LobeChat*` aliases remain exported (and marked deprecated) so downstream
+  `Hermes Chat*` aliases remain exported (and marked deprecated) so downstream
   SDKs can align with the rename on their own release cadences. The migration is
   documented inline and tied to the automation guardrails below.
 - **Automation guardrail:** `scripts/rebrandHermesChat.ts` rewrites these type
@@ -95,16 +95,16 @@ to the sanctioned English and Simplified Chinese playbooks. When operators pass
 `--brand-domain` overrides (for example, `qa.hermes.chat`), the script derives
 locale-aware docs hosts automatically (for QA this becomes
 [docs.qa.hermes.chat](https://docs.qa.hermes.chat)). Support triage confirmed the support alias
-change to <support@hermes.chat> and noted the legacy `hello@lobehub.com`
+change to <support@hermes.chat> and noted the legacy `hello@hermes.chat`
 mailbox will retire on 2025-07-01.
 
 ## Rollout constraints
 
 - **Locale cookies:** The Hermes cookie name ships immediately. Emit the legacy
-  `LOBE_LOCALE` value in parallel until every managed desktop/mobile app is
+  `HERMES_LOCALE` value in parallel until every managed desktop/mobile app is
   upgraded (target 2025-03-31).
 - **Cloud constant:** UI copy and automations must import `HERMES_CHAT_CLOUD`.
-  Keep `LOBE_CHAT_CLOUD` references only when updating downstream extensions
+  Keep `HERMES_CHAT_CLOUD` references only when updating downstream extensions
   that cannot ingest the renamed constant before the OPS-1120 LTS deadline
   (2025-09-30). The alias is annotated in `packages/const/src/branding.ts` to
   help release managers plan the removal.

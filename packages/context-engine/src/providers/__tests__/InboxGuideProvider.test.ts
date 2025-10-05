@@ -11,7 +11,7 @@ const createContext = (messages: any[]): PipelineContext => ({
 });
 
 describe('InboxGuideProvider', () => {
-  const mockInboxGuideContent = '# Role: LobeChat Support Assistant\n\nWelcome to LobeChat!';
+  const mockInboxGuideContent = '# Role: Hermes Chat Support Assistant\n\nWelcome to Hermes Chat!';
   const INBOX_SESSION_ID = 'inbox';
 
   it('should inject inbox guide for welcome questions in inbox session', async () => {

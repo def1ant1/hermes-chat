@@ -42,10 +42,10 @@ tags:
   - 端口占用检查：确保 `3210`、`8000`、`9000`、`9001` 端口可用
 </Callout>
 
-执行以下命令初始化部署环境，目录 `lobe-chat-db` 将用于存放你的配置文件和后续的数据库文件。
+执行以下命令初始化部署环境，目录 `hermes-chat-db` 将用于存放你的配置文件和后续的数据库文件。
 
 ```sh
-mkdir lobe-chat-db && cd lobe-chat-db
+mkdir hermes-chat-db && cd hermes-chat-db
 ```
 
 获取并执行部署脚本：
@@ -105,7 +105,7 @@ bash <(curl -fsSL https://lobe.li/setup.sh) -l zh_CN
   ### 检查日志
 
   ```sh
-  docker logs -f lobe-chat
+  docker logs -f hermes-chat
   ```
 
   如果你在容器中看到了以下日志，则说明已经启动成功：
@@ -170,7 +170,7 @@ bash <(curl -fsSL https://lobe.li/setup.sh) -l zh_CN
   ### 检查日志
 
   ```sh
-  docker logs -f lobe-chat
+  docker logs -f hermes-chat
   ```
 
   如果你在容器中看到了以下日志，则说明已经启动成功：
@@ -225,7 +225,7 @@ bash <(curl -fsSL https://lobe.li/setup.sh) -l zh_CN
     ```
 
     ⚠️ 请不要在此类面板软件的反向代理设置中开启任何形式的缓存，以免影响服务的正常运行。
-    详情请见 [https://github.com/hermeslabs/lobe-chat/discussions/5986](https://github.com/hermeslabs/lobe-chat/discussions/5986)
+    详情请见 [https://github.com/hermeslabs/hermes-chat/discussions/5986](https://github.com/hermeslabs/hermes-chat/discussions/5986)
   </Callout>
 
   ### 在交互式脚本中完成剩余配置
@@ -281,7 +281,7 @@ bash <(curl -fsSL https://lobe.li/setup.sh) -l zh_CN
   ### 检查日志
 
   ```sh
-  docker logs -f lobe-chat
+  docker logs -f hermes-chat
   ```
 
   如果你在容器中看到了以下日志，则说明已经启动成功：
@@ -308,11 +308,11 @@ bash <(curl -fsSL https://lobe.li/setup.sh) -l zh_CN
 
 ## 自定义部署
 
-该章节主要为你介绍在不同的网络环境下自定义部署 Hermes Chat 服务必须要修改的配置。在开始前，你可以先下载 [Docker Compose 配置文件](https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/docker-compose.yml) 以及 [环境变量配置文件](https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/.env.zh-CN.example)。
+该章节主要为你介绍在不同的网络环境下自定义部署 Hermes Chat 服务必须要修改的配置。在开始前，你可以先下载 [Docker Compose 配置文件](https://raw.githubusercontent.com/hermeslabs/hermes-chat/HEAD/docker-compose/local/docker-compose.yml) 以及 [环境变量配置文件](https://raw.githubusercontent.com/hermeslabs/hermes-chat/HEAD/docker-compose/local/.env.zh-CN.example)。
 
 ```sh
-curl -O https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/docker-compose.yml
-curl -O https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/.env.zh-CN.example
+curl -O https://raw.githubusercontent.com/hermeslabs/hermes-chat/HEAD/docker-compose/local/docker-compose.yml
+curl -O https://raw.githubusercontent.com/hermeslabs/hermes-chat/HEAD/docker-compose/local/.env.zh-CN.example
 mv .env.zh-CN.example .env
 ```
 
@@ -393,13 +393,13 @@ services:
 请根据容器日志检查是否存在以下错误
 
 ```sh
-docker logs -f lobe-chat
+docker logs -f hermes-chat
 ```
 
 - r3: "response" is not a conform Authorization Server Metadata response (unexpected HTTP status code)
 
 ```log
-lobe-chat      | [auth][error] r3: "response" is not a conform Authorization Server Metadata response (unexpected HTTP status code)
+hermes-chat      | [auth][error] r3: "response" is not a conform Authorization Server Metadata response (unexpected HTTP status code)
 ```
 
 成因：该问题一般是由于你的反向代理配置不正确导致的，你需要确保你的反向代理配置不会拦截 Casdoor 的 OAuth2 配置请求。
@@ -416,7 +416,7 @@ lobe-chat      | [auth][error] r3: "response" is not a conform Authorization Ser
 - TypeError: fetch failed
 
 ```log
-lobe-chat      | [auth][error] TypeError: fetch failed
+hermes-chat      | [auth][error] TypeError: fetch failed
 ```
 
 成因：Hermes Chat 无法访问鉴权服务。
@@ -579,7 +579,7 @@ MINIO_ROOT_PASSWORD=XXXX
 你可以使用下述指令检查日志：
 
 ```sh
-docker logs -f lobe-chat
+docker logs -f hermes-chat
 ```
 
 <Callout type="tip">
@@ -702,7 +702,7 @@ S3_SECRET_ACCESS_KEY=aPBW8CVULkh8bw1GatlT0GjLihcXHLNwRml4pieS
 - `docker-compose.yml`
 
 ```yaml
-name: lobe-chat-database
+name: hermes-chat-database
 services:
   network-service:
     image: alpine
@@ -769,8 +769,8 @@ services:
       - ./init_data.json:/init_data.json
 
   lobe:
-    image: hermeslabs/lobe-chat-database
-    container_name: lobe-chat-database
+    image: hermeslabs/hermes-chat-database
+    container_name: hermes-chat-database
     network_mode: 'service:network-service'
     depends_on:
       postgresql:
@@ -820,9 +820,9 @@ networks:
     driver: bridge
 ```
 
-[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
-[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/lobe-chat-database?color=45cc11&labelColor=black&style=flat-square
-[docker-release-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
-[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/lobe-chat-database?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
-[docker-size-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
-[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/lobe-chat-database?color=369eff&labelColor=black&style=flat-square&sort=semver
+[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/hermes-chat-database
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/hermes-chat-database?color=45cc11&labelColor=black&style=flat-square
+[docker-release-link]: https://hub.docker.com/r/hermeslabs/hermes-chat-database
+[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/hermes-chat-database?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
+[docker-size-link]: https://hub.docker.com/r/hermeslabs/hermes-chat-database
+[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/hermes-chat-database?color=369eff&labelColor=black&style=flat-square&sort=semver

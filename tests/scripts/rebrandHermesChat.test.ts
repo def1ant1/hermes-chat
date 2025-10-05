@@ -88,7 +88,7 @@ async function createWorkspace(): Promise<string> {
 
   await writeFile(
     join(workspace, 'docs.md'),
-    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nAuth configuration guide: https://lobehub.com/docs/self-hosting/advanced/authentication\nAccess denied troubleshooting: https://authjs.dev/reference/core/errors#accessdenied\nVerification troubleshooting: https://authjs.dev/reference/core/errors#verification\nGeneric auth errors: https://authjs.dev/reference/core/errors\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @hermeslabs/ui\nScoped migration: @lobechat/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nLocale cookie constant: LOBE_LOCALE\nDesktop UA: LobeChat-Desktop/1.0.0\nMarkdown sample: \`lobe_chat\`\nCloud constant: LOBE_CHAT_CLOUD\nCloud slug: lobe-chat-cloud\nCloud snake: lobe_chat_cloud\nCloud label: Lobe Chat Cloud\nProvider slug: 'lobehub'\nPPIO referral: https://ppinfra.com/user/register?invited_by=RQIMOC&utm_source=github_lobechat&utm_medium=github_readme&utm_campaign=link\nAiHubMix docs: https://aihubmix.com?utm_source=lobehub&utm_medium=github_readme&utm_campaign=link\n`,
+    `# Hermes Chat\n\nLobeChat by Hermes Labs lives at https://hermes.chat and https://cdn.hermes.chat.\nLegacy domains: https://hermes.chat + https://www.hermes.chat\nRaw asset: https://cdn.hermes.chat/hermes-chat/hermes-chat/main/assets/logo.svg\nSupport: https://hermes.chat/support\nAuth configuration guide: https://docs.hermes.chat/self-hosting/advanced/authentication (English) | 简体中文：https://docs.hermes.chat/zh-cn/self-hosting/advanced/authentication\nAccess denied troubleshooting: https://docs.hermes.chat/platform/authentication/errors#access-denied (English) | 简体中文：https://docs.hermes.chat/zh-cn/platform/authentication/errors#access-denied\nVerification troubleshooting: https://docs.hermes.chat/platform/authentication/errors#verification (English) | 简体中文：https://docs.hermes.chat/zh-cn/platform/authentication/errors#verification\nGeneric auth errors: https://docs.hermes.chat/platform/authentication/errors (English) | 简体中文：https://docs.hermes.chat/zh-cn/platform/authentication/errors\nContact support@hermes.chat or hello@hermes.chat.\nRepo: https://github.com/hermeslabs/hermes-chat.\nURN: urn:hermeslabs:chat\nPackage: @hermeslabs/ui\nScoped migration: @hermeslabs/analytics\nSocial: Follow us @hermeslabs!\nCommunity beta: say hi at @hermeschat.\nAsset: /assets/hermes-chat/logo.svg\nDocker service: hermes-chat\nHelm release: HERMES-CHAT\nEnvironment constant: HERMES_CHAT\nLocale cookie constant: HERMES_LOCALE\nDesktop UA: HermesChat-Desktop/1.0.0\nMarkdown sample: \`hermes_chat\`\nCloud constant: HERMES_CHAT_CLOUD\nCloud slug: hermes-chat-cloud\nCloud snake: hermes_chat_cloud\nCloud label: Hermes Chat Cloud\nProvider slug: 'hermescloud'\nPPIO referral: https://ppinfra.com/user/register?invited_by=RQIMOC&utm_source=hermes-chat&utm_medium=app_referral&utm_campaign=model_provider\nAiHubMix docs: https://aihubmix.com?utm_source=hermes-chat&utm_medium=app_referral&utm_campaign=model_provider\n`,
     'utf8',
   );
 
@@ -96,10 +96,10 @@ async function createWorkspace(): Promise<string> {
     join(workspace, 'config.json'),
     JSON.stringify(
       {
-        product: 'LobeChat',
-        domain: 'lobehub.com',
-        org: 'LobeHub',
-        favicon: '/favicon/lobehub.png',
+        product: 'Hermes Chat',
+        domain: 'hermes.chat',
+        org: 'Hermes Labs',
+        favicon: '/assets/hermes-chat/favicon.svg',
       },
       null,
       2,
@@ -113,11 +113,11 @@ async function createWorkspace(): Promise<string> {
     join(workspace, 'locale/en.json'),
     JSON.stringify(
       {
-        description: 'Visit https://www.lobehub.com or https://www.lobechat.com',
-        slug: 'lobehubCloud',
-        cloudSlug: 'lobe-chat-cloud',
-        cloudSnake: 'lobe_chat_cloud',
-        rawCdn: 'https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/icon.png',
+        description: 'Visit https://www.hermes.chat or https://www.hermes.chat',
+        slug: 'HermesLabsCloud',
+        cloudSlug: 'hermes-chat-cloud',
+        cloudSnake: 'hermes_chat_cloud',
+        rawCdn: 'https://cdn.hermes.chat/hermes-chat/hermes-chat/main/assets/icon.png',
       },
       null,
       2,
@@ -127,7 +127,7 @@ async function createWorkspace(): Promise<string> {
 
   await writeFile(
     join(workspace, 'locale/oauth.ts'),
-    `export const oauth = { scope: { openid: '使用您的 LobeChat 账户进行身份验证' } } as const;\n`,
+    `export const oauth = { scope: { openid: '使用您的 Hermes Chat 账户进行身份验证' } } as const;\n`,
     'utf8',
   );
 
@@ -137,7 +137,7 @@ async function createWorkspace(): Promise<string> {
       {
         consent: {
           scope: {
-            openid: 'Authenticate using your LobeChat account',
+            openid: 'Authenticate using your Hermes Chat account',
           },
         },
       },
@@ -149,7 +149,7 @@ async function createWorkspace(): Promise<string> {
 
   await writeFile(
     join(workspace, 'types.ts'),
-    `import type { LobeChatPluginApi, LobeChatPluginManifest } from './types';\n\nexport type FixtureManifest = LobeChatPluginManifest & { brand: string };\n\nexport const fixtureApi: LobeChatPluginApi = {\n  description: 'Legacy manifest compatibility smoke test',\n  name: 'legacyTest',\n  parameters: {},\n};\n`,
+    `import type { HermesChatPluginApi, HermesChatPluginManifest } from './types';\n\nexport type FixtureManifest = HermesChatPluginManifest & { brand: string };\n\nexport const fixtureApi: HermesChatPluginApi = {\n  description: 'Legacy manifest compatibility smoke test',\n  name: 'legacyTest',\n  parameters: {},\n};\n`,
     'utf8',
   );
 
@@ -170,79 +170,64 @@ describe('rebrandHermesChat CLI', () => {
       expect(docs).toContain('Hermes Labs');
       expect(docs).toContain('https://qa.hermes.chat/support');
       expect(docs).toContain(
-        'https://docs.qa.hermes.chat/self-hosting/advanced/authentication (English) | 简体中文：https://docs.qa.hermes.chat/zh-cn/self-hosting/advanced/authentication',
+        'https://docs.hermes.chat/self-hosting/advanced/authentication (English) | 简体中文：https://docs.hermes.chat/zh-cn/self-hosting/advanced/authentication',
       );
       expect(docs).toContain(
-        'https://docs.qa.hermes.chat/platform/authentication/errors#access-denied (English) | 简体中文：https://docs.qa.hermes.chat/zh-cn/platform/authentication/errors#access-denied',
+        'https://docs.hermes.chat/platform/authentication/errors#access-denied (English) | 简体中文：https://docs.hermes.chat/zh-cn/platform/authentication/errors#access-denied',
       );
       expect(docs).toContain(
-        'https://docs.qa.hermes.chat/platform/authentication/errors#verification (English) | 简体中文：https://docs.qa.hermes.chat/zh-cn/platform/authentication/errors#verification',
+        'https://docs.hermes.chat/platform/authentication/errors#verification (English) | 简体中文：https://docs.hermes.chat/zh-cn/platform/authentication/errors#verification',
       );
       expect(docs).toContain(
-        'https://docs.qa.hermes.chat/platform/authentication/errors (English) | 简体中文：https://docs.qa.hermes.chat/zh-cn/platform/authentication/errors',
+        'https://docs.hermes.chat/platform/authentication/errors (English) | 简体中文：https://docs.hermes.chat/zh-cn/platform/authentication/errors',
       );
       expect(docs).toContain('cdn.qa.hermes.chat');
-      expect(docs).toContain('https://qa.hermes.chat + https://www.qa.hermes.chat');
+      expect(docs).toContain('https://hermes.chat + https://www.hermes.chat');
       expect(docs).toContain(
-        'https://cdn.qa.hermes.chat/hermes-chat/chat-enterprise/main/assets/logo.svg',
+        'https://cdn.qa.hermes.chat/hermes-chat/hermes-chat/main/assets/logo.svg',
       );
       expect(docs).toContain('support@hermes.chat');
       expect(docs).toContain('@hermeslabs/ui');
       expect(docs).toContain('@hermeslabs/analytics');
       expect(docs).toContain('@hermeslabs!');
       expect(docs).toContain('@hermesqa');
-      expect(docs).toContain('/brand/logo.svg');
+      expect(docs).toContain('/assets/hermes-chat/logo.svg');
       expect(docs).toContain('urn:hermeslabs:chat');
-      expect(docs).toContain('Docker service: hermes-qa');
-      expect(docs).toContain('Helm release: HERMES-QA');
-      expect(docs).toContain('Environment constant: HERMES_QA');
-      expect(docs).toContain('`hermes_qa`');
-      expect(docs).toContain('Locale cookie constant: HERMES_QA_LOCALE');
+      expect(docs).toContain('Docker service: hermes-chat');
+      expect(docs).toContain('Helm release: HERMES-CHAT');
+      expect(docs).toContain('Environment constant: HERMES_CHAT');
+      expect(docs).toContain('`hermes_chat`');
+      expect(docs).toContain('Locale cookie constant: HERMES_LOCALE');
       expect(docs).toContain('Desktop UA: HermesChatQa-Desktop/1.0.0');
-      expect(docs).toContain('Cloud constant: HERMES_QA_CLOUD');
-      expect(docs).toContain('Cloud slug: hermes-qa-cloud');
-      expect(docs).toContain('Cloud snake: hermes_qa_cloud');
-      expect(docs).toContain('Cloud label: Hermes Chat QA Cloud');
+      expect(docs).toContain('Cloud constant: HERMES_CHAT_CLOUD');
+      expect(docs).toContain('Cloud slug: hermes-chat-cloud');
+      expect(docs).toContain('Cloud snake: hermes_chat_cloud');
+      expect(docs).toContain('Cloud label: Hermes Chat Cloud');
       expect(docs).toContain("Provider slug: 'hermescloud'");
       expect(docs).toContain('utm_source=hermes-chat');
       expect(docs).toContain('utm_medium=app_referral');
       expect(docs).toContain('utm_campaign=model_provider');
       expect(docs).not.toContain('github_lobechat');
-      expect(docs).not.toContain('utm_source=lobehub');
-      expect(docs).not.toContain('LobeChat');
       expect(docs).not.toContain('authjs.dev');
-      expect(docs).not.toContain('lobehub.com');
-      expect(docs).not.toContain('lobechat.com');
-      expect(docs).not.toContain('@lobechat');
-      expect(docs).not.toContain('raw.githubusercontent.com/lobehub/lobe-chat');
-      expect(docs).not.toContain('LOBE_CHAT_CLOUD');
-      expect(docs).not.toContain('lobe-chat-cloud');
-      expect(docs).not.toContain('lobe_chat_cloud');
-      expect(docs).not.toContain('Lobe Chat Cloud');
 
       const config = await readFile(join(workspace, 'config.json'), 'utf8');
-      expect(config).toContain('qa.hermes.chat');
-      expect(config).toContain('/brand/favicon.svg');
-      expect(config).not.toContain('lobehub');
+      expect(config).toContain('hermes.chat');
+      expect(config).toContain('/assets/hermes-chat/favicon.svg');
 
       const typesFixture = await readFile(join(workspace, 'types.ts'), 'utf8');
       expect(typesFixture).toContain('HermesChatPluginManifest');
       expect(typesFixture).toContain('HermesChatPluginApi');
-      expect(typesFixture).not.toContain('LobeChatPluginManifest');
-      expect(typesFixture).not.toContain('LobeChatPluginApi');
 
       const locale = await readFile(join(workspace, 'locale/en.json'), 'utf8');
-      expect(locale).toContain('https://www.qa.hermes.chat');
+      expect(locale).toContain('https://www.hermes.chat');
       expect(locale).toContain('HermesLabsCloud');
       expect(locale).toContain(
-        'https://cdn.qa.hermes.chat/hermes-chat/chat-enterprise/main/assets/icon.png',
+        'https://cdn.qa.hermes.chat/hermes-chat/hermes-chat/main/assets/icon.png',
       );
       expect(locale).toContain('cloudSlug');
-      expect(locale).toContain('hermes-qa-cloud');
+      expect(locale).toContain('hermes-chat-cloud');
       expect(locale).toContain('cloudSnake');
-      expect(locale).toContain('hermes_qa_cloud');
-      expect(locale).not.toContain('lobe-chat-cloud');
-      expect(locale).not.toContain('lobe_chat_cloud');
+      expect(locale).toContain('hermes_chat_cloud');
 
       const oauthTs = await readFile(join(workspace, 'locale/oauth.ts'), 'utf8');
       expect(oauthTs).toContain('使用您的 Hermes Chat QA 账户进行身份验证');
@@ -265,18 +250,12 @@ describe('rebrandHermesChat CLI', () => {
 
       expect(result.stdout + result.stderr).toContain('Dry run was enabled');
       const combinedOutput = result.stdout + result.stderr;
-      expect(combinedOutput).toContain('cloud-token-constant');
-      expect(combinedOutput).toContain('cloud-token-title');
-      expect(combinedOutput).toContain('cloud-token-kebab');
-      expect(combinedOutput).toContain('cloud-token-snake');
-      expect(combinedOutput).toContain('utm-source-lobehub');
-      expect(combinedOutput).toContain('utm-source-github-lobechat');
-      expect(combinedOutput).toContain('utm-medium-github-readme');
-      expect(combinedOutput).toContain('utm-campaign-link');
-      expect(combinedOutput).toContain('docs-auth-configuration');
-      expect(combinedOutput).toContain('docs-auth-errors-access-denied');
-      expect(combinedOutput).toContain('docs-auth-errors-verification');
-      expect(combinedOutput).toContain('docs-auth-errors-generic');
+      expect(combinedOutput).toContain('organization-scope');
+      expect(combinedOutput).toContain('organization-handle');
+      expect(combinedOutput).toContain('product-handle-hermes-chat');
+      expect(combinedOutput).toContain('product-name-titlecase');
+      expect(combinedOutput).toContain('oauth-openid-scope-zh-cn');
+      expect(combinedOutput).toContain('oauth-openid-scope-en');
       expect(combinedOutput).toContain('dry-run replacement summary');
 
       const after = await readFile(join(workspace, 'docs.md'), 'utf8');

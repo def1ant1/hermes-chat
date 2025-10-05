@@ -1,8 +1,9 @@
-import { PluginSchema } from '@hermeslabs/chat-plugin-sdk';
+import { PluginSchema } from '@hermeslabs/types';
 import { Form, Markdown } from '@hermeslabs/ui';
 import { Form as AForm } from 'antd';
 import { createStyles } from 'antd-style';
 import isEqual from 'fast-deep-equal';
+import type { JSONSchema7 } from 'json-schema';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -14,16 +15,18 @@ import ItemRender from '../../components/JSONSchemaConfig/ItemRender';
 export const transformPluginSettings = (pluginSettings: PluginSchema) => {
   if (!pluginSettings?.properties) return [];
 
-  return Object.entries(pluginSettings.properties).map(([name, i]) => ({
-    desc: i.description,
-    enum: i.enum,
-    format: i.format,
-    label: i.title || name,
-    maximum: i.maximum,
-    minimum: i.minimum,
+  const schemaEntries = Object.entries(pluginSettings.properties) as Array<[string, JSONSchema7]>;
+
+  return schemaEntries.map(([name, schema]) => ({
+    desc: schema.description,
+    enum: schema.enum,
+    format: schema.format,
+    label: (schema.title as string | undefined) || name,
+    maximum: schema.maximum,
+    minimum: schema.minimum,
     name,
     tag: name,
-    type: i.type,
+    type: schema.type,
   }));
 };
 

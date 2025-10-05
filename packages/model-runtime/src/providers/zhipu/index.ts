@@ -123,8 +123,8 @@ export const LobeZhipuAI = createOpenAICompatibleRuntime({
     const response = await fetch(url, {
       headers: {
         'Authorization': `Bearer ${client.apiKey}`,
-        'Bigmodel-Organization': 'lobehub',
-        'Bigmodel-Project': 'lobechat',
+        'Bigmodel-Organization': 'hermescloud',
+        'Bigmodel-Project': 'hermes-chat',
       },
       method: 'GET',
     });

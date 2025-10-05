@@ -29,8 +29,8 @@ describe('Ld', () => {
       const org = ld.genOrganization();
 
       expect(org['@type']).toBe('Organization');
-      expect(org.name).toBe('LobeHub');
-      expect(org.url).toBe('https://lobehub.com');
+      expect(org.name).toBe('Hermes Labs');
+      expect(org.url).toBe('https://hermes.chat');
     });
   });
 

@@ -47,11 +47,11 @@ Upgrading the Docker deployment version is very simple, you just need to redeplo
 <Steps>
   ### Stop and Remove the Current Running Hermes Chat Container
 
-  Assuming the Hermes Chat container is named `lobe-chat`, use the following commands to stop and remove the currently running Hermes Chat container:
+  Assuming the Hermes Chat container is named `hermes-chat`, use the following commands to stop and remove the currently running Hermes Chat container:
 
   ```fish
-  docker stop lobe-chat
-  docker rm lobe-chat
+  docker stop hermes-chat
+  docker rm hermes-chat
   ```
 
   ### Pull the Latest Hermes Chat Image
@@ -59,7 +59,7 @@ Upgrading the Docker deployment version is very simple, you just need to redeplo
   Use the following command to pull the latest Docker image for Hermes Chat:
 
   ```fish
-  docker pull hermeslabs/lobe-chat
+  docker pull hermeslabs/hermes-chat
   ```
 
   ### Restart the Docker Container
@@ -71,8 +71,8 @@ Upgrading the Docker deployment version is very simple, you just need to redeplo
     -e OPENAI_API_KEY=sk-xxxx \
     -e OPENAI_PROXY_URL=https://api-proxy.com/v1 \
     -e ACCESS_CODE=lobe66 \
-    --name lobe-chat \
-    hermeslabs/lobe-chat
+    --name hermes-chat \
+    hermeslabs/hermes-chat
   ```
 </Steps>
 
@@ -102,13 +102,13 @@ If you wish to automate the above steps, you can follow the method below and use
 
   ```bash
   #!/bin/bash
-  # auto-update-lobe-chat.sh
+  # auto-update-hermes-chat.sh
 
   # Set up proxy (optional)
   export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
   # Pull the latest image and store the output in a variable
-  output=$(docker pull hermeslabs/lobe-chat:latest 2>&1)
+  output=$(docker pull hermeslabs/hermes-chat:latest 2>&1)
 
   # Check if the pull command was executed successfully
   if [ $? -ne 0 ]; then
@@ -116,27 +116,27 @@ If you wish to automate the above steps, you can follow the method below and use
   fi
 
   # Check if the output contains a specific string
-  echo "$output" | grep -q "Image is up to date for hermeslabs/lobe-chat:latest"
+  echo "$output" | grep -q "Image is up to date for hermeslabs/hermes-chat:latest"
 
   # If the image is already up to date, do nothing
   if [ $? -eq 0 ]; then
     exit 0
   fi
 
-  echo "Detected lobe-chat update"
+  echo "Detected hermes-chat update"
 
   # Remove the old container
-  echo "Removed: $(docker rm -f lobe-chat)"
+  echo "Removed: $(docker rm -f hermes-chat)"
 
   # Run the new container(Please change the path to the env file)
-  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=lobe-chat --restart=always hermeslabs/lobe-chat)"
+  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=hermes-chat --restart=always hermeslabs/hermes-chat)"
 
   # Print the update time and version
   echo "Update time: $(date)"
-  echo "Version: $(docker inspect hermeslabs/lobe-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
+  echo "Version: $(docker inspect hermeslabs/hermes-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
 
   # Clean up unused images
-  docker images | grep 'hermeslabs/lobe-chat' | grep -v 'hermeslabs/lobe-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
+  docker images | grep 'hermeslabs/hermes-chat' | grep -v 'hermeslabs/hermes-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
   echo "Removed old images."
   ```
 
@@ -152,6 +152,6 @@ If you wish to automate the above steps, you can follow the method below and use
   The following command configures Crontab to execute scripts every 5 minutes, or as often as you like:
 
   ```bash
-  */5 * * * * /path/to/auto-update-lobe-chat.sh >> /path/to/auto-update-lobe-chat.log 2>&1
+  */5 * * * * /path/to/auto-update-hermes-chat.sh >> /path/to/auto-update-hermes-chat.log 2>&1
   ```
 </Steps>

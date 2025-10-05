@@ -16,7 +16,7 @@ import * as schema from '../schemas';
 
 const pgliteSchemaHashCache = 'LOBE_CHAT_PGLITE_SCHEMA_HASH';
 
-const DB_NAME = 'lobechat';
+const DB_NAME = 'hermes-chat';
 type DrizzleInstance = PgliteDatabase<typeof schema>;
 
 interface onErrorState {
@@ -232,7 +232,7 @@ export class DatabaseManager {
         let db: typeof PGlite;
 
         // make db as web worker if worker is available
-        // https://github.com/lobehub/lobe-chat/issues/5785
+        // https://github.com/hermeslabs/hermes-chat/issues/5785
         if (typeof Worker !== 'undefined' && typeof navigator.locks !== 'undefined') {
           db = await initPgliteWorker({
             dbName: DB_NAME,

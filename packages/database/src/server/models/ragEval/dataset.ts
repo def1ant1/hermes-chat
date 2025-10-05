@@ -2,13 +2,13 @@ import { RAGEvalDataSetItem } from '@hermeslabs/types';
 import { and, desc, eq } from 'drizzle-orm';
 
 import { NewEvalDatasetsItem, evalDatasets } from '../../../schemas';
-import { LobeChatDatabase } from '../../../type';
+import { HermesChatDatabase } from '../../../type';
 
 export class EvalDatasetModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.db = db;
     this.userId = userId;
   }

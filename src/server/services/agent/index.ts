@@ -1,13 +1,13 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 
 import { SessionModel } from '@/database/models/session';
 import { getServerDefaultAgentConfig } from '@/server/globalConfig';
 
 export class AgentService {
   private readonly userId: string;
-  private readonly db: LobeChatDatabase;
+  private readonly db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

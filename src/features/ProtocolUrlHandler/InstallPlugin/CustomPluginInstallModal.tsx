@@ -12,7 +12,7 @@ import { useAgentStore } from '@/store/agent';
 import { useToolStore } from '@/store/tool';
 import { mcpStoreSelectors } from '@/store/tool/selectors';
 import { McpConnectionParams } from '@/types/plugins';
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { HermesToolCustomPlugin } from '@/types/tool/plugin';
 
 import ConfigDisplay from './ConfigDisplay';
 import { McpInstallRequest, TRUSTED_MARKETPLACES, TrustedMarketplaceId } from './types';
@@ -62,7 +62,7 @@ const CustomPluginInstallModal = memo<CustomPluginInstallModalProps>(
       setLoading(true);
       try {
         // 第三方市场和自定义插件：构建自定义插件数据
-        let customPlugin: LobeToolCustomPlugin;
+        let customPlugin: HermesToolCustomPlugin;
 
         // 合并原始配置和用户更新的配置
         const finalConfig = {

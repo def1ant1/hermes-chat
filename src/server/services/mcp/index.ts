@@ -1,9 +1,5 @@
-import {
-  LobeChatPluginApi,
-  LobeChatPluginManifest,
-  PluginSchema,
-} from '@hermeslabs/chat-plugin-sdk';
 import { DeploymentOption } from '@hermeslabs/market-sdk';
+import { HermesChatPluginApi, HermesChatPluginManifest, PluginSchema } from '@hermeslabs/types';
 import { McpError } from '@modelcontextprotocol/sdk/types.js';
 import { TRPCError } from '@trpc/server';
 import debug from 'debug';
@@ -39,7 +35,7 @@ class MCPService {
   // --- MCP Interaction ---
 
   // listTools now accepts MCPClientParams
-  async listTools(params: MCPClientParams): Promise<LobeChatPluginApi[]> {
+  async listTools(params: MCPClientParams): Promise<HermesChatPluginApi[]> {
     const client = await this.getClient(params); // Get client using params
     const loggableParams = this.sanitizeForLogging(params);
     log(`Listing tools using client for params: %O`, loggableParams);
@@ -51,7 +47,7 @@ class MCPService {
         loggableParams,
         result.length,
       );
-      return result.map<LobeChatPluginApi>((item) => ({
+      return result.map<HermesChatPluginApi>((item) => ({
         // Assuming identifier is the unique name/id
         description: item.description,
         name: item.name,
@@ -279,7 +275,7 @@ class MCPService {
       type: 'none' | 'bearer' | 'oauth2';
     },
     headers?: Record<string, string>,
-  ): Promise<LobeChatPluginManifest> {
+  ): Promise<HermesChatPluginManifest> {
     const mcpParams = { name: identifier, type: 'http' as const, url };
 
     // 如果有认证信息，添加到参数中
@@ -312,7 +308,7 @@ class MCPService {
   async getStdioMcpServerManifest(
     params: Omit<StdioMCPParams, 'type'>,
     metadata?: CustomPluginMetadata,
-  ): Promise<LobeChatPluginManifest> {
+  ): Promise<HermesChatPluginManifest> {
     const client = await this.getClient({
       args: params.args,
       command: params.command,
@@ -342,7 +338,7 @@ class MCPService {
       ...manifest,
       // TODO: temporary
       type: 'mcp' as any,
-    } as LobeChatPluginManifest;
+    } as HermesChatPluginManifest;
   }
 
   /**
@@ -404,7 +400,7 @@ class MCPService {
   }
 
   private transformMCPToolToLobeAPI = (data: McpTool[]) => {
-    return data.map<LobeChatPluginApi>((item) => ({
+    return data.map<HermesChatPluginApi>((item) => ({
       // Assuming identifier is the unique name/id
       description: item.description,
       name: item.name,

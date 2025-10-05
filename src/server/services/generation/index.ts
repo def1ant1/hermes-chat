@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { parseDataUri } from '@hermeslabs/model-runtime';
 import debug from 'debug';
 import { sha256 } from 'js-sha256';
@@ -69,7 +69,7 @@ interface ImageForGeneration {
 export class GenerationService {
   private fileService: FileService;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.fileService = new FileService(db, userId);
   }
 

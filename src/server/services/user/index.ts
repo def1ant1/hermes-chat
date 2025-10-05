@@ -1,5 +1,5 @@
 import { UserJSON } from '@clerk/backend';
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 
 import { UserModel } from '@/database/models/user';
 import { initializeServerAnalytics } from '@/libs/analytics';
@@ -9,9 +9,9 @@ import { S3 } from '@/server/modules/S3';
 import { AgentService } from '@/server/services/agent';
 
 export class UserService {
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase) {
+  constructor(db: HermesChatDatabase) {
     this.db = db;
   }
 

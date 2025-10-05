@@ -39,33 +39,33 @@ Here is the process for deploying the Hermes Chat server database version on Sea
 
 **Step 2**：After the deployment is complete, wait for all the components of the application to be in the "Running" state, click the application's "Details" button to enter the application details page.
 
-![Logto application deployment status on Sealos](https://raw.githubusercontent.com/labring-actions/templates/main/template/lobe-chat-db/images/logto-app-deployment-status-sealos-en.png)
+![Logto application deployment status on Sealos](https://raw.githubusercontent.com/labring-actions/templates/main/template/hermes-chat-db/images/logto-app-deployment-status-sealos-en.png)
 
 Click the public address corresponding to port 3002, you can use the public address to access the Logto service.
 
-![Logto service public address](https://raw.githubusercontent.com/labring-actions/templates/main/template/lobe-chat-db/images/logto-public-address-en.png)
+![Logto service public address](https://raw.githubusercontent.com/labring-actions/templates/main/template/hermes-chat-db/images/logto-public-address-en.png)
 
 **Step 3**：Register a management account, then click the `Applications` menu on the left, enter the application list page. Click the `Create application` button in the upper right corner to create an application.
 
-![Logto application list page](https://raw.githubusercontent.com/labring-actions/templates/main/template/lobe-chat-db/images/logto-application-list.png)
+![Logto application list page](https://raw.githubusercontent.com/labring-actions/templates/main/template/hermes-chat-db/images/logto-application-list.png)
 
 Select `Next.js (App Router)` as the framework, then click the `Start building` button.
 
-![Logto create application page](https://raw.githubusercontent.com/labring-actions/templates/main/template/lobe-chat-db/images/logto-create-application.png)
+![Logto create application page](https://raw.githubusercontent.com/labring-actions/templates/main/template/hermes-chat-db/images/logto-create-application.png)
 
 **Step 4**：In the pop-up window, fill in the application name as `Hermes Chat`, then click the `Create application` button. Next, do not fill in anything, just click the bottom `Finish and done` button to create it.
 
-![Logto create application done page](https://raw.githubusercontent.com/labring-actions/templates/main/template/lobe-chat-db/images/logto-create-application-done.png)
+![Logto create application done page](https://raw.githubusercontent.com/labring-actions/templates/main/template/hermes-chat-db/images/logto-create-application-done.png)
 
 **Step 5**：In the `Hermes Chat` application, find the following three parameters, which will be used later when deploying the Hermes Chat database version.
 
-![Logto application detail page](https://raw.githubusercontent.com/labring-actions/templates/main/template/lobe-chat-db/images/logto-app-detail.png)
+![Logto application detail page](https://raw.githubusercontent.com/labring-actions/templates/main/template/hermes-chat-db/images/logto-app-detail.png)
 
 ## Deploy Hermes Chat Database Version
 
 **Step 1**：Click the button below to visit the Hermes Chat database version application deployment page:
 
-[![](https://raw.githubusercontent.com/labring-actions/templates/main/Deploy-on-Sealos.svg)](https://template.usw.sealos.io/deploy?templateName=lobe-chat-db)
+[![](https://raw.githubusercontent.com/labring-actions/templates/main/Deploy-on-Sealos.svg)](https://template.usw.sealos.io/deploy?templateName=hermes-chat-db)
 
 Fill in the following three required parameters:
 
@@ -75,7 +75,7 @@ Fill in the following three required parameters:
 
 **Step 2**：Click the `Deploy App` button, after the deployment is complete, wait for all the components of the application to be in the "Running" state, click the application's "Details" button to enter the application details page.
 
-![Hermes Chat database version deployment done page](https://raw.githubusercontent.com/labring-actions/templates/main/template/lobe-chat-db/images/lobe-chat-db-deployment-done-en.png)
+![Hermes Chat database version deployment done page](https://raw.githubusercontent.com/labring-actions/templates/main/template/hermes-chat-db/images/hermes-chat-db-deployment-done-en.png)
 
 **Step 3**：Find the public address, copy it, and use it later.
 
@@ -85,12 +85,12 @@ Fill in the following three required parameters:
 
 **Step 2**：In the `Settings` page, find the `Redirect URI` and `Post sign-out redirect URI` parameters, fill in the following values:
 
-- Redirect URI: `https://<lobe-chat-db-public-address>/api/auth/callback/logto`
-- Post sign-out redirect URI: `https://<lobe-chat-db-public-address>`
+- Redirect URI: `https://<hermes-chat-db-public-address>/api/auth/callback/logto`
+- Post sign-out redirect URI: `https://<hermes-chat-db-public-address>`
 
 **Step 3**：Click the `Save changes` button to save the configuration.
 
-**Step 4**：Now, access the Hermes Chat database version through `https://<lobe-chat-db-public-address>`, click the avatar in the upper left corner, and then click the \[Log in / Sign up] button.
+**Step 4**：Now, access the Hermes Chat database version through `https://<hermes-chat-db-public-address>`, click the avatar in the upper left corner, and then click the \[Log in / Sign up] button.
 
 **Step 5**：Next, you will be redirected to the Logto login page, click the \[Create account] button to register an account.
 

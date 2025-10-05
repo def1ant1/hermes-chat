@@ -18,7 +18,7 @@ export const HERMES_CHAT_CLOUD = 'Hermes Chat Cloud';
  */
 // TODO(OPS-1120): Delete once every managed extension acknowledges HERMES_CHAT_CLOUD; the alias is
 // purposefully exported to guarantee TypeScript still surfaces deprecation warnings in the interim.
-export const LOBE_CHAT_CLOUD = HERMES_CHAT_CLOUD;
+export { HERMES_CHAT_CLOUD as LOBE_CHAT_CLOUD };
 
 // Hermes Chat always renders the customer-facing product name; leverage this
 // constant so the entire surface area stays consistent during future refreshes.

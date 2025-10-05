@@ -125,7 +125,7 @@ stories:
       - >-
         OAuth callback descriptors and webhook payloads emit `brand: "hermes-chat"` keys.
       - >-
-        CI job fails when `rg "LobeChat"` finds strings outside approved archive list.
+        CI job fails when `rg "Hermes Chat"` finds strings outside approved archive list.
     testing:
       - >-
         Add `tests/e2e/rebrand.spec.ts` coverage for onboarding, workspace rename, and billing flows.

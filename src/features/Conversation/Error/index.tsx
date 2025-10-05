@@ -1,6 +1,5 @@
-import { IPluginErrorType } from '@hermeslabs/chat-plugin-sdk';
 import { AgentRuntimeErrorType, ILobeAgentRuntimeErrorType } from '@hermeslabs/model-runtime';
-import { ChatErrorType, ErrorType } from '@hermeslabs/types';
+import { IPluginErrorType , ChatErrorType, ErrorType } from '@hermeslabs/types';
 import type { AlertProps } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import dynamic from 'next/dynamic';

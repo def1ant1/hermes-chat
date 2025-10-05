@@ -56,7 +56,7 @@ describe('modelConfigSelectors', () => {
   });
 
   describe('isProviderFetchOnClient', () => {
-    // The next 4 case are base on the rules on https://github.com/lobehub/lobe-chat/pull/2753
+    // The next 4 case are base on the rules on https://github.com/hermeslabs/hermes-chat/pull/2753
     it('client fetch should disabled on default', () => {
       const s = merge(initialSettingsState, {
         settings: {
@@ -111,8 +111,8 @@ describe('modelConfigSelectors', () => {
     });
 
     // Qwen provider not work in browser request. Please skip this case if it work in future.
-    // Issue: https://github.com/lobehub/lobe-chat/issues/3108
-    // PR: https://github.com/lobehub/lobe-chat/pull/3133
+    // Issue: https://github.com/hermeslabs/hermes-chat/issues/3108
+    // PR: https://github.com/hermeslabs/hermes-chat/pull/3133
     it('client fecth should be disabled if provider is disable browser request', () => {
       const s = merge(initialSettingsState, {
         settings: {

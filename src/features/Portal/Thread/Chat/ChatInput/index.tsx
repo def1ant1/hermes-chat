@@ -34,7 +34,7 @@ const Desktop = memo(() => {
               <Trans i18nKey={'notSupportMultiModals'} ns={'thread'}>
                 子话题暂不支持文件/图片上传，如有需求，欢迎留言：
                 <Link
-                  href={'https://github.com/lobehub/lobe-chat/discussions/4717'}
+                  href={'https://github.com/hermeslabs/hermes-chat/discussions/4717'}
                   style={{ textDecoration: 'underline' }}
                 >
                   💬 讨论

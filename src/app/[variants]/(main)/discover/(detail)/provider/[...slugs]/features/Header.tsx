@@ -71,7 +71,7 @@ const Header = memo<{ mobile?: boolean }>(({ mobile: isMobile }) => {
 
           <Link
             href={urlJoin(
-              'https://github.com/lobehub/lobe-chat-agents/tree/main/locales',
+              'https://github.com/hermeslabs/hermes-chat-agents/tree/main/locales',
               identifier as string,
             )}
             onClick={(e) => e.stopPropagation()}

@@ -1,12 +1,13 @@
 import { sql } from 'drizzle-orm';
 
-import { LobeChatDatabase } from '../type';
 import { MigrationTableItem } from '@/types/clientDB';
 
-export class DrizzleMigrationModel {
-  private db: LobeChatDatabase;
+import { HermesChatDatabase } from '../type';
 
-  constructor(db: LobeChatDatabase) {
+export class DrizzleMigrationModel {
+  private db: HermesChatDatabase;
+
+  constructor(db: HermesChatDatabase) {
     this.db = db;
   }
 

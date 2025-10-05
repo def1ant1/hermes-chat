@@ -12,11 +12,11 @@ import {
   generations,
   users,
 } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { GenerationBatchModel } from '../generationBatch';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 // Mock FileService
 const mockGetFullFileUrl = vi.fn();

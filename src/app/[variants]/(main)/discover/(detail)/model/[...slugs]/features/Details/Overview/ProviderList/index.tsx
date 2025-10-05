@@ -142,7 +142,7 @@ const ProviderList = memo(() => {
               const normalizedId = normalizeHermesCloudProviderId(record.id);
               const isHermesCloud = isHermesCloudProviderId(record.id);
               // TODO(HERMES-DISCOVER-2025-06-30): Drop the legacy slug guard once the
-              // Discover ingestion pipeline stops emitting `lobehub` identifiers.
+              // Discover ingestion pipeline stops emitting `hermescloud` identifiers.
               return (
                 <Flexbox align="center" gap={4} horizontal justify={'flex-end'}>
                   {isHermesCloud && (

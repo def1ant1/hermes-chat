@@ -18,7 +18,7 @@ import {
 } from './utils';
 
 // 定义常量
-const GITHUB_CDN = 'https://github.com/lobehub/lobe-chat/assets/';
+const GITHUB_CDN = 'https://github.com/hermeslabs/hermes-chat/assets/';
 const CHECK_CDN = [
   'https://cdn.nlark.com/yuque/0/',
   'https://s.imtccdn.com/',

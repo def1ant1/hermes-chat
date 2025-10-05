@@ -1,6 +1,6 @@
+import { hermescloud as hermesLabsChatModels } from 'model-bank';
 import anthropicChatModels from 'model-bank/anthropic';
 import googleChatModels from 'model-bank/google';
-import lobehubChatModels from 'model-bank/lobehub';
 import openaiChatModels from 'model-bank/openai';
 import { describe, expect, it } from 'vitest';
 
@@ -442,7 +442,7 @@ describe('computeChatPricing', () => {
       expect(cached?.quantity).toBe(3021);
       expect(cached?.credits).toBeCloseTo(906.3, 6);
 
-      // Verify cache write tokens (fixed strategy in lobehub model)
+      // Verify cache write tokens (fixed strategy in hermeslabs model)
       const cacheWrite = breakdown.find((item) => item.unit.name === 'textInput_cacheWrite');
       expect(cacheWrite?.quantity).toBe(1697);
       expect(cacheWrite?.credits).toBeCloseTo(6_363.75, 6);

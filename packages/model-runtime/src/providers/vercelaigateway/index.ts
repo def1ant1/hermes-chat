@@ -52,8 +52,8 @@ export const LobeVercelAIGatewayAI = createOpenAICompatibleRuntime({
   },
   constructorOptions: {
     defaultHeaders: {
-      'http-referer': 'https://lobehub.com',
-      'x-title': 'LobeHub',
+      'http-referer': 'https://hermes.chat',
+      'x-title': 'Hermes Labs',
     },
   },
   debug: {

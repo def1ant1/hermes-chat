@@ -53,8 +53,8 @@ tags:
   $ docker run -d -p 3210:3210 \
     -e OPENAI_API_KEY=sk-xxxx \
     -e ACCESS_CODE=lobe66 \
-    --name lobe-chat \
-    hermeslabs/lobe-chat
+    --name hermes-chat \
+    hermeslabs/hermes-chat
   ```
 
   指令说明：
@@ -74,7 +74,7 @@ tags:
 
   <Callout type="warning">
     官方 Docker 镜像中未设定密码，强烈建议添加密码以提升安全性，否则你可能会遇到 [My API Key was
-    stolen!!!](https://github.com/hermeslabs/lobe-chat/issues/1123) 这样的情况
+    stolen!!!](https://github.com/hermeslabs/hermes-chat/issues/1123) 这样的情况
   </Callout>
 
   <Callout type="important">
@@ -91,8 +91,8 @@ tags:
     -e OPENAI_API_KEY=sk-xxxx \
     -e OPENAI_PROXY_URL=https://api-proxy.com/v1 \
     -e ACCESS_CODE=lobe66 \
-    --name lobe-chat \
-    hermeslabs/lobe-chat
+    --name hermes-chat \
+    hermeslabs/hermes-chat
   ```
 
   ### Crontab 自动更新脚本（可选）
@@ -112,13 +112,13 @@ tags:
 
   ```bash
   #!/bin/bash
-  # auto-update-lobe-chat.sh
+  # auto-update-hermes-chat.sh
 
   # 设置代理（可选）
   export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
   # 拉取最新的镜像并将输出存储在变量中
-  output=$(docker pull hermeslabs/lobe-chat:latest 2>&1)
+  output=$(docker pull hermeslabs/hermes-chat:latest 2>&1)
 
   # 检查拉取命令是否成功执行
   if [ $? -ne 0 ]; then
@@ -126,7 +126,7 @@ tags:
   fi
 
   # 检查输出中是否包含特定的字符串
-  echo "$output" | grep -q "Image is up to date for hermeslabs/lobe-chat:latest"
+  echo "$output" | grep -q "Image is up to date for hermeslabs/hermes-chat:latest"
 
   # 如果镜像已经是最新的，则不执行任何操作
   if [ $? -eq 0 ]; then
@@ -139,14 +139,14 @@ tags:
   echo "Removed: $(docker rm -f Hermes Chat)"
 
   # 运行新的容器
-  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=Hermes Chat --restart=always hermeslabs/lobe-chat)"
+  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=Hermes Chat --restart=always hermeslabs/hermes-chat)"
 
   # 打印更新的时间和版本
   echo "Update time: $(date)"
-  echo "Version: $(docker inspect hermeslabs/lobe-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
+  echo "Version: $(docker inspect hermeslabs/hermes-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
 
   # 清理不再使用的镜像
-  docker images | grep 'hermeslabs/lobe-chat' | grep -v 'hermeslabs/lobe-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
+  docker images | grep 'hermeslabs/hermes-chat' | grep -v 'hermeslabs/hermes-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
   echo "Removed old images."
   ```
 
@@ -155,7 +155,7 @@ tags:
   配置 Crontab，每 5 分钟执行一次脚本：
 
   ```bash
-  */5 * * * * /path/to/auto-update-lobe-chat.sh >> /path/to/auto-update-lobe-chat.log 2>&1
+  */5 * * * * /path/to/auto-update-hermes-chat.sh >> /path/to/auto-update-hermes-chat.log 2>&1
   ```
 </Steps>
 
@@ -203,9 +203,9 @@ API Key 是使用 Hermes Chat 进行大语言模型会话的必要信息，本�
   **安全性** 负责，请你自行承担购买和使用 API Key 的风险。
 </Callout>
 
-[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/lobe-chat?color=45cc11&labelColor=black&style=flat-square
-[docker-release-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/lobe-chat?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
-[docker-size-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/lobe-chat?color=369eff&labelColor=black&style=flat-square&sort=semver
+[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/hermes-chat?color=45cc11&labelColor=black&style=flat-square
+[docker-release-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/hermes-chat?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
+[docker-size-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/hermes-chat?color=369eff&labelColor=black&style=flat-square&sort=semver

@@ -100,10 +100,10 @@ export const useAppearance = () => {
     baseTheme: isDarkMode ? dark : undefined,
     elements: styles,
     layout: {
-      helpPageUrl: BRANDING_URL.help ?? 'https://lobehub.com/docs',
-      privacyPageUrl: BRANDING_URL.privacy ?? 'https://lobehub.com/privacy',
+      helpPageUrl: BRANDING_URL.help ?? 'https://hermes.chat/docs',
+      privacyPageUrl: BRANDING_URL.privacy ?? 'https://hermes.chat/privacy',
       socialButtonsVariant: 'blockButton',
-      termsPageUrl: BRANDING_URL.terms ?? 'https://lobehub.com/terms',
+      termsPageUrl: BRANDING_URL.terms ?? 'https://hermes.chat/terms',
     },
     variables: {
       borderRadius: `${theme.borderRadius}px`,

@@ -1,5 +1,5 @@
 import { UserJSON } from '@clerk/backend';
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { UserModel } from '@/database/models/user';
@@ -47,7 +47,7 @@ vi.mock('@/server/services/agent', () => ({
 
 let service: UserService;
 const mockUserId = 'test-user-id';
-const mockDB = {} as LobeChatDatabase;
+const mockDB = {} as HermesChatDatabase;
 
 // Mock user data
 const mockUserJSON: UserJSON = {

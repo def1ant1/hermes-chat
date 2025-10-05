@@ -13,7 +13,7 @@ import {
 import { merge } from '@/utils/merge';
 
 import { AiProviderSelectItem, aiModels, aiProviders } from '../schemas';
-import { LobeChatDatabase } from '../type';
+import { HermesChatDatabase } from '../type';
 
 type DecryptUserKeyVaults = (encryptKeyVaultsStr: string | null) => Promise<any>;
 
@@ -21,9 +21,9 @@ type EncryptUserKeyVaults = (keyVaults: string) => Promise<string>;
 
 export class AiProviderModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

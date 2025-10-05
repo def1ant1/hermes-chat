@@ -1,10 +1,10 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { PluginModel } from '@/database/_deprecated/models/plugin';
 import { DB_Plugin } from '@/database/_deprecated/schemas/plugin';
-import { LobeTool } from '@/types/tool';
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { HermesTool } from '@/types/tool';
+import { HermesToolCustomPlugin } from '@/types/tool/plugin';
 
 import { ClientService } from './_deprecated';
 import { InstallPluginParams } from './type';
@@ -33,7 +33,7 @@ describe('PluginService', () => {
       // Arrange
       const fakePlugin = {
         identifier: 'test-plugin',
-        manifest: { name: 'TestPlugin', version: '1.0.0' } as unknown as LobeChatPluginManifest,
+        manifest: { name: 'TestPlugin', version: '1.0.0' } as unknown as HermesChatPluginManifest,
         type: 'plugin',
       } as InstallPluginParams;
       vi.mocked(PluginModel.create).mockResolvedValue(fakePlugin);
@@ -50,7 +50,7 @@ describe('PluginService', () => {
   describe('getInstalledPlugins', () => {
     it('should return a list of installed plugins', async () => {
       // Arrange
-      const fakePlugins = [{ identifier: 'test-plugin', type: 'plugin' }] as LobeTool[];
+      const fakePlugins = [{ identifier: 'test-plugin', type: 'plugin' }] as HermesTool[];
       vi.mocked(PluginModel.getList).mockResolvedValue(fakePlugins as DB_Plugin[]);
 
       // Act
@@ -84,7 +84,7 @@ describe('PluginService', () => {
         identifier: 'custom-plugin',
         manifest: {},
         type: 'customPlugin',
-      } as LobeToolCustomPlugin;
+      } as HermesToolCustomPlugin;
       vi.mocked(PluginModel.create).mockResolvedValue(customPlugin);
 
       // Act
@@ -103,7 +103,7 @@ describe('PluginService', () => {
     it('should update a plugin', async () => {
       // Arrange
       const id = 'plugin-id';
-      const value = { settings: { ab: '1' } } as unknown as LobeToolCustomPlugin;
+      const value = { settings: { ab: '1' } } as unknown as HermesToolCustomPlugin;
       vi.mocked(PluginModel.update).mockResolvedValue(1);
 
       // Act
@@ -119,7 +119,7 @@ describe('PluginService', () => {
     it('should update a plugin manifest', async () => {
       // Arrange
       const id = 'plugin-id';
-      const manifest = { name: 'NewPluginManifest' } as unknown as LobeChatPluginManifest;
+      const manifest = { name: 'NewPluginManifest' } as unknown as HermesChatPluginManifest;
       vi.mocked(PluginModel.update).mockResolvedValue(1);
 
       // Act

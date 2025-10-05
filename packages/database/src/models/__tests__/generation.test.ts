@@ -2,7 +2,7 @@
 import { eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { LobeChatDatabase } from '../../type';import { AsyncTaskStatus } from '@/types/asyncTask';
+import { AsyncTaskStatus } from '@/types/asyncTask';
 import { FileSource } from '@/types/files';
 import { ImageGenerationAsset } from '@/types/generation';
 
@@ -15,10 +15,11 @@ import {
   generations,
   users,
 } from '../../schemas';
+import { HermesChatDatabase } from '../../type';
 import { GenerationModel } from '../generation';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 // Mock FileService
 const mockGetFullFileUrl = vi.fn();

@@ -6,11 +6,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { sleep } from '@/utils/sleep';
 
 import { aiProviders, users } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { AiProviderModel } from '../aiProvider';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'session-group-model-test-user-id';
 const aiProviderModel = new AiProviderModel(serverDB, userId);

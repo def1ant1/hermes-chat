@@ -1,11 +1,12 @@
-import { LobeHub, LobeHubProps } from '@hermeslabs/ui/brand';
+import type { HermesLabsBrandProps } from '@hermeslabs/types';
+import { LobeHub as HermesLabs } from '@hermeslabs/ui/brand';
 import { memo } from 'react';
 
 import { isCustomBranding } from '@/const/version';
 
 import CustomLogo from './Custom';
 
-interface ProductLogoProps extends LobeHubProps {
+interface ProductLogoProps extends HermesLabsBrandProps {
   height?: number;
   width?: number;
 }
@@ -15,5 +16,5 @@ export const ProductLogo = memo<ProductLogoProps>((props) => {
     return <CustomLogo {...props} />;
   }
 
-  return <LobeHub {...props} />;
+  return <HermesLabs {...props} />;
 });

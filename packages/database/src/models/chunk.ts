@@ -1,7 +1,6 @@
 import { and, asc, cosineDistance, count, desc, eq, inArray, isNull, sql } from 'drizzle-orm';
 import { chunk } from 'lodash-es';
 
-import { LobeChatDatabase } from '../type';
 import { ChunkMetadata, FileChunk } from '@/types/chunk';
 
 import {
@@ -13,13 +12,14 @@ import {
   files,
   unstructuredChunks,
 } from '../schemas';
+import { HermesChatDatabase } from '../type';
 
 export class ChunkModel {
   private userId: string;
 
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

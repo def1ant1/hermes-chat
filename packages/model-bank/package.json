@@ -25,7 +25,7 @@
     "./github": "./src/aiModels/github.ts",
     "./google": "./src/aiModels/google.ts",
     "./groq": "./src/aiModels/groq.ts",
-    "./lobehub": "./src/aiModels/lobehub.ts",
+    "./hermeslabs": "./src/aiModels/hermeslabs.ts",
     "./higress": "./src/aiModels/higress.ts",
     "./huggingface": "./src/aiModels/huggingface.ts",
     "./hunyuan": "./src/aiModels/hunyuan.ts",

@@ -259,7 +259,7 @@ export const createOpenAICompatibleRuntime = <T extends Record<string, any> = an
           }
 
           response = await this.client.chat.completions.create(finalPayload, {
-            // https://github.com/lobehub/lobe-chat/pull/318
+            // https://github.com/hermeslabs/hermes-chat/pull/318
             headers: { Accept: '*/*', ...options?.requestHeaders },
             signal: options?.signal,
           });
@@ -470,7 +470,7 @@ export const createOpenAICompatibleRuntime = <T extends Record<string, any> = an
     protected handleError(error: any): ChatCompletionErrorPayload {
       let desensitizedEndpoint = this.baseURL;
 
-      // refs: https://github.com/lobehub/lobe-chat/issues/842
+      // refs: https://github.com/hermeslabs/hermes-chat/issues/842
       if (this.baseURL !== DEFAULT_BASE_URL) {
         desensitizedEndpoint = desensitizeUrl(this.baseURL);
       }

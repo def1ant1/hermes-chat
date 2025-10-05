@@ -9,13 +9,13 @@ import { MigrationTableItem } from '@/types/clientDB';
 
 import { DrizzleMigrationModel } from '../models/drizzleMigration';
 import * as schema from '../schemas';
-import { LobeChatDatabase } from '../type';
+import { HermesChatDatabase } from '../type';
 import migrations from './migrations.json';
 
 // 用于实例管理的全局对象
 interface LobeGlobal {
-  pgDB?: LobeChatDatabase;
-  pgDBInitPromise?: Promise<LobeChatDatabase>;
+  pgDB?: HermesChatDatabase;
+  pgDBInitPromise?: Promise<HermesChatDatabase>;
   pgDBLock?: {
     acquired: boolean;
     lockPath: string;
@@ -120,7 +120,7 @@ process.on('uncaughtException', (error) => {
   releaseLock();
 });
 
-const migrateDatabase = async (db: LobeChatDatabase): Promise<void> => {
+const migrateDatabase = async (db: HermesChatDatabase): Promise<void> => {
   try {
     let hash: string | undefined;
     const cacheHash = await electronIpcClient.getDatabaseSchemaHash();
@@ -209,7 +209,7 @@ const checkAndCleanupExistingInstance = async () => {
 
 let isInitializing = false;
 
-export const getPgliteInstance = async (): Promise<LobeChatDatabase> => {
+export const getPgliteInstance = async (): Promise<HermesChatDatabase> => {
   try {
     console.log(
       'Getting PGlite instance, state:',
@@ -285,7 +285,7 @@ export const getPgliteInstance = async (): Promise<LobeChatDatabase> => {
         console.log('PGlite state:', client.ready);
 
         // 创建 Drizzle 数据库实例
-        const db = pgliteDrizzle({ client, schema }) as unknown as LobeChatDatabase;
+        const db = pgliteDrizzle({ client, schema }) as unknown as HermesChatDatabase;
 
         // 执行迁移
         await migrateDatabase(db);

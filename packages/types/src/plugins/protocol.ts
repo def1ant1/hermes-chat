@@ -8,7 +8,7 @@ export enum ProtocolSource {
   DEVELOPER = 'developer',
   /** GitHub 官方 */
   GITHUB_OFFICIAL = 'github_official',
-  /** 官方LobeHub市场 */
+  /** 官方Hermes Labs市场 */
   OFFICIAL = 'official',
   /** 第三方市场 */
   THIRD_PARTY = 'third_party',
@@ -63,7 +63,7 @@ export interface McpSchema {
 
 /**
  * RFC 0001 协议参数
- * lobehub://plugin/install?id=xxx&schema=xxx&marketId=xxx&meta_*=xxx
+ * hermeslabs://plugin/install?id=xxx&schema=xxx&marketId=xxx&meta_*=xxx
  */
 export interface McpInstallProtocolParamsRFC {
   /** 可选的 UI 显示元数据，以 meta_ 为前缀 */

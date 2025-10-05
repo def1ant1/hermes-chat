@@ -44,7 +44,7 @@
   "remoteServer": {
     "authError": "認証エラー: {{error}}",
     "authPending": "ブラウザで認証を完了してください",
-    "configDesc": "リモートLobeChatサーバーに接続し、データ同期を有効にします",
+    "configDesc": "リモートHermes Chatサーバーに接続し、データ同期を有効にします",
     "configError": "設定エラー",
     "configTitle": "クラウド同期の設定",
     "connect": "接続して認証",
@@ -64,9 +64,9 @@
     "inCloud": "現在、クラウド同期を使用しています",
     "inLocalStorage": "現在、ローカルストレージを使用しています",
     "isIniting": "初期化中...",
-    "lobehubCloud": {
+    "HermesLabsCloud": {
       "description": "公式提供のクラウド版",
-      "title": "LobeHub Cloud"
+      "title": "Hermes Labs Cloud"
     },
     "local": {
       "description": "ローカルデータベースを使用し、完全にオフラインで利用可能",

@@ -44,7 +44,7 @@
   "remoteServer": {
     "authError": "인증 실패: {{error}}",
     "authPending": "브라우저에서 인증을 완료하세요",
-    "configDesc": "원격 LobeChat 서버에 연결하여 데이터 동기화를 활성화합니다",
+    "configDesc": "원격 Hermes Chat 서버에 연결하여 데이터 동기화를 활성화합니다",
     "configError": "구성 오류",
     "configTitle": "클라우드 동기화 구성",
     "connect": "연결 및 인증",
@@ -64,7 +64,7 @@
     "inCloud": "현재 클라우드 동기화를 사용 중",
     "inLocalStorage": "현재 로컬 저장소를 사용 중",
     "isIniting": "초기화 중...",
-    "lobehubCloud": {
+    "HermesLabsCloud": {
       "description": "공식에서 제공하는 클라우드 버전",
       "title": "로브허브 클라우드"
     },

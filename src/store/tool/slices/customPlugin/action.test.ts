@@ -2,7 +2,7 @@ import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { pluginService } from '@/services/plugin';
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { HermesToolCustomPlugin } from '@/types/tool/plugin';
 
 import { useToolStore } from '../../store';
 import { defaultCustomPlugin } from './initialState';
@@ -33,7 +33,7 @@ describe('useToolStore:customPlugin', () => {
       act(() => {
         useToolStore.setState({
           // ...其他状态
-          installedPlugins: [{ identifier: 'test-plugin' } as LobeToolCustomPlugin],
+          installedPlugins: [{ identifier: 'test-plugin' } as HermesToolCustomPlugin],
         });
       });
 
@@ -56,7 +56,7 @@ describe('useToolStore:customPlugin', () => {
           identifier: 'plugin2',
           meta: { title: 'New Plugin' },
         },
-      } as LobeToolCustomPlugin;
+      } as HermesToolCustomPlugin;
       act(() => {
         useToolStore.setState({
           installedPlugins: [],
@@ -84,7 +84,7 @@ describe('useToolStore:customPlugin', () => {
           identifier: pluginId,
           meta: { title: 'Old Plugin', avatar: '🍎' },
         },
-      } as LobeToolCustomPlugin;
+      } as HermesToolCustomPlugin;
 
       act(() => {
         useToolStore.setState({
@@ -101,7 +101,7 @@ describe('useToolStore:customPlugin', () => {
           meta: { title: 'Updated Plugin', avatar: '🥒' },
         },
         identifier: pluginId,
-      } as LobeToolCustomPlugin;
+      } as HermesToolCustomPlugin;
 
       await act(async () => {
         await result.current.updateCustomPlugin(pluginId, updatedPlugin);
@@ -119,8 +119,8 @@ describe('useToolStore:customPlugin', () => {
           identifier: 'plugin3',
           meta: { title: 'Initial Plugin' },
         },
-      } as LobeToolCustomPlugin;
-      const updates = { meta: { title: 'Updated Name' } } as Partial<LobeToolCustomPlugin>;
+      } as HermesToolCustomPlugin;
+      const updates = { meta: { title: 'Updated Name' } } as Partial<HermesToolCustomPlugin>;
       const expectedNewCustomPlugin = { ...initialNewCustomPlugin, ...updates };
 
       act(() => {

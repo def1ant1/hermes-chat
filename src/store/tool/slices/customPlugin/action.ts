@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { t } from 'i18next';
 import { merge } from 'lodash-es';
 import { StateCreator } from 'zustand/vanilla';
@@ -8,7 +8,7 @@ import { mcpService } from '@/services/mcp';
 import { pluginService } from '@/services/plugin';
 import { toolService } from '@/services/tool';
 import { pluginHelpers } from '@/store/tool/helpers';
-import { LobeToolCustomPlugin, PluginInstallError } from '@/types/tool/plugin';
+import { HermesToolCustomPlugin, PluginInstallError } from '@/types/tool/plugin';
 import { setNamespace } from '@/utils/storeDebug';
 
 import { ToolStore } from '../../store';
@@ -18,11 +18,11 @@ import { defaultCustomPlugin } from './initialState';
 const n = setNamespace('customPlugin');
 
 export interface CustomPluginAction {
-  installCustomPlugin: (value: LobeToolCustomPlugin) => Promise<void>;
+  installCustomPlugin: (value: HermesToolCustomPlugin) => Promise<void>;
   reinstallCustomPlugin: (id: string) => Promise<void>;
   uninstallCustomPlugin: (id: string) => Promise<void>;
-  updateCustomPlugin: (id: string, value: LobeToolCustomPlugin) => Promise<void>;
-  updateNewCustomPlugin: (value: Partial<LobeToolCustomPlugin>) => void;
+  updateCustomPlugin: (id: string, value: HermesToolCustomPlugin) => Promise<void>;
+  updateNewCustomPlugin: (value: Partial<HermesToolCustomPlugin>) => void;
 }
 
 export const createCustomPluginSlice: StateCreator<
@@ -45,7 +45,7 @@ export const createCustomPluginSlice: StateCreator<
 
     try {
       updateInstallLoadingState(id, true);
-      let manifest: LobeChatPluginManifest;
+      let manifest: HermesChatPluginManifest;
       // mean this is a mcp plugin
       if (!!plugin.customParams?.mcp) {
         const url = plugin.customParams?.mcp?.url;

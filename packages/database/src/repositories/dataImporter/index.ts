@@ -5,7 +5,7 @@ import { ImportResultData, ImporterEntryData } from '@/types/importer';
 import { uuid } from '@/utils/uuid';
 
 import * as EXPORT_TABLES from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { DeprecatedDataImporterRepos } from './deprecated';
 
 interface ImportResult {
@@ -257,12 +257,12 @@ const IMPORT_TABLE_CONFIG: TableImportConfig[] = [
 
 export class DataImporterRepos {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
   private deprecatedDataImporterRepos: DeprecatedDataImporterRepos;
   private idMaps: Record<string, Record<string, string>> = {};
   private conflictRecords: Record<string, { field: string; value: any }[]> = {};
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
     this.deprecatedDataImporterRepos = new DeprecatedDataImporterRepos(db, userId);

@@ -120,7 +120,7 @@ const defaultMiddleware = (request: NextRequest) => {
   logDefault('Serialized route variant: %s', route);
 
   // if app is in docker, rewrite to self container
-  // https://github.com/lobehub/lobe-chat/issues/5876
+  // https://github.com/hermeslabs/hermes-chat/issues/5876
   if (appEnv.MIDDLEWARE_REWRITE_THROUGH_LOCAL) {
     logDefault('Local container rewrite enabled: %O', {
       host: '127.0.0.1',
@@ -134,7 +134,7 @@ const defaultMiddleware = (request: NextRequest) => {
     url.port = process.env.PORT || '3210';
   }
 
-  // refs: https://github.com/lobehub/lobe-chat/pull/5866
+  // refs: https://github.com/hermeslabs/hermes-chat/pull/5866
   // new handle segment rewrite: /${route}${originalPathname}
   // / -> /zh-CN__0__dark
   // /discover -> /zh-CN__0__dark/discover
@@ -194,7 +194,7 @@ const nextAuthMiddleware = NextAuth.auth((req) => {
   const session = req.auth;
 
   // Check if next-auth throws errors
-  // refs: https://github.com/lobehub/lobe-chat/pull/1323
+  // refs: https://github.com/hermeslabs/hermes-chat/pull/1323
   const isLoggedIn = !!session?.expires;
 
   logNextAuth('NextAuth session status: %O', {
@@ -262,7 +262,7 @@ const clerkAuthMiddleware = clerkMiddleware(
     return response;
   },
   {
-    // https://github.com/lobehub/lobe-chat/pull/3084
+    // https://github.com/hermeslabs/hermes-chat/pull/3084
     clockSkewInMs: 60 * 60 * 1000,
     signInUrl: '/login',
     signUpUrl: '/signup',

@@ -1,8 +1,9 @@
-import { LobeChatPluginApi, Meta } from '@hermeslabs/chat-plugin-sdk';
 import { ReactNode } from 'react';
 
+import type { HermesChatPluginApi, HermesChatPluginMetaSummary } from '../plugins/meta';
+
 export interface BuiltinToolManifest {
-  api: LobeChatPluginApi[];
+  api: HermesChatPluginApi[];
 
   /**
    * Plugin name
@@ -12,7 +13,7 @@ export interface BuiltinToolManifest {
    * metadata
    * @desc Meta data of the plugin
    */
-  meta: Meta;
+  meta: HermesChatPluginMetaSummary;
   systemRole: string;
   /**
    * plugin runtime type

@@ -5,7 +5,7 @@ IPC (Inter-Process Communication) module between Hermes Labs' Electron applicati
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – install this package via `npm install @hermeslabs/electron-server-ipc` to align with the new enterprise scope.
-> - **Compatibility window:** We publish shim releases to `@lobechat/electron-server-ipc` until 2025-09-30, after which installs from the legacy scope will fail.
+> - **Compatibility window:** We publish shim releases to `@hermeslabs/electron-server-ipc` until 2025-09-30, after which installs from the legacy scope will fail.
 > - **Rollback path:** Follow the [official rollback procedure](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) if a release train must temporarily revert to the former naming.
 > - **Breaking-change watch-outs:** Electron apps that hardcode IPC handler names in preload scripts should update imports and rebuild artifacts before promoting to production.
 

@@ -1,8 +1,8 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix , typescript-sort-keys/interface */
-import type { IPluginErrorType } from '@hermeslabs/chat-plugin-sdk';
 import type { ILobeAgentRuntimeErrorType } from '@hermeslabs/model-runtime';
 
 import { ErrorType } from '../fetch';
+import type { IPluginErrorType } from '../plugins/meta';
 import { GroundingSearch } from '../search';
 import { ChatImageItem } from './image';
 import { ChatToolPayload, MessageToolCall } from './tools';
