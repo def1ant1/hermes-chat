@@ -66,6 +66,11 @@ npm run test
 
 这将运行所有的单元测试，并输出测试结果。
 
+> \[!TIP]
+> Discover 元数据更新绑定了专用的 CI 命令组。提交品牌或 SEO 调整之前，请执行
+> `bunx vitest run --silent='passed-only' 'src/app/**/__tests__/discoverMetadata.test.tsx'`
+> 更新快照，避免合并后出现回归。
+
 ## 测试策略
 
 为了编写有效的测试用例，您可以考虑以下测试策略：

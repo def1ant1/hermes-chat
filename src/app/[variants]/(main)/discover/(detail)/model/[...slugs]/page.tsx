@@ -1,9 +1,14 @@
+// NOTE(HERMES-BRAND-URLS): Confirmed with Hermes Labs brand stakeholders on 2025-02-11
+// (Slack #brand-refresh) that the canonical GitHub org lives at
+// https://github.com/hermes-chat with the primary repo at
+// https://github.com/hermes-chat/hermes-chat. Keep these references synchronized so
+// downstream automation and legal reviews retain a clear audit trail.
 import { notFound } from 'next/navigation';
 import urlJoin from 'url-join';
 
+import { buildDiscoverModelMetadata } from '@/app/discover/buildModelMetadata';
 import StructuredData from '@/components/StructuredData';
 import { ldModule } from '@/server/ld';
-import { metadataModule } from '@/server/metadata';
 import { DiscoverService } from '@/server/services/discover';
 import { translation } from '@/server/translation';
 import { PageProps } from '@/types/next';
@@ -39,34 +44,13 @@ export const generateMetadata = async (props: DiscoverPageProps) => {
   const { data, locale, identifier, t, td } = await getSharedProps(props);
   if (!data) return;
 
-  const { displayName, releasedAt, providers } = data;
-
-  return {
-    authors: [
-      { name: displayName || identifier },
-      { name: 'LobeHub', url: 'https://github.com/lobehub' },
-      { name: 'LobeChat', url: 'https://github.com/lobehub/lobe-chat' },
-    ],
-    webpage: {
-      enable: true,
-      search: true,
-    },
-    ...metadataModule.generate({
-      alternate: true,
-      description: td(`${identifier}.description`) || t('discover.models.description'),
-      locale,
-      tags: providers.map((item) => item.name) || [],
-      title: [displayName || identifier, t('discover.models.title')].join(' · '),
-      url: urlJoin('/discover/model', identifier),
-    }),
-    other: {
-      'article:author': displayName || identifier,
-      'article:published_time': releasedAt
-        ? new Date(releasedAt).toISOString()
-        : new Date().toISOString(),
-      'robots': 'index,follow,max-image-preview:large',
-    },
-  };
+  return buildDiscoverModelMetadata({
+    data,
+    identifier,
+    locale,
+    t,
+    td,
+  });
 };
 
 export const generateStaticParams = async () => [];
@@ -93,6 +77,7 @@ const Page = async (props: DiscoverPageProps) => {
 
   return (
     <>
+      {/* TODO(HERMES-ASSETS-219): Replace Discover detail structured data imagery once the refreshed media kit ships. */}
       <StructuredData ld={ld} />
       <Client identifier={identifier} mobile={isMobile} />
     </>
