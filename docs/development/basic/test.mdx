@@ -67,9 +67,13 @@ npm run test
 This will run all unit tests and output the test results.
 
 > \[!TIP]
-> Discover metadata updates ship with a focused CI command group. Run
-> `bunx vitest run --silent='passed-only' 'src/app/**/__tests__/discoverMetadata.test.tsx'`
-> locally to refresh the snapshot before pushing branding or SEO adjustments.
+> Keep Discover surfaces green by running the targeted suites before opening a
+> pull request:
+>
+> - `bunx vitest run --silent=passed-only src/app/discover/__tests__/discoverMetadata.test.tsx`
+>   validates SEO metadata snapshots.
+> - `bunx vitest run --silent=passed-only src/app/discover/__tests__/discoverProviderBrand.test.tsx`
+>   confirms the Hermes Cloud provider slug and fallbacks resolve correctly.
 
 ## Testing Strategy
 

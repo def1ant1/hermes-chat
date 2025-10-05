@@ -218,6 +218,12 @@ export { default as GiteeAIProviderCard } from './giteeai';
 export { default as GithubProviderCard } from './github';
 export { default as GoogleProviderCard } from './google';
 export { default as GroqProviderCard } from './groq';
+export { default as HermesCloudProviderCard } from './hermescloud';
+/**
+ * @deprecated Prefer {@link HermesCloudProviderCard}. Retained until
+ * 2025-06-30 to shield legacy imports while downstream packages migrate.
+ */
+export { default as LobeHubProviderCard } from './hermescloud';
 export { default as HigressProviderCard } from './higress';
 export { default as HuggingFaceProviderCard } from './huggingface';
 export { default as HunyuanProviderCard } from './hunyuan';
@@ -225,7 +231,6 @@ export { default as InfiniAIProviderCard } from './infiniai';
 export { default as InternLMProviderCard } from './internlm';
 export { default as JinaProviderCard } from './jina';
 export { default as LMStudioProviderCard } from './lmstudio';
-export { default as LobeHubProviderCard } from './lobehub';
 export { default as MinimaxProviderCard } from './minimax';
 export { default as MistralProviderCard } from './mistral';
 export { default as ModelScopeProviderCard } from './modelscope';

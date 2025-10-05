@@ -74,3 +74,40 @@ export const HERMES_SUPPORT_FALLBACK_ORDER: ReadonlyArray<keyof HermesSupportCon
   'security',
   'community',
 ];
+
+/**
+ * Canonical identifiers and URLs for the managed Hermes Cloud provider.
+ *
+ * These values were ratified by the Hermes Labs product and brand council on
+ * 2025-02-17 to guarantee every Discover surface, automation fixture, and
+ * customer support touchpoint uses the same slug and primary marketing URLs.
+ */
+export const HERMES_CLOUD_PROVIDER_ID = 'hermescloud';
+export const HERMES_CLOUD_PROVIDER_NAME = 'Hermes Cloud';
+export const HERMES_CLOUD_PROVIDER_URL = 'https://cloud.hermes.chat';
+export const HERMES_CLOUD_PROVIDER_PRICING_URL = 'https://cloud.hermes.chat/pricing';
+export const HERMES_CLOUD_PROVIDER_DOCS_URL = 'https://cloud.hermes.chat/docs/models';
+
+/**
+ * Legacy identifiers the Discover data pipeline may continue to emit until the
+ * 2025-06-30 cleanup milestone completes. Kept frozen to discourage mutation.
+ */
+export const LEGACY_LOBEHUB_PROVIDER_IDS = Object.freeze(['lobehub'] as const);
+
+/**
+ * @deprecated Prefer {@link HERMES_CLOUD_PROVIDER_ID}. Remove once
+ * Discover+CLI fixtures finish emitting the legacy slug (target 2025-06-30).
+ */
+export const LOBEHUB_PROVIDER_ID: typeof HERMES_CLOUD_PROVIDER_ID = HERMES_CLOUD_PROVIDER_ID;
+
+type LegacyLobeHubProviderId = (typeof LEGACY_LOBEHUB_PROVIDER_IDS)[number];
+
+const LEGACY_LOBEHUB_PROVIDER_ID_LIST = LEGACY_LOBEHUB_PROVIDER_IDS as readonly string[];
+
+export const isHermesCloudProviderId = (
+  candidate: string,
+): candidate is typeof HERMES_CLOUD_PROVIDER_ID | LegacyLobeHubProviderId =>
+  candidate === HERMES_CLOUD_PROVIDER_ID || LEGACY_LOBEHUB_PROVIDER_ID_LIST.includes(candidate);
+
+export const normalizeHermesCloudProviderId = (candidate: string): string =>
+  isHermesCloudProviderId(candidate) ? HERMES_CLOUD_PROVIDER_ID : candidate;

@@ -20,6 +20,7 @@ export enum ModelProvider {
   Github = 'github',
   Google = 'google',
   Groq = 'groq',
+  HermesCloud = 'hermescloud',
   Higress = 'higress',
   HuggingFace = 'huggingface',
   Hunyuan = 'hunyuan',
@@ -27,7 +28,11 @@ export enum ModelProvider {
   InternLM = 'internlm',
   Jina = 'jina',
   LMStudio = 'lmstudio',
-  LobeHub = 'lobehub',
+  /**
+   * @deprecated Prefer {@link ModelProvider.HermesCloud}. Remove after the
+   * 2025-06-30 Discover pipeline cleanup.
+   */
+  LobeHub = 'hermescloud',
   Minimax = 'minimax',
   Mistral = 'mistral',
   ModelScope = 'modelscope',

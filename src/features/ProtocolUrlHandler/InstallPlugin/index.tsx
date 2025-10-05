@@ -2,6 +2,8 @@
 
 import { memo } from 'react';
 
+import { isHermesCloudProviderId } from '@/const/app';
+
 import CustomPluginInstallModal from './CustomPluginInstallModal';
 import OfficialPluginInstallModal from './OfficialPluginInstallModal';
 import { McpInstallRequest, PluginSource } from './types';
@@ -17,13 +19,12 @@ interface PluginInstallConfirmModalProps {
 const getPluginSource = (request: McpInstallRequest): PluginSource => {
   const { marketId } = request;
 
-  // 官方 LobeHub 插件
-  if (marketId === 'lobehub') {
+  if (marketId && isHermesCloudProviderId(marketId)) {
     return PluginSource.OFFICIAL;
   }
 
   // 第三方市场插件（包括可信和不可信的）
-  if (marketId && marketId !== 'lobehub') {
+  if (marketId && !isHermesCloudProviderId(marketId)) {
     return PluginSource.MARKETPLACE;
   }
 

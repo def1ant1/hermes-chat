@@ -12,6 +12,7 @@ import urlJoin from 'url-join';
 
 import InlineTable from '@/components/InlineTable';
 import { ModelInfoTags } from '@/components/ModelSelect';
+import { isHermesCloudProviderId, normalizeHermesCloudProviderId } from '@/const/app';
 import { BASE_PROVIDER_DOC_URL } from '@/const/url';
 import { formatPriceByCurrency, formatTokenNumber } from '@/utils/format';
 import { getTextInputUnitRate, getTextOutputUnitRate } from '@/utils/pricing';
@@ -31,10 +32,14 @@ const ProviderList = memo(() => {
             dataIndex: 'id',
             key: 'provider',
             render: (_, record) => {
+              const normalizedId = normalizeHermesCloudProviderId(record.id);
               return (
-                <Link href={urlJoin('/discover/provider', record.id)} style={{ color: 'inherit' }}>
+                <Link
+                  href={urlJoin('/discover/provider', normalizedId)}
+                  style={{ color: 'inherit' }}
+                >
                   <Flexbox align="center" gap={8} horizontal>
-                    <ProviderIcon provider={record.id} size={24} type={'avatar'} />
+                    <ProviderIcon provider={normalizedId} size={24} type={'avatar'} />
                     <div style={{ fontWeight: 500 }}>{record.name}</div>
                   </Flexbox>
                 </Link>
@@ -134,10 +139,13 @@ const ProviderList = memo(() => {
             dataIndex: 'action',
             key: 'action',
             render: (_, record) => {
-              const isLobeHub = record.id === 'lobehub';
+              const normalizedId = normalizeHermesCloudProviderId(record.id);
+              const isHermesCloud = isHermesCloudProviderId(record.id);
+              // TODO(HERMES-DISCOVER-2025-06-30): Drop the legacy slug guard once the
+              // Discover ingestion pipeline stops emitting `lobehub` identifiers.
               return (
                 <Flexbox align="center" gap={4} horizontal justify={'flex-end'}>
-                  {isLobeHub && (
+                  {isHermesCloud && (
                     <Tooltip title={t('models.providerInfo.officialTooltip')}>
                       <ActionIcon
                         color={theme.colorSuccess}
@@ -147,7 +155,7 @@ const ProviderList = memo(() => {
                       />
                     </Tooltip>
                   )}
-                  {!isLobeHub && (
+                  {!isHermesCloud && (
                     <Tooltip title={t('models.providerInfo.apiTooltip')}>
                       <ActionIcon
                         icon={<Icon icon={KeyIcon} />}
@@ -157,12 +165,12 @@ const ProviderList = memo(() => {
                     </Tooltip>
                   )}
                   <Tooltip title={t('models.guide')}>
-                    <Link href={urlJoin(BASE_PROVIDER_DOC_URL, record.id)} target={'_blank'}>
+                    <Link href={urlJoin(BASE_PROVIDER_DOC_URL, normalizedId)} target={'_blank'}>
                       <ActionIcon icon={BookIcon} size={'small'} variant={'filled'} />
                     </Link>
                   </Tooltip>
                   <Link
-                    href={urlJoin('/discover/provider', record.id)}
+                    href={urlJoin('/discover/provider', normalizedId)}
                     style={{ color: 'inherit' }}
                   >
                     <ActionIcon

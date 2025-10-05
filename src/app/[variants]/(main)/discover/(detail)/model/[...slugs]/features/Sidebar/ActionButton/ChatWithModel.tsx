@@ -11,6 +11,8 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import urlJoin from 'url-join';
 
+import { isHermesCloudProviderId, normalizeHermesCloudProviderId } from '@/const/app';
+
 import { useDetailContext } from '../../DetailProvider';
 
 const useStyles = createStyles(({ css }) => ({
@@ -25,9 +27,16 @@ const ChatWithModel = memo(() => {
   const { styles } = useStyles();
   const { t } = useTranslation('discover');
   const { providers = [] } = useDetailContext();
-  const includeLobeHub = providers.some((item) => item.id === 'lobehub');
+  const includeHermesCloud = providers.some((item) => isHermesCloudProviderId(item.id));
   const route = useRouter();
-  const list = providers.filter((provider) => provider.id !== 'lobehub');
+  const list = providers
+    .filter((provider) => !isHermesCloudProviderId(provider.id))
+    // TODO(HERMES-DISCOVER-2025-06-30): Drop the normalization bridge once all
+    // upstream services emit `hermescloud` directly.
+    .map((provider) => ({
+      ...provider,
+      id: normalizeHermesCloudProviderId(provider.id),
+    }));
 
   const items = list.map((item) => ({
     icon: <ProviderIcon provider={item.id} size={20} type={'avatar'} />,
@@ -39,11 +48,11 @@ const ChatWithModel = memo(() => {
     ),
   }));
 
-  const handleLobeHubChat = () => {
+  const handleHermesCloudChat = () => {
     route.push('/chat');
   };
 
-  if (includeLobeHub)
+  if (includeHermesCloud)
     return (
       <Dropdown.Button
         className={styles.button}
@@ -51,7 +60,7 @@ const ChatWithModel = memo(() => {
         menu={{
           items,
         }}
-        onClick={handleLobeHubChat}
+        onClick={handleHermesCloudChat}
         overlayStyle={{ minWidth: 267 }}
         size={'large'}
         style={{ flex: 1, width: 'unset' }}
