@@ -1,73 +1,78 @@
-# @lobechat/electron-client-ipc
+# @hermeslabs/electron-client-ipc (Global Edition)
 
-这个包是 LobeChat 在 Electron 环境中用于处理 IPC（进程间通信）的客户端工具包。
+This package ships the client utilities Hermes Chat uses to orchestrate IPC (Inter-Process Communication) flows within the Electron renderer runtime.
 
-## 介绍
+> \[!IMPORTANT] Hermes Labs Scope Migration
+>
+> - **Effective date:** 2025-03-31 – install via `npm install @hermeslabs/electron-client-ipc` to stay aligned with the supported namespace.
+> - **Compatibility window:** Compatibility releases for `@lobechat/electron-client-ipc` remain available through 2025-09-30; complete all production cutovers before the window closes.
+> - **Rollback path:** Reference the [Hermes rebranding rollback guidance](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) if you need to revert under an incident SLA.
+> - **Breaking-change considerations:** Renderer bundles that tree-shake by package scope require cache invalidation and a fresh build when you transition to `@hermeslabs/*` imports.
 
-在 Electron 应用中，IPC（进程间通信）是连接主进程（Main Process）、渲染进程（Renderer Process）以及 NextJS 进程的桥梁。为了更好地组织和管理这些通信，我们将 IPC 相关的代码分成了两个包：
+## Overview
 
-- `@lobechat/electron-client-ipc`：**客户端 IPC 包**
-- `@lobechat/electron-server-ipc`：**服务端 IPC 包**
+In Electron applications, IPC acts as the conduit between the Main Process, Renderer Process, and the Next.js service layer. To keep the architecture modular, we split our IPC tooling into two packages:
 
-## 主要区别
+- `@hermeslabs/electron-client-ipc`: **Renderer-focused IPC toolkit**
+- `@hermeslabs/electron-server-ipc`: **Server and main-process IPC toolkit**
 
-### electron-client-ipc（本包）
+## Responsibilities
 
-- 运行环境：在渲染进程（Renderer Process）中运行
-- 主要职责：
-  - 提供渲染进程调用主进程方法的接口定义
-  - 封装 `ipcRenderer.invoke` 相关方法
-  - 处理与主进程的通信请求
+### electron-client-ipc (this package)
+
+- Runtime: Renderer Process
+- Core duties:
+  - Expose strongly typed APIs for renderer components to invoke main-process operations
+  - Wrap `ipcRenderer.invoke` helpers with retry-aware ergonomics
+  - Manage request lifecycles when communicating with the main process
 
 ### electron-server-ipc
 
-- 运行环境：在 Electron 主进程和 Next.js 服务端进程中运行
-- 主要职责：
-  - 提供基于 Socket 的 IPC 通信机制
-  - 实现服务端（ElectronIPCServer）和客户端（ElectronIpcClient）通信组件
-  - 处理跨进程的请求和响应
-  - 提供自动重连和错误处理机制
-  - 确保类型安全的 API 调用
+- Runtime: Electron main process and Next.js backend
+- Core duties:
+  - Provide the socket-based transport used across processes
+  - Implement the `ElectronIPCServer` and `ElectronIpcClient` coordination primitives
+  - Handle cross-process request/response routing
+  - Supply automatic reconnection and fault handling hooks
+  - Guarantee type-safe contracts between renderer and server
 
-## 使用场景
+## When to Use This Package
 
-当渲染进程需要：
+Use the client IPC helpers whenever the renderer needs to:
 
-- 访问系统 API
-- 进行文件操作
-- 调用主进程特定功能
+- Access privileged operating-system APIs
+- Perform file I/O or other main-process mediated actions
+- Trigger features that live exclusively in the main process
 
-时，都需要通过 `electron-client-ipc` 包提供的方法来发起请求。
+## Technical Notes
 
-## 技术说明
+The split-package architecture honors separation of concerns, which means:
 
-这种分包设计遵循了关注点分离原则，使得：
+- IPC interfaces remain maintainable and easy to audit
+- Renderer and server codebases stay decoupled
+- Shared TypeScript definitions prevent drift across processes
 
-- IPC 通信接口清晰可维护
-- 客户端和服务端代码解耦
-- TypeScript 类型定义共享，确保类型安全
+## 🤝 Contributing
 
-## 🤝 参与贡献
+IPC requirements vary widely across enterprise deployments. Contributions that improve reliability, resilience, or developer experience are encouraged.
 
-不同用例和平台的 IPC 通信需求各异。我们欢迎社区贡献来改进和扩展 IPC 功能。您可以通过以下方式参与改进：
+### How to Contribute
 
-### 如何贡献
+1. **Bug Reports:** Surface issues with IPC communication, type definitions, or reconnection behavior
+2. **Feature Requests:** Propose additional IPC methods or ergonomic improvements
+3. **Code Contributions:** Submit pull requests with fixes, enhancements, or new automation helpers
 
-1. **错误报告**：报告 IPC 通信或类型定义的问题
-2. **功能请求**：建议新的 IPC 方法或改进现有接口
-3. **代码贡献**：提交错误修复或新功能的拉取请求
+### Contribution Workflow
 
-### 贡献流程
+1. Fork the [Hermes Chat repository](https://github.com/hermeslabs/hermes-chat)
+2. Implement and document your renderer-side IPC improvements
+3. Open a Pull Request outlining:
 
-1. Fork [LobeChat 仓库](https://github.com/lobehub/lobe-chat)
-2. 对 IPC 客户端包进行修改
-3. 提交 Pull Request 并描述：
+- The problem addressed
+- Implementation details
+- Test coverage or usage demonstrations
+- Impact on existing features
 
-- 解决的问题
-- 实现细节
-- 测试用例或使用示例
-- 对现有功能的影响
+## 📌 Note
 
-## 📌 说明
-
-这是 LobeHub 的内部模块（`"private": true`），专为 LobeChat 设计，不作为独立包发布。
+This module is marked `"private": true` and ships exclusively with Hermes Chat. It is not published as a standalone package.

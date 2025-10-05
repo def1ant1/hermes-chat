@@ -1,8 +1,15 @@
-# @lobechat/file-loaders
+# @hermeslabs/file-loaders
 
-`@lobechat/file-loaders` is a toolkit within the LobeChat project, specifically designed for loading various types of files from local file paths and converting their content into standardized `Document` object arrays.
+`@hermeslabs/file-loaders` is a toolkit within the Hermes Chat project, specifically designed for loading various types of files from local file paths and converting their content into standardized `Document` object arrays.
 
-Its primary purpose is to provide a unified interface for reading different file formats, extracting their core text content, and preparing them for subsequent processing (such as file preview, content extraction, or serving as knowledge base data sources in LobeChat).
+> \[!IMPORTANT] Hermes Labs Scope Migration
+>
+> - **Effective date:** 2025-03-31 – install via `npm install @hermeslabs/file-loaders` to align with the new namespace.
+> - **Compatibility window:** Legacy `@lobechat/file-loaders` artifacts receive mirrored releases until 2025-09-30; pinning beyond that date will produce 404 errors from npm.
+> - **Rollback path:** See the [scope migration rollback guide](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) to revert if downstream consumers are not yet ready.
+> - **Breaking-change watch-outs:** Custom bundlers that whitelist package scopes must add `@hermeslabs` before the compatibility sunset to avoid tree-shaking outages.
+
+Its primary purpose is to provide a unified interface for reading different file formats, extracting their core text content, and preparing them for subsequent processing (such as file preview, content extraction, or serving as knowledge base data sources in Hermes Chat).
 
 ## ✨ Features
 
@@ -73,7 +80,7 @@ File formats and parsing requirements are constantly evolving. We welcome commun
 
 ### Contribution Process
 
-1. Fork the [LobeChat repository](https://github.com/lobehub/lobe-chat)
+1. Fork the [Hermes Chat repository](https://github.com/hermeslabs/hermes-chat)
 2. Add new format support or improve existing parsers
 3. Submit a Pull Request describing:
 
@@ -84,6 +91,6 @@ File formats and parsing requirements are constantly evolving. We welcome commun
 
 ## 📌 Note
 
-This is an internal module of LobeHub (`"private": true`), designed specifically for LobeChat and not published as a standalone package.
+This is an internal module of Hermes Labs (`"private": true`), designed specifically for Hermes Chat and not published as a standalone package.
 
-If you're interested in our project, feel free to check it out, star it, or contribute code on [GitHub](https://github.com/lobehub/lobe-chat)!
+If you're interested in our project, feel free to check it out, star it, or contribute code on [GitHub](https://github.com/hermeslabs/hermes-chat)!

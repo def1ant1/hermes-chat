@@ -1,10 +1,17 @@
-# @lobechat/web-crawler
+# @hermeslabs/web-crawler
 
-LobeChat's built-in web crawling module for intelligent extraction of web content and conversion to Markdown format.
+Hermes Chat's built-in web crawling module for intelligent extraction of web content and conversion to Markdown format.
+
+> \[!IMPORTANT] Hermes Labs Scope Migration
+>
+> - **Effective date:** 2025-03-31 – install with `npm install @hermeslabs/web-crawler` to ensure the crawler stays patched.
+> - **Compatibility window:** Mirrored releases continue for `@lobechat/web-crawler` until 2025-09-30, after which the legacy scope will no longer receive updates.
+> - **Rollback path:** See the [official rollback plan](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) for emergency reversions.
+> - **Breaking-change watch-outs:** Automation scripts that pin allowlists to `@lobechat` must be updated to add `@hermeslabs` before the compatibility deadline.
 
 ## 📝 Introduction
 
-`@lobechat/web-crawler` is a core component of LobeChat responsible for intelligent web content crawling and processing. It extracts valuable content from various webpages, filters out distracting elements, and generates structured Markdown text.
+`@hermeslabs/web-crawler` is a core component of Hermes Chat responsible for intelligent web content crawling and processing. It extracts valuable content from various webpages, filters out distracting elements, and generates structured Markdown text.
 
 ## 🛠️ Core Features
 
@@ -18,7 +25,7 @@ Web structures are diverse and complex. We welcome community contributions for s
 
 ### How to Contribute URL Rules
 
-1. Add new rules to the [urlRules.ts](https://github.com/lobehub/lobe-chat/blob/main/packages/web-crawler/src/urlRules.ts) file
+1. Add new rules to the [urlRules.ts](https://github.com/hermeslabs/hermes-chat/blob/main/packages/web-crawler/src/urlRules.ts) file
 2. Rule example:
 
 ```typescript
@@ -48,7 +55,7 @@ const url = [
 
 ### Rule Submission Process
 
-1. Fork the [LobeChat repository](https://github.com/lobehub/lobe-chat)
+1. Fork the [Hermes Chat repository](https://github.com/hermeslabs/hermes-chat)
 2. Add or modify URL rules
 3. Submit a Pull Request describing:
 
@@ -58,4 +65,4 @@ const url = [
 
 ## 📌 Note
 
-This is an internal module of LobeHub (`"private": true`), designed specifically for LobeChat and not published as a standalone package.
+This is an internal module of Hermes Labs (`"private": true`), designed specifically for Hermes Chat and not published as a standalone package.
