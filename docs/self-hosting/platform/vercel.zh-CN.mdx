@@ -1,53 +1,53 @@
 ---
-title: 在 Vercel 上部署 Hermes Chat
-description: 学习如何在 Vercel 上一键部署 Hermes Chat，准备 OpenAI API Key，点击按钮进行部署，绑定自定义域名，自动同步更新等。
+title: Deploy Hermes Chat with Vercel (Global Edition)
+description: Step-by-step instructions for deploying Hermes Chat on Vercel with enterprise-ready guardrails, automated updates, and rollback guidance.
 tags:
   - Vercel
-  - 部署指引
+  - Deployment Guide
   - Hermes Chat
   - OpenAI API Key
-  - 自定义域名
-  - 自动同步更新
+  - Custom Domain
+  - Continuous Delivery
 ---
 
-# Vercel 部署指引
+# Deploy Hermes Chat with Vercel
 
-如果想在 Vercel 上部署 Hermes Chat，可以按照以下步骤进行操作：
+Follow this enterprise-ready checklist to launch Hermes Chat on Vercel with high confidence:
 
-> \[!IMPORTANT] Hermes Labs 作用域迁移
+> \[!IMPORTANT] Hermes Labs Scope Migration
 >
-> - **生效日期：** 2025-03-31 —— 部署模板现已全面切换为企业统一的 `@hermeslabs/*` npm 作用域，请确保自建仓库同步该更改。
-> - **兼容窗口：** 旧的 `@lobechat/*` 与 `@lobehub/*` 包将在 2025-09-30 前持续发布兼容补丁，用于渐进式灰度或紧急回滚。
-> - **回滚方案：** 如需恢复旧作用域，可参照 [重品牌工具包回滚指引](/zh/docs/development/rebranding#rollback-strategy)，并在 Vercel 后台通过 "Redeploy" 按钮回滚到上一个提交。
-> - **重要提示：** 若你的 Vercel 项目仍然绑定 `lobehub/lobe-chat` 仓库，请在兼容窗口关闭前更新为 `hermeslabs/hermes-chat`，否则自动部署将在切换后失败。
+> - **Effective date:** 2025-03-31 – all deployment templates and starter projects now pull packages from the `@hermeslabs/*` namespace to align with the centralized registry.
+> - **Compatibility window:** Legacy `@lobechat/*` and `@lobehub/*` packages receive hotfix updates until 2025-09-30 so you can stage blue/green rollouts or orchestrate emergency downgrades.
+> - **Rollback path:** Follow the [rebranding rollback playbook](/docs/development/rebranding#rollback-strategy) and trigger Vercel's "Redeploy" action against the previous commit when you need to revert the scope migration.
+> - **Breaking-change considerations:** Update any Vercel integration still targeting the `lobehub/lobe-chat` repository to `hermeslabs/hermes-chat` before the compatibility window closes; otherwise automated deploys will fail once the legacy repo is archived.
 
-## Vercel 部署流程
+## Vercel Deployment Process
 
 <Steps>
-  ### 准备好你的 OpenAI API Key
+  ### Prepare your OpenAI API Key
 
-  前往 [OpenAI API Key](https://platform.openai.com/account/api-keys) 获取你的 OpenAI API Key
+  Retrieve a key from the [OpenAI dashboard](https://platform.openai.com/account/api-keys) and store it in your enterprise secrets manager before pasting it into Vercel.
 
-  ### 点击下方按钮进行部署
+  ### Click the button below to deploy
 
   [![][deploy-button-image]][deploy-link]
 
-  直接使用 GitHub 账号登录即可，记得在环境变量页填入 `OPENAI_API_KEY` （必填） and `ACCESS_CODE`（推荐）；
+  Authenticate with GitHub, populate `OPENAI_API_KEY` (required) and `ACCESS_CODE` (recommended) on the environment variables step, and confirm the repository import completes successfully.
 
-  ### 部署完毕后，即可开始使用
+  ### After deployment, you can start using the workspace
 
-  ### 绑定自定义域名（可选）
+  ### Bind a custom domain (optional)
 
-  Vercel 分配的域名 DNS 在某些区域被污染了，绑定自定义域名即可直连。
+  DNS for the default Vercel domain can be filtered in certain regions. Mapping a custom domain ensures reliable global connectivity.
 </Steps>
 
-## 自动同步更新
+## Automatic Synchronization of Updates
 
-如果你根据上述中的一键部署步骤部署了自己的项目，你可能会发现总是被提示 “有可用更新”。这是因为 Vercel 默认为你创建新项目而非 fork 本项目，这将导致无法准确检测更新。
+Projects created from the one-click deployment template operate as independent repositories, so Vercel cannot detect upstream changes automatically. As a result, you may see persistent "updates available" prompts.
 
 <Callout>
-  我们建议按照 [📘 Hermes Chat 自部署保持更新](/zh/docs/self-hosting/advanced/upstream-sync)
-  步骤重新部署。
+  Reprovision following the [Self-Hosting Upstream Sync](/docs/self-hosting/advanced/upstream-sync)
+  instructions to attach your deployment to the primary `hermeslabs/hermes-chat` repository and inherit future automation.
 </Callout>
 
 [deploy-button-image]: https://vercel.com/button

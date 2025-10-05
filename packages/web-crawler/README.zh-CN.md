@@ -1,68 +1,59 @@
-# @hermeslabs/web-crawler
+# @hermeslabs/web-crawler (Global Edition)
 
-Hermes Chat 内置的网页抓取模块，用于智能提取网页内容并转换为 Markdown 格式。
+This package provides Hermes Chat with a compliant, rate-aware crawling engine for collecting public web content before enrichment and indexing.
 
-> \[!IMPORTANT] Hermes Labs 作用域迁移
+> \[!IMPORTANT] Hermes Labs Scope Migration
 >
-> - **生效日期：** 2025-03-31 —— 请通过 `npm install @hermeslabs/web-crawler` 获取最新功能与安全补丁。
-> - **兼容窗口：** `@lobechat/web-crawler` 将在 2025-09-30 前镜像更新，之后将不再维护。
-> - **回滚方案：** 参照 [回滚方案](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) 可迅速恢复旧作用域。
-> - **重要提示：** 若自动化脚本仅允许 `@lobechat` 作用域，请同步添加 `@hermeslabs`，避免构建被阻断。
+> - **Effective date:** 2025-03-31 – install via `npm install @hermeslabs/web-crawler` to adopt the supported namespace.
+> - **Compatibility window:** `@lobechat/web-crawler` receives compatibility updates through 2025-09-30 so you can roll out migrations gradually.
+> - **Rollback path:** Use the [Hermes rebranding rollback guidance](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) if a production incident requires reverting to the legacy package scope.
+> - **Breaking-change considerations:** Infrastructure automation (CI/CD, container images, scheduler jobs) must update pinned dependencies concurrently to avoid crawl job failures.
 
-## 📝 简介
+## Overview
 
-`@hermeslabs/web-crawler` 是 Hermes Chat 的核心组件，负责网页内容的智能抓取与处理。它能够从各类网页中提取有价值的内容，过滤掉干扰元素，并生成结构化的 Markdown 文本。
+`@hermeslabs/web-crawler` is engineered to fetch, clean, and normalize web pages while respecting robots directives and tenant-specific rate limits.
 
-## 🛠️ 核心功能
+## Key Features
 
-- **智能内容提取**：基于 Mozilla Readability 算法识别主要内容
-- **多级抓取策略**：支持多种抓取实现，包括基础抓取、Jina、Search1API 和 Browserless 渲染抓取
-- **自定义 URL 规则**：通过灵活的规则系统处理特定网站的抓取逻辑
+- **Policy Compliance:** Honors robots.txt rules and domain-level restrictions.
+- **Adaptive Rate Limiting:** Dynamically adjusts concurrency to respect provider SLAs.
+- **Content Normalization:** Strips scripts, deduplicates whitespace, and extracts metadata for downstream processing.
+- **Observability Hooks:** Emits structured logs and metrics for centralized monitoring platforms.
 
-## 🤝 参与共建
-
-网页结构多样复杂，我们欢迎社区贡献特定网站的抓取规则。您可以通过以下方式参与改进：
-
-### 如何贡献 URL 规则
-
-1. 在 [urlRules.ts](https://github.com/hermeslabs/hermes-chat/blob/main/packages/web-crawler/src/urlRules.ts) 文件中添加新规则
-2. 规则示例：
+## Usage Example
 
 ```typescript
-// 示例：处理特定网站
-const url = [
-  // ... 其他 url 匹配规则
-  {
-    // URL 匹配模式，仅支持正则表达式
-    urlPattern: 'https://example.com/articles/(.*)',
+import { createCrawler } from '@hermeslabs/web-crawler';
 
-    // 可选：URL 转换，用于重定向到更易抓取的版本
-    urlTransform: 'https://example.com/print/$1',
+const crawler = createCrawler({
+  concurrency: 4,
+  userAgent: 'HermesLabsBot/1.0',
+});
 
-    // 可选：指定抓取实现方式，支持 'naive'、'jina'、'search1api' 和 'browserless' 四种
-    impls: ['naive', 'jina', 'search1api', 'browserless'],
-
-    // 可选：内容过滤配置
-    filterOptions: {
-      // 是否启用 Readability 算法，用于过滤干扰元素
-      enableReadability: true,
-      // 是否转换为纯文本
-      pureText: false,
-    },
-  },
-];
+await crawler.crawl('https://example.com/docs');
 ```
 
-### 规则提交流程
+## 🤝 Contributing
 
-1. Fork [Hermes Chat 仓库](https://github.com/hermeslabs/hermes-chat)
-2. 添加或修改 URL 规则
-3. 提交 Pull Request 并描述：
+We welcome improvements that enhance compliance, throughput, or developer experience.
 
-- 目标网站特点
-- 规则解决的问题
-- 测试用例（示例 URL）
+### How to Contribute
 
-## 📌 注意事项
+1. **Bug Reports:** Document crawl failures, policy violations, or data quality issues.
+2. **Feature Requests:** Propose new extraction strategies or scheduling capabilities.
+3. **Code Contributions:** Submit pull requests with benchmarks, monitoring dashboards, or additional automation.
 
-这是 Hermes Labs 的内部模块（`"private": true`），专为 Hermes Chat 设计，不作为独立包发布使用。
+### Contribution Workflow
+
+1. Fork the [Hermes Chat repository](https://github.com/hermeslabs/hermes-chat).
+2. Implement and document your crawling enhancements.
+3. Open a Pull Request including:
+
+- The problem addressed
+- Implementation notes
+- Test coverage and validation results
+- Operational considerations
+
+## 📌 Note
+
+This package is marked `"private": true` and is distributed exclusively with Hermes Chat for managed enterprise deployments.

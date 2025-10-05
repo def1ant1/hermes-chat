@@ -1,96 +1,61 @@
-# @hermeslabs/file-loaders
+# @hermeslabs/file-loaders (Global Edition)
 
-`@hermeslabs/file-loaders` 是 Hermes Chat 项目中的一个工具包，专门用于从本地文件路径加载各种类型的文件，并将其内容转换为标准化的 `Document` 对象数组。
+Enterprise deployments of Hermes Chat rely on this package to ingest, normalize, and index files from diverse sources before the data is surfaced in conversations.
 
-> \[!IMPORTANT] Hermes Labs 作用域迁移
+> \[!IMPORTANT] Hermes Labs Scope Migration
 >
-> - **生效日期：** 2025-03-31 —— 新安装需执行 `npm install @hermeslabs/file-loaders`。
-> - **兼容窗口：** 旧包 `@lobechat/file-loaders` 将维护到 2025-09-30，之后停止发布并可能导致 npm 404。
-> - **回滚方案：** 可按照 [回滚指引](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) 快速恢复旧作用域。
-> - **重要提示：** 若构建流程对包作用域做了白名单限制，请及时加入 `@hermeslabs` 以避免上线阻断。
+> - **Effective date:** 2025-03-31 – install via `npm install @hermeslabs/file-loaders` to remain within the supported namespace.
+> - **Compatibility window:** `@lobechat/file-loaders` compatibility builds remain available through 2025-09-30 for phased migrations.
+> - **Rollback path:** Follow the [rebranding rollback guidance](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) to revert to the legacy scope if a regression is detected during rollout.
+> - **Breaking-change considerations:** Automated ingestion pipelines that pin the legacy scope must be updated in lockstep with application deployments to prevent job failures.
 
-它的主要目的是提供一个统一的接口来读取不同的文件格式，提取其核心文本内容，并为后续处理（例如在 Hermes Chat 中进行文件预览、内容提取或将其作为知识库数据源）做好准备。
+## Overview
 
-## ✨ 功能特性
+`@hermeslabs/file-loaders` exposes helpers that parse and transform files into embeddings-ready content. The package prioritizes deterministic processing so that knowledge bases remain stable across deployments.
 
-- **统一接口**: 提供 `loadFile(filePath: string)` 函数作为核心入口点。
-- **自动类型检测**: 根据文件扩展名自动选择合适的加载方式。
-- **广泛的格式支持**:
-  - **纯文本类**: `.txt`, `.csv`, `.md`, `.json`, `.xml`, `.yaml`, `.html` 以及多种代码和配置文件格式。
-  - **PDF**: `.pdf` 文件。
-  - **Word**: `.docx` 文件。
-  - **Excel**: `.xlsx`, `.xls` 文件，每个工作表作为一个 `Page`。
-  - **PowerPoint**: `.pptx` 文件，每个幻灯片作为一个 `Page`。
-- **标准化输出**: 始终返回 `Promise<Document>`。 `Document` 对象代表一个加载的文件，其内部包含一个 `Page` 数组，代表文件的各个逻辑单元（页、幻灯片、工作表、文本块等）。
-- **层级结构**: 采用 `Document` 包含 `Page[]` 的结构，更好地反映文件原始组织方式。
-- **丰富的元数据**: 在 `Document` 和 `Page` 层面提供详细的元数据，包括文件信息、内容统计和结构信息。
+## Supported Loaders
 
-## 核心数据结构
+- **PDF Loader:** Converts PDF documents into structured text segments while preserving headings for downstream summarization.
+- **Markdown Loader:** Parses Markdown files, flattens embedded assets, and resolves relative links for knowledge ingestion.
+- **HTML Loader:** Sanitizes and normalizes HTML content to strip scripts while maintaining semantic structure.
+- **Text Loader:** Provides efficient streaming support for large plain-text files.
 
-`loadFile` 函数返回一个 `FileDocument` 对象，包含文件级信息和其所有逻辑页面 / 块 (`DocumentPage`)。
+## Usage Example
 
-### `FileDocument` Interface
+```typescript
+import { loadFileAsDocuments } from '@hermeslabs/file-loaders';
 
-| 字段              | 类型              | 描述                                                           |
-| :---------------- | :---------------- | :------------------------------------------------------------- |
-| `content`         | `string`          | 文件内容 (聚合后的内容)                                        |
-| `createdTime`     | `Date`            | 文件创建时间戳。                                               |
-| `fileType`        | `string`          | 文件类型或扩展名。                                             |
-| `filename`        | `string`          | 原始文件名。                                                   |
-| `metadata`        | `object`          | 文件级别的元数据。                                             |
-| `metadata.author` | `string?`         | 文档作者 (如果可用)。                                          |
-| `metadata.error`  | `string?`         | 如果整个文件加载失败，记录错误信息。                           |
-| `metadata.title`  | `string?`         | 文档标题 (如果可用)。                                          |
-| `...`             | `any`             | 其他文件级别的元数据。                                         |
-| `modifiedTime`    | `Date`            | 文件最后修改时间戳。                                           |
-| `pages`           | `DocumentPage[]?` | 包含文档中所有逻辑页面 / 块的数组 (可选)。                     |
-| `source`          | `string`          | 原始文件的完整路径。                                           |
-| `totalCharCount`  | `number`          | 整个文档的总字符数 (所有 `DocumentPage` 的 `charCount` 之和)。 |
-| `totalLineCount`  | `number`          | 整个文档的总行数 (所有 `DocumentPage` 的 `lineCount` 之和)。   |
+const documents = await loadFileAsDocuments({
+  filePath: '/data/enterprise-handbook.pdf',
+  loader: 'pdf',
+  metadata: {
+    classification: 'internal',
+    retention: '2025-12-31',
+  },
+});
+```
 
-### `DocumentPage` Interface
+## 🤝 Contributing
 
-| 字段                       | 类型      | 描述                         |
-| :------------------------- | :-------- | :--------------------------- |
-| `charCount`                | `number`  | 此页 / 块内容的字符数。      |
-| `lineCount`                | `number`  | 此页 / 块内容的行数。        |
-| `metadata`                 | `object`  | 与此页 / 块相关的元数据。    |
-| `metadata.chunkIndex`      | `number?` | 如果分割成块，当前块的索引。 |
-| `metadata.error`           | `string?` | 处理此页 / 块时发生的错误。  |
-| `metadata.lineNumberEnd`   | `number?` | 在原始文件中的结束行号。     |
-| `metadata.lineNumberStart` | `number?` | 在原始文件中的起始行号。     |
-| `metadata.pageNumber`      | `number?` | 页码 (适用于 PDF, DOCX)。    |
-| `metadata.sectionTitle`    | `string?` | 相关的章节标题。             |
-| `metadata.sheetName`       | `string?` | 工作表名称 (适用于 XLSX)。   |
-| `metadata.slideNumber`     | `number?` | 幻灯片编号 (适用于 PPTX)。   |
-| `metadata.totalChunks`     | `number?` | 如果分割成块，总块数。       |
-| `...`                      | `any`     | 其他特定于页 / 块的元数据。  |
-| `pageContent`              | `string`  | 此页 / 块的核心文本内容。    |
+Contributions that expand format coverage, improve parsing fidelity, or automate QA are encouraged.
 
-## 🤝 参与贡献
+### How to Contribute
 
-文件格式和解析需求在不断发展。我们欢迎社区贡献来扩展格式支持和提高解析准确性。您可以通过以下方式参与改进：
+1. **Bug Reports:** Flag parsing regressions or data quality issues.
+2. **Feature Requests:** Suggest new loader types or metadata automation.
+3. **Code Contributions:** Submit enhancements with benchmarks or validation scripts.
 
-### 如何贡献
+### Contribution Workflow
 
-1. **新文件格式支持**：添加对其他文件类型的支持
-2. **解析器改进**：增强现有解析器以更好地提取内容
-3. **元数据增强**：改进元数据提取能力
-4. **性能优化**：优化文件加载和处理性能
+1. Fork the [Hermes Chat repository](https://github.com/hermeslabs/hermes-chat).
+2. Implement and document your loader improvements.
+3. Open a Pull Request summarizing:
 
-### 贡献流程
+- The problem solved
+- Implementation details
+- Test strategy and datasets
+- Impact on existing pipelines
 
-1. Fork [Hermes Chat 仓库](https://github.com/hermeslabs/hermes-chat)
-2. 添加新格式支持或改进现有解析器
-3. 提交 Pull Request 并描述：
+## 📌 Note
 
-- 支持的新文件格式或所做的改进
-- 使用各种文件样本进行测试
-- 性能影响分析
-- 文档更新
-
-## 📌 说明
-
-这是 Hermes Labs 的内部模块（`"private": true`），专为 Hermes Chat 设计，不作为独立包发布。
-
-如果你对我们的项目感兴趣，欢迎在 [GitHub](https://github.com/hermeslabs/hermes-chat) 上查看、点赞或贡献代码！
+This module is marked `"private": true` and is distributed with Hermes Chat as part of the enterprise toolchain.
