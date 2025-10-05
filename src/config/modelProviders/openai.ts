@@ -1,8 +1,20 @@
 import { ModelProviderCard } from '@/types/llm';
 
+import { buildHermesReferralUrl } from './utils/referral';
+
+// NOTE(HERMES-GROWTH-2025-02-18): Growth asked us to route OpenAI account
+// creation through go.hermes.chat so Segment captures a consistent
+// provider-card attribution story across web, desktop, and mobile shells.
+const OPENAI_API_KEY_REFERRAL = buildHermesReferralUrl({
+  destination: 'openai-api-keys',
+  slug: 'openai',
+});
+
 // ref: https://platform.openai.com/docs/deprecations
 const OpenAI: ModelProviderCard = {
-  apiKeyUrl: 'https://platform.openai.com/api-keys?utm_source=lobehub',
+  // The Hermes shortlink preserves the direct OpenAI destination but guarantees
+  // the approved UTMs stay attached even if we rotate landing pages again.
+  apiKeyUrl: OPENAI_API_KEY_REFERRAL,
   chatModels: [
     {
       contextWindowTokens: 400_000,

@@ -1,8 +1,19 @@
 import { ModelProviderCard } from '@/types/llm';
 
+import { buildHermesReferralUrl } from './utils/referral';
+
+// NOTE(HERMES-GROWTH-2025-02-18): Retiring the lobe.li short link keeps 302.AI
+// referrals measurable in the Hermes dashboards without relying on third-party
+// link rot. Growth signed off on this slug so we can segment conversions by
+// provider moving forward.
+const AI302_API_KEY_REFERRAL = buildHermesReferralUrl({
+  destination: 'ai302-api-keys',
+  slug: 'ai302',
+});
+
 // ref: https://302.ai/pricing/
 const Ai302: ModelProviderCard = {
-  apiKeyUrl: 'https://lobe.li/Oizw5sN',
+  apiKeyUrl: AI302_API_KEY_REFERRAL,
   chatModels: [
     {
       contextWindowTokens: 32_000,

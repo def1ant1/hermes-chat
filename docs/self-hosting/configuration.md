@@ -20,6 +20,24 @@ when preparing production or enterprise sandboxes.
   transitional alias `LOBE_CHAT_CLOUD` remains available only until OPS-1120
   closes (2025-09-30) to give extensions and custom shells time to upgrade.
 
+## Referral tracking
+
+- **Provider cards:** Shortlink every partner referral through
+  `https://go.hermes.chat/r/<slug>` with Growth's approved UTMs
+  (`utm_source=hermes-chat`, `utm_medium=app_referral`,
+  `utm_campaign=model_provider`, `utm_content=<slug>`). Centralise new links in
+  `src/config/modelProviders/utils/referral.ts` to keep the taxonomy uniform.
+- **Automation:** Run
+  `bunx tsx scripts/rebrandHermesChat.ts --mode validate --workspace .` after
+  touching marketing links. The CLI now logs replacement counts for the
+  `utm-source-*` rules so the Growth pod can audit migrations without manual
+  diffs.
+- **Verification:** Execute
+  `bunx vitest run --silent='passed-only' 'src/config/modelProviders/__tests__/referralLinks.test.ts'`
+  to confirm provider configs emit Hermes shortlinks (invite codes included).
+  Self-hosters inheriting custom forks should gate release pipelines on this
+  suite to avoid reintroducing lobehub parameters.
+
 ## Locale management
 
 Hermes Chat now writes the locale cookie under `HERMES_LOCALE`. For backwards

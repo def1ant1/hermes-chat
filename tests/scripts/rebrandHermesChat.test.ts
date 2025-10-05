@@ -88,7 +88,7 @@ async function createWorkspace(): Promise<string> {
 
   await writeFile(
     join(workspace, 'docs.md'),
-    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @hermeslabs/ui\nScoped migration: @lobechat/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nLocale cookie constant: LOBE_LOCALE\nDesktop UA: LobeChat-Desktop/1.0.0\nMarkdown sample: \`lobe_chat\`\nCloud constant: LOBE_CHAT_CLOUD\nCloud slug: lobe-chat-cloud\nCloud snake: lobe_chat_cloud\nCloud label: Lobe Chat Cloud\nProvider slug: 'lobehub'\n`,
+    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @hermeslabs/ui\nScoped migration: @lobechat/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nLocale cookie constant: LOBE_LOCALE\nDesktop UA: LobeChat-Desktop/1.0.0\nMarkdown sample: \`lobe_chat\`\nCloud constant: LOBE_CHAT_CLOUD\nCloud slug: lobe-chat-cloud\nCloud snake: lobe_chat_cloud\nCloud label: Lobe Chat Cloud\nProvider slug: 'lobehub'\nPPIO referral: https://ppinfra.com/user/register?invited_by=RQIMOC&utm_source=github_lobechat&utm_medium=github_readme&utm_campaign=link\nAiHubMix docs: https://aihubmix.com?utm_source=lobehub&utm_medium=github_readme&utm_campaign=link\n`,
     'utf8',
   );
 
@@ -192,6 +192,11 @@ describe('rebrandHermesChat CLI', () => {
       expect(docs).toContain('Cloud snake: hermes_qa_cloud');
       expect(docs).toContain('Cloud label: Hermes Chat QA Cloud');
       expect(docs).toContain("Provider slug: 'hermescloud'");
+      expect(docs).toContain('utm_source=hermes-chat');
+      expect(docs).toContain('utm_medium=app_referral');
+      expect(docs).toContain('utm_campaign=model_provider');
+      expect(docs).not.toContain('github_lobechat');
+      expect(docs).not.toContain('utm_source=lobehub');
       expect(docs).not.toContain('LobeChat');
       expect(docs).not.toContain('lobehub.com');
       expect(docs).not.toContain('lobechat.com');
@@ -251,6 +256,10 @@ describe('rebrandHermesChat CLI', () => {
       expect(combinedOutput).toContain('cloud-token-title');
       expect(combinedOutput).toContain('cloud-token-kebab');
       expect(combinedOutput).toContain('cloud-token-snake');
+      expect(combinedOutput).toContain('utm-source-lobehub');
+      expect(combinedOutput).toContain('utm-source-github-lobechat');
+      expect(combinedOutput).toContain('utm-medium-github-readme');
+      expect(combinedOutput).toContain('utm-campaign-link');
       expect(combinedOutput).toContain('dry-run replacement summary');
 
       const after = await readFile(join(workspace, 'docs.md'), 'utf8');
