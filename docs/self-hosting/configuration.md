@@ -15,6 +15,10 @@ when preparing production or enterprise sandboxes.
   links or incident banners. The fallback order is defined by
   `HERMES_SUPPORT_FALLBACK_ORDER` and should be honoured unless an operator
   explicitly overrides every contact.
+- **Cloud labelling:** Reference `HERMES_CHAT_CLOUD` when drawing attention to
+  the managed SaaS tier inside banners, onboarding flows, or feature flags. The
+  transitional alias `LOBE_CHAT_CLOUD` remains available only until OPS-1120
+  closes (2025-09-30) to give extensions and custom shells time to upgrade.
 
 ## Locale management
 

@@ -13,7 +13,8 @@ import { useTranslation } from 'react-i18next';
 
 import { CellProps } from '@/components/Cell';
 import { enableAuth } from '@/const/auth';
-import { LOBE_CHAT_CLOUD } from '@/const/branding';
+import { HERMES_CHAT_CLOUD } from '@/const/branding';
+// Prefer Hermes constant; alias removal tracked in OPS-1120.
 import { DOCUMENTS, FEEDBACK, OFFICIAL_URL, UTM_SOURCE } from '@/const/url';
 import { isServerMode } from '@/const/version';
 import { usePWAInstall } from '@/hooks/usePWAInstall';
@@ -93,7 +94,7 @@ export const useCategory = () => {
     showCloudPromotion && {
       icon: Cloudy,
       key: 'cloud',
-      label: t('userPanel.cloud', { name: LOBE_CHAT_CLOUD }),
+      label: t('userPanel.cloud', { name: HERMES_CHAT_CLOUD }),
       onClick: () => window.open(`${OFFICIAL_URL}?utm_source=${UTM_SOURCE}`, '__blank'),
     },
     {

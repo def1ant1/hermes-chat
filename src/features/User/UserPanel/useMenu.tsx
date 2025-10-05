@@ -22,7 +22,8 @@ import { Flexbox } from 'react-layout-kit';
 
 import type { MenuProps } from '@/components/Menu';
 import { enableAuth } from '@/const/auth';
-import { BRANDING_EMAIL, LOBE_CHAT_CLOUD, SOCIAL_URL } from '@/const/branding';
+import { BRANDING_EMAIL, HERMES_CHAT_CLOUD, SOCIAL_URL } from '@/const/branding';
+// Hermes cloud name is authoritative; alias only survives for third-party laggards.
 import { DEFAULT_DESKTOP_HOTKEY_CONFIG } from '@/const/desktop';
 import {
   CHANGELOG,
@@ -136,7 +137,7 @@ export const useMenu = () => {
       key: 'cloud',
       label: (
         <Link href={`${OFFICIAL_URL}?utm_source=${UTM_SOURCE}`} target={'_blank'}>
-          {t('userPanel.cloud', { name: LOBE_CHAT_CLOUD })}
+          {t('userPanel.cloud', { name: HERMES_CHAT_CLOUD })}
         </Link>
       ),
     },

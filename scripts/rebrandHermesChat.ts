@@ -153,6 +153,26 @@ function deriveThemePrefixVariants(brand: BrandMetadata): {
   };
 }
 
+function deriveCloudServiceTokens(brand: BrandMetadata): {
+  constant: string;
+  kebab: string;
+  snake: string;
+  title: string;
+} {
+  const words = splitIntoWords(brand.shortName ?? brand.name);
+  const safeWords = words.length ? words : splitIntoWords(brand.name);
+  const fallback = safeWords.length ? safeWords : ['hermes', 'chat'];
+  const baseConstant = fallback.map((word) => word.toUpperCase());
+  const baseLower = fallback.map((word) => word.toLowerCase());
+
+  return {
+    constant: [...baseConstant, 'CLOUD'].join('_'),
+    kebab: [...baseLower, 'cloud'].join('-'),
+    snake: [...baseLower, 'cloud'].join('_'),
+    title: `${brand.name} Cloud`,
+  };
+}
+
 /**
  * The central configuration describing every deterministic renaming we perform.
  *
@@ -173,6 +193,30 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     id: 'oauth-openid-scope-en',
     pattern: /(Authenticate using your\s*)LobeChat(\s+account)/g,
     replacement: (brand) => `$1${brand.name}$2`,
+  },
+  {
+    description: 'TypeScript constant referencing the managed cloud service entrypoint.',
+    id: 'cloud-token-constant',
+    pattern: /\bLOBE_CHAT_CLOUD\b/g,
+    replacement: (brand) => deriveCloudServiceTokens(brand).constant,
+  },
+  {
+    description: 'Marketing copy describing the managed cloud offer in title case.',
+    id: 'cloud-token-title',
+    pattern: /\bLobe Chat Cloud\b/g,
+    replacement: (brand) => deriveCloudServiceTokens(brand).title,
+  },
+  {
+    description: 'Kebab-case cloud slugs used for URLs, CLI arguments, or feature flags.',
+    id: 'cloud-token-kebab',
+    pattern: /\blobe-chat-cloud\b/g,
+    replacement: (brand) => deriveCloudServiceTokens(brand).kebab,
+  },
+  {
+    description: 'Snake_case cloud slugs appearing in configuration files.',
+    id: 'cloud-token-snake',
+    pattern: /\blobe_chat_cloud\b/g,
+    replacement: (brand) => deriveCloudServiceTokens(brand).snake,
   },
   {
     description: 'Kebab-case service identifiers such as docker-compose service names (lobe-chat).',
@@ -1007,6 +1051,12 @@ async function run(): Promise<void> {
     logger.info(` • ${rule.id}: ${count}`);
   }
   logger.info(`Replacement audit payload=${JSON.stringify(summary.replacements)}`);
+  if (dryRun) {
+    // Console.info ensures non-TTY environments (CI, vitest child processes) still record the
+    // replacement matrix even when consola downgrades info logs. This keeps dry-run reporting
+    // verifiable while we audit rebranding coverage programmatically.
+    console.info(`[rebrand] dry-run replacement summary=${JSON.stringify(summary.replacements)}`);
+  }
 
   logger.info(`Processed ${summary.filesScanned} files in ${(durationMs / 1000).toFixed(2)}s.`);
 

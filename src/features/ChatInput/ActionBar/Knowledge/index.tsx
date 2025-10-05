@@ -3,7 +3,8 @@ import { Suspense, memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import TipGuide from '@/components/TipGuide';
-import { LOBE_CHAT_CLOUD } from '@/const/branding';
+import { HERMES_CHAT_CLOUD } from '@/const/branding';
+// Hermes-first naming; alias is transitional only.
 import { isServerMode } from '@/const/version';
 import { AssignKnowledgeBaseModal } from '@/features/KnowledgeBaseModal';
 import { featureFlagsSelectors, useServerConfigStore } from '@/store/serverConfig';
@@ -34,7 +35,7 @@ const Knowledge = memo(() => {
         disabled
         icon={LibraryBig}
         showTooltip={true}
-        title={t('knowledgeBase.disabled', { cloud: LOBE_CHAT_CLOUD })}
+        title={t('knowledgeBase.disabled', { cloud: HERMES_CHAT_CLOUD })}
       />
     );
 
