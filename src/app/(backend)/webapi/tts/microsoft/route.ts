@@ -1,4 +1,4 @@
-import { MicrosoftSpeechPayload, MicrosoftSpeechTTS } from '@lobehub/tts';
+import { MicrosoftSpeechPayload, MicrosoftSpeechTTS } from '@hermeslabs/tts';
 
 export const runtime = 'edge';
 

@@ -1,4 +1,4 @@
-import { Block } from '@lobehub/ui';
+import { Block } from '@hermeslabs/ui';
 import { Empty } from 'antd';
 import Link from 'next/link';
 import { memo } from 'react';

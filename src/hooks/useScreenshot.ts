@@ -1,4 +1,4 @@
-import type { SegmentedProps } from '@lobehub/ui';
+import type { SegmentedProps } from '@hermeslabs/ui';
 import dayjs from 'dayjs';
 import { domToJpeg, domToPng, domToSvg, domToWebp } from 'modern-screenshot';
 import { useCallback, useState } from 'react';

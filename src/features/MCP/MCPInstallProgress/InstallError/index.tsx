@@ -1,4 +1,4 @@
-import { Alert } from '@lobehub/ui';
+import { Alert } from '@hermeslabs/ui';
 import { Button } from 'antd';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

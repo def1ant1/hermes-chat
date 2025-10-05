@@ -1,4 +1,4 @@
-import { Block, Collapse, Highlighter, Icon, Markdown, Tag } from '@lobehub/ui';
+import { Block, Collapse, Highlighter, Icon, Markdown, Tag } from '@hermeslabs/ui';
 import { Empty } from 'antd';
 import { CheckIcon, MinusIcon } from 'lucide-react';
 import { markdownToTxt } from 'markdown-to-txt';

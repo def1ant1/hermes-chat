@@ -1,7 +1,7 @@
 'use client';
 
 import { useWatchBroadcast } from '@hermeslabs/electron-client-ipc';
-import { Button, Highlighter, Icon, Text } from '@lobehub/ui';
+import { Button, Highlighter, Icon, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { ShieldX } from 'lucide-react';
 import { memo, useState } from 'react';

@@ -1,6 +1,6 @@
 'use client';
 
-import { ProviderCombine } from '@lobehub/icons';
+import { ProviderCombine } from '@hermeslabs/icons';
 import {
   Avatar,
   Form,
@@ -8,7 +8,7 @@ import {
   type FormItemProps,
   Icon,
   Tooltip,
-} from '@lobehub/ui';
+} from '@hermeslabs/ui';
 import { useDebounceFn } from 'ahooks';
 import { Skeleton, Switch } from 'antd';
 import { createStyles } from 'antd-style';

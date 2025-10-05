@@ -1,4 +1,4 @@
-import { Hotkey, Text, combineKeys } from '@lobehub/ui';
+import { Hotkey, Text, combineKeys } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

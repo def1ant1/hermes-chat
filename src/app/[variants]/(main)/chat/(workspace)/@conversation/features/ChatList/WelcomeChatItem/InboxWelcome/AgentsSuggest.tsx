@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Avatar, Block, Grid, Text } from '@lobehub/ui';
+import { ActionIcon, Avatar, Block, Grid, Text } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { createStyles } from 'antd-style';
 import { RefreshCw } from 'lucide-react';

@@ -1,6 +1,6 @@
 'use client';
 
-import { EditorProvider } from '@lobehub/editor/react';
+import { EditorProvider } from '@hermeslabs/editor/react';
 import { PropsWithChildren, memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 

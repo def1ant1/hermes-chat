@@ -1,4 +1,4 @@
-import type { ActionIconProps, FormProps } from '@lobehub/ui';
+import type { ActionIconProps, FormProps } from '@hermeslabs/ui';
 
 export const HEADER_HEIGHT = 64;
 export const MOBILE_NABBAR_HEIGHT = 44;

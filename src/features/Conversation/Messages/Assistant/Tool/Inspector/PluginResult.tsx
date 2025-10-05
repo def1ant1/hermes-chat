@@ -1,4 +1,4 @@
-import { Highlighter } from '@lobehub/ui';
+import { Highlighter } from '@hermeslabs/ui';
 import { memo, useMemo } from 'react';
 
 import { useChatStore } from '@/store/chat';

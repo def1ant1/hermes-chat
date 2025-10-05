@@ -1,5 +1,5 @@
 import { KeyEnum } from '@hermeslabs/types';
-import { Hotkey, combineKeys } from '@lobehub/ui';
+import { Hotkey, combineKeys } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';

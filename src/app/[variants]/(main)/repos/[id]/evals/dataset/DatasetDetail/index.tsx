@@ -2,7 +2,7 @@
 
 import { ProColumns, ProTable } from '@ant-design/pro-components';
 import { EvalDatasetRecordRefFile } from '@hermeslabs/types';
-import { ActionIcon, Button, Text } from '@lobehub/ui';
+import { ActionIcon, Button, Text } from '@hermeslabs/ui';
 import { Upload } from 'antd';
 import { createStyles } from 'antd-style';
 import { Edit2Icon, Trash2Icon } from 'lucide-react';

@@ -1,6 +1,6 @@
 import { DownloadOutlined } from '@ant-design/icons';
 import { UpdateInfo, useWatchBroadcast } from '@hermeslabs/electron-client-ipc';
-import { Button, Icon } from '@lobehub/ui';
+import { Button, Icon } from '@hermeslabs/ui';
 import { Badge, Popover, Progress, Tooltip, theme } from 'antd';
 import { createStyles } from 'antd-style';
 import { Download } from 'lucide-react';

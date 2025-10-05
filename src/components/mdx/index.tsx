@@ -1,5 +1,5 @@
-import { Typography as Typo, TypographyProps } from '@lobehub/ui';
-import { mdxComponents } from '@lobehub/ui/mdx';
+import { Typography as Typo, TypographyProps } from '@hermeslabs/ui';
+import { mdxComponents } from '@hermeslabs/ui/mdx';
 import { MDXRemote, type MDXRemoteProps } from 'next-mdx-remote/rsc';
 import { FC } from 'react';
 import remarkGfm from 'remark-gfm';

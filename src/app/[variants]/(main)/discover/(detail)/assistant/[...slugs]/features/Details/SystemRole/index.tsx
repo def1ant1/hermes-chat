@@ -1,4 +1,4 @@
-import { Block, Icon, Tag } from '@lobehub/ui';
+import { Block, Icon, Tag } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { MessageCircleHeartIcon, MessageCircleQuestionIcon } from 'lucide-react';
 import { memo } from 'react';

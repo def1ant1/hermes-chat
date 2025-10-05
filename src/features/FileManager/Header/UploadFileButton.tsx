@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Dropdown, Icon, MenuProps } from '@lobehub/ui';
+import { Button, Dropdown, Icon, MenuProps } from '@hermeslabs/ui';
 import { Upload } from 'antd';
 import { css, cx } from 'antd-style';
 import { FileUp, FolderUp, UploadIcon } from 'lucide-react';

@@ -1,4 +1,4 @@
-import { ScrollShadow } from '@lobehub/ui';
+import { ScrollShadow } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

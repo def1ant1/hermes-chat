@@ -1,4 +1,4 @@
-import { ActionIcon, Icon } from '@lobehub/ui';
+import { ActionIcon, Icon } from '@hermeslabs/ui';
 import { Button } from 'antd';
 import { createStyles } from 'antd-style';
 import fastDeepEqual from 'fast-deep-equal';

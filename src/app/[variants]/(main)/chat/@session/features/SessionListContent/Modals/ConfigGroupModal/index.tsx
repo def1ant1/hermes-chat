@@ -1,4 +1,4 @@
-import { Button, Modal, type ModalProps, SortableList } from '@lobehub/ui';
+import { Button, Modal, type ModalProps, SortableList } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { Plus } from 'lucide-react';

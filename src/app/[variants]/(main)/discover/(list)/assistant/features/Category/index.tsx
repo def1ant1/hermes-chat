@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Tag } from '@lobehub/ui';
+import { Icon, Tag } from '@hermeslabs/ui';
 import Link from 'next/link';
 import { useRouter } from 'nextjs-toploader/app';
 import qs from 'query-string';

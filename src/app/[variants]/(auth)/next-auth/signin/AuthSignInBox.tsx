@@ -1,7 +1,7 @@
 'use client';
 
-import { Button, Text } from '@lobehub/ui';
-import { LobeChat } from '@lobehub/ui/brand';
+import { Button, Text } from '@hermeslabs/ui';
+import { LobeChat } from '@hermeslabs/ui/brand';
 import { Col, Flex, Row, Skeleton } from 'antd';
 import { createStyles } from 'antd-style';
 import { AuthError } from 'next-auth';

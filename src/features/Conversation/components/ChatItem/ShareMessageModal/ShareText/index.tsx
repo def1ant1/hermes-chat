@@ -1,5 +1,5 @@
+import { Button, copyToClipboard } from '@hermeslabs/ui';
 import { exportFile } from '@hermeslabs/utils/client';
-import { Button, copyToClipboard } from '@lobehub/ui';
 import { App } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { CopyIcon } from 'lucide-react';

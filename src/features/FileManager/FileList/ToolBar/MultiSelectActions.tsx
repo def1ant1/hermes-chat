@@ -1,4 +1,4 @@
-import { Button, Icon } from '@lobehub/ui';
+import { Button, Icon } from '@hermeslabs/ui';
 import { App, Checkbox, Skeleton } from 'antd';
 import { createStyles } from 'antd-style';
 import { BookMinusIcon, BookPlusIcon, FileBoxIcon, Trash2Icon } from 'lucide-react';

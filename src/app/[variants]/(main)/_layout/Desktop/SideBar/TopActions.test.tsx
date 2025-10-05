@@ -34,7 +34,7 @@ vi.mock('next/link', () => ({
   )),
 }));
 
-vi.mock('@lobehub/ui', () => ({
+vi.mock('@hermeslabs/ui', () => ({
   ActionIcon: vi.fn(({ title }) => <div>{title}</div>),
   combineKeys: vi.fn((keys) => keys.join('+')),
   KeyMapEnum: { Alt: 'alt', Ctrl: 'ctrl', Shift: 'shift' },

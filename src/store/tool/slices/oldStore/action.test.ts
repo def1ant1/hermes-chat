@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
 import { act, renderHook } from '@testing-library/react';
 import useSWR from 'swr';
 import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -38,7 +38,7 @@ vi.mock('i18next', () => ({
 }));
 
 const pluginManifestMock = {
-  $schema: '../node_modules/@lobehub/chat-plugin-sdk/schema.json',
+  $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
   api: [
     {
       url: 'https://realtime-weather.chat-plugin.lobehub.com/api/v1',
@@ -206,7 +206,7 @@ describe('useToolStore:pluginStore', () => {
       });
 
       const pluginManifestMock = {
-        $schema: '../node_modules/@lobehub/chat-plugin-sdk/schema.json',
+        $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
         api: [
           {
             url: 'https://realtime-weather.chat-plugin.lobehub.com/api/v1',

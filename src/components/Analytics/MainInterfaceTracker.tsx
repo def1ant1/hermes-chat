@@ -1,6 +1,6 @@
 'use client';
 
-import { useAnalytics } from '@lobehub/analytics/react';
+import { useAnalytics } from '@hermeslabs/analytics/react';
 import { memo, useCallback, useEffect } from 'react';
 
 import { getChatStoreState } from '@/store/chat';

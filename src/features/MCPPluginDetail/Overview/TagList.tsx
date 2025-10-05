@@ -1,6 +1,6 @@
 'use client';
 
-import { Tag } from '@lobehub/ui';
+import { Tag } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import Link from 'next/link';
 import qs from 'query-string';

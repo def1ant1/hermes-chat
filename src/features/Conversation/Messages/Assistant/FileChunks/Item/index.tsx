@@ -1,4 +1,4 @@
-import { Text, Tooltip } from '@lobehub/ui';
+import { Text, Tooltip } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { Center, Flexbox } from 'react-layout-kit';
 

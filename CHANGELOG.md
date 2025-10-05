@@ -7965,7 +7965,7 @@
 
 #### 🐛 Bug Fixes
 
-- **misc**: Bump @lobehub/ui to 2.1.7.
+- **misc**: Bump @hermeslabs/ui to 2.1.7.
 
 <br/>
 
@@ -7974,7 +7974,7 @@
 
 #### What's fixed
 
-- **misc**: Bump @lobehub/ui to 2.1.7, closes [#7912](https://github.com/lobehub/lobe-chat/issues/7912) ([457b645](https://github.com/lobehub/lobe-chat/commit/457b645))
+- **misc**: Bump @hermeslabs/ui to 2.1.7, closes [#7912](https://github.com/lobehub/lobe-chat/issues/7912) ([457b645](https://github.com/lobehub/lobe-chat/commit/457b645))
 
 </details>
 
@@ -25782,7 +25782,7 @@
 
 #### 💄 Styles
 
-- **misc**: Move model and provider icon components to `@lobehub/icons`.
+- **misc**: Move model and provider icon components to `@hermeslabs/icons`.
 
 <br/>
 
@@ -25791,7 +25791,7 @@
 
 #### Styles
 
-- **misc**: Move model and provider icon components to `@lobehub/icons`, closes [#3634](https://github.com/lobehub/lobe-chat/issues/3634) ([5c7e17a](https://github.com/lobehub/lobe-chat/commit/5c7e17a))
+- **misc**: Move model and provider icon components to `@hermeslabs/icons`, closes [#3634](https://github.com/lobehub/lobe-chat/issues/3634) ([5c7e17a](https://github.com/lobehub/lobe-chat/commit/5c7e17a))
 
 </details>
 

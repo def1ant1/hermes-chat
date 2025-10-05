@@ -1,4 +1,4 @@
-import { ColorSwatches, ColorSwatchesProps, primaryColors } from '@lobehub/ui';
+import { ColorSwatches, ColorSwatchesProps, primaryColors } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 

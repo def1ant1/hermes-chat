@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, Button, Form, type FormGroupItemType, Tag, Tooltip } from '@lobehub/ui';
+import { Avatar, Button, Form, type FormGroupItemType, Tag, Tooltip } from '@hermeslabs/ui';
 import { Empty, Space, Switch } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { LucideTrash2, Store } from 'lucide-react';

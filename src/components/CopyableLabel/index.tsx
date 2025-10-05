@@ -1,4 +1,4 @@
-import { CopyButton, Text } from '@lobehub/ui';
+import { CopyButton, Text } from '@hermeslabs/ui';
 import { CSSProperties, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

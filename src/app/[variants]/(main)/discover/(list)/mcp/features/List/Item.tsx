@@ -1,8 +1,8 @@
 'use client';
 
-import { Github } from '@lobehub/icons';
-import { ActionIcon, Avatar, Block, Icon, Tag, Text, Tooltip } from '@lobehub/ui';
-import { Spotlight } from '@lobehub/ui/awesome';
+import { Github } from '@hermeslabs/icons';
+import { ActionIcon, Avatar, Block, Icon, Tag, Text, Tooltip } from '@hermeslabs/ui';
+import { Spotlight } from '@hermeslabs/ui/awesome';
 import { createStyles } from 'antd-style';
 import { ClockIcon } from 'lucide-react';
 import Link from 'next/link';

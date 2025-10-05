@@ -1,7 +1,7 @@
 'use client';
 
-import { ModelTag, ProviderIcon } from '@lobehub/icons';
-import { Tag } from '@lobehub/ui';
+import { ModelTag, ProviderIcon } from '@hermeslabs/icons';
+import { Tag } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';

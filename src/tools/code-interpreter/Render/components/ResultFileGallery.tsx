@@ -1,5 +1,5 @@
 import { CodeInterpreterFileItem } from '@hermeslabs/types';
-import { PreviewGroup } from '@lobehub/ui';
+import { PreviewGroup } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

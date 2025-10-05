@@ -1,7 +1,7 @@
 'use client';
 
+import { Alert, Highlighter, Icon, Text } from '@hermeslabs/ui';
 import { CrawlErrorResult, CrawlSuccessResult } from '@hermeslabs/web-crawler';
-import { Alert, Highlighter, Icon, Text } from '@lobehub/ui';
 import { Descriptions } from 'antd';
 import { createStyles } from 'antd-style';
 import { ExternalLink } from 'lucide-react';

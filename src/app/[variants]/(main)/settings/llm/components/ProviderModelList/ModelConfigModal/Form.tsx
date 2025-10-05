@@ -1,4 +1,4 @@
-import { Input } from '@lobehub/ui';
+import { Input } from '@hermeslabs/ui';
 import { Checkbox, Form, FormInstance } from 'antd';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';

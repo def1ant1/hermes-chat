@@ -2136,7 +2136,7 @@
   },
   {
     "children": {
-      "fixes": ["Bump @lobehub/ui to 2.1.7."]
+      "fixes": ["Bump @hermeslabs/ui to 2.1.7."]
     },
     "date": "2025-05-21",
     "version": "1.87.7"
@@ -7081,7 +7081,7 @@
   },
   {
     "children": {
-      "improvements": ["Move model and provider icon components to @lobehub/icons."]
+      "improvements": ["Move model and provider icon components to @hermeslabs/icons."]
     },
     "date": "2024-08-28",
     "version": "1.14.4"

@@ -1,4 +1,4 @@
-import { Button, Form, type FormItemProps, Segmented } from '@lobehub/ui';
+import { Button, Form, type FormItemProps, Segmented } from '@hermeslabs/ui';
 import { Switch } from 'antd';
 import { CopyIcon } from 'lucide-react';
 import { memo, useState } from 'react';

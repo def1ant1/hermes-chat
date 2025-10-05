@@ -1,5 +1,5 @@
+import { Icon } from '@hermeslabs/ui';
 import { SiReact } from '@icons-pack/react-simple-icons';
-import { Icon } from '@lobehub/ui';
 import { createStyles } from 'antd-style';
 import { CodeXml, GlobeIcon, ImageIcon, Loader2, OrigamiIcon } from 'lucide-react';
 import { memo } from 'react';

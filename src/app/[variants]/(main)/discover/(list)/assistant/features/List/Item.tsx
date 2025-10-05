@@ -1,5 +1,5 @@
-import { Github } from '@lobehub/icons';
-import { ActionIcon, Avatar, Block, Icon, Text } from '@lobehub/ui';
+import { Github } from '@hermeslabs/icons';
+import { ActionIcon, Avatar, Block, Icon, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { ClockIcon } from 'lucide-react';
 import Link from 'next/link';

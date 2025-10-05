@@ -1,4 +1,4 @@
-import { ProviderIcon } from '@lobehub/icons';
+import { ProviderIcon } from '@hermeslabs/icons';
 import { uniqBy } from 'lodash-es';
 import { LayoutPanelTopIcon } from 'lucide-react';
 import { useMemo } from 'react';

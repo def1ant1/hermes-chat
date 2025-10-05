@@ -9,7 +9,7 @@ alwaysApply: false
 - Default language: Chinese (zh-CN) as the source language
 - Supported languages: 18 languages including English, Japanese, Korean, Arabic, etc.
 - Framework: react-i18next with Next.js app router
-- Translation automation: @lobehub/i18n-cli for automatic translation, config file: .i18nrc.js
+- Translation automation: @hermeslabs/i18n-cli for automatic translation, config file: .i18nrc.js
 - Never manually modify any json file. You can only modify files in `default` folder
 
 ## Directory Structure

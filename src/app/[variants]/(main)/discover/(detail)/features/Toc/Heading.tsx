@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { createStyles, useTheme } from 'antd-style';
 import { kebabCase } from 'lodash-es';
 import { Heading2, Heading3, Heading4, Heading5 } from 'lucide-react';

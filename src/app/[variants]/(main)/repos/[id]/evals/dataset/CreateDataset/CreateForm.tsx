@@ -1,5 +1,5 @@
 import { CreateNewEvalDatasets } from '@hermeslabs/types';
-import { Button, Form, Input } from '@lobehub/ui';
+import { Button, Form, Input } from '@hermeslabs/ui';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

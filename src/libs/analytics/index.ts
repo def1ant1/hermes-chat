@@ -1,4 +1,4 @@
-import { createServerAnalytics } from '@lobehub/analytics/server';
+import { createServerAnalytics } from '@hermeslabs/analytics/server';
 
 import { BUSINESS_LINE } from '@/const/analytics';
 import { analyticsEnv } from '@/envs/analytics';

@@ -1,4 +1,4 @@
-import { Avatar, ScrollShadow, Tooltip } from '@lobehub/ui';
+import { Avatar, ScrollShadow, Tooltip } from '@hermeslabs/ui';
 import { Divider } from 'antd';
 import { createStyles } from 'antd-style';
 import isEqual from 'fast-deep-equal';
@@ -82,12 +82,14 @@ const PinList = () => {
     hasList && (
       <>
         <Divider style={{ marginBottom: 8, marginTop: 4 }} />
-        <ScrollShadow height={"100%"} hideScrollBar={true} size={40}>
+        <ScrollShadow height={'100%'} hideScrollBar={true} size={40}>
           <Flexbox gap={12} style={{ padding: '0' }}>
             {list.map((item, index) => (
               <Flexbox key={item.id} style={{ position: 'relative' }}>
                 <Tooltip
-                  hotkey={index < 9 ? hotkey.replaceAll(KeyEnum.Number, String(index + 1)) : undefined}
+                  hotkey={
+                    index < 9 ? hotkey.replaceAll(KeyEnum.Number, String(index + 1)) : undefined
+                  }
                   placement={'right'}
                   title={sessionHelpers.getTitle(item.meta)}
                 >

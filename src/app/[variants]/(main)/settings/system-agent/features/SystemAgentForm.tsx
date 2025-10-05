@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Form, type FormGroupItemType, type FormItemProps, Icon } from '@lobehub/ui';
+import { Button, Form, type FormGroupItemType, type FormItemProps, Icon } from '@hermeslabs/ui';
 import { Form as AntForm, Skeleton, Switch } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { Loader2Icon, PencilIcon } from 'lucide-react';

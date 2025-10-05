@@ -1,4 +1,4 @@
-import { Segmented } from '@lobehub/ui';
+import { Segmented } from '@hermeslabs/ui';
 import { SegmentedOptions } from 'antd/es/segmented';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

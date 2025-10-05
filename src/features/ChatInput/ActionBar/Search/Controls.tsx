@@ -1,5 +1,5 @@
-import { Icon } from '@lobehub/ui';
-import { GlobeOffIcon } from '@lobehub/ui/icons';
+import { Icon } from '@hermeslabs/ui';
+import { GlobeOffIcon } from '@hermeslabs/ui/icons';
 import { Divider } from 'antd';
 import { createStyles } from 'antd-style';
 import { LucideIcon, SparkleIcon } from 'lucide-react';

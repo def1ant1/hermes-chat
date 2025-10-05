@@ -1,4 +1,4 @@
-import { Avatar, Icon } from '@lobehub/ui';
+import { Avatar, Icon } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import {
   LucideAtom,

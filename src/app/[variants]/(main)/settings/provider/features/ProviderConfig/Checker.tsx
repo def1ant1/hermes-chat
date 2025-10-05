@@ -1,9 +1,9 @@
 'use client';
 
 import { CheckCircleFilled } from '@ant-design/icons';
+import { ModelIcon } from '@hermeslabs/icons';
 import { TraceNameMap } from '@hermeslabs/types';
-import { ModelIcon } from '@lobehub/icons';
-import { Alert, Button, Highlighter, Icon, Select } from '@lobehub/ui';
+import { Alert, Button, Highlighter, Icon, Select } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { Loader2Icon } from 'lucide-react';
 import { ReactNode, memo, useState } from 'react';

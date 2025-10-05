@@ -1,6 +1,6 @@
 'use client';
 
-import { DraggablePanel, DraggablePanelContainer, type DraggablePanelProps } from '@lobehub/ui';
+import { DraggablePanel, DraggablePanelContainer, type DraggablePanelProps } from '@hermeslabs/ui';
 import { createStyles, useResponsive } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { PropsWithChildren, memo, useState } from 'react';

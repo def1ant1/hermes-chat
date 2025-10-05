@@ -1,5 +1,5 @@
+import { Button, Dropdown, Tooltip } from '@hermeslabs/ui';
 import { copyImageToClipboard, sanitizeSVGContent } from '@hermeslabs/utils/client';
-import { Button, Dropdown, Tooltip } from '@lobehub/ui';
 import { App, Space } from 'antd';
 import { css, cx } from 'antd-style';
 import { CopyIcon, DownloadIcon } from 'lucide-react';

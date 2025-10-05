@@ -1,5 +1,5 @@
-import { ActionIcon } from '@lobehub/ui';
-import { ChatHeader } from '@lobehub/ui/mobile';
+import { ActionIcon } from '@hermeslabs/ui';
+import { ChatHeader } from '@hermeslabs/ui/mobile';
 import { useTheme } from 'antd-style';
 import { ChevronDown } from 'lucide-react';
 import { memo } from 'react';

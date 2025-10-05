@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs } from '@lobehub/ui';
+import { Tabs } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { memo, useState } from 'react';

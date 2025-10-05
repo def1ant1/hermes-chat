@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert, Button, Input, Modal, type ModalProps } from '@lobehub/ui';
+import { Alert, Button, Input, Modal, type ModalProps } from '@hermeslabs/ui';
 import { Divider } from 'antd';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';

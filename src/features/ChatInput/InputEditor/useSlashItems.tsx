@@ -4,8 +4,8 @@ import {
   INSERT_MATH_COMMAND,
   INSERT_TABLE_COMMAND,
   SlashOptions,
-} from '@lobehub/editor';
-import { Text } from '@lobehub/ui';
+} from '@hermeslabs/editor';
+import { Text } from '@hermeslabs/ui';
 import {
   Heading1Icon,
   Heading2Icon,

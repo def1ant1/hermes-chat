@@ -1,6 +1,6 @@
 'use client';
 
-import { ModelIcon } from '@lobehub/icons';
+import { ModelIcon } from '@hermeslabs/icons';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 import urlJoin from 'url-join';

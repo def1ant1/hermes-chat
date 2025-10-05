@@ -5,7 +5,7 @@ import { EdgeConfig } from '@/server/modules/EdgeConfig';
 
 import { AssistantStore } from './index';
 
-const baseURL = 'https://registry.npmmirror.com/@lobehub/agents-index/v1/files/public';
+const baseURL = 'https://registry.npmmirror.com/@hermeslabs/agents-index/v1/files/public';
 
 vi.mock('@/server/modules/EdgeConfig', () => {
   const EdgeConfigMock = vi.fn();

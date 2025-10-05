@@ -1,6 +1,6 @@
 'use client';
 
-import { InputPassword, Markdown } from '@lobehub/ui';
+import { InputPassword, Markdown } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { useTranslation } from 'react-i18next';
 

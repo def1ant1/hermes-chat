@@ -1,4 +1,4 @@
-import { BrandLoading, LobeHubText } from '@lobehub/ui/brand';
+import { BrandLoading, LobeHubText } from '@hermeslabs/ui/brand';
 import { Center } from 'react-layout-kit';
 
 import { isCustomBranding } from '@/const/version';

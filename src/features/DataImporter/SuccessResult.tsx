@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Icon } from '@lobehub/ui';
+import { Button, Icon } from '@hermeslabs/ui';
 import { Result, Table } from 'antd';
 import { createStyles } from 'antd-style';
 import { CheckCircle } from 'lucide-react';

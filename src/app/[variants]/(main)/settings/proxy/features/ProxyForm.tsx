@@ -1,7 +1,7 @@
 'use client';
 
 import { NetworkProxySettings } from '@hermeslabs/electron-client-ipc';
-import { Alert, Block, Text } from '@lobehub/ui';
+import { Alert, Block, Text } from '@hermeslabs/ui';
 import { App, Button, Divider, Form, Input, Radio, Skeleton, Space, Switch } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { useCallback, useEffect, useState } from 'react';

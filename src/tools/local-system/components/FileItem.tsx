@@ -1,5 +1,5 @@
 import { LocalFileItem } from '@hermeslabs/electron-client-ipc';
-import { ActionIcon } from '@lobehub/ui';
+import { ActionIcon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import dayjs from 'dayjs';
 import { FolderOpen } from 'lucide-react';

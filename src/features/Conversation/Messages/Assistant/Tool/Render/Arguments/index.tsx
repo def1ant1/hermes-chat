@@ -1,4 +1,4 @@
-import { Highlighter } from '@lobehub/ui';
+import { Highlighter } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { parse } from 'partial-json';
 import { ReactNode, memo, useMemo } from 'react';

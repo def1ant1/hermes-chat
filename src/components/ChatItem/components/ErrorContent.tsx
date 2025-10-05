@@ -1,4 +1,4 @@
-import { Alert } from '@lobehub/ui';
+import { Alert } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

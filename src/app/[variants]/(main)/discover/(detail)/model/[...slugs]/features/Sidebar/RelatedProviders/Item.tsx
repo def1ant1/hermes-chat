@@ -1,5 +1,5 @@
-import { ProviderIcon } from '@lobehub/icons';
-import { Block, Text } from '@lobehub/ui';
+import { ProviderIcon } from '@hermeslabs/icons';
+import { Block, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

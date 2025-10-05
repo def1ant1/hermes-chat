@@ -1,4 +1,4 @@
-import { ActionIcon, Hotkey } from '@lobehub/ui';
+import { ActionIcon, Hotkey } from '@hermeslabs/ui';
 import { Popconfirm } from 'antd';
 import { LucideGalleryVerticalEnd, LucideMessageSquarePlus } from 'lucide-react';
 import { memo, useState } from 'react';

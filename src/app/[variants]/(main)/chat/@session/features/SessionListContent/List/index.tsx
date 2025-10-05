@@ -1,4 +1,4 @@
-import { useAnalytics } from '@lobehub/analytics/react';
+import { useAnalytics } from '@hermeslabs/analytics/react';
 import { Empty } from 'antd';
 import { createStyles } from 'antd-style';
 import Link from 'next/link';

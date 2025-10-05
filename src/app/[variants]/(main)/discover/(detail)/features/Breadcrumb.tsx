@@ -1,6 +1,6 @@
 'use client';
 
-import { CopyButton } from '@lobehub/ui';
+import { CopyButton } from '@hermeslabs/ui';
 import { Breadcrumb as AntdBreadcrumb } from 'antd';
 import { useTheme } from 'antd-style';
 import Link from 'next/link';

@@ -1,7 +1,7 @@
 'use client';
 
-import { ActionIcon } from '@lobehub/ui';
-import { ChatHeader } from '@lobehub/ui/mobile';
+import { ActionIcon } from '@hermeslabs/ui';
+import { ChatHeader } from '@hermeslabs/ui/mobile';
 import { createStyles } from 'antd-style';
 import { SearchIcon } from 'lucide-react';
 import { memo, useState } from 'react';

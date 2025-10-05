@@ -1,11 +1,11 @@
-import { HotkeyEnum, getHotkeyById } from '@lobehub/editor';
-import { useEditorState } from '@lobehub/editor/react';
+import { HotkeyEnum, getHotkeyById } from '@hermeslabs/editor';
+import { useEditorState } from '@hermeslabs/editor/react';
 import {
   ChatInputActionBar,
   ChatInputActions,
   type ChatInputActionsProps,
   CodeLanguageSelect,
-} from '@lobehub/editor/react';
+} from '@hermeslabs/editor/react';
 import { useTheme } from 'antd-style';
 import {
   BoldIcon,

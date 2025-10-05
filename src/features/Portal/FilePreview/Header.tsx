@@ -1,4 +1,4 @@
-import { ActionIcon, Text } from '@lobehub/ui';
+import { ActionIcon, Text } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { ArrowLeft } from 'lucide-react';
 import { Flexbox } from 'react-layout-kit';

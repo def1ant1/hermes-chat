@@ -1,4 +1,4 @@
-import { Tag } from '@lobehub/ui';
+import { Tag } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import React from 'react';
 import { Flexbox } from 'react-layout-kit';

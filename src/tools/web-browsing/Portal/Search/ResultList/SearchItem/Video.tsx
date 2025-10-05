@@ -1,4 +1,4 @@
-import { Text } from '@lobehub/ui';
+import { Text } from '@hermeslabs/ui';
 import { Avatar as AntAvatar } from 'antd';
 import { createStyles } from 'antd-style';
 import { memo, useState } from 'react';

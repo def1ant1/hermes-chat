@@ -1,5 +1,5 @@
-import { OpenAISTTPayload } from '@lobehub/tts';
-import { createOpenaiAudioTranscriptions } from '@lobehub/tts/server';
+import { OpenAISTTPayload } from '@hermeslabs/tts';
+import { createOpenaiAudioTranscriptions } from '@hermeslabs/tts/server';
 
 import { createBizOpenAI } from '@/app/(backend)/_deprecated/createBizOpenAI';
 

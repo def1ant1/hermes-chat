@@ -1,5 +1,5 @@
+import { MenuProps, Tooltip } from '@hermeslabs/ui';
 import { validateVideoFileSize } from '@hermeslabs/utils/client';
-import { MenuProps, Tooltip } from '@lobehub/ui';
 import { Upload } from 'antd';
 import { css, cx } from 'antd-style';
 import { FileUp, FolderUp, ImageUp, Paperclip } from 'lucide-react';

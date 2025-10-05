@@ -1,6 +1,6 @@
 'use client';
 
-import { AutoComplete, Input, InputPassword, Markdown } from '@lobehub/ui';
+import { AutoComplete, Input, InputPassword, Markdown } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { ModelProvider } from 'model-bank';
 import { useTranslation } from 'react-i18next';

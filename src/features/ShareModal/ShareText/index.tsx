@@ -1,5 +1,5 @@
+import { Button, Form, type FormItemProps, copyToClipboard } from '@hermeslabs/ui';
 import { exportFile } from '@hermeslabs/utils/client';
-import { Button, Form, type FormItemProps, copyToClipboard } from '@lobehub/ui';
 import { App, Switch } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { CopyIcon } from 'lucide-react';

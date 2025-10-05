@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, InputNumber } from '@lobehub/ui';
+import { ActionIcon, InputNumber } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Check, Plus, X } from 'lucide-react';
 import { memo, useCallback, useEffect, useRef, useState } from 'react';

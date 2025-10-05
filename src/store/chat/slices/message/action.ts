@@ -15,7 +15,7 @@ import {
   TraceEventType,
   UpdateMessageRAGParams,
 } from '@hermeslabs/types';
-import { copyToClipboard } from '@lobehub/ui';
+import { copyToClipboard } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { SWRResponse, mutate } from 'swr';
 import { StateCreator } from 'zustand/vanilla';

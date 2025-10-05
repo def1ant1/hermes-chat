@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert } from '@lobehub/ui';
+import { Alert } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { useTheme } from 'antd-style';
 import { Suspense, memo } from 'react';

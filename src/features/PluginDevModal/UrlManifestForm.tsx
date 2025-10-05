@@ -1,5 +1,5 @@
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
-import { ActionIcon, FormItem, Input } from '@lobehub/ui';
+import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import { ActionIcon, FormItem, Input } from '@hermeslabs/ui';
 import { Checkbox, Form, FormInstance } from 'antd';
 import { FileCode, RotateCwIcon } from 'lucide-react';
 import { memo, useState } from 'react';

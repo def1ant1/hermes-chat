@@ -1,4 +1,4 @@
-const { defineConfig } = require('@lobehub/i18n-cli');
+const { defineConfig } = require('@hermeslabs/i18n-cli');
 
 module.exports = defineConfig({
   entry: 'locales/zh-CN',

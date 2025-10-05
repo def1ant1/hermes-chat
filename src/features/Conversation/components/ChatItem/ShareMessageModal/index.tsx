@@ -1,4 +1,4 @@
-import { Modal, Segmented, type SegmentedProps } from '@lobehub/ui';
+import { Modal, Segmented, type SegmentedProps } from '@hermeslabs/ui';
 import { memo, useId, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';

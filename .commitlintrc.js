@@ -1,1 +1,1 @@
-module.exports = require('@lobehub/lint').commitlint;
+module.exports = require('@hermeslabs/lint').commitlint;

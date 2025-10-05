@@ -1,4 +1,4 @@
-import { PreviewGroup } from '@lobehub/ui';
+import { PreviewGroup } from '@hermeslabs/ui';
 import { memo } from 'react';
 
 import GalleyGrid from '@/components/GalleyGrid';

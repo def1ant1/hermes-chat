@@ -1,4 +1,4 @@
-import { ActionIcon, ActionIconProps, Hotkey } from '@lobehub/ui';
+import { ActionIcon, ActionIconProps, Hotkey } from '@hermeslabs/ui';
 import { Compass, FolderClosed, MessageSquare, Palette } from 'lucide-react';
 import Link from 'next/link';
 import { memo } from 'react';

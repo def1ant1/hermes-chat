@@ -1,5 +1,5 @@
 import { RenameLocalFileParams } from '@hermeslabs/electron-client-ipc';
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { ArrowRightIcon } from 'lucide-react';
 import path from 'path-browserify-esm';

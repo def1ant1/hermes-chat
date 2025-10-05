@@ -1,4 +1,4 @@
-import { Select, type SelectProps } from '@lobehub/ui';
+import { Select, type SelectProps } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { memo, useMemo } from 'react';
 

@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest, LobeChatPluginMeta } from '@lobehub/chat-plugin-sdk';
+import { LobeChatPluginManifest, LobeChatPluginMeta } from '@hermeslabs/chat-plugin-sdk';
 import { describe, expect, it } from 'vitest';
 
 import { initialState } from '../initialState';

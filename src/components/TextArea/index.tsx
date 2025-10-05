@@ -1,4 +1,4 @@
-import { TextArea as LobeTextArea, TextAreaProps as Props } from '@lobehub/ui';
+import { TextArea as LobeTextArea, TextAreaProps as Props } from '@hermeslabs/ui';
 import { TextAreaRef } from 'antd/es/input/TextArea';
 import { memo, useRef, useState } from 'react';
 

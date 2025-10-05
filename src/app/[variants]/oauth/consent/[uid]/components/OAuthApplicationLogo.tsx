@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Link2Icon, ServerIcon } from 'lucide-react';
 import Image from 'next/image';

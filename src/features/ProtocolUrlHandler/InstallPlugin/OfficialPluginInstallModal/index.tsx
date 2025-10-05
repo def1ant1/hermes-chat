@@ -1,6 +1,6 @@
 'use client';
 
-import { Block, Modal, Text } from '@lobehub/ui';
+import { Block, Modal, Text } from '@hermeslabs/ui';
 import { App } from 'antd';
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';

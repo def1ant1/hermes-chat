@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Text } from '@lobehub/ui';
+import { Button, Text } from '@hermeslabs/ui';
 import { Card, Divider } from 'antd';
 import { createStyles } from 'antd-style';
 import { memo, useState } from 'react';

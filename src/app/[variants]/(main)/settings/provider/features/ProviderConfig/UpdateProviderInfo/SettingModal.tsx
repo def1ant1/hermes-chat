@@ -1,5 +1,13 @@
-import { ProviderIcon } from '@lobehub/icons';
-import { Button, type FormItemProps, FormModal, Icon, Input, Select, TextArea } from '@lobehub/ui';
+import { ProviderIcon } from '@hermeslabs/icons';
+import {
+  Button,
+  type FormItemProps,
+  FormModal,
+  Icon,
+  Input,
+  Select,
+  TextArea,
+} from '@hermeslabs/ui';
 import { App } from 'antd';
 import { BrainIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';

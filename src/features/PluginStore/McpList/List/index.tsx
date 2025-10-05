@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { Empty } from 'antd';
 import { ServerCrash } from 'lucide-react';
 import { memo, useEffect } from 'react';

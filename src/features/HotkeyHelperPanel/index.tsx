@@ -1,6 +1,6 @@
 'use client';
 
-import { Grid, Icon, Modal, Segmented } from '@lobehub/ui';
+import { Grid, Icon, Modal, Segmented } from '@hermeslabs/ui';
 import { MessageSquare, Settings2 } from 'lucide-react';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

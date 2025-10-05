@@ -21,7 +21,7 @@ read [package.json](mdc:package.json) to know all npm packages you can use.
 - Next.js 15
 - react 19
 - TypeScript
-- `@lobehub/ui`, antd for component framework
+- `@hermeslabs/ui`, antd for component framework
 - antd-style for css-in-js framework
 - lucide-react, `@ant-design/icons` for icons
 - react-layout-kit for flex layout component

@@ -1,5 +1,5 @@
-import { Exa, Google } from '@lobehub/icons';
-import { Icon } from '@lobehub/ui';
+import { Exa, Google } from '@hermeslabs/icons';
+import { Icon } from '@hermeslabs/ui';
 import { Switch } from 'antd';
 import { Search } from 'lucide-react';
 import { memo, useState } from 'react';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Dropdown, Icon, type MenuProps, Tag } from '@lobehub/ui';
+import { Dropdown, Icon, type MenuProps, Tag } from '@hermeslabs/ui';
 import { LibraryBig } from 'lucide-react';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';

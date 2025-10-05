@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Tooltip } from '@lobehub/ui';
+import { ActionIcon, Tooltip } from '@hermeslabs/ui';
 import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

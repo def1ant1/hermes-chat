@@ -1,7 +1,7 @@
 'use client';
 
-import { ModelIcon } from '@lobehub/icons';
-import { ActionIcon, Block, Tooltip } from '@lobehub/ui';
+import { ModelIcon } from '@hermeslabs/icons';
+import { ActionIcon, Block, Tooltip } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { ChevronRightIcon } from 'lucide-react';
 import Link from 'next/link';

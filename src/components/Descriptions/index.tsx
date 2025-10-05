@@ -1,4 +1,4 @@
-import { Grid, type GridProps, Icon, IconProps, Text } from '@lobehub/ui';
+import { Grid, type GridProps, Icon, IconProps, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { CSSProperties, ReactNode, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';

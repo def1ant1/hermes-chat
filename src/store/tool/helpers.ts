@@ -1,4 +1,4 @@
-import { PluginSchema } from '@lobehub/chat-plugin-sdk';
+import { PluginSchema } from '@hermeslabs/chat-plugin-sdk';
 
 import { MetaData } from '@/types/meta';
 import { LobeTool } from '@/types/tool';

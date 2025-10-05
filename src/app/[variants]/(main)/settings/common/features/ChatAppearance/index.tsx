@@ -9,7 +9,7 @@ import {
   SliderWithInput,
   highlighterThemes,
   mermaidThemes,
-} from '@lobehub/ui';
+} from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';

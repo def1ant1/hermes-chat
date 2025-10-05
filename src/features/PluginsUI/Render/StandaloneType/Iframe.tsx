@@ -1,4 +1,4 @@
-import { PluginRequestPayload } from '@lobehub/chat-plugin-sdk';
+import { PluginRequestPayload } from '@hermeslabs/chat-plugin-sdk';
 import { Skeleton } from 'antd';
 import { memo, useRef, useState } from 'react';
 

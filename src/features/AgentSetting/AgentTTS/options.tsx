@@ -1,5 +1,5 @@
-import { Azure, OpenAI } from '@lobehub/icons';
-import type { SelectProps } from '@lobehub/ui';
+import { Azure, OpenAI } from '@hermeslabs/icons';
+import type { SelectProps } from '@hermeslabs/ui';
 
 import { LabelRenderer } from '@/components/ModelSelect';
 

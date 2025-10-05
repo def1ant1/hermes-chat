@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Avatar, Text } from '@lobehub/ui';
+import { ActionIcon, Avatar, Text } from '@hermeslabs/ui';
 import { App, Popover } from 'antd';
 import { useTheme } from 'antd-style';
 import { Trash } from 'lucide-react';

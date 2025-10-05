@@ -1,5 +1,5 @@
-import { ModelIcon } from '@lobehub/icons';
-import { ActionIcon, Text, Tooltip } from '@lobehub/ui';
+import { ModelIcon } from '@hermeslabs/icons';
+import { ActionIcon, Text, Tooltip } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { Recycle } from 'lucide-react';

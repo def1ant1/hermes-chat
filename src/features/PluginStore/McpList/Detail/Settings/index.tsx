@@ -1,4 +1,4 @@
-import { Icon, Input, Text } from '@lobehub/ui';
+import { Icon, Input, Text } from '@hermeslabs/ui';
 import { Form as AForm, App, Button, Space, Typography } from 'antd';
 import { createStyles } from 'antd-style';
 import { EditIcon, LinkIcon, SaveIcon, Settings2Icon, TerminalIcon } from 'lucide-react';

@@ -1,5 +1,5 @@
-import { ModelIcon } from '@lobehub/icons';
-import { SortableList } from '@lobehub/ui';
+import { ModelIcon } from '@hermeslabs/icons';
+import { SortableList } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

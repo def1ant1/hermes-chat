@@ -1,6 +1,6 @@
 'use client';
 
-import { Block, Grid } from '@lobehub/ui';
+import { Block, Grid } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { useResponsive, useTheme } from 'antd-style';
 import { memo } from 'react';

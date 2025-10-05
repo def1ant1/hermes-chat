@@ -1,5 +1,5 @@
-import { Block } from '@lobehub/ui';
-import { Mdx } from '@lobehub/ui/mdx';
+import { Block } from '@hermeslabs/ui';
+import { Mdx } from '@hermeslabs/ui/mdx';
 import { Empty } from 'antd';
 import { memo } from 'react';
 

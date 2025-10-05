@@ -1,4 +1,4 @@
-import { useAnalytics } from '@lobehub/analytics/react';
+import { useAnalytics } from '@hermeslabs/analytics/react';
 import { useCallback, useMemo } from 'react';
 
 import { useGeminiChineseWarning } from '@/hooks/useGeminiChineseWarning';

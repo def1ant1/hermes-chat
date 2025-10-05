@@ -1,4 +1,4 @@
-import { Highlighter } from '@lobehub/ui';
+import { Highlighter } from '@hermeslabs/ui';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode, memo } from 'react';

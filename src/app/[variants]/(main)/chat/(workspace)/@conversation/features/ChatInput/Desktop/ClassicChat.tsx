@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert, Hotkey, Icon } from '@lobehub/ui';
+import { Alert, Hotkey, Icon } from '@hermeslabs/ui';
 import { BotMessageSquare, LucideCheck, MessageSquarePlus } from 'lucide-react';
 import { Suspense, memo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';

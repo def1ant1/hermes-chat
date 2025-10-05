@@ -1,6 +1,6 @@
 'use client';
 
-import { SideNav } from '@lobehub/ui';
+import { SideNav } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { Suspense, memo } from 'react';
 
@@ -52,11 +52,14 @@ const Nav = memo(() => {
         }}
         topActions={
           <Suspense>
-            <div className={electronStylish.nodrag} style={{
-              display: 'flex',
-              flexDirection: 'column',
-              maxHeight: "calc(100vh - 150px)"
-            }}>
+            <div
+              className={electronStylish.nodrag}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                maxHeight: 'calc(100vh - 150px)',
+              }}
+            >
               <Top />
               {showPinList && <PinList />}
             </div>

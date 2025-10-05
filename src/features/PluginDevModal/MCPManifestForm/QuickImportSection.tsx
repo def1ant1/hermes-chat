@@ -1,4 +1,4 @@
-import { Alert, TextArea } from '@lobehub/ui';
+import { Alert, TextArea } from '@hermeslabs/ui';
 import { Button, FormInstance } from 'antd';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';

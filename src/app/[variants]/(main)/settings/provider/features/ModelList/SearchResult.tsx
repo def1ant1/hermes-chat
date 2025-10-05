@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Text } from '@lobehub/ui';
+import { ActionIcon, Text } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { ToggleRightIcon } from 'lucide-react';
 import { memo, useState } from 'react';

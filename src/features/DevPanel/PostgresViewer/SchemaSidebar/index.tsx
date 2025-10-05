@@ -1,4 +1,4 @@
-import { DraggablePanel, DraggablePanelBody, Icon } from '@lobehub/ui';
+import { DraggablePanel, DraggablePanelBody, Icon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { ChevronDown, ChevronRight, Database, Loader2Icon, Table as TableIcon } from 'lucide-react';
 import React, { useState } from 'react';

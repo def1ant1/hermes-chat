@@ -34,7 +34,7 @@
           },
           "type": "standalone",
           "author": "LobeHub",
-          "$schema": "../node_modules/@lobehub/chat-plugin-sdk/schema.json",
+          "$schema": "../node_modules/@hermeslabs/chat-plugin-sdk/schema.json",
           "version": "1",
           "settings": {
             "type": "object",

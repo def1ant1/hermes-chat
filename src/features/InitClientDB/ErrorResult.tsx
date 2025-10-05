@@ -1,4 +1,4 @@
-import { Alert, Button, Highlighter, Icon, Modal } from '@lobehub/ui';
+import { Alert, Button, Highlighter, Icon, Modal } from '@hermeslabs/ui';
 import { Spin } from 'antd';
 import { createStyles } from 'antd-style';
 import isEqual from 'fast-deep-equal';

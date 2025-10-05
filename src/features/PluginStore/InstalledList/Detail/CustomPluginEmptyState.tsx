@@ -1,4 +1,4 @@
-import { Button, Icon, Text } from '@lobehub/ui';
+import { Button, Icon, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Package } from 'lucide-react';
 import { memo, useState } from 'react';

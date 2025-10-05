@@ -1,4 +1,4 @@
-import { ActionIcon, Icon, Text } from '@lobehub/ui';
+import { ActionIcon, Icon, Text } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { ArrowLeft, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';

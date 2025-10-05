@@ -1,5 +1,5 @@
-import { AlertProps, AvatarProps, DivProps, MarkdownProps } from '@lobehub/ui';
-import { EditableMessageProps, MetaData } from '@lobehub/ui/chat';
+import { AlertProps, AvatarProps, DivProps, MarkdownProps } from '@hermeslabs/ui';
+import { EditableMessageProps, MetaData } from '@hermeslabs/ui/chat';
 import { ReactNode } from 'react';
 import { FlexboxProps } from 'react-layout-kit';
 

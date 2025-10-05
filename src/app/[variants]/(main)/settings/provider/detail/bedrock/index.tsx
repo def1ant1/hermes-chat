@@ -1,6 +1,6 @@
 'use client';
 
-import { Select } from '@lobehub/ui';
+import { Select } from '@hermeslabs/ui';
 import { useTranslation } from 'react-i18next';
 
 import { FormPassword } from '@/components/FormInput';

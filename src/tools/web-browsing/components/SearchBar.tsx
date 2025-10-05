@@ -1,4 +1,4 @@
-import { Button, Input, Select, Text, Tooltip } from '@lobehub/ui';
+import { Button, Input, Select, Text, Tooltip } from '@hermeslabs/ui';
 import { Checkbox, Radio, Space } from 'antd';
 import { SearchIcon } from 'lucide-react';
 import { ReactNode, memo, useState } from 'react';

@@ -1,7 +1,7 @@
 'use client';
 
-import { Github } from '@lobehub/icons';
-import { ActionIcon, Avatar, Collapse, Icon, Text } from '@lobehub/ui';
+import { Github } from '@hermeslabs/icons';
+import { ActionIcon, Avatar, Collapse, Icon, Text } from '@hermeslabs/ui';
 import { createStyles, useResponsive } from 'antd-style';
 import { DotIcon } from 'lucide-react';
 import Link from 'next/link';

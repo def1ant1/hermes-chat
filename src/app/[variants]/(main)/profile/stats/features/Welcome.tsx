@@ -1,4 +1,4 @@
-import { FluentEmoji } from '@lobehub/ui';
+import { FluentEmoji } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { useTheme } from 'antd-style';
 import { Clock3Icon, ClockArrowUp } from 'lucide-react';

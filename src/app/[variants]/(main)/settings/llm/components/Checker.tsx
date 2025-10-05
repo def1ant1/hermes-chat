@@ -2,7 +2,7 @@
 
 import { CheckCircleFilled } from '@ant-design/icons';
 import { TraceNameMap } from '@hermeslabs/types';
-import { Alert, Button, Highlighter } from '@lobehub/ui';
+import { Alert, Button, Highlighter } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

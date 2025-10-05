@@ -1,5 +1,5 @@
-import { Form, type FormItemProps, SliderWithInput } from '@lobehub/ui';
-import { Switch, Form as AntdForm } from 'antd';
+import { Form, type FormItemProps, SliderWithInput } from '@hermeslabs/ui';
+import { Form as AntdForm, Switch } from 'antd';
 import { debounce } from 'lodash-es';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';

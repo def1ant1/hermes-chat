@@ -1,5 +1,5 @@
-import { ProviderIcon } from '@lobehub/icons';
-import { Avatar } from '@lobehub/ui';
+import { ProviderIcon } from '@hermeslabs/icons';
+import { Avatar } from '@hermeslabs/ui';
 import { Badge } from 'antd';
 import { createStyles } from 'antd-style';
 import { useSearchParams } from 'next/navigation';

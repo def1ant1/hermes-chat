@@ -1,6 +1,6 @@
 'use client';
 
-import { Form, type FormGroupItemType, Select, SliderWithInput } from '@lobehub/ui';
+import { Form, type FormGroupItemType, Select, SliderWithInput } from '@hermeslabs/ui';
 import { Form as AntdForm, Switch } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { memo } from 'react';

@@ -1,5 +1,5 @@
-import { MCP } from '@lobehub/icons';
-import { Icon, Tag, Tooltip } from '@lobehub/ui';
+import { MCP } from '@hermeslabs/icons';
+import { Icon, Tag, Tooltip } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { BookTextIcon, CoinsIcon } from 'lucide-react';
 import { memo } from 'react';

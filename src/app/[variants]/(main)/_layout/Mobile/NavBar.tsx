@@ -1,7 +1,7 @@
 'use client';
 
-import { Icon } from '@lobehub/ui';
-import { TabBar, type TabBarProps } from '@lobehub/ui/mobile';
+import { Icon } from '@hermeslabs/ui';
+import { TabBar, type TabBarProps } from '@hermeslabs/ui/mobile';
 import { createStyles } from 'antd-style';
 import { Compass, MessageSquare, User } from 'lucide-react';
 import { useRouter } from 'next/navigation';

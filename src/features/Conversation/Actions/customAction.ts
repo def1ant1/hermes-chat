@@ -1,4 +1,4 @@
-import type { ActionIconGroupItemType } from '@lobehub/ui';
+import type { ActionIconGroupItemType } from '@hermeslabs/ui';
 import { css, cx } from 'antd-style';
 import { LanguagesIcon, Play } from 'lucide-react';
 import { useMemo } from 'react';

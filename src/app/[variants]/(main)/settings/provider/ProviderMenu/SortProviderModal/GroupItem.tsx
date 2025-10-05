@@ -1,5 +1,5 @@
-import { ProviderIcon } from '@lobehub/icons';
-import { Avatar, SortableList } from '@lobehub/ui';
+import { ProviderIcon } from '@hermeslabs/icons';
+import { Avatar, SortableList } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

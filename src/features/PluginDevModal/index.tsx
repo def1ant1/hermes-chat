@@ -1,4 +1,4 @@
-import { Alert, Button, Drawer, Icon, Segmented, Tag } from '@lobehub/ui';
+import { Alert, Button, Drawer, Icon, Segmented, Tag } from '@hermeslabs/ui';
 import { App, Form, Popconfirm } from 'antd';
 import { useResponsive } from 'antd-style';
 import { MoveUpRight } from 'lucide-react';

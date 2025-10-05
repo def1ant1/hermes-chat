@@ -1,4 +1,4 @@
-import { Form, type FormItemProps, Tag } from '@lobehub/ui';
+import { Form, type FormItemProps, Tag } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { debounce } from 'lodash-es';
 import { memo } from 'react';

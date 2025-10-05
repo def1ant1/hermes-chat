@@ -1,5 +1,5 @@
-import { ModelTag } from '@lobehub/icons';
-import { Icon, Markdown, Text } from '@lobehub/ui';
+import { ModelTag } from '@hermeslabs/icons';
+import { Icon, Markdown, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { ScrollText } from 'lucide-react';
 import { memo } from 'react';

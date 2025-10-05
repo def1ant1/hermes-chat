@@ -1,5 +1,5 @@
-import { Block, MermaidProps } from '@lobehub/ui';
-import { ChatItem } from '@lobehub/ui/chat';
+import { Block, MermaidProps } from '@hermeslabs/ui';
+import { ChatItem } from '@hermeslabs/ui/chat';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';
 

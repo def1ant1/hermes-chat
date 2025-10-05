@@ -1,6 +1,6 @@
 'use client';
 
-import { Form, type FormGroupItemType, Input } from '@lobehub/ui';
+import { Form, type FormGroupItemType, Input } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

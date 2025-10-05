@@ -1,5 +1,5 @@
 import { CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
-import { ActionIcon, Icon, Text } from '@lobehub/ui';
+import { ActionIcon, Icon, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { UploadIcon, XIcon } from 'lucide-react';

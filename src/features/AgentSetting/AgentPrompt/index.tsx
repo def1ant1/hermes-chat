@@ -1,7 +1,7 @@
 'use client';
 
-import { Button, Form } from '@lobehub/ui';
-import { EditableMessage } from '@lobehub/ui/chat';
+import { Button, Form } from '@hermeslabs/ui';
+import { EditableMessage } from '@hermeslabs/ui/chat';
 import { PenLineIcon } from 'lucide-react';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

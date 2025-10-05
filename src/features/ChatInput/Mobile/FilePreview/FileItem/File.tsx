@@ -1,4 +1,4 @@
-import { ActionIcon, Text } from '@lobehub/ui';
+import { ActionIcon, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Trash } from 'lucide-react';
 import { memo } from 'react';

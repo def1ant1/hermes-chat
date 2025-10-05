@@ -1,4 +1,4 @@
-import type { HeatmapsProps } from '@lobehub/charts';
+import type { HeatmapsProps } from '@hermeslabs/charts';
 
 import {
   ChatMessage,

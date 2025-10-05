@@ -1,4 +1,4 @@
-import { Icon, Tag } from '@lobehub/ui';
+import { Icon, Tag } from '@hermeslabs/ui';
 import { BadgeCheck, CircleUser, Package } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

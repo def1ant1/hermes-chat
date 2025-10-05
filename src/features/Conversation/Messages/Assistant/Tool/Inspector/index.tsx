@@ -1,4 +1,4 @@
-import { ActionIcon } from '@lobehub/ui';
+import { ActionIcon } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { LayoutPanelTop, LogsIcon, LucideBug, LucideBugOff } from 'lucide-react';
 import { CSSProperties, memo, useState } from 'react';

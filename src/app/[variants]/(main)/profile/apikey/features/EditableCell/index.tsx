@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, Input } from '@lobehub/ui';
+import { ActionIcon, Input } from '@hermeslabs/ui';
 import { App, InputRef } from 'antd';
 import { createStyles } from 'antd-style';
 import dayjs, { Dayjs } from 'dayjs';

@@ -1,5 +1,5 @@
 import { ArtifactType } from '@hermeslabs/types';
-import { ActionIcon, Icon, Segmented, Text } from '@lobehub/ui';
+import { ActionIcon, Icon, Segmented, Text } from '@hermeslabs/ui';
 import { ConfigProvider } from 'antd';
 import { cx } from 'antd-style';
 import { ArrowLeft, CodeIcon, EyeIcon } from 'lucide-react';

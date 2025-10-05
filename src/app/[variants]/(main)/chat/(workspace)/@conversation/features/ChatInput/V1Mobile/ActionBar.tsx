@@ -1,4 +1,4 @@
-import { ChatInputActionBar } from '@lobehub/ui/chat';
+import { ChatInputActionBar } from '@hermeslabs/ui/chat';
 import { memo } from 'react';
 
 import { ActionKeys, actionMap } from '@/features/ChatInput/ActionBar/config';

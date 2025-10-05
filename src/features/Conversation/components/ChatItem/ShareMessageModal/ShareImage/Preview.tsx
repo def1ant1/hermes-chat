@@ -1,6 +1,6 @@
-import { ModelTag } from '@lobehub/icons';
-import { Avatar } from '@lobehub/ui';
-import { ChatHeaderTitle } from '@lobehub/ui/chat';
+import { ModelTag } from '@hermeslabs/icons';
+import { Avatar } from '@hermeslabs/ui';
+import { ChatHeaderTitle } from '@hermeslabs/ui/chat';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';

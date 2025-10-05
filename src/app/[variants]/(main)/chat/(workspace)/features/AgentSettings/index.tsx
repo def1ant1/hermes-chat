@@ -1,6 +1,6 @@
 'use client';
 
-import { Drawer } from '@lobehub/ui';
+import { Drawer } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';

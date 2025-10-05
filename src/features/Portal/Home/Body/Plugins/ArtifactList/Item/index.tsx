@@ -1,4 +1,4 @@
-import { Icon, Tag, Text } from '@lobehub/ui';
+import { Icon, Tag, Text } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { CircuitBoard } from 'lucide-react';
 import { memo } from 'react';

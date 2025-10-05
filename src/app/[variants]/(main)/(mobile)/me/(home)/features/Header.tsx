@@ -1,7 +1,7 @@
 'use client';
 
-import { ActionIcon } from '@lobehub/ui';
-import { ChatHeader } from '@lobehub/ui/mobile';
+import { ActionIcon } from '@hermeslabs/ui';
+import { ChatHeader } from '@hermeslabs/ui/mobile';
 import { useTheme } from 'antd-style';
 import { Moon, Sun } from 'lucide-react';
 import { memo } from 'react';

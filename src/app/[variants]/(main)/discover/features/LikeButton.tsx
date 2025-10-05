@@ -1,4 +1,4 @@
-import { Button, Icon, Tooltip } from '@lobehub/ui';
+import { Button, Icon, Tooltip } from '@hermeslabs/ui';
 import { Space } from 'antd';
 import { ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react';
 import { memo } from 'react';

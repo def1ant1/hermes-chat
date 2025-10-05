@@ -1,5 +1,5 @@
-import { Block, MarkdownProps } from '@lobehub/ui';
-import { ChatItem } from '@lobehub/ui/chat';
+import { Block, MarkdownProps } from '@hermeslabs/ui';
+import { ChatItem } from '@hermeslabs/ui/chat';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,5 +1,5 @@
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
-import { PluginItem, PluginListResponse } from '@lobehub/market-sdk';
+import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import { PluginItem, PluginListResponse } from '@hermeslabs/market-sdk';
 import { TRPCClientError } from '@trpc/client';
 import { produce } from 'immer';
 import { uniqBy } from 'lodash-es';

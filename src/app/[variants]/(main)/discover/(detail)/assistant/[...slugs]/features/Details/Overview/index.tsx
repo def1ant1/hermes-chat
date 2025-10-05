@@ -1,5 +1,5 @@
-import { Block, Collapse } from '@lobehub/ui';
-import { ChatList } from '@lobehub/ui/chat';
+import { Block, Collapse } from '@hermeslabs/ui';
+import { ChatList } from '@hermeslabs/ui/chat';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

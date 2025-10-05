@@ -1,4 +1,4 @@
-import { Alert, CopyButton, Highlighter, Icon, Markdown, Segmented, Text } from '@lobehub/ui';
+import { Alert, CopyButton, Highlighter, Icon, Markdown, Segmented, Text } from '@hermeslabs/ui';
 import { Descriptions } from 'antd';
 import { createStyles } from 'antd-style';
 import { ExternalLink } from 'lucide-react';

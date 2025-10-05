@@ -1,6 +1,6 @@
 'use client';
 
-import { Modal } from '@lobehub/ui';
+import { Modal } from '@hermeslabs/ui';
 import { ConfigProvider } from 'antd';
 import { createStyles } from 'antd-style';
 import { useRouter } from 'next/navigation';

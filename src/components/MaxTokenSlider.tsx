@@ -1,4 +1,4 @@
-import { InputNumber } from '@lobehub/ui';
+import { InputNumber } from '@hermeslabs/ui';
 import { Slider } from 'antd';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';

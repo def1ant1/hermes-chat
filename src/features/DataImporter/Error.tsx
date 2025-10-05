@@ -1,4 +1,4 @@
-import { Alert, Button, Highlighter, Icon } from '@lobehub/ui';
+import { Alert, Button, Highlighter, Icon } from '@hermeslabs/ui';
 import { Result } from 'antd';
 import { ShieldAlert } from 'lucide-react';
 import Link from 'next/link';

@@ -1,4 +1,4 @@
-import { Block } from '@lobehub/ui';
+import { Block } from '@hermeslabs/ui';
 import { Popover, Progress } from 'antd';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';

@@ -1,5 +1,5 @@
-import { PluginItem, PluginListResponse } from '@lobehub/market-sdk';
-import { PluginItemDetail } from '@lobehub/market-types';
+import { PluginItem, PluginListResponse } from '@hermeslabs/market-sdk';
+import { PluginItemDetail } from '@hermeslabs/market-types';
 
 export enum McpCategory {
   All = 'all',

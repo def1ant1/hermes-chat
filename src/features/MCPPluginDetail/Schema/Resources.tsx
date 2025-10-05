@@ -1,4 +1,4 @@
-import { Block, Highlighter, Tag } from '@lobehub/ui';
+import { Block, Highlighter, Tag } from '@hermeslabs/ui';
 import { Empty } from 'antd';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

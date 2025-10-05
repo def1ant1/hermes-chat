@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, InputNumber, Tooltip } from '@lobehub/ui';
+import { Button, InputNumber, Tooltip } from '@hermeslabs/ui';
 import { Dices } from 'lucide-react';
 import { MAX_SEED } from 'model-bank';
 import { CSSProperties, memo, useCallback } from 'react';

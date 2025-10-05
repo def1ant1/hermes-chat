@@ -1,6 +1,6 @@
 'use client';
 
-import { InputPassword, Select } from '@lobehub/ui';
+import { InputPassword, Select } from '@hermeslabs/ui';
 import { useTranslation } from 'react-i18next';
 
 import { BedrockProviderCard } from '@/config/modelProviders';

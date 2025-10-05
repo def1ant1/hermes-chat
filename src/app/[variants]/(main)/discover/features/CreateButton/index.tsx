@@ -1,4 +1,4 @@
-import { ActionIcon, Button, Modal } from '@lobehub/ui';
+import { ActionIcon, Button, Modal } from '@hermeslabs/ui';
 import { Skeleton } from 'antd';
 import { useResponsive } from 'antd-style';
 import { Brush } from 'lucide-react';

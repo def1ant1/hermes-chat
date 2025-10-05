@@ -1,7 +1,7 @@
 'use client';
 
 import { McpInstallSchema } from '@hermeslabs/electron-client-ipc';
-import { Block, Text } from '@lobehub/ui';
+import { Block, Text } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { LinkIcon, Settings2Icon } from 'lucide-react';
 import { memo, useState } from 'react';

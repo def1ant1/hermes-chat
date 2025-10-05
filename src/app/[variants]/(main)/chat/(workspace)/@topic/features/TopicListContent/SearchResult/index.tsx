@@ -1,6 +1,6 @@
 'use client';
 
-import { Text } from '@lobehub/ui';
+import { Text } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import React, { memo, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';

@@ -1,4 +1,4 @@
-import { ActionIcon, Button, Dropdown, Text } from '@lobehub/ui';
+import { ActionIcon, Button, Dropdown, Text } from '@hermeslabs/ui';
 import { App, Skeleton, Space } from 'antd';
 import { useTheme } from 'antd-style';
 import { CircleX, EllipsisVertical, LucideRefreshCcwDot, PlusIcon } from 'lucide-react';

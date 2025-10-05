@@ -1,6 +1,6 @@
 'use client';
 
-import { Input, InputPassword } from '@lobehub/ui';
+import { Input, InputPassword } from '@hermeslabs/ui';
 import { useTranslation } from 'react-i18next';
 
 import { CloudflareProviderCard } from '@/config/modelProviders';

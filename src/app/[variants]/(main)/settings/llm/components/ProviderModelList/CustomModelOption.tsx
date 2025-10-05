@@ -1,5 +1,5 @@
-import { ModelIcon } from '@lobehub/icons';
-import { ActionIcon, Icon, Text } from '@lobehub/ui';
+import { ModelIcon } from '@hermeslabs/icons';
+import { ActionIcon, Icon, Text } from '@hermeslabs/ui';
 import { App } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { LucideArrowRight, LucideSettings, LucideTrash2 } from 'lucide-react';

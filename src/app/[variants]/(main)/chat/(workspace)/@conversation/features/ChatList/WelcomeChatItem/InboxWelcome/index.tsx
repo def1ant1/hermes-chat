@@ -1,6 +1,6 @@
 'use client';
 
-import { FluentEmoji, Markdown } from '@lobehub/ui';
+import { FluentEmoji, Markdown } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';

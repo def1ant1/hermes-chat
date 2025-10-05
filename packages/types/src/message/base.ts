@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix , typescript-sort-keys/interface */
+import type { IPluginErrorType } from '@hermeslabs/chat-plugin-sdk';
 import type { ILobeAgentRuntimeErrorType } from '@hermeslabs/model-runtime';
-import type { IPluginErrorType } from '@lobehub/chat-plugin-sdk';
 
 import { ErrorType } from '../fetch';
 import { GroundingSearch } from '../search';

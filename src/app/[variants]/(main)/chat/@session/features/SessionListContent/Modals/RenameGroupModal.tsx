@@ -1,4 +1,4 @@
-import { Input, Modal, type ModalProps } from '@lobehub/ui';
+import { Input, Modal, type ModalProps } from '@hermeslabs/ui';
 import { App } from 'antd';
 import isEqual from 'fast-deep-equal';
 import { memo, useEffect, useState } from 'react';

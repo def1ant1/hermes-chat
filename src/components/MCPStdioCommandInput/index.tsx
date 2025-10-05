@@ -1,3 +1,4 @@
+import { AutoComplete, type AutoCompleteProps } from '@hermeslabs/ui';
 import {
   SiBun,
   SiDocker,
@@ -6,7 +7,6 @@ import {
   SiPnpm,
   SiPython,
 } from '@icons-pack/react-simple-icons';
-import { AutoComplete, type AutoCompleteProps } from '@lobehub/ui';
 import { FC, memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 

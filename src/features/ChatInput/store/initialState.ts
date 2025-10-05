@@ -1,6 +1,6 @@
-import type { IEditor } from '@lobehub/editor';
-import type { ChatInputProps } from '@lobehub/editor/react';
-import type { MenuProps } from '@lobehub/ui/es/Menu';
+import type { IEditor } from '@hermeslabs/editor';
+import type { ChatInputProps } from '@hermeslabs/editor/react';
+import type { MenuProps } from '@hermeslabs/ui/es/Menu';
 
 import { ActionKeys } from '@/features/ChatInput';
 

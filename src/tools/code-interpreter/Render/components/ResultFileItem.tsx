@@ -1,5 +1,5 @@
 import { CodeInterpreterFileItem } from '@hermeslabs/types';
-import { Icon, Image, MaterialFileTypeIcon, Text, Tooltip } from '@lobehub/ui';
+import { Icon, Image, MaterialFileTypeIcon, Text, Tooltip } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Download } from 'lucide-react';
 import React, { memo } from 'react';

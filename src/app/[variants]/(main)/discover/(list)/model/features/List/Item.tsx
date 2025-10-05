@@ -1,7 +1,7 @@
 'use client';
 
-import { ModelIcon, ProviderIcon } from '@lobehub/icons';
-import { Block, Icon, Tag, Text } from '@lobehub/ui';
+import { ModelIcon, ProviderIcon } from '@hermeslabs/icons';
+import { Block, Icon, Tag, Text } from '@hermeslabs/ui';
 import { Popover } from 'antd';
 import { createStyles } from 'antd-style';
 import dayjs from 'dayjs';

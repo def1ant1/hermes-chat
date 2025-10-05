@@ -1,6 +1,6 @@
 'use client';
 
-import { ChatHeader } from '@lobehub/ui/mobile';
+import { ChatHeader } from '@hermeslabs/ui/mobile';
 import { memo, useState } from 'react';
 
 import { INBOX_SESSION_ID } from '@/const/session';

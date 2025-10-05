@@ -1,6 +1,6 @@
 'use client';
 
-import { LobeHub } from '@lobehub/ui/brand';
+import { LobeHub } from '@hermeslabs/ui/brand';
 import { createStyles } from 'antd-style';
 import Link from 'next/link';
 import { memo } from 'react';

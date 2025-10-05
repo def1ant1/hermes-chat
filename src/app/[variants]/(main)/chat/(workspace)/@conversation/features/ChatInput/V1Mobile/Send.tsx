@@ -1,4 +1,4 @@
-import { ActionIcon, type ActionIconSize, Button } from '@lobehub/ui';
+import { ActionIcon, type ActionIconSize, Button } from '@hermeslabs/ui';
 import { Loader2, SendHorizontal } from 'lucide-react';
 import { memo } from 'react';
 

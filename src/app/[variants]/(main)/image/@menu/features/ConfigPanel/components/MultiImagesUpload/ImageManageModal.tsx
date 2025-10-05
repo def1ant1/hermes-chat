@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Modal } from '@lobehub/ui';
+import { Button, Modal } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import { Upload, X } from 'lucide-react';
 import Image from 'next/image';

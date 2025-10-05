@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon, Tabs } from '@lobehub/ui';
+import { Icon, Tabs } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import {

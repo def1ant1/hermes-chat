@@ -1,4 +1,4 @@
-import { ActionIcon, Button, Icon, Input } from '@lobehub/ui';
+import { ActionIcon, Button, Icon, Input } from '@hermeslabs/ui';
 import { App, Form, FormInstance } from 'antd';
 import { createStyles } from 'antd-style';
 import { LucidePlus, LucideTrash } from 'lucide-react';

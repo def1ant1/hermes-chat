@@ -1,5 +1,5 @@
-import { ActionIcon, TextArea } from '@lobehub/ui';
-import { SafeArea } from '@lobehub/ui/mobile';
+import { ActionIcon, TextArea } from '@hermeslabs/ui';
+import { SafeArea } from '@hermeslabs/ui/mobile';
 import { useSize } from 'ahooks';
 import { createStyles } from 'antd-style';
 import { TextAreaRef } from 'antd/es/input/TextArea';

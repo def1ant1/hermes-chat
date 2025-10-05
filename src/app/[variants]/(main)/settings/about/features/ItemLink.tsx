@@ -1,4 +1,4 @@
-import { Icon } from '@lobehub/ui';
+import { Icon } from '@hermeslabs/ui';
 import { useTheme } from 'antd-style';
 import { LucideIcon, SquareArrowOutUpRight } from 'lucide-react';
 import Link from 'next/link';

@@ -1,4 +1,4 @@
-import { ActionIcon, Text } from '@lobehub/ui';
+import { ActionIcon, Text } from '@hermeslabs/ui';
 import isEqual from 'fast-deep-equal';
 import { ArrowDownUpIcon, ToggleLeft } from 'lucide-react';
 import { useMemo, useState } from 'react';

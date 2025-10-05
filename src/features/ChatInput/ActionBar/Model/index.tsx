@@ -1,4 +1,4 @@
-import { ModelIcon } from '@lobehub/icons';
+import { ModelIcon } from '@hermeslabs/icons';
 import { createStyles } from 'antd-style';
 import { Settings2Icon } from 'lucide-react';
 import { memo } from 'react';

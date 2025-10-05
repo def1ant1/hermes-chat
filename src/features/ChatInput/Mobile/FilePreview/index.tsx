@@ -1,4 +1,4 @@
-import { PreviewGroup, ScrollShadow } from '@lobehub/ui';
+import { PreviewGroup, ScrollShadow } from '@hermeslabs/ui';
 import { createStyles } from 'antd-style';
 import isEqual from 'fast-deep-equal';
 import { memo } from 'react';

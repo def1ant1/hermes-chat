@@ -1,6 +1,6 @@
 'use client';
 
-import { Block, Icon, Text } from '@lobehub/ui';
+import { Block, Icon, Text } from '@hermeslabs/ui';
 import { ImageOffIcon } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

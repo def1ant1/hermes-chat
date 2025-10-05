@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIconGroup, ActionIconGroupProps } from '@lobehub/ui';
+import { ActionIconGroup, ActionIconGroupProps } from '@hermeslabs/ui';
 import { Dices, Download, Trash2 } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';

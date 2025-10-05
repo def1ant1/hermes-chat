@@ -1,6 +1,6 @@
 'use client';
 
-import { Text } from '@lobehub/ui';
+import { Text } from '@hermeslabs/ui';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 

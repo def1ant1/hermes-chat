@@ -1,4 +1,4 @@
-import { Button } from '@lobehub/ui';
+import { Button } from '@hermeslabs/ui';
 import { memo } from 'react';
 
 import { useActionSWR } from '@/libs/swr';
