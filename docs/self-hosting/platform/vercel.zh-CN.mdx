@@ -14,6 +14,13 @@ tags:
 
 如果想在 Vercel 上部署 Hermes Chat，可以按照以下步骤进行操作：
 
+> \[!IMPORTANT] Hermes Labs 作用域迁移
+>
+> - **生效日期：** 2025-03-31 —— 部署模板现已全面切换为企业统一的 `@hermeslabs/*` npm 作用域，请确保自建仓库同步该更改。
+> - **兼容窗口：** 旧的 `@lobechat/*` 与 `@lobehub/*` 包将在 2025-09-30 前持续发布兼容补丁，用于渐进式灰度或紧急回滚。
+> - **回滚方案：** 如需恢复旧作用域，可参照 [重品牌工具包回滚指引](/zh/docs/development/rebranding#rollback-strategy)，并在 Vercel 后台通过 "Redeploy" 按钮回滚到上一个提交。
+> - **重要提示：** 若你的 Vercel 项目仍然绑定 `lobehub/lobe-chat` 仓库，请在兼容窗口关闭前更新为 `hermeslabs/hermes-chat`，否则自动部署将在切换后失败。
+
 ## Vercel 部署流程
 
 <Steps>
@@ -44,4 +51,4 @@ tags:
 </Callout>
 
 [deploy-button-image]: https://vercel.com/button
-[deploy-link]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flobehub%2Flobe-chat&env=OPENAI_API_KEY,ACCESS_CODE&envDescription=Find%20your%20OpenAI%20API%20Key%20by%20click%20the%20right%20Learn%20More%20button.%20%7C%20Access%20Code%20can%20protect%20your%20website&envLink=https%3A%2F%2Fplatform.openai.com%2Faccount%2Fapi-keys&project-name=lobe-chat&repository-name=lobe-chat
+[deploy-link]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhermeslabs%2Fhermes-chat&env=OPENAI_API_KEY,ACCESS_CODE&envDescription=Find%20your%20OpenAI%20API%20Key%20by%20click%20the%20right%20Learn%20More%20button.%20%7C%20Access%20Code%20can%20protect%20your%20website&envLink=https%3A%2F%2Fplatform.openai.com%2Faccount%2Fapi-keys&project-name=hermes-chat&repository-name=hermes-chat

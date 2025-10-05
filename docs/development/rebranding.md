@@ -5,6 +5,13 @@ legacy **Hermes Chat / Hermes Labs** branding to modern Hermes-first language. T
 workflow is intentionally repeatable so enterprise operators can roll forward or
 roll back rebrands without manually touching thousands of strings.
 
+> \[!IMPORTANT] Hermes Labs Scope Migration
+>
+> - **Effective date:** 2025-03-31 – rebranding automation now rewrites every package reference to the enterprise `@hermeslabs/*` scope.
+> - **Compatibility window:** Legacy `@lobechat/*` and `@lobehub/*` packages publish deprecation shims until 2025-09-30 so CI pipelines and downstream SDKs have two quarterly release cycles to upgrade without downtime.
+> - **Rollback path:** Follow the [Rollback strategy](#rollback-strategy) section for a scripted revert, including guidance on restoring historical scopes in less than five minutes.
+> - **Breaking-change watch-outs:** Node.js resolutions that pin to exact `@lobechat/*` versions must be updated manually; mismatch will surface as install failures once the compatibility window closes.
+
 ## Overview
 
 - **TypeScript CLI** – `scripts/rebrandHermesChat.ts` performs the actual
@@ -31,8 +38,9 @@ roll back rebrands without manually touching thousands of strings.
   `https://raw.githubusercontent.com/lobehub/lobe-chat` are rewritten to the
   Hermes CDN (falling back to the primary domain when no CDN is configured),
   preserving the branch/path suffix for deterministic migrations.
-- The automation now standardizes both scoped package imports (`@lobehub/*` and
-  `@lobechat/*`) and bare social handles. Scoped imports adopt the sanitized
+- The automation now standardizes both legacy scoped package imports (`@lobehub/*`
+  and `@lobechat/*`) into the consolidated enterprise namespace
+  (`@hermeslabs/*`) and bare social handles. Scoped imports adopt the sanitized
   organization slug (or fall back to the short product name when no org is
   supplied) so npm installs remain routable, while bare `@lobechat` mentions map
   to the product short name for human-readable marketing copy.

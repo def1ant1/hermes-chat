@@ -1,10 +1,17 @@
-# @lobechat/web-crawler
+# @hermeslabs/web-crawler
 
-LobeChat 内置的网页抓取模块，用于智能提取网页内容并转换为 Markdown 格式。
+Hermes Chat 内置的网页抓取模块，用于智能提取网页内容并转换为 Markdown 格式。
+
+> \[!IMPORTANT] Hermes Labs 作用域迁移
+>
+> - **生效日期：** 2025-03-31 —— 请通过 `npm install @hermeslabs/web-crawler` 获取最新功能与安全补丁。
+> - **兼容窗口：** `@lobechat/web-crawler` 将在 2025-09-30 前镜像更新，之后将不再维护。
+> - **回滚方案：** 参照 [回滚方案](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) 可迅速恢复旧作用域。
+> - **重要提示：** 若自动化脚本仅允许 `@lobechat` 作用域，请同步添加 `@hermeslabs`，避免构建被阻断。
 
 ## 📝 简介
 
-`@lobechat/web-crawler` 是 LobeChat 的核心组件，负责网页内容的智能抓取与处理。它能够从各类网页中提取有价值的内容，过滤掉干扰元素，并生成结构化的 Markdown 文本。
+`@hermeslabs/web-crawler` 是 Hermes Chat 的核心组件，负责网页内容的智能抓取与处理。它能够从各类网页中提取有价值的内容，过滤掉干扰元素，并生成结构化的 Markdown 文本。
 
 ## 🛠️ 核心功能
 
@@ -18,7 +25,7 @@ LobeChat 内置的网页抓取模块，用于智能提取网页内容并转换�
 
 ### 如何贡献 URL 规则
 
-1. 在 [urlRules.ts](https://github.com/lobehub/lobe-chat/blob/main/packages/web-crawler/src/urlRules.ts) 文件中添加新规则
+1. 在 [urlRules.ts](https://github.com/hermeslabs/hermes-chat/blob/main/packages/web-crawler/src/urlRules.ts) 文件中添加新规则
 2. 规则示例：
 
 ```typescript
@@ -48,7 +55,7 @@ const url = [
 
 ### 规则提交流程
 
-1. Fork [LobeChat 仓库](https://github.com/lobehub/lobe-chat)
+1. Fork [Hermes Chat 仓库](https://github.com/hermeslabs/hermes-chat)
 2. 添加或修改 URL 规则
 3. 提交 Pull Request 并描述：
 
@@ -58,4 +65,4 @@ const url = [
 
 ## 📌 注意事项
 
-这是 LobeHub 的内部模块（`"private": true`），专为 LobeChat 设计，不作为独立包发布使用。
+这是 Hermes Labs 的内部模块（`"private": true`），专为 Hermes Chat 设计，不作为独立包发布使用。

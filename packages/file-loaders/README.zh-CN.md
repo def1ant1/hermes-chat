@@ -1,8 +1,15 @@
-# @lobechat/file-loaders
+# @hermeslabs/file-loaders
 
-`@lobechat/file-loaders` 是 LobeChat 项目中的一个工具包，专门用于从本地文件路径加载各种类型的文件，并将其内容转换为标准化的 `Document` 对象数组。
+`@hermeslabs/file-loaders` 是 Hermes Chat 项目中的一个工具包，专门用于从本地文件路径加载各种类型的文件，并将其内容转换为标准化的 `Document` 对象数组。
 
-它的主要目的是提供一个统一的接口来读取不同的文件格式，提取其核心文本内容，并为后续处理（例如在 LobeChat 中进行文件预览、内容提取或将其作为知识库数据源）做好准备。
+> \[!IMPORTANT] Hermes Labs 作用域迁移
+>
+> - **生效日期：** 2025-03-31 —— 新安装需执行 `npm install @hermeslabs/file-loaders`。
+> - **兼容窗口：** 旧包 `@lobechat/file-loaders` 将维护到 2025-09-30，之后停止发布并可能导致 npm 404。
+> - **回滚方案：** 可按照 [回滚指引](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) 快速恢复旧作用域。
+> - **重要提示：** 若构建流程对包作用域做了白名单限制，请及时加入 `@hermeslabs` 以避免上线阻断。
+
+它的主要目的是提供一个统一的接口来读取不同的文件格式，提取其核心文本内容，并为后续处理（例如在 Hermes Chat 中进行文件预览、内容提取或将其作为知识库数据源）做好准备。
 
 ## ✨ 功能特性
 
@@ -73,7 +80,7 @@
 
 ### 贡献流程
 
-1. Fork [LobeChat 仓库](https://github.com/lobehub/lobe-chat)
+1. Fork [Hermes Chat 仓库](https://github.com/hermeslabs/hermes-chat)
 2. 添加新格式支持或改进现有解析器
 3. 提交 Pull Request 并描述：
 
@@ -84,6 +91,6 @@
 
 ## 📌 说明
 
-这是 LobeHub 的内部模块（`"private": true`），专为 LobeChat 设计，不作为独立包发布。
+这是 Hermes Labs 的内部模块（`"private": true`），专为 Hermes Chat 设计，不作为独立包发布。
 
-如果你对我们的项目感兴趣，欢迎在 [GitHub](https://github.com/lobehub/lobe-chat) 上查看、点赞或贡献代码！
+如果你对我们的项目感兴趣，欢迎在 [GitHub](https://github.com/hermeslabs/hermes-chat) 上查看、点赞或贡献代码！

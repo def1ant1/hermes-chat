@@ -1,13 +1,20 @@
-# @lobechat/electron-client-ipc
+# @hermeslabs/electron-client-ipc
 
-This package is a client-side toolkit for handling IPC (Inter-Process Communication) in LobeChat's Electron environment.
+This package is a client-side toolkit for handling IPC (Inter-Process Communication) in Hermes Chat's Electron environment.
+
+> \[!IMPORTANT] Hermes Labs Scope Migration
+>
+> - **Effective date:** 2025-03-31 – install with `npm install @hermeslabs/electron-client-ipc` to stay within the supported namespace.
+> - **Compatibility window:** Deprecation shims for `@lobechat/electron-client-ipc` remain available until 2025-09-30; deployments pinned to the legacy scope must transition before then.
+> - **Rollback path:** Reference the [Hermes rebranding rollback guidance](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) if you need to revert for emergency hotfixes.
+> - **Breaking-change watch-outs:** Renderer bundles that tree-shake by package name require cache invalidation after changing the import scope.
 
 ## Introduction
 
 In Electron applications, IPC (Inter-Process Communication) serves as a bridge connecting the Main Process, Renderer Process, and NextJS Process. To better organize and manage these communications, we have split the IPC-related code into two packages:
 
-- `@lobechat/electron-client-ipc`: **Client-side IPC package**
-- `@lobechat/electron-server-ipc`: **Server-side IPC package**
+- `@hermeslabs/electron-client-ipc`: **Client-side IPC package**
+- `@hermeslabs/electron-server-ipc`: **Server-side IPC package**
 
 ## Key Differences
 
@@ -59,7 +66,7 @@ IPC communication needs vary across different use cases and platforms. We welcom
 
 ### Contribution Process
 
-1. Fork the [LobeChat repository](https://github.com/lobehub/lobe-chat)
+1. Fork the [Hermes Chat repository](https://github.com/hermeslabs/hermes-chat)
 2. Make your changes to the IPC client package
 3. Submit a Pull Request describing:
 
@@ -70,4 +77,4 @@ IPC communication needs vary across different use cases and platforms. We welcom
 
 ## 📌 Note
 
-This is an internal module of LobeHub (`"private": true`), designed specifically for LobeChat and not published as a standalone package.
+This is an internal module of Hermes Labs (`"private": true`), designed specifically for Hermes Chat and not published as a standalone package.

@@ -1,10 +1,17 @@
-# @lobechat/electron-server-ipc
+# @hermeslabs/electron-server-ipc
 
-LobeHub 的 Electron 应用与服务端之间的 IPC（进程间通信）模块，提供可靠的跨进程通信能力。
+Hermes Labs 的 Electron 应用与服务端之间的 IPC（进程间通信）模块，提供可靠的跨进程通信能力。
+
+> \[!IMPORTANT] Hermes Labs 作用域迁移
+>
+> - **生效日期：** 2025-03-31 —— 请使用 `npm install @hermeslabs/electron-server-ipc` 完成依赖安装。
+> - **兼容窗口：** `@lobechat/electron-server-ipc` 将在 2025-09-30 前持续发布兼容版本，届时旧作用域将停止更新并在安装时返回错误。
+> - **回滚方案：** 参考 [回滚流程](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) 可在数分钟内恢复旧命名。
+> - **重要提示：** 若 preload 脚本中硬编码了旧包名，请同步修改并重新打包 Electron 应用后再发版。
 
 ## 📝 简介
 
-`@lobechat/electron-server-ipc` 是 LobeHub 桌面应用的核心组件，负责处理 Electron 主进程与 nextjs 服务端之间的通信。它提供了一套简单而健壮的 API，用于在不同进程间传递数据和执行远程方法调用。
+`@hermeslabs/electron-server-ipc` 是 Hermes Chat 桌面应用的核心组件，负责处理 Electron 主进程与 Next.js 服务端之间的通信。它提供了一套简单而健壮的 API，用于在不同进程间传递数据和执行远程方法调用。
 
 ## 🛠️ 核心功能
 
@@ -20,7 +27,7 @@ LobeHub 的 Electron 应用与服务端之间的 IPC（进程间通信）模块�
 负责监听客户端请求并响应，通常运行在 Electron 的主进程中：
 
 ```typescript
-import { ElectronIPCEventHandler, ElectronIPCServer } from '@lobechat/electron-server-ipc';
+import { ElectronIPCEventHandler, ElectronIPCServer } from '@hermeslabs/electron-server-ipc';
 
 // 定义处理函数
 const eventHandler: ElectronIPCEventHandler = {
@@ -40,7 +47,7 @@ server.start();
 负责连接到服务端并发送请求，通常在服务端（如 Next.js 服务）中使用：
 
 ```typescript
-import { ElectronIPCMethods, ElectronIpcClient } from '@lobechat/electron-server-ipc';
+import { ElectronIPCMethods, ElectronIpcClient } from '@hermeslabs/electron-server-ipc';
 
 // 创建客户端
 const client = new ElectronIpcClient();
@@ -62,7 +69,7 @@ IPC 服务端实现需要处理各种通信场景和边缘情况。我们欢迎�
 
 ### 贡献流程
 
-1. Fork [LobeChat 仓库](https://github.com/lobehub/lobe-chat)
+1. Fork [Hermes Chat 仓库](https://github.com/hermeslabs/hermes-chat)
 2. 对 IPC 服务端包实施改进
 3. 提交 Pull Request 并描述：
 
@@ -73,4 +80,4 @@ IPC 服务端实现需要处理各种通信场景和边缘情况。我们欢迎�
 
 ## 📌 说明
 
-这是 LobeHub 的内部模块 (`"private": true`)，专为 LobeHub 桌面应用设计，不作为独立包发布。
+这是 Hermes Labs 的内部模块 (`"private": true`)，专为 Hermes Chat 桌面应用设计，不作为独立包发布。

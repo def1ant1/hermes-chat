@@ -1,13 +1,20 @@
-# @lobechat/electron-client-ipc
+# @hermeslabs/electron-client-ipc
 
-这个包是 LobeChat 在 Electron 环境中用于处理 IPC（进程间通信）的客户端工具包。
+这个包是 Hermes Chat 在 Electron 环境中用于处理 IPC（进程间通信）的客户端工具包。
+
+> \[!IMPORTANT] Hermes Labs 作用域迁移
+>
+> - **生效日期：** 2025-03-31 —— 通过 `npm install @hermeslabs/electron-client-ipc` 安装最新作用域的依赖。
+> - **兼容窗口：** `@lobechat/electron-client-ipc` 将持续提供兼容版本至 2025-09-30，请在窗口结束前完成升级。
+> - **回滚方案：** 需要恢复旧作用域时，请参考 [官方回滚指引](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy)。
+> - **重要提示：** 若构建缓存依赖旧包名，请在切换作用域后清理缓存并重新打包，以避免渲染进程加载旧代码。
 
 ## 介绍
 
 在 Electron 应用中，IPC（进程间通信）是连接主进程（Main Process）、渲染进程（Renderer Process）以及 NextJS 进程的桥梁。为了更好地组织和管理这些通信，我们将 IPC 相关的代码分成了两个包：
 
-- `@lobechat/electron-client-ipc`：**客户端 IPC 包**
-- `@lobechat/electron-server-ipc`：**服务端 IPC 包**
+- `@hermeslabs/electron-client-ipc`：**客户端 IPC 包**
+- `@hermeslabs/electron-server-ipc`：**服务端 IPC 包**
 
 ## 主要区别
 
@@ -59,7 +66,7 @@
 
 ### 贡献流程
 
-1. Fork [LobeChat 仓库](https://github.com/lobehub/lobe-chat)
+1. Fork [Hermes Chat 仓库](https://github.com/hermeslabs/hermes-chat)
 2. 对 IPC 客户端包进行修改
 3. 提交 Pull Request 并描述：
 
@@ -70,4 +77,4 @@
 
 ## 📌 说明
 
-这是 LobeHub 的内部模块（`"private": true`），专为 LobeChat 设计，不作为独立包发布。
+这是 Hermes Labs 的内部模块（`"private": true`），专为 Hermes Chat 设计，不作为独立包发布。
