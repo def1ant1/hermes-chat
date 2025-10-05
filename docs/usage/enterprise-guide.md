@@ -20,6 +20,24 @@ approvals so pre-production rollouts stay aligned with governance policy.
 > duplication leads to mismatches that our rebranding lint (`scripts/rebrand_hermes_chat.sh lint-strings`)
 > will now block in CI.
 
+## Localisation governance
+
+- **OAuth prompts:** `src/locales/default/oauth.ts` and `locales/zh-CN/oauth.json`
+  now reference Hermes Chat explicitly. Translation Ops signed off the copy on
+  2025-02-05 (CS-941) and mandated that other locales fall back to the default
+  bundle until refreshed assets ship.
+- **Automation:** `scripts/rebrandHermesChat.ts` introduces the
+  `oauth-openid-scope-zh-cn` and `oauth-openid-scope-en` rewrite rules so future
+  rebrands (or tenant-specific names) update OAuth scope strings automatically.
+  The CI helper `scripts/rebrand_hermes_chat.sh lint-strings` executes the CLI
+  in dry-run mode to guarantee these rules stay exercised.
+- **Manual backlog:** Languages beyond zh-CN/en-US still surface "LobeChat" in
+  their OAuth packs. Track remediation in Jira L10N-588 and only mark the task
+  complete once linguists deliver parity strings.
+- **Verification:** `bunx vitest run --silent='passed-only' 'src/utils/client/switchLang.test.ts'`
+  now asserts the Hermes cookie token, giving CI coverage that the locale
+  fallback chain stays branded correctly.
+
 ## Discover metadata authorship & automation
 
 - **Metadata authors:** All Discover detail pages emit `Hermes Labs` (org) and
