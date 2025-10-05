@@ -4,7 +4,7 @@ import { gt, parse, valid } from 'semver';
 import { SWRResponse } from 'swr';
 import type { StateCreator } from 'zustand/vanilla';
 
-import { LOBE_THEME_APPEARANCE } from '@/const/theme';
+import { HERMES_THEME_APPEARANCE } from '@/const/theme';
 import { CURRENT_VERSION, isDesktop } from '@/const/version';
 import { useOnlyFetchOnceSWR } from '@/libs/swr';
 import { globalService } from '@/services/global';
@@ -53,7 +53,10 @@ export const generalActionSlice: StateCreator<
   switchThemeMode: (themeMode, { skipBroadcast } = {}) => {
     get().updateSystemStatus({ themeMode });
 
-    setCookie(LOBE_THEME_APPEARANCE, themeMode === 'auto' ? undefined : themeMode);
+    // TODO(2025-Q4): remove once middleware and the rebranding CLI stop
+    // exporting Lobe-prefixed shims. Tracking occurs via
+    // scripts/rebrandHermesChat.ts replacement metadata.
+    setCookie(HERMES_THEME_APPEARANCE, themeMode === 'auto' ? undefined : themeMode);
 
     if (isDesktop && !skipBroadcast) {
       (async () => {

@@ -11,7 +11,12 @@ set -euo pipefail
 
 usage() {
   cat <<'USAGE'
-Usage: scripts/rebrand_hermes_chat.sh [options] [-- <extra tsx args>]
+Usage: scripts/rebrand_hermes_chat.sh [command] [options] [-- <extra tsx args>]
+
+Commands:
+  apply           Run the rebranding automation and apply file changes (default)
+  lint-strings    Dry-run replacements and execute regression checks
+  validate        Apply replacements and execute regression checks
 
 Options:
   --workspace <path>   Directory to rebrand (defaults to repo root)
@@ -41,20 +46,33 @@ CONTACT_EMAIL=${CONTACT_EMAIL:-"hello@hermes.chat"}
 CONTACT_DISCORD=${CONTACT_DISCORD:-"https://discord.gg/hermeschat"}
 CONTACT_TELEGRAM=${CONTACT_TELEGRAM:-""}
 CONTACT_WEBSITE=${CONTACT_WEBSITE:-"https://hermes.chat"}
-CDN_DOMAIN=${CDN_DOMAIN:-"cdn.hermes.chat"}
-ORGANIZATION_NAME=${ORGANIZATION_NAME:-"Hermes Labs"}
-ORGANIZATION_DOMAIN=${ORGANIZATION_DOMAIN:-"hermeslabs.com"}
-REPOSITORY_HOST=${REPOSITORY_HOST:-"github.com"}
-REPOSITORY_OWNER=${REPOSITORY_OWNER:-"hermes-chat"}
-REPOSITORY_NAME=${REPOSITORY_NAME:-"hermes-chat"}
-ASSET_LOGO=${ASSET_LOGO:-"/assets/hermes-chat/logo.svg"}
-ASSET_FAVICON=${ASSET_FAVICON:-"/assets/hermes-chat/favicon.svg"}
-ASSET_WORDMARK=${ASSET_WORDMARK:-"/assets/hermes-chat/wordmark.svg"}
-ASSET_BANNER=${ASSET_BANNER:-"/assets/hermes-chat/banner.svg"}
+  CDN_DOMAIN=${CDN_DOMAIN:-"cdn.hermes.chat"}
+  ORGANIZATION_NAME=${ORGANIZATION_NAME:-"Hermes Labs"}
+  ORGANIZATION_DOMAIN=${ORGANIZATION_DOMAIN:-"hermeslabs.com"}
+  REPOSITORY_HOST=${REPOSITORY_HOST:-"github.com"}
+  REPOSITORY_OWNER=${REPOSITORY_OWNER:-"hermes-chat"}
+  REPOSITORY_NAME=${REPOSITORY_NAME:-"hermes-chat"}
+  ASSET_LOGO=${ASSET_LOGO:-"/assets/hermes-chat/logo.svg"}
+  ASSET_FAVICON=${ASSET_FAVICON:-"/assets/hermes-chat/favicon.svg"}
+  ASSET_WORDMARK=${ASSET_WORDMARK:-"/assets/hermes-chat/wordmark.svg"}
+  ASSET_BANNER=${ASSET_BANNER:-"/assets/hermes-chat/banner.svg"}
+  THEME_TOKEN_PREFIX=${THEME_TOKEN_PREFIX:-"Hermes"}
 
+COMMAND="apply"
 DRY_RUN=false
 WORKSPACE=""
 FORWARDED_ARGS=()
+
+case "${1:-}" in
+  apply|lint-strings|validate)
+    COMMAND="$1"
+    shift
+    ;;
+esac
+
+if [[ "$COMMAND" == "lint-strings" ]]; then
+  DRY_RUN=true
+fi
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -103,6 +121,8 @@ CLI_ARGS=(
   --asset-favicon "$ASSET_FAVICON"
   --asset-wordmark "$ASSET_WORDMARK"
   --asset-banner "$ASSET_BANNER"
+  --theme-token-prefix "$THEME_TOKEN_PREFIX"
+  --mode "$COMMAND"
 )
 
 if [[ -n "$WORKSPACE" ]]; then
@@ -120,6 +140,9 @@ fi
 echo "[rebrand] Executing Hermes Chat CLI via bunx tsx"
 if [[ "$DRY_RUN" == "true" ]]; then
   echo "[rebrand] Dry run enabled; no files will be modified"
+fi
+if [[ "$COMMAND" == "lint-strings" || "$COMMAND" == "validate" ]]; then
+  echo "[rebrand] ${COMMAND} mode enforces Vitest theme persistence checks before exit"
 fi
 
 set -x
