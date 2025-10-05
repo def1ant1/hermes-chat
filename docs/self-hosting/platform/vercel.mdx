@@ -18,9 +18,9 @@ If you want to deploy Hermes Chat on Vercel, you can follow the steps below:
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – deployment templates now pull packages under the `@hermeslabs/*` scope to ensure consistency with the Hermes Labs registry.
-> - **Compatibility window:** The legacy `@lobechat/*` Docker images and npm packages stay updated until 2025-09-30 for rollback or staggered region releases.
+> - **Compatibility window:** The legacy `@hermeslabs/*` Docker images and npm packages stay updated until 2025-09-30 for rollback or staggered region releases.
 > - **Rollback path:** Use the [rebranding rollback flow](/docs/development/rebranding#rollback-strategy) and redeploy via Vercel’s "Redeploy" action with the prior commit to undo the scope migration.
-> - **Breaking-change watch-outs:** Existing Vercel projects pinned to the `lobehub/lobe-chat` repository must update their Git integration to the new `hermeslabs/hermes-chat` repo before the compatibility window ends to avoid auto-deploy failures.
+> - **Breaking-change watch-outs:** Existing Vercel projects pinned to the `hermeslabs/hermes-chat` repository must update their Git integration to the new `hermeslabs/hermes-chat` repo before the compatibility window ends to avoid auto-deploy failures.
 
 ## Vercel Deployment Process
 

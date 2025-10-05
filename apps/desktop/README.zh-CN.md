@@ -1,6 +1,6 @@
-# 🤯 LobeHub 桌面应用程序
+# 🤯 Hermes Labs 桌面应用程序
 
-LobeHub Desktop 是 [LobeChat](https://github.com/lobehub/lobe-chat) 的跨平台桌面应用程序，使用 Electron 构建，提供了更加原生的桌面体验和功能。
+Hermes Labs Desktop 是 [Hermes Chat](https://github.com/hermeslabs/hermes-chat) 的跨平台桌面应用程序，使用 Electron 构建，提供了更加原生的桌面体验和功能。
 
 ## ✨ 功能特点
 
@@ -11,7 +11,7 @@ LobeHub Desktop 是 [LobeChat](https://github.com/lobehub/lobe-chat) 的跨平�
 - **🔒 安全可靠**：macOS 公证认证，加密令牌存储，安全的 OAuth 流程
 - **📦 多渠道发布**：提供稳定版、测试版和每日构建版本
 - **⚡ 高级窗口管理**：多窗口架构，支持主题同步
-- **🔗 远程服务器同步**：与远程 LobeChat 实例的安全数据同步
+- **🔗 远程服务器同步**：与远程 Hermes Chat 实例的安全数据同步
 - **🎯 开发者工具**：内置开发面板和全面的调试工具
 
 ## 🚀 开发环境设置
@@ -325,7 +325,7 @@ pnpm typecheck  # 类型验证
 
 ### 贡献流程
 
-1. Fork [LobeChat 仓库](https://github.com/lobehub/lobe-chat)
+1. Fork [Hermes Chat 仓库](https://github.com/hermeslabs/hermes-chat)
 2. 按照我们的设置指南建立桌面开发环境
 3. 对桌面应用程序进行修改
 4. 提交 Pull Request 并描述：
@@ -350,4 +350,4 @@ pnpm typecheck  # 类型验证
 - **开发指南**：[`Development.md`](./Development.md) - 全面的开发文档
 - **架构文档**：[`/docs`](../../docs/) - 详细的技术规范
 - **贡献指南**：[`CONTRIBUTING.md`](../../CONTRIBUTING.md) - 贡献指导
-- **问题和支持**：[GitHub Issues](https://github.com/lobehub/lobe-chat/issues)
+- **问题和支持**：[GitHub Issues](https://github.com/hermeslabs/hermes-chat/issues)

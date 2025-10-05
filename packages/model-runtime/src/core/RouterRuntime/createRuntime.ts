@@ -1,5 +1,5 @@
 /**
- * @see https://github.com/lobehub/lobe-chat/discussions/6563
+ * @see https://github.com/hermeslabs/hermes-chat/discussions/6563
  */
 import type { ChatModelCard } from '@hermeslabs/types';
 import OpenAI, { ClientOptions } from 'openai';

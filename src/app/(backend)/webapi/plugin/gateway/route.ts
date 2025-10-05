@@ -1,7 +1,6 @@
-import { PluginRequestPayload } from '@hermeslabs/chat-plugin-sdk';
 import { createGatewayOnEdgeRuntime } from '@hermeslabs/chat-plugins-gateway';
 import { AgentRuntimeError } from '@hermeslabs/model-runtime';
-import { ChatErrorType, ErrorType, TraceNameMap } from '@hermeslabs/types';
+import { PluginRequestPayload , ChatErrorType, ErrorType, TraceNameMap } from '@hermeslabs/types';
 import { getXorPayload } from '@hermeslabs/utils/server';
 
 import { LOBE_CHAT_AUTH_HEADER, OAUTH_AUTHORIZED, enableNextAuth } from '@/const/auth';

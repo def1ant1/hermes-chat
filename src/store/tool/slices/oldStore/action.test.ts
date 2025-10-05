@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { act, renderHook } from '@testing-library/react';
 import useSWR from 'swr';
 import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -41,7 +41,7 @@ const pluginManifestMock = {
   $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
   api: [
     {
-      url: 'https://realtime-weather.chat-plugin.lobehub.com/api/v1',
+      url: 'https://realtime-weather.chat-plugin.hermes.chat/api/v1',
       name: 'fetchCurrentWeather',
       description: '获取当前天气情况',
       parameters: {
@@ -56,9 +56,9 @@ const pluginManifestMock = {
       },
     },
   ],
-  author: 'LobeHub',
+  author: 'Hermes Labs',
   createAt: '2023-08-12',
-  homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
+  homepage: 'https://github.com/hermeslabs/chat-plugin-realtime-weather',
   identifier: 'realtime-weather',
   meta: {
     avatar: '🌈',
@@ -67,7 +67,7 @@ const pluginManifestMock = {
     description: 'Get realtime weather information',
   },
   ui: {
-    url: 'https://realtime-weather.chat-plugin.lobehub.com/iframe',
+    url: 'https://realtime-weather.chat-plugin.hermes.chat/iframe',
     height: 310,
   },
   version: '1',
@@ -209,7 +209,7 @@ describe('useToolStore:pluginStore', () => {
         $schema: '../node_modules/@hermeslabs/chat-plugin-sdk/schema.json',
         api: [
           {
-            url: 'https://realtime-weather.chat-plugin.lobehub.com/api/v1',
+            url: 'https://realtime-weather.chat-plugin.hermes.chat/api/v1',
             name: 'fetchCurrentWeather',
             description: '获取当前天气情况',
             parameters: {
@@ -224,9 +224,9 @@ describe('useToolStore:pluginStore', () => {
             },
           },
         ],
-        author: 'LobeHub',
+        author: 'Hermes Labs',
         createAt: '2023-08-12',
-        homepage: 'https://github.com/lobehub/chat-plugin-realtime-weather',
+        homepage: 'https://github.com/hermeslabs/chat-plugin-realtime-weather',
         identifier: 'realtime-weather',
         meta: {
           avatar: '🌈',
@@ -235,7 +235,7 @@ describe('useToolStore:pluginStore', () => {
           description: 'Get realtime weather information',
         },
         ui: {
-          url: 'https://realtime-weather.chat-plugin.lobehub.com/iframe',
+          url: 'https://realtime-weather.chat-plugin.hermes.chat/iframe',
           height: 310,
         },
         version: '1',
@@ -340,7 +340,7 @@ describe('useToolStore:pluginStore', () => {
               manifest: {
                 identifier: pluginIdentifier,
                 meta: {},
-              } as LobeChatPluginManifest,
+              } as HermesChatPluginManifest,
             },
           ],
         });

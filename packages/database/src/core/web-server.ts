@@ -7,9 +7,9 @@ import ws from 'ws';
 import { serverDBEnv } from '@/config/db';
 
 import * as schema from '../schemas';
-import { LobeChatDatabase } from '../type';
+import { HermesChatDatabase } from '../type';
 
-export const getDBInstance = (): LobeChatDatabase => {
+export const getDBInstance = (): HermesChatDatabase => {
   if (!(process.env.NEXT_PUBLIC_SERVICE_MODE === 'server')) return {} as any;
 
   if (!serverDBEnv.KEY_VAULTS_SECRET) {

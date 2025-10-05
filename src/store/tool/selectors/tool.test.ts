@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest, LobeChatPluginMeta } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { describe, expect, it } from 'vitest';
 
 import { initialState } from '../initialState';
@@ -14,7 +14,7 @@ const mockState = {
         identifier: 'plugin-1',
         api: [{ name: 'api-1' }],
         meta: { title: 'Plugin 1', description: 'Plugin 1 description' },
-      } as LobeChatPluginManifest,
+      } as HermesChatPluginManifest,
       type: 'plugin',
     },
     {
@@ -22,7 +22,7 @@ const mockState = {
       manifest: {
         identifier: 'plugin-2',
         api: [{ name: 'api-2' }],
-      } as LobeChatPluginManifest,
+      } as HermesChatPluginManifest,
       type: 'plugin',
     },
     {
@@ -49,7 +49,7 @@ const mockState = {
         identifier: 'builtin-1',
         api: [{ name: 'builtin-api-1' }],
         meta: { title: 'Builtin 1', description: 'Builtin 1 description' },
-      } as LobeChatPluginManifest,
+      } as HermesChatPluginManifest,
     },
   ],
   pluginInstallLoading: {
@@ -82,7 +82,7 @@ describe('toolSelectors', () => {
       expect(result).toEqual([
         {
           type: 'builtin',
-          author: 'LobeHub',
+          author: 'Hermes Labs',
           identifier: 'builtin-1',
           meta: { title: 'Builtin 1', description: 'Builtin 1 description' },
         },

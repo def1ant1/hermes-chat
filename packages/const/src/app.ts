@@ -92,7 +92,7 @@ export const HERMES_CLOUD_PROVIDER_DOCS_URL = 'https://cloud.hermes.chat/docs/mo
  * Legacy identifiers the Discover data pipeline may continue to emit until the
  * 2025-06-30 cleanup milestone completes. Kept frozen to discourage mutation.
  */
-export const LEGACY_LOBEHUB_PROVIDER_IDS = Object.freeze(['lobehub'] as const);
+export const LEGACY_LOBEHUB_PROVIDER_IDS = Object.freeze(['hermescloud'] as const);
 
 /**
  * @deprecated Prefer {@link HERMES_CLOUD_PROVIDER_ID}. Remove once

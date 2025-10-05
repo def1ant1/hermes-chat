@@ -9,14 +9,14 @@ import { useToolStore } from '@/store/tool';
 import { mcpStoreSelectors } from '@/store/tool/selectors';
 import { DiscoverMcpItem } from '@/types/discover';
 import { MCPInstallStep } from '@/types/plugins';
-import { LobeToolType } from '@/types/tool/tool';
+import { HermesToolType } from '@/types/tool/tool';
 
 import Actions from './Action';
 
 interface PluginItemProps extends DiscoverMcpItem {
   active?: boolean;
   setIdentifier: (identifier?: string) => void;
-  type?: LobeToolType;
+  type?: HermesToolType;
 }
 
 const Item = memo<PluginItemProps>(

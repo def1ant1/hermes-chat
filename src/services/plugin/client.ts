@@ -1,7 +1,7 @@
 import { clientDB } from '@/database/client/db';
 import { PluginModel } from '@/database/models/plugin';
 import { BaseClientService } from '@/services/baseClientService';
-import { LobeTool } from '@/types/tool';
+import { HermesTool } from '@/types/tool';
 
 import { IPluginService } from './type';
 
@@ -15,7 +15,7 @@ export class ClientService extends BaseClientService implements IPluginService {
   };
 
   getInstalledPlugins: IPluginService['getInstalledPlugins'] = () => {
-    return this.pluginModel.query() as Promise<LobeTool[]>;
+    return this.pluginModel.query() as Promise<HermesTool[]>;
   };
 
   uninstallPlugin: IPluginService['uninstallPlugin'] = async (identifier) => {

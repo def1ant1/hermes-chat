@@ -1,9 +1,9 @@
-export interface LobeChatGroupMetaConfig {
+export interface HermesChatGroupMetaConfig {
   description: string;
   title: string;
 }
 
-export interface LobeChatGroupChatConfig {
+export interface HermesChatGroupChatConfig {
   allowDM: boolean;
   enableSupervisor: boolean;
   maxResponseInRow: number;
@@ -17,12 +17,12 @@ export interface LobeChatGroupChatConfig {
 }
 
 // Database config type (flat structure)
-export type LobeChatGroupConfig = LobeChatGroupChatConfig;
+export type HermesChatGroupConfig = HermesChatGroupChatConfig;
 
 // Full group type with nested structure for UI components
-export interface LobeChatGroupFullConfig {
-  chat: LobeChatGroupChatConfig;
-  meta: LobeChatGroupMetaConfig;
+export interface HermesChatGroupFullConfig {
+  chat: HermesChatGroupChatConfig;
+  meta: HermesChatGroupMetaConfig;
 }
 
 // Chat Group Agent types (independent from schema)

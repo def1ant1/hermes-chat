@@ -1,14 +1,15 @@
-import { IPluginErrorType } from '@hermeslabs/chat-plugin-sdk';
 import type { PartialDeep } from 'type-fest';
 import { z } from 'zod';
 
-import { LobeToolRenderType } from '@/types/tool';
+import { HermesToolRenderType } from '@/types/tool';
+
+import type { IPluginErrorType } from '../plugins/meta';
 
 export interface ChatPluginPayload {
   apiName: string;
   arguments: string;
   identifier: string;
-  type: LobeToolRenderType;
+  type: HermesToolRenderType;
 }
 
 export interface ChatToolPayload {
@@ -16,7 +17,7 @@ export interface ChatToolPayload {
   arguments: string;
   id: string;
   identifier: string;
-  type: LobeToolRenderType;
+  type: HermesToolRenderType;
 }
 
 export interface ToolsCallingContext {

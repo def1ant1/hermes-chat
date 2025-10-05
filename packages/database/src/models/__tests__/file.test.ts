@@ -4,12 +4,21 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { FilesTabs, SortType } from '@/types/files';
 
-import { chunks, embeddings, fileChunks, files, globalFiles, knowledgeBaseFiles, knowledgeBases, users } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import {
+  chunks,
+  embeddings,
+  fileChunks,
+  files,
+  globalFiles,
+  knowledgeBaseFiles,
+  knowledgeBases,
+  users,
+} from '../../schemas';
+import { HermesChatDatabase } from '../../type';
 import { FileModel } from '../file';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'file-model-test-user-id';
 const fileModel = new FileModel(serverDB, userId);
@@ -1059,7 +1068,7 @@ describe('FileModel', () => {
       // Note: This is a simplified test since we can't easily create 3000+ chunks
       // But it will still exercise the batch deletion code path
 
-      // Insert chunks (this might need to be done through proper API)  
+      // Insert chunks (this might need to be done through proper API)
       // For testing purposes, we'll delete the file which should trigger the batch deletion
       await fileModel.delete(fileId, true);
 
@@ -1112,9 +1121,9 @@ describe('FileModel', () => {
 
       // 插入embeddings (1024维向量)
       const testEmbedding = new Array(1024).fill(0.1);
-      await serverDB.insert(embeddings).values([
-        { chunkId: chunkId1, embeddings: testEmbedding, model: 'test-model', userId },
-      ]);
+      await serverDB
+        .insert(embeddings)
+        .values([{ chunkId: chunkId1, embeddings: testEmbedding, model: 'test-model', userId }]);
 
       // 跳过 documentChunks 测试，因为需要先创建 documents 记录
 
@@ -1163,20 +1172,18 @@ describe('FileModel', () => {
       const chunkId = '550e8400-e29b-41d4-a716-446655440003';
 
       // 插入chunk
-      await serverDB.insert(chunks).values([
-        { id: chunkId, text: 'complete test chunk', userId, type: 'text' },
-      ]);
+      await serverDB
+        .insert(chunks)
+        .values([{ id: chunkId, text: 'complete test chunk', userId, type: 'text' }]);
 
       // 插入fileChunks关联
-      await serverDB.insert(fileChunks).values([
-        { fileId, chunkId, userId },
-      ]);
+      await serverDB.insert(fileChunks).values([{ fileId, chunkId, userId }]);
 
       // 插入embeddings
       const testEmbedding = new Array(1024).fill(0.1);
-      await serverDB.insert(embeddings).values([
-        { chunkId, embeddings: testEmbedding, model: 'test-model', userId },
-      ]);
+      await serverDB
+        .insert(embeddings)
+        .values([{ chunkId, embeddings: testEmbedding, model: 'test-model', userId }]);
 
       // 删除文件
       await fileModel.delete(fileId, true);
@@ -1206,7 +1213,6 @@ describe('FileModel', () => {
       expect(remainingFileChunks).toHaveLength(0);
     });
 
-
     it('should delete files that are in knowledge bases (removed protection)', async () => {
       // 测试修复后的逻辑：知识库中的文件也应该被删除
       const testFile = {
@@ -1223,19 +1229,17 @@ describe('FileModel', () => {
       const chunkId = '550e8400-e29b-41d4-a716-446655440007';
 
       // 插入chunk和关联数据
-      await serverDB.insert(chunks).values([
-        { id: chunkId, text: 'knowledge base chunk', userId, type: 'text' },
-      ]);
+      await serverDB
+        .insert(chunks)
+        .values([{ id: chunkId, text: 'knowledge base chunk', userId, type: 'text' }]);
 
-      await serverDB.insert(fileChunks).values([
-        { fileId, chunkId, userId },
-      ]);
+      await serverDB.insert(fileChunks).values([{ fileId, chunkId, userId }]);
 
       // 插入embeddings (1024维向量)
       const testEmbedding = new Array(1024).fill(0.1);
-      await serverDB.insert(embeddings).values([
-        { chunkId, embeddings: testEmbedding, model: 'test-model', userId },
-      ]);
+      await serverDB
+        .insert(embeddings)
+        .values([{ chunkId, embeddings: testEmbedding, model: 'test-model', userId }]);
 
       // 验证文件确实在知识库中
       const kbFile = await serverDB.query.knowledgeBaseFiles.findFirst({

@@ -14,18 +14,18 @@ import {
   sessions,
   topics,
 } from '../../../schemas';
-import { LobeChatDatabase } from '../../../type';
+import { HermesChatDatabase } from '../../../type';
 
 export class DeprecatedDataImporterRepos {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
   /**
    * The version of the importer that this module supports
    */
   supportVersion = 7;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

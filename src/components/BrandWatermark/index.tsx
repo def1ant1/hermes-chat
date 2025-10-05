@@ -1,6 +1,6 @@
 'use client';
 
-import { LobeHub } from '@hermeslabs/ui/brand';
+import { LobeHub as HermesLabs } from '@hermeslabs/ui/brand';
 import { createStyles } from 'antd-style';
 import Link from 'next/link';
 import { memo } from 'react';
@@ -39,10 +39,10 @@ const BrandWatermark = memo<Omit<FlexboxProps, 'children'>>(({ style, ...rest })
       ) : (
         <Link
           className={styles.logoLink}
-          href={`https://lobehub.com?utm_source=${UTM_SOURCE}&utm_content=brand_watermark`}
+          href={`https://hermes.chat?utm_source=${UTM_SOURCE}&utm_content=brand_watermark`}
           target={'_blank'}
         >
-          <LobeHub size={20} type={'text'} />
+          <HermesLabs size={20} type={'text'} />
         </Link>
       )}
     </Flexbox>

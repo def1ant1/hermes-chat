@@ -3,11 +3,11 @@ import { eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { sessionGroups, users } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { SessionGroupModel } from '../sessionGroup';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'session-group-model-test-user-id';
 const sessionGroupModel = new SessionGroupModel(serverDB, userId);

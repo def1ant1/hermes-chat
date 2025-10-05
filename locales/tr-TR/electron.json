@@ -44,7 +44,7 @@
   "remoteServer": {
     "authError": "Yetkilendirme hatası: {{error}}",
     "authPending": "Yetkilendirmeyi tarayıcıda tamamlayın",
-    "configDesc": "Uzak LobeChat sunucusuna bağlanın, veri senkronizasyonunu etkinleştirin",
+    "configDesc": "Uzak Hermes Chat sunucusuna bağlanın, veri senkronizasyonunu etkinleştirin",
     "configError": "Yapılandırma hatası",
     "configTitle": "Bulut Senkronizasyonunu Yapılandır",
     "connect": "Bağlan ve yetkilendir",
@@ -64,9 +64,9 @@
     "inCloud": "Şu anda bulut senkronizasyonu kullanılıyor",
     "inLocalStorage": "Şu anda yerel depolama kullanılıyor",
     "isIniting": "Başlatılıyor...",
-    "lobehubCloud": {
+    "HermesLabsCloud": {
       "description": "Resmi olarak sağlanan bulut versiyonu",
-      "title": "LobeHub Bulut"
+      "title": "Hermes Labs Bulut"
     },
     "local": {
       "description": "Yerel veritabanı kullanarak tamamen çevrimdışı kullanılabilir",

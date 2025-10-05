@@ -1,7 +1,7 @@
 /**
  * Handle legacy bug where full URLs were stored instead of keys
  * Some historical data stored complete URLs in database instead of just keys
- * Related issue: https://github.com/lobehub/lobe-chat/issues/8994
+ * Related issue: https://github.com/hermeslabs/hermes-chat/issues/8994
  */
 export function extractKeyFromUrlOrReturnOriginal(
   url: string,

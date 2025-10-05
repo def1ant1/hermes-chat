@@ -24,7 +24,7 @@ describe('discover provider branding', () => {
     expect(HERMES_CLOUD_PROVIDER_DOCS_URL).toContain('hermes.chat');
   });
 
-  it('normalizes legacy LobeHub identifiers emitted by upstream services', () => {
+  it('normalizes legacy Hermes Labs identifiers emitted by upstream services', () => {
     expect(isHermesCloudProviderId(HERMES_CLOUD_PROVIDER_ID)).toBe(true);
     for (const legacyId of LEGACY_LOBEHUB_PROVIDER_IDS) {
       expect(isHermesCloudProviderId(legacyId)).toBe(true);
@@ -34,6 +34,6 @@ describe('discover provider branding', () => {
 
   it('omits the legacy slug from Discover provider tables', () => {
     const providerIds = DEFAULT_MODEL_PROVIDER_LIST.map((provider) => provider.id);
-    expect(providerIds).not.toContain('lobehub');
+    expect(providerIds).not.toContain('hermescloud');
   });
 });

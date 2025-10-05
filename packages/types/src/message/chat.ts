@@ -137,7 +137,7 @@ export interface SendMessageParams {
   files?: UploadFileItem[];
   /**
    *
-   * https://github.com/lobehub/lobe-chat/pull/2086
+   * https://github.com/hermeslabs/hermes-chat/pull/2086
    */
   isWelcomeQuestion?: boolean;
   message: string;

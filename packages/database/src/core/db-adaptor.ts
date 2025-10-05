@@ -1,6 +1,6 @@
 import { isDesktop } from '@hermeslabs/const';
 
-import { LobeChatDatabase } from '../type';
+import { HermesChatDatabase } from '../type';
 import { getPgliteInstance } from './electron';
 import { getDBInstance } from './web-server';
 
@@ -8,9 +8,9 @@ import { getDBInstance } from './web-server';
  * 懒加载数据库实例
  * 避免每次模块导入时都初始化数据库
  */
-let cachedDB: LobeChatDatabase | null = null;
+let cachedDB: HermesChatDatabase | null = null;
 
-export const getServerDB = async (): Promise<LobeChatDatabase> => {
+export const getServerDB = async (): Promise<HermesChatDatabase> => {
   // 如果已经有缓存的实例，直接返回
   if (cachedDB) return cachedDB;
 

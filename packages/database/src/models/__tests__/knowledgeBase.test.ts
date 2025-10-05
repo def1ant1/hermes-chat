@@ -2,7 +2,7 @@
 import { and, eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { LobeChatDatabase } from '../../type';import { sleep } from '@/utils/sleep';
+import { sleep } from '@/utils/sleep';
 
 import {
   NewKnowledgeBase,
@@ -12,10 +12,11 @@ import {
   knowledgeBases,
   users,
 } from '../../schemas';
+import { HermesChatDatabase } from '../../type';
 import { KnowledgeBaseModel } from '../knowledgeBase';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'session-group-model-test-user-id';
 const knowledgeBaseModel = new KnowledgeBaseModel(serverDB, userId);

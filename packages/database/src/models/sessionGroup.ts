@@ -1,15 +1,14 @@
 import { and, asc, desc, eq } from 'drizzle-orm';
 
-import { LobeChatDatabase } from '../type';
-import { idGenerator } from '../utils/idGenerator';
-
 import { SessionGroupItem, sessionGroups } from '../schemas';
+import { HermesChatDatabase } from '../type';
+import { idGenerator } from '../utils/idGenerator';
 
 export class SessionGroupModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

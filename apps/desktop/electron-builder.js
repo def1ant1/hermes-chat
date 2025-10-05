@@ -24,10 +24,10 @@ if (!hasAppleCertificate) {
 
 // 根据版本类型确定协议 scheme
 const getProtocolScheme = () => {
-  if (isNightly) return 'lobehub-nightly';
-  if (isBeta) return 'lobehub-beta';
+  if (isNightly) return 'hermeslabs-nightly';
+  if (isBeta) return 'hermeslabs-beta';
 
-  return 'lobehub';
+  return 'hermescloud';
 };
 
 const protocolScheme = getProtocolScheme();
@@ -38,10 +38,10 @@ const protocolScheme = getProtocolScheme();
  */
 const config = {
   appId: isNightly
-    ? 'com.lobehub.lobehub-desktop-nightly'
+    ? 'com.hermeslabs.hermeslabs-desktop-nightly'
     : isBeta
-      ? 'com.lobehub.lobehub-desktop-beta'
-      : 'com.lobehub.lobehub-desktop',
+      ? 'com.hermeslabs.hermeslabs-desktop-beta'
+      : 'com.hermeslabs.hermeslabs-desktop',
   appImage: {
     artifactName: '${productName}-${version}.${ext}',
   },
@@ -83,7 +83,7 @@ const config = {
     extendInfo: {
       CFBundleURLTypes: [
         {
-          CFBundleURLName: 'LobeHub Protocol',
+          CFBundleURLName: 'Hermes Labs Protocol',
           CFBundleURLSchemes: [protocolScheme],
         },
       ],
@@ -122,19 +122,19 @@ const config = {
   },
   protocols: [
     {
-      name: 'LobeHub Protocol',
+      name: 'Hermes Labs Protocol',
       schemes: [protocolScheme],
     },
   ],
   publish: [
     {
-      owner: 'lobehub',
+      owner: 'hermescloud',
       provider: 'github',
-      repo: 'lobe-chat',
+      repo: 'hermes-chat',
     },
   ],
   win: {
-    executableName: 'LobeHub',
+    executableName: 'Hermes Labs',
   },
 };
 

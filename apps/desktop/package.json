@@ -44,7 +44,7 @@
     "@hermeslabs/electron-client-ipc": "workspace:*",
     "@hermeslabs/electron-server-ipc": "workspace:*",
     "@hermeslabs/file-loaders": "workspace:*",
-    "@hermeslabs/i18n-cli": "npm:@lobehub/i18n-cli@^1.20.3",
+    "@hermeslabs/i18n-cli": "npm:@hermeslabs/i18n-cli@^1.20.3",
     "@types/lodash": "^4.17.0",
     "@types/resolve": "^1.20.6",
     "@types/semver": "^7.7.0",
@@ -86,7 +86,7 @@
     "apiCompatibility": "No breaking API changes; workspace version remains 1.0.0."
   },
   "_devDependencyNotes": {
-    "@hermeslabs/i18n-cli": "npm alias pointing to @lobehub/i18n-cli@^1.20.3 to preserve tooling parity while presenting the Hermes Labs scope in manifests."
+    "@hermeslabs/i18n-cli": "npm alias pointing to @hermeslabs/i18n-cli@^1.20.3 to preserve tooling parity while presenting the Hermes Labs scope in manifests."
   },
   "_hermesRebrandNotes": {
     "approvals": [

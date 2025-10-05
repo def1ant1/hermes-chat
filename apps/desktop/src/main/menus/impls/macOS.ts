@@ -170,19 +170,21 @@ export class MacOSMenu extends BaseMenuPlatform implements IMenuPlatform {
         submenu: [
           {
             click: async () => {
-              await shell.openExternal('https://lobehub.com');
+              await shell.openExternal('https://hermes.chat');
             },
             label: t('help.visitWebsite'),
           },
           {
             click: async () => {
-              await shell.openExternal('https://github.com/lobehub/lobe-chat');
+              await shell.openExternal('https://github.com/hermeslabs/hermes-chat');
             },
             label: t('help.githubRepo'),
           },
           {
             click: async () => {
-              await shell.openExternal('https://github.com/lobehub/lobe-chat/issues/new/choose');
+              await shell.openExternal(
+                'https://github.com/hermeslabs/hermes-chat/issues/new/choose',
+              );
             },
             label: t('help.reportIssue'),
           },

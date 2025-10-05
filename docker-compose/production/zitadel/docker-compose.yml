@@ -1,4 +1,4 @@
-name: lobe-chat-database
+name: hermes-chat-database
 services:
   postgresql:
     image: pgvector/pgvector:pg16
@@ -29,7 +29,7 @@ services:
       - 'MINIO_ROOT_USER=YOUR_MINIO_USER'
       - 'MINIO_ROOT_PASSWORD=YOUR_MINIO_PASSWORD'
       - 'MINIO_DOMAIN=lobe-s3-api.example.com'
-      - 'MINIO_API_CORS_ALLOW_ORIGIN=https://lobe.example.com' # Your LobeChat's domain name.
+      - 'MINIO_API_CORS_ALLOW_ORIGIN=https://lobe.example.com' # Your Hermes Chat's domain name.
     restart: always
     command: >
       server /etc/minio/data --address ":9000" --console-address ":9001"
@@ -50,8 +50,8 @@ services:
         condition: service_healthy
 
   lobe:
-    image: lobehub/lobe-chat-database
-    container_name: lobe-chat
+    image: hermeslabs/hermes-chat-database
+    container_name: hermes-chat
     ports:
       - '3210:3210'
     depends_on:

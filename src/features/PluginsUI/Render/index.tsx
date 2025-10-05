@@ -1,7 +1,7 @@
-import { PluginRequestPayload } from '@hermeslabs/chat-plugin-sdk';
+import { PluginRequestPayload } from '@hermeslabs/types';
 import { memo } from 'react';
 
-import { LobeToolRenderType } from '@/types/tool';
+import { HermesToolRenderType } from '@/types/tool';
 
 import BuiltinType from './BuiltinType';
 import DefaultType from './DefaultType';
@@ -17,7 +17,7 @@ export interface PluginRenderProps {
   payload?: PluginRequestPayload;
   pluginError?: any;
   pluginState?: any;
-  type?: LobeToolRenderType;
+  type?: HermesToolRenderType;
 }
 
 const PluginRender = memo<PluginRenderProps>(

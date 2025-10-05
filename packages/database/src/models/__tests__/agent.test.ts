@@ -2,7 +2,6 @@
 import { eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { LobeChatDatabase } from '../../type';
 import {
   agents,
   agentsFiles,
@@ -13,10 +12,11 @@ import {
   sessions,
   users,
 } from '../../schemas';
+import { HermesChatDatabase } from '../../type';
 import { AgentModel } from '../agent';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'agent-model-test-user-id';
 const agentModel = new AgentModel(serverDB, userId);

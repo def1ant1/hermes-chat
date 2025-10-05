@@ -18,10 +18,10 @@ import {
   userSettings,
   users,
 } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { DATA_EXPORT_CONFIG, DataExporterRepos } from './index';
 
-let db = clientDB as LobeChatDatabase;
+let db = clientDB as HermesChatDatabase;
 
 // 设置测试数据
 describe('DataExporterRepos', () => {

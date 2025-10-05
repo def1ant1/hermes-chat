@@ -1,5 +1,5 @@
 import { clientDB, initializeDB } from '../../client/db';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 
 const isServerDBMode = process.env.TEST_SERVER_DB === '1';
 
@@ -10,5 +10,5 @@ export const getTestDB = async () => {
   }
 
   await initializeDB();
-  return clientDB as LobeChatDatabase;
+  return clientDB as HermesChatDatabase;
 };

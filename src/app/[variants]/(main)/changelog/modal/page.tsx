@@ -7,7 +7,7 @@ import { useQueryRoute } from '@/hooks/useQueryRoute';
 /**
  * @description: Changelog Modal (intercepting routes fallback when hard refresh)
  * @example: /changelog/modal => /changelog
- * @refs: https://github.com/lobehub/lobe-chat/discussions/2295#discussioncomment-9290942
+ * @refs: https://github.com/hermeslabs/hermes-chat/discussions/2295#discussioncomment-9290942
  */
 
 const ChangelogModal = () => {

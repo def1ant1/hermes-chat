@@ -297,7 +297,7 @@ export default class RemoteServerConfigCtr extends ControllerModule {
 
       // 构造请求体
       const body = querystring.stringify({
-        client_id: 'lobehub-desktop',
+        client_id: 'hermeslabs-desktop',
         grant_type: 'refresh_token',
         refresh_token: refreshToken,
       });

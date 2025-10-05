@@ -1,5 +1,5 @@
 {
-  "$schema": "https://github.com/hermeslabs/lobe-chat/blob/main/docs/changelog/schema.json",
+  "$schema": "https://github.com/hermeslabs/hermes-chat/blob/main/docs/changelog/schema.json",
   "cloud": [],
   "community": [
     {
@@ -64,7 +64,7 @@
     },
     {
       "image": "https://github.com/user-attachments/assets/2a4116a7-15ad-43e5-b801-cc62d8da2012",
-      "id": "2024-08-02-lobe-chat-database-docker",
+      "id": "2024-08-02-hermes-chat-database-docker",
       "date": "2024-08-02",
       "versionRange": ["1.6.1", "1.8.0"]
     },
@@ -76,7 +76,7 @@
     },
     {
       "image": "https://github.com/user-attachments/assets/82bfc467-e0c6-4d99-9b1f-18e4aea24285",
-      "id": "2024-06-19-lobe-chat-v1",
+      "id": "2024-06-19-hermes-chat-v1",
       "date": "2024-06-19",
       "versionRange": ["0.147.0", "1.0.0"]
     },

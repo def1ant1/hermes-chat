@@ -78,7 +78,7 @@ const Nav = memo<NavProps>(({ mobile, setActiveTab, activeTab = ProviderNavKey.O
           <Link
             className={styles.link}
             href={urlJoin(
-              'https://github.com/lobehub/lobe-chat/tree/main/src/config/modelProviders',
+              'https://github.com/hermeslabs/hermes-chat/tree/main/src/config/modelProviders',
               `${identifier}.ts`,
             )}
             target={'_blank'}
@@ -88,7 +88,7 @@ const Nav = memo<NavProps>(({ mobile, setActiveTab, activeTab = ProviderNavKey.O
         )}
         <Link
           className={styles.link}
-          href={'https://github.com/lobehub/lobe-chat/issues/new/choose'}
+          href={'https://github.com/hermeslabs/hermes-chat/issues/new/choose'}
           target={'_blank'}
         >
           {t('mcp.details.nav.reportIssue')}

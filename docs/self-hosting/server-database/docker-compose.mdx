@@ -43,10 +43,10 @@ tags:
   - Port occupation check: Ensure that ports `3210`, `8000`, `9000`, and `9001` are available.
 </Callout>
 
-Execute the following commands to set up the deployment environment; the directory `lobe-chat-db` will be used to store your configuration files and subsequent database files.
+Execute the following commands to set up the deployment environment; the directory `hermes-chat-db` will be used to store your configuration files and subsequent database files.
 
 ```sh
-mkdir lobe-chat-db && cd lobe-chat-db
+mkdir hermes-chat-db && cd hermes-chat-db
 ```
 
 Fetch and execute the deployment script:
@@ -108,7 +108,7 @@ The script supports the following deployment modes; please choose the appropriat
   ### Check Logs
 
   ```sh
-  docker logs -f lobe-chat
+  docker logs -f hermes-chat
   ```
 
   If you see the following logs in the container, it means the startup was successful:
@@ -174,7 +174,7 @@ The script supports the following deployment modes; please choose the appropriat
   ### Check Logs
 
   ```sh
-  docker logs -f lobe-chat
+  docker logs -f hermes-chat
   ```
 
   If you see the following logs in the container, it means the startup was successful:
@@ -233,7 +233,7 @@ The script supports the following deployment modes; please choose the appropriat
 
     ⚠️ If you are using such panel software,
     please do not enable any form of caching in the reverse proxy settings of such panel software to avoid affecting the normal operation of the service.
-    Read more at [https://github.com/hermeslabs/lobe-chat/discussions/5986](https://github.com/hermeslabs/lobe-chat/discussions/5986)
+    Read more at [https://github.com/hermeslabs/hermes-chat/discussions/5986](https://github.com/hermeslabs/hermes-chat/discussions/5986)
   </Callout>
 
   ### Complete Remaining Configuration in Interactive Script
@@ -290,7 +290,7 @@ The script supports the following deployment modes; please choose the appropriat
   ### Check Logs
 
   ```sh
-  docker logs -f lobe-chat
+  docker logs -f hermes-chat
   ```
 
   If you see the following logs in the container, it indicates a successful startup:
@@ -320,11 +320,11 @@ The script supports the following deployment modes; please choose the appropriat
 
 ## Custom Deployment
 
-This section mainly introduces the configurations that need to be modified to customize the deployment of the Hermes Chat service in different network environments. Before starting, you can download the [Docker Compose configuration file](https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/docker-compose.yml) and the [environment variable configuration file](https://raw.githubusercontent.com/hermeslabs/lobe-chat/refs/heads/main/docker-compose/local/.env.example).
+This section mainly introduces the configurations that need to be modified to customize the deployment of the Hermes Chat service in different network environments. Before starting, you can download the [Docker Compose configuration file](https://raw.githubusercontent.com/hermeslabs/hermes-chat/HEAD/docker-compose/local/docker-compose.yml) and the [environment variable configuration file](https://raw.githubusercontent.com/hermeslabs/hermes-chat/refs/heads/main/docker-compose/local/.env.example).
 
 ```sh
-curl -O https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/docker-compose.yml
-curl -O https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/.env.example
+curl -O https://raw.githubusercontent.com/hermeslabs/hermes-chat/HEAD/docker-compose/local/docker-compose.yml
+curl -O https://raw.githubusercontent.com/hermeslabs/hermes-chat/HEAD/docker-compose/local/.env.example
 mv .env.example .env
 ```
 
@@ -406,13 +406,13 @@ services:
 Check for the following errors based on the container logs:
 
 ```sh
-docker logs -f lobe-chat
+docker logs -f hermes-chat
 ```
 
 - r3: "response" is not a conform Authorization Server Metadata response (unexpected HTTP status code)
 
 ```log
-lobe-chat      | [auth][error] r3: "response" is not a conform Authorization Server Metadata response (unexpected HTTP status code)
+hermes-chat      | [auth][error] r3: "response" is not a conform Authorization Server Metadata response (unexpected HTTP status code)
 ```
 
 Cause: This issue is typically caused by improper reverse proxy configuration; you need to ensure your reverse proxy configuration does not intercept the Casdoor OAuth2 configuration requests.
@@ -429,7 +429,7 @@ Solutions:
 - TypeError: fetch failed
 
 ```log
-lobe-chat      | [auth][error] TypeError: fetch failed
+hermes-chat      | [auth][error] TypeError: fetch failed
 ```
 
 Cause: Hermes Chat cannot access the authentication service.
@@ -526,7 +526,7 @@ The domain and corresponding service port descriptions are as follows:
 #### Configuration File
 
 ```sh
-bash <(curl -fsSL https://raw.githubusercontent.com/hermeslabs/lobe-chat/HEAD/docker-compose/local/setup.sh) -f -l zh_CN
+bash <(curl -fsSL https://raw.githubusercontent.com/hermeslabs/hermes-chat/HEAD/docker-compose/local/setup.sh) -f -l zh_CN
 docker compose up -d
 ```
 
@@ -596,7 +596,7 @@ MINIO_ROOT_PASSWORD=XXXX
 You can check the logs with the following command:
 
 ```sh
-docker logs -f lobe-chat
+docker logs -f hermes-chat
 ```
 
 <Callout type="tip">
@@ -720,7 +720,7 @@ S3_SECRET_ACCESS_KEY=aPBW8CVULkh8bw1GatlT0GjLihcXHLNwRml4pieS
 - `docker-compose.yml`
 
 ```yaml
-name: lobe-chat-database
+name: hermes-chat-database
 services:
   network-service:
     image: alpine
@@ -787,8 +787,8 @@ services:
       - ./init_data.json:/init_data.json
 
   lobe:
-    image: hermeslabs/lobe-chat-database
-    container_name: lobe-chat-database
+    image: hermeslabs/hermes-chat-database
+    container_name: hermes-chat-database
     network_mode: 'service:network-service'
     depends_on:
       postgresql:
@@ -838,9 +838,9 @@ networks:
     driver: bridge
 ```
 
-[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
-[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/lobe-chat-database?color=45cc11&labelColor=black&style=flat-square
-[docker-release-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
-[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/lobe-chat-database?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
-[docker-size-link]: https://hub.docker.com/r/hermeslabs/lobe-chat-database
-[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/lobe-chat-database?color=369eff&labelColor=black&style=flat-square&sort=semver
+[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/hermes-chat-database
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/hermes-chat-database?color=45cc11&labelColor=black&style=flat-square
+[docker-release-link]: https://hub.docker.com/r/hermeslabs/hermes-chat-database
+[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/hermes-chat-database?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
+[docker-size-link]: https://hub.docker.com/r/hermeslabs/hermes-chat-database
+[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/hermes-chat-database?color=369eff&labelColor=black&style=flat-square&sort=semver

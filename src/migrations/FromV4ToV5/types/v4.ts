@@ -1,10 +1,10 @@
-import { LobeToolRenderType } from '@/types/tool';
+import { HermesToolRenderType } from '@/types/tool';
 
 export interface V4ChatPluginPayload {
   apiName: string;
   arguments: string;
   identifier: string;
-  type: LobeToolRenderType;
+  type: HermesToolRenderType;
 }
 
 export interface V4Message {

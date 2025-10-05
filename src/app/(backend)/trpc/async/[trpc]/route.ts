@@ -8,7 +8,7 @@ import { asyncRouter } from '@/server/routers/async';
 const handler = (req: NextRequest) =>
   fetchRequestHandler({
     // 避免请求之间互相影响
-    // https://github.com/lobehub/lobe-chat/discussions/7442#discussioncomment-13658563
+    // https://github.com/hermeslabs/hermes-chat/discussions/7442#discussioncomment-13658563
     allowBatching: false,
 
     /**

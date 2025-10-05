@@ -6,7 +6,7 @@
         "type": "plugin",
         "manifest": {
           "ui": {
-            "url": "https://midjourney.chat-plugin.lobehub.com/iframe",
+            "url": "https://midjourney.chat-plugin.hermes.chat/iframe",
             "width": 360,
             "height": 420
           },
@@ -33,7 +33,7 @@
             "description": "Unleash creativity with Midjourney, effortlessly generating unique AI-driven images through simple prompts. Add visual flair to your conversations with Midjourney's artistic touch."
           },
           "type": "standalone",
-          "author": "LobeHub",
+          "author": "Hermes Labs",
           "$schema": "../node_modules/@hermeslabs/chat-plugin-sdk/schema.json",
           "version": "1",
           "settings": {

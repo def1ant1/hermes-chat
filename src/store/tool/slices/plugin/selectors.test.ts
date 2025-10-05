@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest, LobeChatPluginMeta } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { describe, expect, it } from 'vitest';
 
 import { DiscoverPluginItem } from '@/types/discover';
@@ -21,7 +21,7 @@ const mockState = {
         identifier: 'plugin-1',
         api: [{ name: 'api-1' }],
         type: 'default',
-      } as LobeChatPluginManifest,
+      } as HermesChatPluginManifest,
       settings: { setting1: 'value1' },
     },
     {

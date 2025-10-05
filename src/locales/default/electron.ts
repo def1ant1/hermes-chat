@@ -44,7 +44,7 @@ const electron = {
   remoteServer: {
     authError: '授权失败: {{error}}',
     authPending: '请在浏览器中完成授权',
-    configDesc: '连接到远程LobeChat服务器，启用数据同步',
+    configDesc: '连接到远程Hermes Chat服务器，启用数据同步',
     configError: '配置出错',
     configTitle: '配置云同步',
     connect: '连接并授权',
@@ -60,14 +60,14 @@ const electron = {
     urlRequired: '请输入服务器地址',
   },
   sync: {
+    HermesLabsCloud: {
+      description: '官方提供的云版本',
+      title: 'Hermes Labs Cloud',
+    },
     continue: '继续',
     inCloud: '当前使用云端同步',
     inLocalStorage: '当前使用本地存储',
     isIniting: '正在初始化...',
-    lobehubCloud: {
-      description: '官方提供的云版本',
-      title: 'LobeHub Cloud',
-    },
     local: {
       description: '使用本地数据库，完全离线可用',
       title: '本地数据库',

@@ -5,7 +5,7 @@ Enterprise deployments of Hermes Chat rely on this package to ingest, normalize,
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – install via `npm install @hermeslabs/file-loaders` to remain within the supported namespace.
-> - **Compatibility window:** `@lobechat/file-loaders` compatibility builds remain available through 2025-09-30 for phased migrations.
+> - **Compatibility window:** `@hermeslabs/file-loaders` compatibility builds remain available through 2025-09-30 for phased migrations.
 > - **Rollback path:** Follow the [rebranding rollback guidance](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) to revert to the legacy scope if a regression is detected during rollout.
 > - **Breaking-change considerations:** Automated ingestion pipelines that pin the legacy scope must be updated in lockstep with application deployments to prevent job failures.
 

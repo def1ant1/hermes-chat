@@ -73,7 +73,7 @@ export interface BrandMetadata {
    */
   readonly name: string;
   /**
-   * Parent organization information for references to "LobeHub".
+   * Parent organization information for references to "Hermes Labs".
    */
   readonly organization?: {
     /** Corporate domain used in legal copy. */
@@ -236,14 +236,14 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     description:
       'OAuth OpenID scope copy in Simplified Chinese referencing the legacy product account.',
     id: 'oauth-openid-scope-zh-cn',
-    pattern: /(使用您的\s*)LobeChat(\s*账户进行身份验证)/g,
+    pattern: /(使用您的\s*)Hermes Chat(\s*账户进行身份验证)/g,
     replacement: (brand) => `$1${brand.name}$2`,
   },
   {
     description:
       'OAuth OpenID scope copy in English locale bundles referencing the legacy product account.',
     id: 'oauth-openid-scope-en',
-    pattern: /(Authenticate using your\s*)LobeChat(\s+account)/g,
+    pattern: /(Authenticate using your\s*)Hermes Chat(\s+account)/g,
     replacement: (brand) => `$1${brand.name}$2`,
   },
   {
@@ -284,7 +284,8 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => deriveCloudServiceTokens(brand).snake,
   },
   {
-    description: 'Kebab-case service identifiers such as docker-compose service names (lobe-chat).',
+    description:
+      'Kebab-case service identifiers such as docker-compose service names (hermes-chat).',
     id: 'product-name-kebab',
     pattern: /\blobe-chat\b/g,
     replacement: (brand) => brand.shortName.toLowerCase().replaceAll(/\s+/g, '-'),
@@ -296,26 +297,26 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => brand.name.toUpperCase().replaceAll(/\s+/g, '_'),
   },
   {
-    description: 'Uppercase kebab-case constants (e.g., Helm release names LOBE-CHAT).',
+    description: 'Uppercase kebab-case constants (e.g., Helm release names HERMES-CHAT).',
     id: 'product-name-uppercase-kebab',
     pattern: /\bLOBE-CHAT\b/g,
     replacement: (brand) => brand.shortName.toUpperCase().replaceAll(/\s+/g, '-'),
   },
   {
-    description: 'Snake_case identifiers such as database schemas (lobe_chat).',
+    description: 'Snake_case identifiers such as database schemas (hermes_chat).',
     id: 'product-name-snake',
     pattern: /\blobe_chat\b/g,
     replacement: (brand) => brand.shortName.toLowerCase().replaceAll(/\s+/g, '_'),
   },
   {
-    description: 'Upper snake case identifiers used in environment variables (LOBE_CHAT).',
+    description: 'Upper snake case identifiers used in environment variables (HERMES_CHAT).',
     id: 'product-name-uppercase-snake',
     pattern: /\bLOBE_CHAT\b/g,
     replacement: (brand) => brand.shortName.toUpperCase().replaceAll(/\s+/g, '_'),
   },
   {
     description:
-      'References to the parent company "LobeHub" should become the new operating entity.',
+      'References to the parent company "Hermes Labs" should become the new operating entity.',
     id: 'organization-name',
     pattern: /\bLobe[ -]?Hub\b/g,
     replacement: (brand) => brand.organization?.name ?? brand.name,
@@ -337,8 +338,8 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   {
     description:
       'Product-scoped package imports (e.g., @hermeslabs/*) must adopt the organization scope so npm installations resolve post-migration.',
-    id: 'product-scope-lobechat',
-    pattern: /@lobechat\//g,
+    id: 'product-scope-hermes-chat',
+    pattern: /@hermeschat\//g,
     replacement: (brand) => {
       // npm scopes mirror the parent organization slug; fall back to the short name when no org exists.
       const scopeSource = brand.organization?.name ?? brand.shortName ?? brand.name;
@@ -349,9 +350,9 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   },
   {
     description:
-      'Bare @lobechat handles inside marketing copy should pivot to the product short name to avoid colliding with organization slugs.',
-    id: 'product-handle-lobechat',
-    pattern: /@lobechat(?!\.com)(?!\/)/g,
+      'Bare @hermeschat handles inside marketing copy should pivot to the product short name to avoid colliding with organization slugs.',
+    id: 'product-handle-hermes-chat',
+    pattern: /@hermeschat(?!\.com)(?!\/)/g,
     replacement: (brand) => {
       // Social-style mentions typically highlight the product; use the short name so enterprise renames remain human readable.
       const handleSource = brand.shortName ?? brand.organization?.name ?? brand.name;
@@ -363,20 +364,20 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   {
     description: 'Links to the legacy support portal.',
     id: 'contact-domain',
-    pattern: /https?:\/\/(www\.)?help\.lobehub\.com/g,
+    pattern: /https?:\/\/(www\.)?help\.hermeslabs\.com|https?:\/\/hermes\.chat\/support/g,
     replacement: (brand) => brand.supportUrl,
   },
   {
     description: 'Default support contact mailbox.',
     id: 'support-email',
-    pattern: /support@lobehub\.com/g,
+    pattern: /support@hermeslabs\.com/g,
     replacement: (brand) => brand.supportEmail,
   },
   {
     description:
       'Auth configuration troubleshooting now points to Hermes documentation with locale guidance.',
     id: 'docs-auth-configuration',
-    pattern: /https?:\/\/lobehub\.com\/docs\/self-hosting\/advanced\/authentication/g,
+    pattern: /https?:\/\/hermeslabs\.com\/docs\/self-hosting\/advanced\/authentication/g,
     replacement: (brand) =>
       buildDocsLink(
         brand,
@@ -414,57 +415,57 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   {
     description: 'General hello/inbox mailbox.',
     id: 'hello-email',
-    pattern: /hello@lobehub\.com/g,
+    pattern: /hello@hermeslabs\.com/g,
     replacement: (brand) => brand.contact.email,
   },
   {
-    description: 'Marketing domains such as lobehub.com.',
+    description: 'Marketing domains such as hermes.chat.',
     id: 'primary-domain',
-    pattern: /lobehub\.com/g,
+    pattern: /hermeslabs\.com/g,
     replacement: (brand) => brand.domain,
   },
   {
     description: 'Legacy referral source parameters migrate to the Hermes tracking taxonomy.',
-    id: 'utm-source-lobehub',
-    pattern: /utm_source=lobehub/g,
+    id: 'utm-source-hermeslabs',
+    pattern: /utm_source=hermes-chat/g,
     replacement: () => 'utm_source=hermes-chat',
   },
   {
     description: 'GitHub specific referral sources collapse into the standard Hermes campaign.',
-    id: 'utm-source-github-lobechat',
+    id: 'utm-source-github-hermes-chat',
     pattern: /utm_source=github_lobe-?chat/g,
     replacement: () => 'utm_source=hermes-chat',
   },
   {
     description: 'Legacy README medium tags adopt the Hermes in-product taxonomy.',
     id: 'utm-medium-github-readme',
-    pattern: /utm_medium=github_readme/g,
+    pattern: /utm_medium=app_referral/g,
     replacement: () => 'utm_medium=app_referral',
   },
   {
     description: 'Legacy generic "link" campaigns move under the provider umbrella.',
     id: 'utm-campaign-link',
-    pattern: /utm_campaign=link/g,
+    pattern: /utm_campaign=model_provider/g,
     replacement: () => 'utm_campaign=model_provider',
   },
   {
     description:
-      'Legacy lobechat.com hostnames (without www) that still surface in historical READMEs and deployment manifests.',
-    id: 'legacy-lobechat-domain',
-    pattern: /lobechat\.com/g,
+      'Legacy hermes.chat hostnames (without www) that still surface in historical READMEs and deployment manifests.',
+    id: 'legacy-hermes-chat-domain',
+    pattern: /hermes-chat\.com/g,
     replacement: (brand) => brand.domain,
   },
   {
     description: 'www-prefixed marketing domains.',
     id: 'www-domain',
-    pattern: /www\.lobehub\.com/g,
+    pattern: /www\.hermeslabs\.com/g,
     replacement: (brand) => `www.${brand.domain}`,
   },
   {
     description:
-      'www-prefixed lobechat.com hostnames to guarantee vanity links follow the new Hermes entrypoint.',
-    id: 'legacy-lobechat-domain-www',
-    pattern: /www\.lobechat\.com/g,
+      'www-prefixed hermes.chat hostnames to guarantee vanity links follow the new Hermes entrypoint.',
+    id: 'legacy-hermes-chat-domain-www',
+    pattern: /www\.hermes-chat\.com/g,
     replacement: (brand) => `www.${brand.domain}`,
   },
   {
@@ -474,16 +475,16 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => brand.name.toLowerCase().replaceAll(/\s+/g, '-'),
   },
   {
-    description: 'CDN endpoints previously rooted at cdn.lobehub.com.',
+    description: 'CDN endpoints previously rooted at cdn.hermes.chat.',
     id: 'cdn-domain',
-    pattern: /cdn\.lobehub\.com/g,
+    pattern: /cdn\.hermeslabs\.com|cdn\.hermes\.chat/g,
     replacement: (brand) => brand.cdnDomain ?? brand.domain,
   },
   {
     description:
-      'Raw GitHub asset downloads sourced from lobehub/lobe-chat now stream from the Hermes CDN (or domain fallback).',
+      'Raw GitHub asset downloads sourced from hermeslabs/hermes-chat now stream from the Hermes CDN (or domain fallback).',
     id: 'raw-github-cdn',
-    pattern: /https?:\/\/raw\.githubusercontent\.com\/lobehub\/[\w-]+/g,
+    pattern: /https?:\/\/raw\.githubusercontent\.com\/hermeslabs\/[\w-]+/g,
     replacement: (brand) => {
       const owner =
         brand.repository?.owner ??
@@ -498,25 +499,25 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   {
     description: 'Direct logo asset references inside markdown/docs.',
     id: 'asset-logo',
-    pattern: /\/assets\/logo\/lobehub(-light)?\.svg/g,
+    pattern: /\/assets\/logo\/hermeslabs(-light)?\.svg/g,
     replacement: (brand) => brand.assets.logo,
   },
   {
     description: 'Provider slug tokens referencing the managed Hermes Cloud offer.',
     id: 'provider-slug',
-    pattern: /(["'`])lobehub\1/g,
+    pattern: /(["'`])hermeslabs\1/g,
     replacement: (brand) => `$1${deriveCloudProviderSlug(brand)}$1`,
   },
   {
     description: 'Favicon assets used across html configs.',
     id: 'asset-favicon',
-    pattern: /\/favicon\/lobehub\.(png|ico)/g,
+    pattern: /\/favicon\/hermeslabs\.(png|ico)/g,
     replacement: (brand) => brand.assets.favicon,
   },
   {
     description: 'Wordmark images embedded in READMEs and docs.',
     id: 'asset-wordmark',
-    pattern: /\/assets\/branding\/lobehub-wordmark\.svg/g,
+    pattern: /\/assets\/branding\/hermeslabs-wordmark\.svg/g,
     replacement: (brand) => brand.assets.wordmark,
   },
   {
@@ -527,9 +528,9 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
       (brand.organization?.name ?? brand.name).toLowerCase().replaceAll(/\s+/g, ''),
   },
   {
-    description: 'GitHub repository references pointing to lobehub org.',
+    description: 'GitHub repository references pointing to hermeslabs org.',
     id: 'github-org',
-    pattern: /https?:\/\/github\.com\/lobehub\/lobe-chat/g,
+    pattern: /https?:\/\/github\.com\/hermeslabs\/hermes-chat/g,
     replacement: (brand) => {
       const host = brand.repository?.host ?? 'github.com';
       return `https://${host}/${brand.repository?.owner ?? brand.organization?.name ?? brand.name.replaceAll(/\s+/g, '-')}/${brand.repository?.name ?? brand.name.toLowerCase().replaceAll(/\s+/g, '-')}`;
@@ -538,7 +539,7 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   {
     description: 'Bare GitHub organization URLs included in metadata authors and footers.',
     id: 'github-org-root',
-    pattern: /https?:\/\/github\.com\/lobehub(?!\/)/g,
+    pattern: /https?:\/\/github\.com\/hermeslabs(?!\/)/g,
     replacement: (brand) => {
       const host = brand.repository?.host ?? 'github.com';
       const owner =
@@ -552,28 +553,28 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   {
     description: 'GitHub organization slug only.',
     id: 'gh-org-generic',
-    pattern: /github\.com\/lobehub/g,
+    pattern: /github\.com\/hermeslabs/g,
     replacement: (brand) =>
       `${brand.repository?.host ?? 'github.com'}/${brand.repository?.owner ?? brand.organization?.name?.toLowerCase().replaceAll(/\s+/g, '-') ?? brand.name.toLowerCase().replaceAll(/\s+/g, '-')}`,
   },
   {
-    description: 'OIDC identifiers referencing lobehub URNs.',
+    description: 'OIDC identifiers referencing hermeslabs URNs.',
     id: 'oidc-audience',
-    pattern: /urn:lobehub:chat/g,
+    pattern: /urn:hermeslabs:chat/g,
     replacement: (brand) =>
       `urn:${(brand.organization?.name ?? brand.name).toLowerCase().replaceAll(/\s+/g, '')}:chat`,
   },
   {
     description: 'OIDC desktop client identifier.',
     id: 'desktop-client-id',
-    pattern: /lobehub-desktop/g,
+    pattern: /hermeslabs-desktop/g,
     replacement: (brand) =>
       `${(brand.organization?.name ?? brand.name).toLowerCase().replaceAll(/\s+/g, '')}-desktop`,
   },
   {
-    description: 'Environment variables referencing lobehub cloud.',
+    description: 'Environment variables referencing hermeslabs cloud.',
     id: 'service-mode-flag',
-    pattern: /lobehubCloud/g,
+    pattern: /HermesLabsCloud/g,
     replacement: (brand) =>
       `${(brand.organization?.name ?? brand.name).replaceAll(/\s+/g, '')}Cloud`,
   },
@@ -672,7 +673,7 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   {
     description: 'Desktop user-agent strings follow the Hermes product handle.',
     id: 'desktop-user-agent-handle',
-    pattern: /LobeChat-Desktop/g,
+    pattern: /HermesChat-Desktop/g,
     replacement: (brand) => {
       const base = splitIntoWords(brand.name);
       const fallback = base.length ? base : ['hermes', 'chat'];
@@ -681,7 +682,7 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
   },
   {
     description:
-      'Primary product name references such as "LobeChat" and "Lobe Chat" inside docs and UI copy.',
+      'Primary product name references such as "Hermes Chat" and "Hermes Chat" inside docs and UI copy.',
     id: 'product-name-titlecase',
     pattern: /\bLobe[ -]?Chat\b/g,
     replacement: (brand) => brand.name,

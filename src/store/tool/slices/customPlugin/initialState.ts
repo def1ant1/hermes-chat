@@ -1,9 +1,9 @@
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { HermesToolCustomPlugin } from '@/types/tool/plugin';
 
 export interface CustomPluginState {
-  newCustomPlugin: Partial<LobeToolCustomPlugin>;
+  newCustomPlugin: Partial<HermesToolCustomPlugin>;
 }
-export const defaultCustomPlugin: Partial<LobeToolCustomPlugin> = {
+export const defaultCustomPlugin: Partial<HermesToolCustomPlugin> = {
   customParams: {
     apiMode: 'simple',
     enableSettings: false,

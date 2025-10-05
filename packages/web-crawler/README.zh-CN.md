@@ -5,7 +5,7 @@ This package provides Hermes Chat with a compliant, rate-aware crawling engine f
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – install via `npm install @hermeslabs/web-crawler` to adopt the supported namespace.
-> - **Compatibility window:** `@lobechat/web-crawler` receives compatibility updates through 2025-09-30 so you can roll out migrations gradually.
+> - **Compatibility window:** `@hermeslabs/web-crawler` receives compatibility updates through 2025-09-30 so you can roll out migrations gradually.
 > - **Rollback path:** Use the [Hermes rebranding rollback guidance](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) if a production incident requires reverting to the legacy package scope.
 > - **Breaking-change considerations:** Infrastructure automation (CI/CD, container images, scheduler jobs) must update pinned dependencies concurrently to avoid crawl job failures.
 

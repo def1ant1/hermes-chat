@@ -1,9 +1,9 @@
 import { and, desc, eq } from 'drizzle-orm';
 
-import { LobeChatDatabase } from '../type';
 import { generateApiKey, isApiKeyExpired, validateApiKeyFormat } from '@/utils/apiKey';
 
 import { ApiKeyItem, NewApiKeyItem, apiKeys } from '../schemas';
+import { HermesChatDatabase } from '../type';
 
 type EncryptAPIKeyVaults = (keyVaults: string) => Promise<string>;
 type DecryptAPIKeyVaults = (keyVaults: string) => Promise<{ plaintext: string }>;
@@ -12,9 +12,9 @@ const defaultSerialize = (s: string) => s;
 
 export class ApiKeyModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

@@ -31,11 +31,11 @@ Google Gemini 系列模型 Tools Calling 能力一览：
 
 测试指令：指令 ①
 
-<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/a5a35431-2a15-4e79-97d5-502637f829bc" />
+<Video src="https://github.com/hermeslabs/hermes-chat/assets/28616219/a5a35431-2a15-4e79-97d5-502637f829bc" />
 
 Gemini 输出的 json 中，name 是错误的，因此 Hermes Chat 无法识别到它调用了什么插件。（入参中，天气插件的 name 为 `realtime-weather____fetchCurrentWeather`，而 Gemini 返回的是 `weather____fetchCurrentWeather`）。
 
-<Image alt="Gemini 1.5 Pro 简单指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/1e077799-c25e-43c7-8492-c5c0bb9aed9b" />
+<Image alt="Gemini 1.5 Pro 简单指令的 Tools Calling" src="https://github.com/hermeslabs/hermes-chat/assets/28616219/1e077799-c25e-43c7-8492-c5c0bb9aed9b" />
 
 <details>
   <summary>Tools Calling 原始输出：</summary>
@@ -59,7 +59,7 @@ Gemini 输出的 json 中，name 是错误的，因此 Hermes Chat 无法识别�
 
 测试指令：指令 ②
 
-<Image alt="Gemini 1.5 Pro 复杂指令的 Tools Calling" src="https://github.com/hermeslabs/lobe-chat/assets/28616219/a2454a60-3271-4786-861f-d49ceac1316e" />
+<Image alt="Gemini 1.5 Pro 复杂指令的 Tools Calling" src="https://github.com/hermeslabs/hermes-chat/assets/28616219/a2454a60-3271-4786-861f-d49ceac1316e" />
 
 在测试复杂指令集时，Google 直接抛错：
 
@@ -74,7 +74,7 @@ Gemini 输出的 json 中，name 是错误的，因此 Hermes Chat 无法识别�
 相关 issue:
 
 - [Support for minItems and maxItems for FunctionDeclarationSchemaType.ARRAY?](https://github.com/google-gemini/generative-ai-js/issues/200)
-- [Gemini Models unusable when dalle plugin is enabled](https://github.com/hermeslabs/lobe-chat/issues/2537)
+- [Gemini Models unusable when dalle plugin is enabled](https://github.com/hermeslabs/hermes-chat/issues/2537)
 
 综合以上两个测试来看，Google 的 Tool Calling 能力似乎是支持了，但是几乎没法在日常中使用，我个人认为已经等于虚假宣传了。
 
@@ -84,7 +84,7 @@ Gemini 输出的 json 中，name 是错误的，因此 Hermes Chat 无法识别�
 
 测试指令：指令 ①
 
-<Video src="https://github.com/hermeslabs/lobe-chat/assets/28616219/6cab77e8-d761-4a91-8325-a61748cebac1" />
+<Video src="https://github.com/hermeslabs/hermes-chat/assets/28616219/6cab77e8-d761-4a91-8325-a61748cebac1" />
 
 而 Gemini 1.5 flash 更为抽象，说完调用就结束了。结合以下原始输出可以看到，Gemini 1.5 Flash 并没有输出 Tool Calling 的数据，因此可以说是完全不可用。
 

@@ -1,11 +1,11 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { clientDB, initializeDB } from '@/database/client/db';
 import { userInstalledPlugins, users } from '@/database/schemas';
-import { LobeTool } from '@/types/tool';
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { HermesTool } from '@/types/tool';
+import { HermesToolCustomPlugin } from '@/types/tool/plugin';
 
 import { ClientService } from './client';
 import { InstallPluginParams } from './type';
@@ -32,7 +32,7 @@ describe('PluginService', () => {
       // Arrange
       const fakePlugin = {
         identifier: 'test-plugin-d',
-        manifest: { name: 'TestPlugin', version: '1.0.0' } as unknown as LobeChatPluginManifest,
+        manifest: { name: 'TestPlugin', version: '1.0.0' } as unknown as HermesChatPluginManifest,
         type: 'plugin',
       } as InstallPluginParams;
 
@@ -50,7 +50,7 @@ describe('PluginService', () => {
   describe('getInstalledPlugins', () => {
     it('should return a list of installed plugins', async () => {
       // Arrange
-      const fakePlugins = [{ identifier: 'test-plugin', type: 'plugin' }] as LobeTool[];
+      const fakePlugins = [{ identifier: 'test-plugin', type: 'plugin' }] as HermesTool[];
       await clientDB
         .insert(userInstalledPlugins)
         .values([{ identifier: 'test-plugin', type: 'plugin', userId }]);
@@ -86,7 +86,7 @@ describe('PluginService', () => {
         identifier: 'custom-plugin-x',
         manifest: {},
         type: 'customPlugin',
-      } as LobeToolCustomPlugin;
+      } as HermesToolCustomPlugin;
 
       // Act
       await pluginService.createCustomPlugin(customPlugin);
@@ -103,7 +103,7 @@ describe('PluginService', () => {
     it('should update a plugin', async () => {
       // Arrange
       const identifier = 'plugin-id';
-      const value = { customParams: { ab: '1' } } as unknown as LobeToolCustomPlugin;
+      const value = { customParams: { ab: '1' } } as unknown as HermesToolCustomPlugin;
       await clientDB.insert(userInstalledPlugins).values([{ identifier, type: 'plugin', userId }]);
 
       // Act
@@ -121,7 +121,7 @@ describe('PluginService', () => {
     it('should update a plugin manifest', async () => {
       // Arrange
       const identifier = 'plugin-id';
-      const manifest = { name: 'NewPluginManifest' } as unknown as LobeChatPluginManifest;
+      const manifest = { name: 'NewPluginManifest' } as unknown as HermesChatPluginManifest;
       await clientDB.insert(userInstalledPlugins).values([{ identifier, type: 'plugin', userId }]);
 
       // Act

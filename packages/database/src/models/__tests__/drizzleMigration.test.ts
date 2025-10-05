@@ -1,11 +1,11 @@
 // @vitest-environment node
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { DrizzleMigrationModel } from '../drizzleMigration';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const drizzleMigrationModel = new DrizzleMigrationModel(serverDB);
 

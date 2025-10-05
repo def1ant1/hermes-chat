@@ -5,11 +5,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { AsyncTaskStatus, AsyncTaskType } from '@/types/asyncTask';
 
 import { asyncTasks, users } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { ASYNC_TASK_TIMEOUT, AsyncTaskModel } from '../asyncTask';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'async-task-model-test-user-id';
 const asyncTaskModel = new AsyncTaskModel(serverDB, userId);

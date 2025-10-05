@@ -7,7 +7,7 @@ epics:
       touchpoint reflects the Hermes Chat visual system while maintaining accessibility and
       localization readiness across web and desktop surfaces.
     business_rationale: >-
-      A unified brand reduces buyer confusion during the LobeChat → Hermes Chat transition and
+      A unified brand reduces buyer confusion during the Hermes Chat → Hermes Chat transition and
       supports the enterprise positioning commitments captured in docs/BRANDING.md.
     dependencies:
       - EPIC-HC-003 # Infrastructure must route new domains before updated assets ship publicly.
@@ -44,7 +44,7 @@ epics:
   - id: EPIC-HC-002
     name: Core Product Copy, Localization, and Configuration Rebrand
     description: >-
-      Replace legacy LobeChat naming across application strings, configuration constants, and
+      Replace legacy Hermes Chat naming across application strings, configuration constants, and
       automation scripts to reflect Hermes Chat while preserving translation quality and developer
       ergonomics.
     business_rationale: >-
@@ -55,8 +55,8 @@ epics:
     # Decision context: supports localization parity goals noted in docs/BRANDING.md#launch-constraints--guardrails.
     acceptance_criteria:
       - >-
-        0 deprecated "LobeChat" references remain in `packages/const/` and `src/` string tables as
-        validated by `rg -n "LobeChat"` CI gate.
+        0 deprecated "Hermes Chat" references remain in `packages/const/` and `src/` string tables as
+        validated by `rg -n "Hermes Chat"` CI gate.
       - >-
         English and zh-CN locale files in `locales/` updated with Hermes Chat messaging, with translation
         memory diffs reviewed by localization QA.
@@ -99,7 +99,7 @@ epics:
         Automated Terraform or Pulumi stack updates provision certificates and DNS records with staged
         validation for all Hermes Chat domains and document outputs in `infrastructure/` runbooks.
       - >-
-        Blue/green deployment for `apps/web` validates redirect rules from `chat.lobehub.com` achieving
+        Blue/green deployment for `apps/web` validates redirect rules from `chat.hermes.chat` achieving
         99.99% uptime during the cutover window.
       - >-
         Observability dashboards (Grafana + Statuspage) reflect new domains within 24 hours of deployment.

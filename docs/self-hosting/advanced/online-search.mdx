@@ -188,7 +188,7 @@ This URL should point to a functional SearXNG instance. You can choose to self-h
 
 You can find publicly available SearXNG instances in the [SearXNG instance list](https://searx.space/). Choose an instance that is fast and reliable, and then configure its URL in Hermes Chat.
 
-> Note that the `searxng` you use must have `json` output enabled; otherwise, the `lobe-chat` call will result in an error. If self-hosting, find the `searxng` configuration file and add `json` as shown below.
+> Note that the `searxng` you use must have `json` output enabled; otherwise, the `hermes-chat` call will result in an error. If self-hosting, find the `searxng` configuration file and add `json` as shown below.
 
 ```bash
 $ vi searxng/settings.yml
@@ -211,6 +211,6 @@ If AI can answer these time-sensitive questions, it indicates that the online se
 
 ## References
 
-- [Hermes Chat Online Search RFC Discussion](https://github.com/hermeslabs/lobe-chat/discussions/6447)
+- [Hermes Chat Online Search RFC Discussion](https://github.com/hermeslabs/hermes-chat/discussions/6447)
 - [SearXNG GitHub Repository](https://github.com/searxng/searxng)
 - [Discussion on Enabling JSON Output for SearXNG](https://github.com/searxng/searxng/discussions/3542)

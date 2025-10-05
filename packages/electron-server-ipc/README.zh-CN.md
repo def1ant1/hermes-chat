@@ -5,7 +5,7 @@ Hermes Chat's Electron applications rely on this package for resilient IPC (Inte
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – install via `npm install @hermeslabs/electron-server-ipc` to remain within the supported namespace.
-> - **Compatibility window:** `@lobechat/electron-server-ipc` receives compatibility releases until 2025-09-30. Schedule cutovers before that date to avoid install failures once the legacy scope is retired.
+> - **Compatibility window:** `@hermeslabs/electron-server-ipc` receives compatibility releases until 2025-09-30. Schedule cutovers before that date to avoid install failures once the legacy scope is retired.
 > - **Rollback path:** The [rollback workflow](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) allows you to revert within minutes if a production incident requires the legacy scope.
 > - **Breaking-change considerations:** Audit preload scripts or build pipelines that hardcode the previous package name and rebuild your Electron artifacts after updating imports.
 

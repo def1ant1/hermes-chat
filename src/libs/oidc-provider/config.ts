@@ -9,12 +9,12 @@ import { appEnv } from '@/envs/app';
 export const defaultClients: ClientMetadata[] = [
   {
     application_type: 'web',
-    client_id: 'lobehub-desktop',
-    client_name: 'LobeHub Desktop',
+    client_id: 'hermeslabs-desktop',
+    client_name: 'Hermes Labs Desktop',
     // 仅支持授权码流程
     grant_types: ['authorization_code', 'refresh_token'],
 
-    logo_uri: 'https://hub-apac-1.lobeobjects.space/lobehub-desktop-icon.png',
+    logo_uri: 'https://hub-apac-1.lobeobjects.space/hermeslabs-desktop-icon.png',
 
     post_logout_redirect_uris: [
       // 动态构建 Web 页面回调 URL

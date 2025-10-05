@@ -81,7 +81,7 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
               <Flexbox align={'center'} gap={6} horizontal>
                 <Link
                   href={urlJoin(
-                    'https://github.com/lobehub/lobe-chat-agents/tree/main/locales',
+                    'https://github.com/hermeslabs/hermes-chat-agents/tree/main/locales',
                     identifier,
                   )}
                   onClick={(e) => e.stopPropagation()}

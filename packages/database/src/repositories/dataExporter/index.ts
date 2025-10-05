@@ -2,7 +2,7 @@ import { and, eq, inArray } from 'drizzle-orm';
 import pMap from 'p-map';
 
 import * as EXPORT_TABLES from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 
 interface BaseTableConfig {
   table: keyof typeof EXPORT_TABLES;
@@ -82,9 +82,9 @@ export const DATA_EXPORT_CONFIG = {
 
 export class DataExporterRepos {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.db = db;
     this.userId = userId;
   }

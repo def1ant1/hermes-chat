@@ -10,7 +10,7 @@ import { ElectronMainStore } from '@/types/store';
 /**
  * 存储名称
  */
-export const STORE_NAME = 'lobehub-settings';
+export const STORE_NAME = 'hermeslabs-settings';
 
 export const defaultProxySettings: NetworkProxySettings = {
   enableProxy: false,

@@ -17,9 +17,9 @@ Follow this enterprise-ready checklist to launch Hermes Chat on Vercel with high
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – all deployment templates and starter projects now pull packages from the `@hermeslabs/*` namespace to align with the centralized registry.
-> - **Compatibility window:** Legacy `@lobechat/*` and `@hermeslabs/*` packages receive hotfix updates until 2025-09-30 so you can stage blue/green rollouts or orchestrate emergency downgrades.
+> - **Compatibility window:** Legacy `@hermeslabs/*` and `@hermeslabs/*` packages receive hotfix updates until 2025-09-30 so you can stage blue/green rollouts or orchestrate emergency downgrades.
 > - **Rollback path:** Follow the [rebranding rollback playbook](/docs/development/rebranding#rollback-strategy) and trigger Vercel's "Redeploy" action against the previous commit when you need to revert the scope migration.
-> - **Breaking-change considerations:** Update any Vercel integration still targeting the `lobehub/lobe-chat` repository to `hermeslabs/hermes-chat` before the compatibility window closes; otherwise automated deploys will fail once the legacy repo is archived.
+> - **Breaking-change considerations:** Update any Vercel integration still targeting the `hermeslabs/hermes-chat` repository to `hermeslabs/hermes-chat` before the compatibility window closes; otherwise automated deploys will fail once the legacy repo is archived.
 
 ## Vercel Deployment Process
 

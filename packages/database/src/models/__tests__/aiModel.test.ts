@@ -4,11 +4,11 @@ import { AiProviderModelListItem } from 'model-bank';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { AiModelSelectItem, NewAiModelItem, aiModels, users } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import { HermesChatDatabase } from '../../type';
 import { AiModelModel } from '../aiModel';
 import { getTestDB } from './_util';
 
-const serverDB: LobeChatDatabase = await getTestDB();
+const serverDB: HermesChatDatabase = await getTestDB();
 
 const userId = 'ai-model-test-user-id';
 const aiProviderModel = new AiModelModel(serverDB, userId);

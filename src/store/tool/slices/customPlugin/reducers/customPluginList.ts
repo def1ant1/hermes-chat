@@ -1,11 +1,11 @@
 import { produce } from 'immer';
 
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { HermesToolCustomPlugin } from '@/types/tool/plugin';
 
-export type DevListState = LobeToolCustomPlugin[];
+export type DevListState = HermesToolCustomPlugin[];
 
 export type AddPluginAction = {
-  plugin: LobeToolCustomPlugin;
+  plugin: HermesToolCustomPlugin;
   type: 'addItem';
 };
 
@@ -16,7 +16,7 @@ export type DeletePluginAction = {
 
 export type UpdatePluginAction = {
   id: string;
-  plugin: LobeToolCustomPlugin;
+  plugin: HermesToolCustomPlugin;
   type: 'updateItem';
 };
 

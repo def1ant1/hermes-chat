@@ -2,7 +2,7 @@
  * Hermes-prefixed plugin API descriptor used by the context engine.
  *
  * @remarks
- * This interface replaces the legacy {@link LobeChatPluginApi} name as part of the
+ * This interface replaces the legacy {@link HermesChatPluginApi} name as part of the
  * Hermes Chat enterprise rebrand. We intentionally preserve a deprecated type alias
  * (see below) so downstream packages can adopt the new name gradually without
  * blocking release trains. The rebrand automation (`scripts/rebrandHermesChat.ts`)
@@ -19,7 +19,7 @@ export interface HermesChatPluginApi {
  * Canonical manifest schema for Hermes Chat plugins.
  *
  * @remarks
- * Formerly exported as {@link LobeChatPluginManifest}. The compatibility alias
+ * Formerly exported as {@link HermesChatPluginManifest}. The compatibility alias
  * guarantees that previously compiled bundles continue to type-check until the
  * next major release. The rename clarifies that this manifest is specific to
  * Hermes Chat while also unlocking future brand-specific tooling.
@@ -39,7 +39,7 @@ export interface HermesChatPluginManifest {
  * removed after downstream consumers migrate via the rebranding automation.
  */
 // eslint-disable-next-line @typescript-eslint/no-redeclare -- intentional alias during migration
-export type LobeChatPluginApi = HermesChatPluginApi;
+export type { HermesChatPluginApi as LobeChatPluginApi };
 
 /**
  * Transitional alias retained for compatibility with existing imports.
@@ -48,7 +48,7 @@ export type LobeChatPluginApi = HermesChatPluginApi;
  * removed after downstream consumers migrate via the rebranding automation.
  */
 // eslint-disable-next-line @typescript-eslint/no-redeclare -- intentional alias during migration
-export type LobeChatPluginManifest = HermesChatPluginManifest;
+export type { HermesChatPluginManifest as LobeChatPluginManifest };
 
 /**
  * Tools generation context

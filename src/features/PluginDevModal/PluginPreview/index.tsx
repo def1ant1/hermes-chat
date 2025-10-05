@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { Block, Icon, Text } from '@hermeslabs/ui';
 import { Form as AForm, Button, FormInstance } from 'antd';
 import { useTheme } from 'antd-style';
@@ -18,7 +18,7 @@ import PluginEmptyState from './EmptyState';
 const PluginPreview = memo<{ form: FormInstance }>(({ form }) => {
   const { t } = useTranslation('plugin');
   const theme = useTheme();
-  const manifest: LobeChatPluginManifest = AForm.useWatch(['manifest'], form);
+  const manifest: HermesChatPluginManifest = AForm.useWatch(['manifest'], form);
   const meta = manifest?.meta;
 
   if (!manifest)

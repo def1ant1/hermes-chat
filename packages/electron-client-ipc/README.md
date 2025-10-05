@@ -5,7 +5,7 @@ This package is a client-side toolkit for handling IPC (Inter-Process Communicat
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – install with `npm install @hermeslabs/electron-client-ipc` to stay within the supported namespace.
-> - **Compatibility window:** Deprecation shims for `@lobechat/electron-client-ipc` remain available until 2025-09-30; deployments pinned to the legacy scope must transition before then.
+> - **Compatibility window:** Deprecation shims for `@hermeslabs/electron-client-ipc` remain available until 2025-09-30; deployments pinned to the legacy scope must transition before then.
 > - **Rollback path:** Reference the [Hermes rebranding rollback guidance](https://github.com/hermeslabs/hermes-chat/blob/main/docs/development/rebranding.md#rollback-strategy) if you need to revert for emergency hotfixes.
 > - **Breaking-change watch-outs:** Renderer bundles that tree-shake by package name require cache invalidation after changing the import scope.
 

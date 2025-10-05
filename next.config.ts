@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
     // oidc provider depend on constructor.name
     // but swc minification will remove the name
     // so we need to disable it
-    // refs: https://github.com/lobehub/lobe-chat/pull/7430
+    // refs: https://github.com/hermeslabs/hermes-chat/pull/7430
     serverMinification: false,
     webVitalsAttribution: ['CLS', 'LCP'],
     webpackMemoryOptimizations: true,
@@ -304,7 +304,7 @@ const nextConfig: NextConfig = {
     config.resolve.alias.canvas = false;
 
     // to ignore epub2 compile error
-    // refs: https://github.com/lobehub/lobe-chat/discussions/6769
+    // refs: https://github.com/hermeslabs/hermes-chat/discussions/6769
     config.resolve.fallback = {
       ...config.resolve.fallback,
       zipfile: false,

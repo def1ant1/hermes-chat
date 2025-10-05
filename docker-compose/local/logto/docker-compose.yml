@@ -1,4 +1,4 @@
-name: lobe-chat-database
+name: hermes-chat-database
 services:
   network-service:
     image: alpine
@@ -8,7 +8,7 @@ services:
       - '9001:9001' # MinIO Console
       - '${LOGTO_PORT}:${LOGTO_PORT}' # Logto
       - '3002:3002' # Logto Admin
-      - '${LOBE_PORT}:3210' # LobeChat
+      - '${LOBE_PORT}:3210' # Hermes Chat
     command: tail -f /dev/null
     networks:
       - lobe-network
@@ -63,8 +63,8 @@ services:
     entrypoint: ['sh', '-c', 'npm run cli db seed -- --swe && npm start']
 
   lobe:
-    image: lobehub/lobe-chat-database
-    container_name: lobe-chat
+    image: hermeslabs/hermes-chat-database
+    container_name: hermes-chat
     network_mode: 'service:network-service'
     depends_on:
       postgresql:

@@ -10,7 +10,7 @@
 
 ## Hermes Chat knowledge base update
 
-Hermes Labs has completed the documentation rebrand from LobeChat to Hermes Chat. All support teams should now reference the refreshed guides at <https://hermes.chat/docs>.
+Hermes Labs has completed the documentation rebrand from Hermes Chat to Hermes Chat. All support teams should now reference the refreshed guides at <https://hermes.chat/docs>.
 
 - The README hero, deployment tutorials, and usage manuals now reflect Hermes terminology.
 - Locale files under `locales/en-US` were regenerated with the rebranding CLI. Non-English strings remain in review—watch `docs/development/rebranding.md` for translation status.

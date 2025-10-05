@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { TRPCError } from '@trpc/server';
 
 import { serverDBEnv } from '@/config/db';
@@ -19,7 +19,7 @@ export class FileService {
 
   private impl: FileServiceImpl = createFileServiceModule();
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.fileModel = new FileModel(db, userId);
   }

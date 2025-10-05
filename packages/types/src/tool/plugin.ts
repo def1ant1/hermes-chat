@@ -1,8 +1,7 @@
-import { LobeChatPluginManifest, Meta } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest, HermesChatPluginMetaSummary } from '../plugins/meta';
+import { HermesToolType } from './tool';
 
-import { LobeToolType } from './tool';
-
-export type PluginManifestMap = Record<string, LobeChatPluginManifest>;
+export type PluginManifestMap = Record<string, HermesChatPluginManifest>;
 
 export interface CustomPluginMetadata {
   avatar?: string;
@@ -41,21 +40,21 @@ export interface CustomPluginParams {
   /* eslint-enable */
 }
 
-export interface LobeToolCustomPlugin {
+export interface HermesToolCustomPlugin {
   customParams?: CustomPluginParams;
   identifier: string;
-  manifest?: LobeChatPluginManifest;
+  manifest?: HermesChatPluginManifest;
   settings?: any;
   type: 'customPlugin';
 }
 
-export interface InstallPluginMeta extends Partial<Meta> {
+export interface InstallPluginMeta extends Partial<HermesChatPluginMetaSummary> {
   author?: string;
   createdAt?: string;
   homepage?: string;
   identifier: string;
   runtimeType?: 'mcp' | 'default' | 'markdown' | 'standalone' | undefined;
-  type: LobeToolType;
+  type: HermesToolType;
 }
 
 export interface PluginInstallError {

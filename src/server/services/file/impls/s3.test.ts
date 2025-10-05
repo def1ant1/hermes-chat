@@ -66,7 +66,7 @@ describe('S3StaticFileImpl', () => {
       config.S3_ENABLE_PATH_STYLE = false;
     });
 
-    // Legacy bug compatibility tests - https://github.com/lobehub/lobe-chat/issues/8994
+    // Legacy bug compatibility tests - https://github.com/hermeslabs/hermes-chat/issues/8994
     describe('legacy bug compatibility', () => {
       it('should handle full URL input by extracting key (S3_SET_ACL=false)', async () => {
         config.S3_SET_ACL = false;

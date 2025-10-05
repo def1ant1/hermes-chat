@@ -9,7 +9,7 @@ import { Flexbox } from 'react-layout-kit';
 import { WIKI_PLUGIN_GUIDE } from '@/const/url';
 import { isDesktop } from '@/const/version';
 import { TITLE_BAR_HEIGHT } from '@/features/ElectronTitlebar';
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { HermesToolCustomPlugin } from '@/types/tool/plugin';
 
 import MCPManifestForm from './MCPManifestForm';
 import PluginPreview from './PluginPreview';
@@ -19,10 +19,10 @@ interface DevModalProps {
   mode?: 'edit' | 'create';
   onDelete?: () => void;
   onOpenChange: (open: boolean) => void;
-  onSave?: (value: LobeToolCustomPlugin) => Promise<void> | void;
-  onValueChange?: (value: Partial<LobeToolCustomPlugin>) => void;
+  onSave?: (value: HermesToolCustomPlugin) => Promise<void> | void;
+  onValueChange?: (value: Partial<HermesToolCustomPlugin>) => void;
   open?: boolean;
-  value?: LobeToolCustomPlugin;
+  value?: HermesToolCustomPlugin;
 }
 
 const DevModal = memo<DevModalProps>(
@@ -103,7 +103,7 @@ const DevModal = memo<DevModalProps>(
           if (onSave) {
             setSubmitting(true);
 
-            await onSave?.(info.values as LobeToolCustomPlugin);
+            await onSave?.(info.values as HermesToolCustomPlugin);
             setSubmitting(false);
           }
           message.success(t(isEditMode ? 'dev.updateSuccess' : 'dev.saveSuccess'));

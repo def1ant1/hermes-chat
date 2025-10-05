@@ -15,13 +15,13 @@ import {
   globalFiles,
   knowledgeBaseFiles,
 } from '../schemas';
-import { LobeChatDatabase, Transaction } from '../type';
+import { HermesChatDatabase, Transaction } from '../type';
 
 export class FileModel {
   private readonly userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

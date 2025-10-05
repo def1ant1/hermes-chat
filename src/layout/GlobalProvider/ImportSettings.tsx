@@ -20,7 +20,7 @@ const ImportSettings = memo(() => {
 
   useEffect(() => {
     // Why use `usUserStateInit`,
-    // see: https://github.com/lobehub/lobe-chat/pull/4072
+    // see: https://github.com/hermeslabs/hermes-chat/pull/4072
     if (searchParam && isUserStateInit) importUrlShareSettings(searchParam);
   }, [searchParam, isUserStateInit]);
 

@@ -1,8 +1,8 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
 import { pluginPrompts } from '@hermeslabs/prompts';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 
 import { MetaData } from '@/types/meta';
-import { LobeToolMeta } from '@/types/tool/tool';
+import { HermesToolMeta } from '@/types/tool/tool';
 import { globalAgentContextManager } from '@/utils/client/GlobalAgentContextManager';
 import { hydrationPrompt } from '@/utils/promptTemplate';
 import { genToolCallingName } from '@/utils/toolCall';
@@ -17,7 +17,7 @@ const enabledSystemRoles =
   (s: ToolStoreState) => {
     const toolsSystemRole = pluginSelectors
       .installedPluginManifestList(s)
-      .concat(s.builtinTools.map((b) => b.manifest as LobeChatPluginManifest))
+      .concat(s.builtinTools.map((b) => b.manifest as HermesChatPluginManifest))
       // 如果存在 enabledPlugins，那么只启用 enabledPlugins 中的插件
       .filter((m) => m && tools.includes(m.identifier))
       .map((manifest) => {
@@ -53,8 +53,8 @@ const enabledSystemRoles =
 
 const metaList =
   (showDalle?: boolean) =>
-  (s: ToolStoreState): LobeToolMeta[] => {
-    const pluginList = pluginSelectors.installedPluginMetaList(s) as LobeToolMeta[];
+  (s: ToolStoreState): HermesToolMeta[] => {
+    const pluginList = pluginSelectors.installedPluginMetaList(s) as HermesToolMeta[];
 
     return builtinToolSelectors.metaList(showDalle)(s).concat(pluginList);
   };
@@ -78,10 +78,10 @@ const getMetaById =
 
 const getManifestById =
   (id: string) =>
-  (s: ToolStoreState): LobeChatPluginManifest | undefined =>
+  (s: ToolStoreState): HermesChatPluginManifest | undefined =>
     pluginSelectors
       .installedPluginManifestList(s)
-      .concat(s.builtinTools.map((b) => b.manifest as LobeChatPluginManifest))
+      .concat(s.builtinTools.map((b) => b.manifest as HermesChatPluginManifest))
       .find((i) => i.identifier === id);
 
 // 获取插件 manifest 加载状态

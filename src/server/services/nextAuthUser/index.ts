@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import { and, eq } from 'drizzle-orm';
 import { Adapter, AdapterAccount } from 'next-auth/adapters';
 import { NextResponse } from 'next/server';
@@ -25,9 +25,9 @@ import {
 } from './utils';
 
 export class NextAuthUserService {
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase) {
+  constructor(db: HermesChatDatabase) {
     this.db = db;
   }
 
@@ -125,7 +125,7 @@ export class NextAuthUserService {
 
     // create a new user if it does not exist
     // Use id from provider if it exists, otherwise use id assigned by next-auth
-    // ref: https://github.com/lobehub/lobe-chat/pull/2935
+    // ref: https://github.com/hermeslabs/hermes-chat/pull/2935
     const uid = providerAccountId ?? id;
     await UserModel.createUser(
       this.db,

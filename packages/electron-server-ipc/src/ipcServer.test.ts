@@ -12,13 +12,13 @@ vi.mock('node:net');
 vi.mock('node:os');
 vi.mock('node:path');
 
-const appId = 'lobehub';
+const appId = 'hermescloud';
 
 describe('ElectronIPCServer', () => {
   // Mock data
   const mockTempDir = '/mock/temp/dir';
-  const mockSocketPath = '/mock/temp/dir/lobehub-electron-ipc.sock';
-  const mockSocketInfoPath = '/mock/temp/dir/lobehub-electron-ipc-info.json';
+  const mockSocketPath = '/mock/temp/dir/hermeslabs-electron-ipc.sock';
+  const mockSocketInfoPath = '/mock/temp/dir/hermeslabs-electron-ipc-info.json';
 
   // Mock server and socket
   const mockServer = {

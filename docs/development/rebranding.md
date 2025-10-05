@@ -8,9 +8,9 @@ roll back rebrands without manually touching thousands of strings.
 > \[!IMPORTANT] Hermes Labs Scope Migration
 >
 > - **Effective date:** 2025-03-31 – rebranding automation now rewrites every package reference to the enterprise `@hermeslabs/*` scope.
-> - **Compatibility window:** Legacy `@lobechat/*` and `@hermeslabs/*` packages publish deprecation shims until 2025-09-30 so CI pipelines and downstream SDKs have two quarterly release cycles to upgrade without downtime.
+> - **Compatibility window:** Legacy `@hermeslabs/*` and `@hermeslabs/*` packages publish deprecation shims until 2025-09-30 so CI pipelines and downstream SDKs have two quarterly release cycles to upgrade without downtime.
 > - **Rollback path:** Follow the [Rollback strategy](#rollback-strategy) section for a scripted revert, including guidance on restoring historical scopes in less than five minutes.
-> - **Breaking-change watch-outs:** Node.js resolutions that pin to exact `@lobechat/*` versions must be updated manually; mismatch will surface as install failures once the compatibility window closes.
+> - **Breaking-change watch-outs:** Node.js resolutions that pin to exact `@hermeslabs/*` versions must be updated manually; mismatch will surface as install failures once the compatibility window closes.
 
 ## Overview
 
@@ -28,21 +28,21 @@ roll back rebrands without manually touching thousands of strings.
 - Hermes Chat brand constants now live in `packages/const/src/branding.ts` and
   `packages/const/src/url.ts`. Any automation consuming historical Hermes Chat
   values must migrate to the Hermes equivalents before release promotion.
-- The rebranding CLI now rewrites **kebab-case** (`lobe-chat` / `LOBE-CHAT`) and
-  **snake_case** (`lobe_chat` / `LOBE_CHAT`) permutations so Docker services,
+- The rebranding CLI now rewrites **kebab-case** (`hermes-chat` / `HERMES-CHAT`) and
+  **snake_case** (`hermes_chat` / `HERMES_CHAT`) permutations so Docker services,
   Helm releases, and environment constants migrate without manual follow-up.
-- Domain automation now also covers legacy `lobechat.com` (including
-  `www.lobechat.com`) addresses so vanity links route through the new Hermes
+- Domain automation now also covers legacy `hermes.chat` (including
+  `www.hermes.chat`) addresses so vanity links route through the new Hermes
   entrypoints without post-run edits.
 - Raw asset download URLs rooted at
-  `https://raw.githubusercontent.com/lobehub/lobe-chat` are rewritten to the
+  `https://cdn.hermes.chat/hermes-chat/hermes-chat` are rewritten to the
   Hermes CDN (falling back to the primary domain when no CDN is configured),
   preserving the branch/path suffix for deterministic migrations.
 - The automation now standardizes both legacy scoped package imports (`@hermeslabs/*`
-  and `@lobechat/*`) into the consolidated enterprise namespace
+  and `@hermeslabs/*`) into the consolidated enterprise namespace
   (`@hermeslabs/*`) and bare social handles. Scoped imports adopt the sanitized
   organization slug (or fall back to the short product name when no org is
-  supplied) so npm installs remain routable, while bare `@lobechat` mentions map
+  supplied) so npm installs remain routable, while bare `@hermeschat` mentions map
   to the product short name for human-readable marketing copy.
 
 ## Usage

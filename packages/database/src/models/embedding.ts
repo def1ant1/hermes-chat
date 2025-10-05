@@ -1,14 +1,13 @@
 import { and, count, eq } from 'drizzle-orm';
 
-import { LobeChatDatabase } from '../type';
-
 import { NewEmbeddingsItem, embeddings } from '../schemas';
+import { HermesChatDatabase } from '../type';
 
 export class EmbeddingModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

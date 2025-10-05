@@ -10,16 +10,16 @@ export const getProtocolScheme = (): string => {
   const appPath = app.getPath('exe');
 
   // 通过 bundle identifier 判断
-  if (bundleId?.toLowerCase().includes('nightly')) return 'lobehub-nightly';
-  if (bundleId?.toLowerCase().includes('beta')) return 'lobehub-beta';
-  if (bundleId?.includes('dev')) return 'lobehub-dev';
+  if (bundleId?.toLowerCase().includes('nightly')) return 'hermeslabs-nightly';
+  if (bundleId?.toLowerCase().includes('beta')) return 'hermeslabs-beta';
+  if (bundleId?.includes('dev')) return 'hermeslabs-dev';
 
   // 通过可执行文件路径判断
-  if (appPath?.toLowerCase().includes('nightly')) return 'lobehub-nightly';
-  if (appPath?.toLowerCase().includes('beta')) return 'lobehub-beta';
-  if (appPath?.includes('dev')) return 'lobehub-dev';
+  if (appPath?.toLowerCase().includes('nightly')) return 'hermeslabs-nightly';
+  if (appPath?.toLowerCase().includes('beta')) return 'hermeslabs-beta';
+  if (appPath?.includes('dev')) return 'hermeslabs-dev';
 
-  return 'lobehub';
+  return 'hermescloud';
 };
 
 export const getVersionInfo = (): { channel: AppChannel; protocolScheme: string } => {
@@ -81,14 +81,14 @@ function validateMcpSchema(schema: any): schema is McpSchema {
 }
 
 /**
- * 解析 lobehub:// 协议 URL (支持多版本协议)
+ * 解析 hermeslabs:// 协议 URL (支持多版本协议)
  *
  * 支持的URL格式：
- * - lobehub://plugin/install?id=figma&schema=xxx&marketId=lobehub
- * - lobehub://plugin/configure?id=xxx&...
- * - lobehub-bet://plugin/install?id=figma&schema=xxx&marketId=lobehub
- * - lobehub-nightly://plugin/install?id=figma&schema=xxx&marketId=lobehub
- * - lobehub-dev://plugin/install?id=figma&schema=xxx&marketId=lobehub
+ * - hermeslabs://plugin/install?id=figma&schema=xxx&marketId=hermeslabs
+ * - hermeslabs://plugin/configure?id=xxx&...
+ * - hermeslabs-bet://plugin/install?id=figma&schema=xxx&marketId=hermeslabs
+ * - hermeslabs-nightly://plugin/install?id=figma&schema=xxx&marketId=hermeslabs
+ * - hermeslabs-dev://plugin/install?id=figma&schema=xxx&marketId=hermeslabs
  *
  * @param url 协议 URL
  * @returns 解析结果，包含基本结构和所有查询参数
@@ -98,13 +98,18 @@ export const parseProtocolUrl = (url: string): ProtocolUrlParsed | null => {
     const parsedUrl = new URL(url);
 
     // 支持多种协议 scheme
-    const validProtocols = ['lobehub:', 'lobehub-dev:', 'lobehub-nightly:', 'lobehub-beta:'];
+    const validProtocols = [
+      'hermeslabs:',
+      'hermeslabs-dev:',
+      'hermeslabs-nightly:',
+      'hermeslabs-beta:',
+    ];
     if (!validProtocols.includes(parsedUrl.protocol)) {
       return null;
     }
 
     // 对于自定义协议，URL 解析后：
-    // lobehub://plugin/install -> hostname: "plugin", pathname: "/install"
+    // hermeslabs://plugin/install -> hostname: "plugin", pathname: "/install"
     const urlType = parsedUrl.hostname; // "plugin"
     const pathParts = parsedUrl.pathname.split('/').filter(Boolean); // ["install"]
 
@@ -147,10 +152,10 @@ export function generateRFCProtocolUrl(params: {
   marketId?: string;
   /** MCP Schema 对象 */
   schema: McpSchema;
-  /** 协议 scheme (默认: lobehub) */
+  /** 协议 scheme (默认: hermeslabs) */
   scheme?: string;
 }): string {
-  const { id, schema, marketId, scheme = 'lobehub' } = params;
+  const { id, schema, marketId, scheme = 'hermescloud' } = params;
 
   // 验证 schema.identifier 与 id 匹配
   if (schema.identifier !== id) {
@@ -195,7 +200,7 @@ export function generateRFCProtocolUrl(params: {
  *     identifier: 'edgeone-mcp',
  *     name: 'EdgeOne MCP',
  *     author: 'Higress Team',
- *     description: 'EdgeOne API integration for LobeChat',
+ *     description: 'EdgeOne API integration for Hermes Chat',
  *     version: '1.0.0',
  *     config: {
  *       type: 'stdio',
@@ -205,6 +210,6 @@ export function generateRFCProtocolUrl(params: {
  *   },
  *   marketId: 'higress'
  * });
- * // Result: lobehub://plugin/install?id=edgeone-mcp&schema=%7B%22identifier%22%3A...&marketId=higress
+ * // Result: hermeslabs://plugin/install?id=edgeone-mcp&schema=%7B%22identifier%22%3A...&marketId=higress
  * ```
  */

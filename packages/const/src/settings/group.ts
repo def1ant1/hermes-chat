@@ -1,12 +1,12 @@
 import {
-  LobeChatGroupChatConfig,
-  LobeChatGroupFullConfig,
-  LobeChatGroupMetaConfig,
+  HermesChatGroupChatConfig,
+  HermesChatGroupFullConfig,
+  HermesChatGroupMetaConfig,
 } from '@hermeslabs/types';
 
 import { DEFAULT_MODEL, DEFAULT_PROVIDER } from './llm';
 
-export const DEFAULT_CHAT_GROUP_CHAT_CONFIG: LobeChatGroupChatConfig = {
+export const DEFAULT_CHAT_GROUP_CHAT_CONFIG: HermesChatGroupChatConfig = {
   allowDM: true,
   enableSupervisor: true,
   maxResponseInRow: 10,
@@ -19,12 +19,12 @@ export const DEFAULT_CHAT_GROUP_CHAT_CONFIG: LobeChatGroupChatConfig = {
   systemPrompt: '',
 };
 
-export const DEFAULT_CHAT_GROUP_META_CONFIG: LobeChatGroupMetaConfig = {
+export const DEFAULT_CHAT_GROUP_META_CONFIG: HermesChatGroupMetaConfig = {
   description: '',
   title: '',
 };
 
-export const DEFAULT_CHAT_GROUP_CONFIG: LobeChatGroupFullConfig = {
+export const DEFAULT_CHAT_GROUP_CONFIG: HermesChatGroupFullConfig = {
   chat: DEFAULT_CHAT_GROUP_CHAT_CONFIG,
   meta: DEFAULT_CHAT_GROUP_META_CONFIG,
 };

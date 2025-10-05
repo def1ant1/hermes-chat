@@ -128,7 +128,7 @@
   },
   {
     "children": {
-      "improvements": ["Refactor all @/types in model runtime to @lobechat/types."]
+      "improvements": ["Refactor all @/types in model runtime to @hermeslabs/types."]
     },
     "date": "2025-09-23",
     "version": "1.132.8"
@@ -779,7 +779,7 @@
   },
   {
     "children": {
-      "improvements": ["Move chain into @lobechat/prompts."]
+      "improvements": ["Move chain into @hermeslabs/prompts."]
     },
     "date": "2025-08-21",
     "version": "1.114.1"
@@ -822,7 +822,7 @@
   },
   {
     "children": {
-      "improvements": ["Refactor prompts folder to the @lobechat/prompts pacakge."]
+      "improvements": ["Refactor prompts folder to the @hermeslabs/prompts pacakge."]
     },
     "date": "2025-08-16",
     "version": "1.112.4"
@@ -1300,7 +1300,7 @@
   },
   {
     "children": {
-      "improvements": ["Fix lobehub provider /chat in desktop."]
+      "improvements": ["Fix hermeslabs provider /chat in desktop."]
     },
     "date": "2025-07-21",
     "version": "1.101.2"
@@ -8075,10 +8075,10 @@
   },
   {
     "children": {
-      "features": ["Release LobeChat 1.0."],
+      "features": ["Release Hermes Chat 1.0."],
       "improvements": [
         "Bump version.",
-        "Release LobeChat 1.0, closes #2897 (97bb377)",
+        "Release Hermes Chat 1.0, closes #2897 (97bb377)",
         "Bump version, closes #2896 (6e2d03b)",
         "Update LICENSE to Apache 2.0",
         "update to 1.0.0"

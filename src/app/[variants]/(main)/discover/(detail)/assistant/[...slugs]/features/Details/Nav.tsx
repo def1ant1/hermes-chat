@@ -99,7 +99,7 @@ const Nav = memo<NavProps>(({ mobile, setActiveTab, activeTab = AssistantNavKey.
           <Link
             className={styles.link}
             href={urlJoin(
-              'https://github.com/lobehub/lobe-chat-agents/tree/main/locales',
+              'https://github.com/hermeslabs/hermes-chat-agents/tree/main/locales',
               identifier,
             )}
             target={'_blank'}
@@ -109,7 +109,7 @@ const Nav = memo<NavProps>(({ mobile, setActiveTab, activeTab = AssistantNavKey.
         )}
         <Link
           className={styles.link}
-          href={'https://github.com/lobehub/lobe-chat-agents/issues/new/choose'}
+          href={'https://github.com/hermeslabs/hermes-chat-agents/issues/new/choose'}
           target={'_blank'}
         >
           {t('mcp.details.nav.reportIssue')}

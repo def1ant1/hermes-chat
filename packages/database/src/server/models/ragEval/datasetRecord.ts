@@ -2,13 +2,13 @@ import { EvalDatasetRecordRefFile } from '@hermeslabs/types';
 import { and, eq, inArray } from 'drizzle-orm';
 
 import { NewEvalDatasetRecordsItem, evalDatasetRecords, files } from '../../../schemas';
-import { LobeChatDatabase } from '../../../type';
+import { HermesChatDatabase } from '../../../type';
 
 export class EvalDatasetRecordModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.db = db;
     this.userId = userId;
   }

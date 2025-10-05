@@ -90,7 +90,7 @@ const ProviderItem = memo<DiscoverProviderItem>(
               <ActionIcon color={theme.colorTextDescription} icon={GlobeIcon} />
             </Link>
             <Link
-              href={`https://github.com/lobehub/lobe-chat/blob/main/src/config/modelProviders/${identifier}.ts`}
+              href={`https://github.com/hermeslabs/hermes-chat/blob/main/src/config/modelProviders/${identifier}.ts`}
               onClick={(e) => e.stopPropagation()}
               target={'_blank'}
             >

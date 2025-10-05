@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { createChatToolsEngine, createToolsEngine, getEnabledTools } from './index';
@@ -30,7 +30,7 @@ vi.mock('@/store/tool', () => ({
             avatar: '🔍',
           },
           type: 'builtin',
-        } as unknown as LobeChatPluginManifest,
+        } as unknown as HermesChatPluginManifest,
         type: 'builtin' as const,
       },
       {
@@ -56,7 +56,7 @@ vi.mock('@/store/tool', () => ({
             avatar: '🌐',
           },
           type: 'builtin',
-        } as unknown as LobeChatPluginManifest,
+        } as unknown as HermesChatPluginManifest,
         type: 'builtin' as const,
       },
     ],

@@ -11,7 +11,7 @@ export const generateMetadata = async (props: DynamicLayoutProps) => {
 
   return metadataModule.generate({
     alternate: true,
-    canonical: 'https://lobehub.com/agent',
+    canonical: 'https://hermes.chat/agent',
     description: t('discover.assistants.description'),
     locale,
     title: t('discover.assistants.title'),

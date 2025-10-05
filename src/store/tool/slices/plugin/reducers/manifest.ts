@@ -1,13 +1,13 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { produce } from 'immer';
 
 import { PluginManifestMap } from '@/types/tool/plugin';
 
-type AddManifestDispatch = { id: string; plugin: LobeChatPluginManifest; type: 'addManifest' };
+type AddManifestDispatch = { id: string; plugin: HermesChatPluginManifest; type: 'addManifest' };
 type DeleteManifestDispatch = { id: string; type: 'deleteManifest' };
 // type UpdateManifestDispatch = {
 //   id: string;
-//   plugin: LobeChatPlugin;
+//   plugin: HermesChatPlugin;
 //   type: 'updateManifest';
 //   version: string;
 // };

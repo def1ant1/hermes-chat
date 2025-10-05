@@ -1,6 +1,5 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix, typescript-sort-keys/interface */
-import { PluginErrorType } from '@hermeslabs/chat-plugin-sdk';
-import { ChatErrorType } from '@hermeslabs/types';
+import { ChatErrorType, PluginErrorType } from '@hermeslabs/types';
 import isEqual from 'fast-deep-equal';
 import { t } from 'i18next';
 import { StateCreator } from 'zustand/vanilla';
@@ -131,7 +130,7 @@ export const chatPlugin: StateCreator<
         type: ChatErrorType.PluginFailToTransformArguments,
         body: {
           message:
-            "[plugin] fail to transform plugin arguments to ai state, it may due to model's limited tools calling capacity. You can refer to https://lobehub.com/docs/usage/tools-calling for more detail.",
+            "[plugin] fail to transform plugin arguments to ai state, it may due to model's limited tools calling capacity. You can refer to https://hermes.chat/docs/usage/tools-calling for more detail.",
           stack: err.stack,
           arguments: params,
           schema,
@@ -525,9 +524,11 @@ export const chatPlugin: StateCreator<
           const md5 = apiName.replace(PLUGIN_SCHEMA_API_MD5_PREFIX, '');
           const manifest = pluginSelectors.getToolManifestById(identifier)(useToolStore.getState());
 
-          const api = manifest?.api.find((api) => genToolCallShortMD5Hash(api.name) === md5);
-          if (api) {
-            payload.apiName = api.name;
+          const matchedApi = manifest?.api.find(
+            (item) => genToolCallShortMD5Hash(item.name) === md5,
+          );
+          if (matchedApi) {
+            payload.apiName = matchedApi.name;
           }
         }
 

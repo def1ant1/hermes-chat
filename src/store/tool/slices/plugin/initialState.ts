@@ -1,9 +1,9 @@
-import { LobeTool } from '@/types/tool';
+import { HermesTool } from '@/types/tool';
 
 export type PluginsSettings = Record<string, any>;
 
 export interface PluginState {
-  installedPlugins: LobeTool[];
+  installedPlugins: HermesTool[];
   loadingInstallPlugins: boolean;
   pluginsSettings: PluginsSettings;
   updatePluginSettingsSignal?: AbortController;

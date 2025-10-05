@@ -1,9 +1,9 @@
 /**
  * Tools Engineering - Unified tools processing using ToolsEngine
  */
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
 import { ToolsEngine } from '@hermeslabs/context-engine';
 import type { PluginEnableChecker } from '@hermeslabs/context-engine';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { ChatCompletionTool, WorkingModel } from '@hermeslabs/types';
 
 import { getSearchConfig } from '@/helpers/getSearchConfig';
@@ -18,7 +18,7 @@ import { isCanUseFC } from '../isCanUseFC';
  */
 export interface ToolsEngineConfig {
   /** Additional manifests to include beyond the standard ones */
-  additionalManifests?: LobeChatPluginManifest[];
+  additionalManifests?: HermesChatPluginManifest[];
   /** Default tool IDs that will always be added to the end of the tools list */
   defaultToolIds?: string[];
   /** Custom enable checker for plugins */
@@ -38,7 +38,7 @@ export const createToolsEngine = (config: ToolsEngineConfig = {}): ToolsEngine =
 
   // Get all builtin tool manifests
   const builtinManifests = toolStoreState.builtinTools.map(
-    (tool) => tool.manifest as LobeChatPluginManifest,
+    (tool) => tool.manifest as HermesChatPluginManifest,
   );
 
   // Combine all manifests

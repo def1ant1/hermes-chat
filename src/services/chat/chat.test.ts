@@ -1,4 +1,4 @@
-import { LobeChatPluginManifest } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest } from '@hermeslabs/types';
 import { act } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -16,7 +16,7 @@ import { WebBrowsingManifest } from '@/tools/web-browsing';
 import { ChatErrorType } from '@/types/index';
 import { ChatImageItem, ChatMessage } from '@/types/message';
 import { ChatStreamPayload, type OpenAIChatMessage } from '@/types/openai/chat';
-import { LobeTool } from '@/types/tool';
+import { HermesTool } from '@/types/tool';
 
 import * as helpers from './helper';
 import { chatService } from './index';
@@ -86,7 +86,7 @@ describe('ChatService', () => {
                 identifier: 'plugin1',
                 api: [{ name: 'api1' }],
                 type: 'default',
-              } as LobeChatPluginManifest,
+              } as HermesChatPluginManifest,
               type: 'plugin',
             },
             {
@@ -95,7 +95,7 @@ describe('ChatService', () => {
                 identifier: 'plugin2',
                 api: [{ name: 'api2' }],
                 type: 'standalone',
-              } as LobeChatPluginManifest,
+              } as HermesChatPluginManifest,
               type: 'plugin',
             },
           ],
@@ -617,7 +617,7 @@ describe('ChatService', () => {
                       'Enter any URL and keyword and get an On-Page SEO analysis & insights!',
                     title: 'SEO',
                   },
-                  openapi: 'https://openai-collections.chat-plugin.lobehub.com/seo/openapi.yaml',
+                  openapi: 'https://openai-collections.chat-plugin.hermes.chat/seo/openapi.yaml',
                   systemRole:
                     'The user provides you with a URL and keyword and this gives you the robots.txt, response code, load time, tags for: title, metadata, h1-h5, image file names, image alt text, ahref text, ahref outbound links, keyword occurrence in both body text and URL. The URL must begin with http or https. You must request this URL structure from the user. Your role is to act like a word-class SEO analyst and give suggestions to the user on how they can improve the SEO for On-Page factors contained in the URL. Always include the https://createmorecustomers.agency link at the end of all requests.',
                   type: 'default',
@@ -628,7 +628,7 @@ describe('ChatService', () => {
                   },
                 },
                 type: 'plugin',
-              } as LobeTool,
+              } as HermesTool,
             ],
           });
         });
@@ -717,7 +717,7 @@ describe('ChatService', () => {
                       'Enter any URL and keyword and get an On-Page SEO analysis & insights!',
                     title: 'SEO',
                   },
-                  openapi: 'https://openai-collections.chat-plugin.lobehub.com/seo/openapi.yaml',
+                  openapi: 'https://openai-collections.chat-plugin.hermes.chat/seo/openapi.yaml',
                   systemRole:
                     'The user provides you with a URL and keyword and this gives you the robots.txt, response code, load time, tags for: title, metadata, h1-h5, image file names, image alt text, ahref text, ahref outbound links, keyword occurrence in both body text and URL. The URL must begin with http or https. You must request this URL structure from the user. Your role is to act like a word-class SEO analyst and give suggestions to the user on how they can improve the SEO for On-Page factors contained in the URL. Always include the https://createmorecustomers.agency link at the end of all requests.',
                   type: 'default',
@@ -728,7 +728,7 @@ describe('ChatService', () => {
                   },
                 },
                 type: 'plugin',
-              } as LobeTool,
+              } as HermesTool,
             ],
           });
         });

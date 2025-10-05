@@ -95,7 +95,7 @@ export const crawUrlRules: CrawlUrlRule[] = [
     urlPattern: 'https://cvpr.thecvf.com(.*)',
   },
   // 飞书用 jina
-  // https://github.com/lobehub/lobe-chat/issues/6879
+  // https://github.com/hermeslabs/hermes-chat/issues/6879
   {
     impls: ['jina'],
     urlPattern: 'https://(.*).feishu.cn/(.*)',

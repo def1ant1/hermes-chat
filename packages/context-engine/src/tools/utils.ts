@@ -1,4 +1,4 @@
-import { HermesChatPluginManifest } from './types';
+import type { HermesChatPluginManifest } from './types';
 
 // Tool naming constants
 const PLUGIN_SCHEMA_SEPARATOR = '____';

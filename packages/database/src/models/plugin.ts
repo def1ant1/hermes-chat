@@ -1,15 +1,15 @@
 import { and, desc, eq } from 'drizzle-orm';
 
-import { LobeChatDatabase } from '../type';
-import { LobeTool } from '@/types/tool';
+import { HermesTool } from '@/types/tool';
 
 import { InstalledPluginItem, NewInstalledPlugin, userInstalledPlugins } from '../schemas';
+import { HermesChatDatabase } from '../type';
 
 export class PluginModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }
@@ -60,7 +60,7 @@ export class PluginModel {
       .where(eq(userInstalledPlugins.userId, this.userId))
       .orderBy(desc(userInstalledPlugins.createdAt));
 
-    return data.map<LobeTool>((item) => ({
+    return data.map<HermesTool>((item) => ({
       ...item,
       runtimeType: item.manifest?.type || 'default',
     }));

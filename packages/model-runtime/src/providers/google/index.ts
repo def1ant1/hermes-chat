@@ -234,7 +234,7 @@ export class LobeGoogleAI implements LobeRuntimeAI {
         maxOutputTokens: payload.max_tokens,
         responseModalities: modelsWithModalities.has(model) ? ['Text', 'Image'] : undefined,
         // avoid wide sensitive words
-        // refs: https://github.com/lobehub/lobe-chat/pull/1418
+        // refs: https://github.com/hermeslabs/hermes-chat/pull/1418
         safetySettings: [
           {
             category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
@@ -670,7 +670,7 @@ export class LobeGoogleAI implements LobeRuntimeAI {
   private convertToolToGoogleTool = (tool: ChatCompletionTool): FunctionDeclaration => {
     const functionDeclaration = tool.function;
     const parameters = functionDeclaration.parameters;
-    // refs: https://github.com/lobehub/lobe-chat/pull/5002
+    // refs: https://github.com/hermeslabs/hermes-chat/pull/5002
     const properties =
       parameters?.properties && Object.keys(parameters.properties).length > 0
         ? parameters.properties

@@ -38,7 +38,7 @@
   },
   "macOS": {
     "about": "Über {{appName}}",
-    "devTools": "LobeHub Entwicklerwerkzeuge",
+    "devTools": "Hermes Labs Entwicklerwerkzeuge",
     "hide": "{{appName}} ausblenden",
     "hideOthers": "Andere ausblenden",
     "preferences": "Einstellungen...",

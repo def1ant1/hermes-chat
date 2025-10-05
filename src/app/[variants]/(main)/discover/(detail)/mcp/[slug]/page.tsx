@@ -41,13 +41,13 @@ export const generateMetadata = async (props: DiscoverPageProps) => {
   return {
     authors: [
       { name: author, url: homepage },
-      { name: 'LobeHub', url: 'https://github.com/lobehub' },
-      { name: 'LobeChat', url: 'https://github.com/lobehub/lobe-chat' },
+      { name: 'Hermes Labs', url: 'https://github.com/hermeslabs' },
+      { name: 'Hermes Chat', url: 'https://github.com/hermeslabs/hermes-chat' },
     ],
     keywords: tags,
     ...metadataModule.generate({
       alternate: true,
-      canonical: urlJoin('https://lobehub.com/mcp', identifier),
+      canonical: urlJoin('https://hermes.chat/mcp', identifier),
       description: description,
       locale,
       tags: tags,
@@ -74,7 +74,7 @@ const Page = async (props: DiscoverPageProps) => {
 
   const ld = ldModule.generate({
     article: {
-      author: [author?.name || 'LobeHub'],
+      author: [author?.name || 'Hermes Labs'],
       enable: true,
       identifier,
       tags: tags,

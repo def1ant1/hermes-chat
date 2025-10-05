@@ -51,9 +51,9 @@ We provide a [Docker image][docker-release-link] for deploying the Hermes Chat s
   version: '3.8'
 
   services:
-    lobe-chat:
-      image: hermeslabs/lobe-chat
-      container_name: lobe-chat
+    hermes-chat:
+      image: hermeslabs/hermes-chat
+      container_name: hermes-chat
       restart: always
       ports:
         - '3210:3210'
@@ -75,13 +75,13 @@ We provide a [Docker image][docker-release-link] for deploying the Hermes Chat s
 
   ```bash
   #!/bin/bash
-  # auto-update-lobe-chat.sh
+  # auto-update-hermes-chat.sh
 
   # Set proxy (optional)
   export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
   # Pull the latest image and store the output in a variable
-  output=$(docker pull hermeslabs/lobe-chat:latest 2>&1)
+  output=$(docker pull hermeslabs/hermes-chat:latest 2>&1)
 
   # Check if the pull command was executed successfully
   if [ $? -ne 0 ]; then
@@ -89,7 +89,7 @@ We provide a [Docker image][docker-release-link] for deploying the Hermes Chat s
   fi
 
   # Check if the output contains a specific string
-  echo "$output" | grep -q "Image is up to date for hermeslabs/lobe-chat:latest"
+  echo "$output" | grep -q "Image is up to date for hermeslabs/hermes-chat:latest"
 
   # If the image is already up to date, do nothing
   if [ $? -eq 0 ]; then
@@ -109,10 +109,10 @@ We provide a [Docker image][docker-release-link] for deploying the Hermes Chat s
 
   # Print the update time and version
   echo "Update time: $(date)"
-  echo "Version: $(docker inspect hermeslabs/lobe-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
+  echo "Version: $(docker inspect hermeslabs/hermes-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
 
   # Clean up unused images
-  docker images | grep 'hermeslabs/lobe-chat' | grep -v 'hermeslabs/lobe-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
+  docker images | grep 'hermeslabs/hermes-chat' | grep -v 'hermeslabs/hermes-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
   echo "Removed old images."
   ```
 
@@ -121,13 +121,13 @@ We provide a [Docker image][docker-release-link] for deploying the Hermes Chat s
   Configure Crontab to execute the script every 5 minutes:
 
   ```bash
-  */5 * * * * /path/to/auto-update-lobe-chat.sh >> /path/to/auto-update-lobe-chat.log 2>&1
+  */5 * * * * /path/to/auto-update-hermes-chat.sh >> /path/to/auto-update-hermes-chat.log 2>&1
   ```
 </Steps>
 
-[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/lobe-chat?color=45cc11&labelColor=black&style=flat-square
-[docker-release-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/lobe-chat?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
-[docker-size-link]: https://hub.docker.com/r/hermeslabs/lobe-chat
-[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/lobe-chat?color=369eff&labelColor=black&style=flat-square&sort=semver
+[docker-pulls-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-pulls-shield]: https://img.shields.io/docker/pulls/hermeslabs/hermes-chat?color=45cc11&labelColor=black&style=flat-square
+[docker-release-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-release-shield]: https://img.shields.io/docker/v/hermeslabs/hermes-chat?color=369eff&label=docker&labelColor=black&logo=docker&logoColor=white&style=flat-square&sort=semver
+[docker-size-link]: https://hub.docker.com/r/hermeslabs/hermes-chat
+[docker-size-shield]: https://img.shields.io/docker/image-size/hermeslabs/hermes-chat?color=369eff&labelColor=black&style=flat-square&sort=semver

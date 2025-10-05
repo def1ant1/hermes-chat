@@ -2,12 +2,12 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 /**
- * This codemod automates the migration from the legacy `@lobechat/` scope to the new
+ * This codemod automates the migration from the legacy `@hermeslabs/` scope to the new
  * `@hermeslabs/` scope across every package manifest in the monorepo. It deliberately keeps the
  * logic self-contained and dependency-free so that it can be executed in any environment with a
  * Node.js runtime, ensuring maximum portability for future migrations.
  */
-const LEGACY_SCOPE = '@lobechat/';
+const LEGACY_SCOPE = '@hermeslabs/';
 const TARGET_SCOPE = '@hermeslabs/';
 
 /**

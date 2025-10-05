@@ -234,7 +234,7 @@ describe('DesktopLocalFileImpl', () => {
       expect(result).toBe('');
     });
 
-    // Legacy bug compatibility tests - https://github.com/lobehub/lobe-chat/issues/8994
+    // Legacy bug compatibility tests - https://github.com/hermeslabs/hermes-chat/issues/8994
     describe('legacy bug compatibility', () => {
       it('should handle full URL input by extracting key', async () => {
         const fullUrl = 'http://localhost:3000/desktop-file/documents/test.txt';

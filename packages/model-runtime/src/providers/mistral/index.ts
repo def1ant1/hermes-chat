@@ -17,7 +17,7 @@ export const LobeMistralAI = createOpenAICompatibleRuntime({
   baseURL: 'https://api.mistral.ai/v1',
   chatCompletion: {
     // Mistral API does not support stream_options: { include_usage: true }
-    // refs: https://github.com/lobehub/lobe-chat/issues/6825
+    // refs: https://github.com/hermeslabs/hermes-chat/issues/6825
     excludeUsage: true,
     handlePayload: (payload) => ({
       ...(payload.max_tokens !== undefined && { max_tokens: payload.max_tokens }),

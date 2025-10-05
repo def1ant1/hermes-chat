@@ -1,5 +1,5 @@
-import { LobeChatPluginManifest, pluginManifestSchema } from '@hermeslabs/chat-plugin-sdk';
-import { ChatCompletionTool, OpenAIPluginManifest } from '@hermeslabs/types';
+import { pluginManifestSchema } from '@hermeslabs/chat-plugin-sdk';
+import type { HermesChatPluginManifest , ChatCompletionTool, OpenAIPluginManifest } from '@hermeslabs/types';
 import { uniqBy } from 'lodash-es';
 
 import { API_ENDPOINTS } from '@/services/_url';
@@ -40,8 +40,8 @@ const fetchJSON = async <T = any>(url: string, proxy = false): Promise<T> => {
 
 export const convertOpenAIManifestToLobeManifest = (
   data: OpenAIPluginManifest,
-): LobeChatPluginManifest => {
-  const manifest: LobeChatPluginManifest = {
+): HermesChatPluginManifest => {
+  const manifest: HermesChatPluginManifest = {
     api: [],
     homepage: data.legal_info_url,
     identifier: data.name_for_model,
@@ -82,14 +82,14 @@ export const convertOpenAIManifestToLobeManifest = (
 export const getToolManifest = async (
   url?: string,
   useProxy: boolean = false,
-): Promise<LobeChatPluginManifest> => {
+): Promise<HermesChatPluginManifest> => {
   // 1. valid plugin
   if (!url) {
     throw new TypeError('noManifest');
   }
 
   // 2. 发送请求
-  let data = await fetchJSON<LobeChatPluginManifest>(url, useProxy);
+  let data = await fetchJSON<HermesChatPluginManifest>(url, useProxy);
 
   // @ts-ignore
   // if there is a description_for_model, it is an OpenAI plugin
@@ -108,7 +108,7 @@ export const getToolManifest = async (
   if (parser.data.openapi) {
     const openapiJson = await fetchJSON(parser.data.openapi, useProxy);
 
-    // avoid https://github.com/lobehub/lobe-chat/issues/9059
+    // avoid https://github.com/hermeslabs/hermes-chat/issues/9059
     if (typeof window !== 'undefined') {
       try {
         const { OpenAPIConvertor } = await import('@hermeslabs/chat-plugin-sdk/openapi');
@@ -132,7 +132,7 @@ export const getToolManifest = async (
  *
  */
 export const convertPluginManifestToToolsCalling = (
-  manifests: LobeChatPluginManifest[],
+  manifests: HermesChatPluginManifest[],
 ): ChatCompletionTool[] => {
   const list = manifests.flatMap((manifest) =>
     manifest.api.map((m) => ({

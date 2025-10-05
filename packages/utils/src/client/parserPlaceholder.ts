@@ -50,9 +50,9 @@ export const VARIABLE_GENERATORS = {
    *
    * | Value | Example |
    * |-------|---------|
-   * | `{{email}}` | demo@lobehub.com |
+   * | `{{email}}` | demo@hermes.chat |
    * | `{{nickname}}` | 社区版用户 |
-   * | `{{username}}` | LobeChat |
+   * | `{{username}}` | Hermes Chat |
    *
    */
   email: () => userProfileSelectors.email(useUserStore.getState()) ?? '',

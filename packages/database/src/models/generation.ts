@@ -1,7 +1,6 @@
 import debug from 'debug';
 import { and, eq } from 'drizzle-orm';
 
-import { LobeChatDatabase, Transaction } from '../type';
 import { FileService } from '@/server/services/file';
 import { AsyncTaskError, AsyncTaskStatus } from '@/types/asyncTask';
 import { FileSource } from '@/types/files';
@@ -14,18 +13,19 @@ import {
   NewGeneration,
   generations,
 } from '../schemas/generation';
+import { HermesChatDatabase, Transaction } from '../type';
 import { FileModel } from './file';
 
 // Create debug logger
 const log = debug('lobe-image:generation-model');
 
 export class GenerationModel {
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
   private userId: string;
   private fileModel: FileModel;
   private fileService: FileService;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.db = db;
     this.userId = userId;
     this.fileModel = new FileModel(db, userId);

@@ -1,9 +1,9 @@
 import { and, desc, eq } from 'drizzle-orm';
 
-import { LobeChatDatabase } from '../type';
 import { CreateThreadParams, ThreadStatus } from '@/types/topic';
 
 import { ThreadItem, threads } from '../schemas';
+import { HermesChatDatabase } from '../type';
 
 const queryColumns = {
   createdAt: threads.createdAt,
@@ -19,9 +19,9 @@ const queryColumns = {
 
 export class ThreadModel {
   private userId: string;
-  private db: LobeChatDatabase;
+  private db: HermesChatDatabase;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: HermesChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
   }

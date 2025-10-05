@@ -165,7 +165,7 @@ async requestAuthorization(config: DataSyncConfig) {
   // 构建授权 URL
   const authUrl = new URL('/oidc/auth', remoteUrl);
   authUrl.search = querystring.stringify({
-    client_id: 'lobe-chat',
+    client_id: 'hermes-chat',
     response_type: 'code',
     redirect_uri: `${protocolPrefix}://auth/callback`,
     scope: 'openid profile',

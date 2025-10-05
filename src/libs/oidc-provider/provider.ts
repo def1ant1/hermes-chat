@@ -1,4 +1,4 @@
-import { LobeChatDatabase } from '@hermeslabs/database';
+import { HermesChatDatabase } from '@hermeslabs/database';
 import debug from 'debug';
 import Provider, { Configuration, KoaContextWithOIDC, errors } from 'oidc-provider';
 import urlJoin from 'url-join';
@@ -14,7 +14,7 @@ import { createInteractionPolicy } from './interaction-policy';
 
 const logProvider = debug('lobe-oidc:provider'); // <--- 添加 provider 日志实例
 
-export const API_AUDIENCE = 'urn:lobehub:chat'; // <-- 把这里换成你自己的 API 标识符
+export const API_AUDIENCE = 'urn:hermeslabs:chat'; // <-- 把这里换成你自己的 API 标识符
 
 /**
  * 获取 Cookie 密钥，使用 KEY_VAULTS_SECRET
@@ -32,7 +32,7 @@ const getCookieKeys = () => {
  * @param db - 数据库实例
  * @returns 配置好的 OIDC Provider 实例
  */
-export const createOIDCProvider = async (db: LobeChatDatabase): Promise<Provider> => {
+export const createOIDCProvider = async (db: HermesChatDatabase): Promise<Provider> => {
   // 获取 JWKS
   const jwks = getJWKS();
 
@@ -216,10 +216,10 @@ export const createOIDCProvider = async (db: LobeChatDatabase): Promise<Provider
       ctx.body = `
         <html>
           <head>
-            <title>LobeHub OIDC Error</title>
+            <title>Hermes Labs OIDC Error</title>
           </head>
           <body>
-            <h1>LobeHub OIDC Error</h1>
+            <h1>Hermes Labs OIDC Error</h1>
             <p>${JSON.stringify(error, null, 2)}</p>
             <p>${JSON.stringify(out, null, 2)}</p>
           </body>

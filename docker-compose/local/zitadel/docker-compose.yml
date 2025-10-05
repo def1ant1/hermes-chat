@@ -1,4 +1,4 @@
-name: lobe-chat-database
+name: hermes-chat-database
 services:
   network-service:
     image: alpine
@@ -7,7 +7,7 @@ services:
       - '9000:9000' # MinIO API
       - '9001:9001' # MinIO Console
       - '8080:8080' # Zitadel Console
-      - '3210:3210' # LobeChat
+      - '3210:3210' # Hermes Chat
     command: tail -f /dev/null
     networks:
       - lobe-network
@@ -20,7 +20,7 @@ services:
     volumes:
       - './data:/var/lib/postgresql/data'
     environment:
-      - 'POSTGRES_DB=lobechat'
+      - 'POSTGRES_DB=hermes-chat'
       - 'POSTGRES_PASSWORD=uWNZugjBqixf8dxC'
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U postgres']
@@ -60,8 +60,8 @@ services:
         condition: service_healthy
 
   lobe:
-    image: lobehub/lobe-chat-database
-    container_name: lobe-chat
+    image: hermeslabs/hermes-chat-database
+    container_name: hermes-chat
     network_mode: 'service:network-service'
     depends_on:
       postgresql:

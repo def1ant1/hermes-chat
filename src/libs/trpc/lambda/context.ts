@@ -98,7 +98,7 @@ export const createLambdaContext = async (request: NextRequest): Promise<LambdaC
     marketAccessToken,
     userAgent,
   };
-  log('LobeChat Authorization header: %s', authorization ? 'exists' : 'not found');
+  log('Hermes Chat Authorization header: %s', authorization ? 'exists' : 'not found');
 
   let userId;
   let auth;
@@ -142,7 +142,7 @@ export const createLambdaContext = async (request: NextRequest): Promise<LambdaC
     }
   }
 
-  // If OIDC is not enabled or validation fails, try LobeChat custom Header and other authentication methods
+  // If OIDC is not enabled or validation fails, try Hermes Chat custom Header and other authentication methods
   if (enableClerk) {
     log('Attempting Clerk authentication');
     const clerkAuth = new ClerkAuth();
