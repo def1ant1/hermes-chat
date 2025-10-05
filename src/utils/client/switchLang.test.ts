@@ -41,4 +41,11 @@ describe('switchLang', () => {
     expect(setCookie).toHaveBeenNthCalledWith(1, HERMES_LOCALE_COOKIE, undefined, 365);
     expect(setCookie).toHaveBeenNthCalledWith(2, LEGACY_LOBE_LOCALE_COOKIE, undefined, 365);
   });
+
+  it('uses Hermes-branded locale cookie tokens and preserves legacy fallback', () => {
+    expect(HERMES_LOCALE_COOKIE).toBe('HERMES_LOCALE');
+    expect(HERMES_LOCALE_COOKIE.startsWith('HERMES')).toBe(true);
+    expect(LEGACY_LOBE_LOCALE_COOKIE).toBe('LOBE_LOCALE');
+    expect(HERMES_LOCALE_COOKIE.includes('LOBE')).toBe(false);
+  });
 });

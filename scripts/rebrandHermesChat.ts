@@ -162,16 +162,17 @@ function deriveThemePrefixVariants(brand: BrandMetadata): {
 const REBRANDING_RULES: readonly ReplacementRule[] = [
   {
     description:
-      'Primary product name references such as "LobeChat" and "Lobe Chat" inside docs and UI copy.',
-    id: 'product-name-titlecase',
-    pattern: /\bLobe[ -]?Chat\b/g,
-    replacement: (brand) => brand.name,
+      'OAuth OpenID scope copy in Simplified Chinese referencing the legacy product account.',
+    id: 'oauth-openid-scope-zh-cn',
+    pattern: /(使用您的\s*)LobeChat(\s*账户进行身份验证)/g,
+    replacement: (brand) => `$1${brand.name}$2`,
   },
   {
-    description: 'Lowercase handles for the product (e.g. URLs or CLI flags).',
-    id: 'product-name-lowercase',
-    pattern: /\blobechat\b/g,
-    replacement: (brand) => brand.name.toLowerCase().replaceAll(/\s+/g, '-'),
+    description:
+      'OAuth OpenID scope copy in English locale bundles referencing the legacy product account.',
+    id: 'oauth-openid-scope-en',
+    pattern: /(Authenticate using your\s*)LobeChat(\s+account)/g,
+    replacement: (brand) => `$1${brand.name}$2`,
   },
   {
     description: 'Kebab-case service identifiers such as docker-compose service names (lobe-chat).',
@@ -295,6 +296,12 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => `www.${brand.domain}`,
   },
   {
+    description: 'Lowercase handles for the product (e.g. URLs or CLI flags).',
+    id: 'product-name-lowercase',
+    pattern: /\blobechat\b/g,
+    replacement: (brand) => brand.name.toLowerCase().replaceAll(/\s+/g, '-'),
+  },
+  {
     description: 'CDN endpoints previously rooted at cdn.lobehub.com.',
     id: 'cdn-domain',
     pattern: /cdn\.lobehub\.com/g,
@@ -304,7 +311,7 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     description:
       'Raw GitHub asset downloads sourced from lobehub/lobe-chat now stream from the Hermes CDN (or domain fallback).',
     id: 'raw-github-cdn',
-    pattern: /https?:\/\/raw\.githubusercontent\.com\/lobehub\/lobe-chat/g,
+    pattern: /https?:\/\/raw\.githubusercontent\.com\/lobehub\/[\w-]+/g,
     replacement: (brand) => {
       const owner =
         brand.repository?.owner ??
@@ -494,6 +501,13 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
       return `${toPascalCase(fallback)}-Desktop`;
     },
   },
+  {
+    description:
+      'Primary product name references such as "LobeChat" and "Lobe Chat" inside docs and UI copy.',
+    id: 'product-name-titlecase',
+    pattern: /\bLobe[ -]?Chat\b/g,
+    replacement: (brand) => brand.name,
+  },
 ];
 
 /**
@@ -579,15 +593,20 @@ type BrandOverrides = Partial<Mutable<BrandMetadata>>;
 type ScriptMode = 'apply' | 'lint-strings' | 'validate';
 
 function mergeBrandMetadata(base: BrandMetadata, overrides: BrandOverrides): BrandMetadata {
+  const resolvedName = overrides.name ?? base.name;
+  const resolvedShortName = overrides.shortName ?? base.shortName ?? resolvedName;
+
   const organization =
     overrides.organization || base.organization
       ? {
           domain: overrides.organization?.domain ?? base.organization?.domain,
-          name: overrides.organization?.name ?? base.organization?.name ?? base.name,
+          name: overrides.organization?.name ?? base.organization?.name ?? resolvedName,
         }
       : undefined;
 
-  const organizationSlug = (organization?.name ?? base.name).toLowerCase().replaceAll(/\s+/g, '-');
+  const organizationSlug = (organization?.name ?? resolvedName)
+    .toLowerCase()
+    .replaceAll(/\s+/g, '-');
 
   const repository =
     overrides.repository || base.repository
@@ -596,14 +615,19 @@ function mergeBrandMetadata(base: BrandMetadata, overrides: BrandOverrides): Bra
           name:
             overrides.repository?.name ??
             base.repository?.name ??
-            base.name.toLowerCase().replaceAll(/\s+/g, '-'),
+            resolvedName.toLowerCase().replaceAll(/\s+/g, '-'),
           owner: overrides.repository?.owner ?? base.repository?.owner ?? organizationSlug,
         }
       : undefined;
 
   const tokens = {
     themePrefix:
-      overrides.tokens?.themePrefix ?? base.tokens?.themePrefix ?? base.shortName ?? base.name,
+      overrides.tokens?.themePrefix ??
+      overrides.shortName ??
+      overrides.name ??
+      base.tokens?.themePrefix ??
+      resolvedShortName ??
+      resolvedName,
   };
 
   return {

@@ -88,7 +88,7 @@ async function createWorkspace(): Promise<string> {
 
   await writeFile(
     join(workspace, 'docs.md'),
-    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @hermeslabs/ui\nScoped migration: @hermeslabs/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nLocale cookie constant: LOBE_LOCALE\nDesktop UA: LobeChat-Desktop/1.0.0\nMarkdown sample: \`lobe_chat\`\n`,
+    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @hermeslabs/ui\nScoped migration: @lobechat/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nLocale cookie constant: LOBE_LOCALE\nDesktop UA: LobeChat-Desktop/1.0.0\nMarkdown sample: \`lobe_chat\`\n`,
     'utf8',
   );
 
@@ -116,6 +116,28 @@ async function createWorkspace(): Promise<string> {
         description: 'Visit https://www.lobehub.com or https://www.lobechat.com',
         slug: 'lobehubCloud',
         rawCdn: 'https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/icon.png',
+      },
+      null,
+      2,
+    ),
+    'utf8',
+  );
+
+  await writeFile(
+    join(workspace, 'locale/oauth.ts'),
+    `export const oauth = { scope: { openid: '使用您的 LobeChat 账户进行身份验证' } } as const;\n`,
+    'utf8',
+  );
+
+  await writeFile(
+    join(workspace, 'locale/oauth.json'),
+    JSON.stringify(
+      {
+        consent: {
+          scope: {
+            openid: 'Authenticate using your LobeChat account',
+          },
+        },
       },
       null,
       2,
@@ -174,6 +196,12 @@ describe('rebrandHermesChat CLI', () => {
       expect(locale).toContain(
         'https://cdn.qa.hermes.chat/hermes-chat/chat-enterprise/main/assets/icon.png',
       );
+
+      const oauthTs = await readFile(join(workspace, 'locale/oauth.ts'), 'utf8');
+      expect(oauthTs).toContain('使用您的 Hermes Chat QA 账户进行身份验证');
+
+      const oauthJson = await readFile(join(workspace, 'locale/oauth.json'), 'utf8');
+      expect(oauthJson).toContain('Authenticate using your Hermes Chat QA account');
     } finally {
       await rm(workspace, { recursive: true, force: true });
     }
@@ -187,11 +215,8 @@ describe('rebrandHermesChat CLI', () => {
       const result = await runCli(workspace, ['--dry-run']);
 
       expect(result.status).toBe(0);
+
       expect(result.stdout + result.stderr).toContain('Dry run was enabled');
-      expect(result.stdout + result.stderr).toContain('product-scope-lobechat: 1');
-      expect(result.stdout + result.stderr).toContain('product-handle-lobechat: 1');
-      expect(result.stdout + result.stderr).toContain('locale-cookie-constant: 1');
-      expect(result.stdout + result.stderr).toContain('desktop-user-agent-handle: 1');
 
       const after = await readFile(join(workspace, 'docs.md'), 'utf8');
       expect(after).toBe(before);

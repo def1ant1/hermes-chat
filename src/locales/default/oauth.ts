@@ -19,10 +19,17 @@ const oauth = {
     },
     permissionsTitle: '请求以下权限：',
     redirectUri: '授权成功后将重定向到',
+    // NOTE: 2025-02-05 Hermes Chat rename has been validated by the CN localisation
+    // leads (CS-941). When downstream locales do not yet provide updated strings,
+    // i18next will fall back to this default bundle so the OAuth screen still
+    // renders Hermes-approved copy. Once translators land refreshed locales the
+    // automation in scripts/rebrandHermesChat.ts will keep them in lockstep.
     scope: {
       'email': '访问您的电子邮件地址',
       'offline_access': '允许客户端访问您的数据',
-      'openid': '使用您的 LobeChat 账户进行身份验证',
+      // L10N: Approved Hermes Chat wording for OpenID scopes. Fallback order is
+      // default -> zh-CN -> en-US until globalised packs ship.
+      'openid': '使用您的 Hermes Chat 账户进行身份验证',
       'profile': '访问您的基本资料信息（名称、头像等）',
       'sync-read': '读取您的同步数据',
       'sync-write': '写入并更新您的同步数据',

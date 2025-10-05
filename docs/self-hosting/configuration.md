@@ -23,6 +23,21 @@ compatibility the application mirrors values to `LOBE_LOCALE` until 2025-03-31.
 When custom deployments expose their own middleware or CDN, ensure both cookie
 names are forwarded so hybrid fleets stay synchronised.
 
+### OAuth localisation checkpoints
+
+- **Default bundle:** `src/locales/default/oauth.ts` now ships the approved
+  Simplified Chinese OpenID scope copy for Hermes Chat. Translation Ops
+  validated the phrasing on 2025-02-05 (ticket CS-941) and confirmed it is safe
+  to serve as the fallback whenever downstream packs lag behind.
+- **Automation:** `bunx tsx scripts/rebrandHermesChat.ts --mode apply` rewrites both
+  the TypeScript default bundle and JSON locale mirrors automatically. The new
+  `oauth-openid-scope-*` rules keep OAuth prompts Hermes-branded during future
+  rebrands.
+- **Manual follow-up:** Non-Chinese locale files under `locales/*/oauth.json`
+  still require human review to swap out legacy "LobeChat" phrasing. Track the
+  outstanding work in the localisation backlog (Jira L10N-588) and update the
+  bundles as translations land.
+
 ## Desktop + proxy automation
 
 Hermes Chat Desktop 1.8.0 updates its network tooling to emit the
