@@ -7,7 +7,7 @@ import urlJoin from 'url-join';
 
 import { OAUTH_AUTHORIZED } from '@/const/auth';
 import { LOBE_LOCALE_COOKIE } from '@/const/locale';
-import { LOBE_THEME_APPEARANCE } from '@/const/theme';
+import { HERMES_THEME_APPEARANCE } from '@/const/theme';
 import { appEnv } from '@/envs/app';
 import { authEnv } from '@/envs/auth';
 import NextAuth from '@/libs/next-auth';
@@ -68,7 +68,11 @@ const defaultMiddleware = (request: NextRequest) => {
 
   // 1. Read user preferences from cookies
   const theme =
-    request.cookies.get(LOBE_THEME_APPEARANCE)?.value || parseDefaultThemeFromCountry(request);
+    request.cookies.get(HERMES_THEME_APPEARANCE)?.value || parseDefaultThemeFromCountry(request);
+
+  // TODO(2025-Q4): migrate legacy cookie readers and delete the Lobe alias in
+  // `packages/const/src/theme.ts`. Automation in scripts/rebrandHermesChat.ts
+  // verifies this identifier to block accidental regressions.
 
   // locale has three levels
   // 1. search params
@@ -94,7 +98,7 @@ const defaultMiddleware = (request: NextRequest) => {
     deviceType: device.type,
     hasCookies: {
       locale: !!request.cookies.get(LOBE_LOCALE_COOKIE)?.value,
-      theme: !!request.cookies.get(LOBE_THEME_APPEARANCE)?.value,
+      theme: !!request.cookies.get(HERMES_THEME_APPEARANCE)?.value,
     },
     locale,
     theme,

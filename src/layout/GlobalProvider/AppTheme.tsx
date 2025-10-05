@@ -15,9 +15,9 @@ import { ReactNode, memo, useEffect } from 'react';
 
 import AntdStaticMethods from '@/components/AntdStaticMethods';
 import {
-  LOBE_THEME_APPEARANCE,
-  LOBE_THEME_NEUTRAL_COLOR,
-  LOBE_THEME_PRIMARY_COLOR,
+  HERMES_THEME_APPEARANCE,
+  HERMES_THEME_NEUTRAL_COLOR,
+  HERMES_THEME_PRIMARY_COLOR,
 } from '@/const/theme';
 import { useGlobalStore } from '@/store/global';
 import { systemStatusSelectors } from '@/store/global/selectors';
@@ -49,7 +49,12 @@ const useStyles = createStyles(({ css, token }) => ({
     scrollbar-color: ${token.colorFill} transparent;
     scrollbar-width: thin;
 
-    #lobe-mobile-scroll-container {
+    /*
+     * The Hermes scroll container identifier is intentionally mirrored in the
+     * rebranding automation (scripts/rebrandHermesChat.ts) so DOM drift is
+     * machine-detectable. Update both locations if this selector changes.
+     */
+    #hermes-mobile-scroll-container {
       scrollbar-width: none;
 
       ::-webkit-scrollbar {
@@ -111,11 +116,13 @@ const AppTheme = memo<AppThemeProps>(
     ]);
 
     useEffect(() => {
-      setCookie(LOBE_THEME_PRIMARY_COLOR, primaryColor);
+      // Persist Hermes design system overrides for downstream clients and
+      // Electron shells. Legacy aliases remain via `packages/const/src/theme.ts`.
+      setCookie(HERMES_THEME_PRIMARY_COLOR, primaryColor);
     }, [primaryColor]);
 
     useEffect(() => {
-      setCookie(LOBE_THEME_NEUTRAL_COLOR, neutralColor);
+      setCookie(HERMES_THEME_NEUTRAL_COLOR, neutralColor);
     }, [neutralColor]);
 
     return (
@@ -130,7 +137,9 @@ const AppTheme = memo<AppThemeProps>(
         onAppearanceChange={(appearance) => {
           if (themeMode !== 'auto') return;
 
-          setCookie(LOBE_THEME_APPEARANCE, appearance);
+          // TODO(2025-Q4): remove once middleware stops reading the legacy
+          // cookies. The alias is tracked via scripts/rebrandHermesChat.ts.
+          setCookie(HERMES_THEME_APPEARANCE, appearance);
         }}
         theme={{
           cssVar: true,

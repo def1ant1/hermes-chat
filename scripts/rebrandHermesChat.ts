@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import consola from 'consola';
 import { glob } from 'glob';
+import { spawn } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import { dirname, extname, resolve } from 'node:path';
@@ -84,6 +85,15 @@ export interface BrandMetadata {
    * Landing page for documentation or support portal.
    */
   readonly supportUrl: string;
+  /**
+   * Optional overrides for generated token names.
+   */
+  readonly tokens?: {
+    /**
+     * Prefix used when generating theme cookie constants (e.g., HERMES).
+     */
+    readonly themePrefix?: string;
+  };
 }
 
 /**
@@ -110,6 +120,30 @@ interface ReplacementRule {
  */
 function sanitizeHandleSlug(source: string): string {
   return source.toLowerCase().replaceAll(/[^\da-z]+/g, '');
+}
+
+function splitIntoWords(source: string): string[] {
+  return source
+    .split(/[^\dA-Za-z]+/g)
+    .map((segment) => segment.trim())
+    .filter(Boolean);
+}
+
+function deriveThemePrefixVariants(brand: BrandMetadata): {
+  constant: string;
+  kebab: string;
+  snake: string;
+} {
+  const base = brand.tokens?.themePrefix ?? brand.shortName ?? brand.name;
+  const words = splitIntoWords(base);
+  const normalized = words.length ? words : splitIntoWords(brand.name);
+  const safeWords = normalized.length ? normalized : ['hermes'];
+
+  return {
+    constant: safeWords.map((word) => word.toUpperCase()).join('_'),
+    kebab: safeWords.map((word) => word.toLowerCase()).join('-'),
+    snake: safeWords.map((word) => word.toLowerCase()).join('_'),
+  };
 }
 
 /**
@@ -337,6 +371,89 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) =>
       `${(brand.organization?.name ?? brand.name).replaceAll(/\s+/g, '')}Cloud`,
   },
+  {
+    description:
+      'Theme appearance cookie constant migrates from the legacy LOBE prefix to the Hermes-approved prefix.',
+    id: 'theme-token-appearance-constant',
+    pattern: /\bLOBE_THEME_APPEARANCE\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.constant}_THEME_APPEARANCE`;
+    },
+  },
+  {
+    description: 'Theme primary color cookie constant adopts Hermes naming.',
+    id: 'theme-token-primary-constant',
+    pattern: /\bLOBE_THEME_PRIMARY_COLOR\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.constant}_THEME_PRIMARY_COLOR`;
+    },
+  },
+  {
+    description: 'Theme neutral color cookie constant adopts Hermes naming.',
+    id: 'theme-token-neutral-constant',
+    pattern: /\bLOBE_THEME_NEUTRAL_COLOR\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.constant}_THEME_NEUTRAL_COLOR`;
+    },
+  },
+  {
+    description:
+      'Kebab-case theme appearance tokens follow the Hermes prefix for CSS IDs or data attributes.',
+    id: 'theme-token-appearance-kebab',
+    pattern: /\blobe-theme-appearance\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.kebab}-theme-appearance`;
+    },
+  },
+  {
+    description: 'Kebab-case theme primary color tokens follow the Hermes prefix.',
+    id: 'theme-token-primary-kebab',
+    pattern: /\blobe-theme-primary-color\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.kebab}-theme-primary-color`;
+    },
+  },
+  {
+    description: 'Kebab-case theme neutral color tokens follow the Hermes prefix.',
+    id: 'theme-token-neutral-kebab',
+    pattern: /\blobe-theme-neutral-color\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.kebab}-theme-neutral-color`;
+    },
+  },
+  {
+    description: 'Snake_case theme appearance tokens use Hermes naming for server configs.',
+    id: 'theme-token-appearance-snake',
+    pattern: /\blobe_theme_appearance\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.snake}_theme_appearance`;
+    },
+  },
+  {
+    description: 'Snake_case theme primary color tokens use Hermes naming.',
+    id: 'theme-token-primary-snake',
+    pattern: /\blobe_theme_primary_color\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.snake}_theme_primary_color`;
+    },
+  },
+  {
+    description: 'Snake_case theme neutral color tokens use Hermes naming.',
+    id: 'theme-token-neutral-snake',
+    pattern: /\blobe_theme_neutral_color\b/g,
+    replacement: (brand) => {
+      const prefix = deriveThemePrefixVariants(brand);
+      return `${prefix.snake}_theme_neutral_color`;
+    },
+  },
 ];
 
 /**
@@ -410,12 +527,16 @@ const DEFAULT_BRAND: BrandMetadata = {
   shortName: 'Hermes Chat',
   supportEmail: 'support@hermes.chat',
   supportUrl: 'https://hermes.chat/support',
+  tokens: {
+    themePrefix: 'Hermes',
+  },
 };
 
 const logger = consola.withTag('rebrand');
 
 type Mutable<T> = { -readonly [P in keyof T]: T[P] };
 type BrandOverrides = Partial<Mutable<BrandMetadata>>;
+type ScriptMode = 'apply' | 'lint-strings' | 'validate';
 
 function mergeBrandMetadata(base: BrandMetadata, overrides: BrandOverrides): BrandMetadata {
   const organization =
@@ -440,6 +561,11 @@ function mergeBrandMetadata(base: BrandMetadata, overrides: BrandOverrides): Bra
         }
       : undefined;
 
+  const tokens = {
+    themePrefix:
+      overrides.tokens?.themePrefix ?? base.tokens?.themePrefix ?? base.shortName ?? base.name,
+  };
+
   return {
     ...base,
     ...overrides,
@@ -455,6 +581,7 @@ function mergeBrandMetadata(base: BrandMetadata, overrides: BrandOverrides): Bra
     organization,
     repository,
     supportEmail: overrides.supportEmail ?? overrides.contact?.email ?? base.supportEmail,
+    tokens,
   };
 }
 
@@ -539,6 +666,7 @@ async function buildSummary(
 function parseBrandOverridesFromArgs(): {
   brand: BrandMetadata;
   dryRun: boolean;
+  mode: ScriptMode;
   verbose: boolean;
   workspace: string;
 } {
@@ -558,6 +686,7 @@ function parseBrandOverridesFromArgs(): {
       'contact-website': { type: 'string' },
       'dry-run': { default: false, type: 'boolean' },
       'metadata-file': { type: 'string' },
+      'mode': { type: 'string' },
       'organization-domain': { type: 'string' },
       'organization-name': { type: 'string' },
       'repository-host': { type: 'string' },
@@ -565,6 +694,7 @@ function parseBrandOverridesFromArgs(): {
       'repository-owner': { type: 'string' },
       'support-email': { type: 'string' },
       'support-url': { type: 'string' },
+      'theme-token-prefix': { type: 'string' },
       'verbose': { default: false, type: 'boolean' },
       'workspace': { type: 'string' },
     },
@@ -626,6 +756,7 @@ function parseBrandOverridesFromArgs(): {
   const cdnDomain = values['cdn-domain'] as string | undefined;
   const supportEmail = values['support-email'] as string | undefined;
   const supportUrl = values['support-url'] as string | undefined;
+  const themeTokenPrefix = values['theme-token-prefix'] as string | undefined;
 
   if (brandName) cliOverrides.name = brandName;
   if (brandShortName || brandName) cliOverrides.shortName = brandShortName ?? brandName;
@@ -633,6 +764,7 @@ function parseBrandOverridesFromArgs(): {
   if (cdnDomain) cliOverrides.cdnDomain = cdnDomain;
   if (supportEmail) cliOverrides.supportEmail = supportEmail;
   if (supportUrl) cliOverrides.supportUrl = supportUrl;
+  if (themeTokenPrefix) cliOverrides.tokens = { themePrefix: themeTokenPrefix };
   if (Object.keys(organizationOverrides).length) {
     const existingOrganization = metadataBrand.organization;
     const baseOrganization = existingOrganization
@@ -687,6 +819,19 @@ function parseBrandOverridesFromArgs(): {
 
   const brand = mergeBrandMetadata(metadataBrand, cliOverrides);
 
+  const modeInput = values.mode as string | undefined;
+  const allowedModes: ScriptMode[] = ['apply', 'lint-strings', 'validate'];
+  const mode = modeInput
+    ? allowedModes.includes(modeInput as ScriptMode)
+      ? (modeInput as ScriptMode)
+      : undefined
+    : 'apply';
+  if (!mode) {
+    throw new Error(
+      `Invalid mode "${modeInput}" supplied. Supported modes: ${allowedModes.join(', ')}.`,
+    );
+  }
+
   if (!brand.name || !brand.domain || !brand.supportEmail || !brand.supportUrl) {
     throw new Error(
       'Brand metadata is incomplete. Ensure name, domain, supportEmail, and supportUrl are provided.',
@@ -700,6 +845,7 @@ function parseBrandOverridesFromArgs(): {
   return {
     brand,
     dryRun: Boolean(values['dry-run']),
+    mode,
     verbose: Boolean(values.verbose),
     workspace,
   };
@@ -718,8 +864,44 @@ async function collectTargetFiles(workspace: string): Promise<string[]> {
   return entries;
 }
 
+async function runQualityChecks(mode: ScriptMode): Promise<void> {
+  logger.start(`Executing Hermes theme persistence checks for mode: ${mode}`);
+
+  await new Promise<void>((resolvePromise, rejectPromise) => {
+    const child = spawn(
+      'bunx',
+      ['vitest', 'run', '--silent=passed-only', 'tests/unit/themeCookies.test.tsx'],
+      {
+        stdio: 'inherit',
+      },
+    );
+
+    child.on('exit', (code) => {
+      if (code === 0) {
+        logger.success('Theme cookie regression tests passed.');
+        resolvePromise();
+      } else {
+        rejectPromise(new Error(`Vitest exited with status ${code ?? 'unknown'}.`));
+      }
+    });
+
+    child.on('error', (error) => {
+      rejectPromise(error);
+    });
+  });
+}
+
 async function run(): Promise<void> {
-  const { brand, dryRun, workspace, verbose } = parseBrandOverridesFromArgs();
+  const {
+    brand,
+    dryRun: requestedDryRun,
+    mode,
+    workspace,
+    verbose,
+  } = parseBrandOverridesFromArgs();
+
+  const dryRun = mode === 'lint-strings' ? true : requestedDryRun;
+  const forcedDryRun = mode === 'lint-strings' && !requestedDryRun;
 
   if (verbose) {
     consola.level = 4;
@@ -751,6 +933,10 @@ async function run(): Promise<void> {
     );
   }
 
+  if (forcedDryRun) {
+    logger.info('lint-strings mode enforces dry-run execution to guarantee safety.');
+  }
+
   logger.info('Replacement breakdown by rule:');
   for (const rule of REBRANDING_RULES) {
     const count = summary.replacements[rule.id] ?? 0;
@@ -761,6 +947,10 @@ async function run(): Promise<void> {
 
   if (dryRun) {
     logger.warn('Dry run was enabled; rerun without --dry-run to persist changes.');
+  }
+
+  if (mode === 'lint-strings' || mode === 'validate') {
+    await runQualityChecks(mode);
   }
 }
 
