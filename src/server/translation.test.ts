@@ -14,7 +14,10 @@ vi.mock('next/headers', () => ({
 
 vi.mock('@/const/locale', () => ({
   DEFAULT_LANG: 'en-US',
-  LOBE_LOCALE_COOKIE: 'LOBE_LOCALE',
+  HERMES_LOCALE_COOKIE: 'HERMES_LOCALE',
+  LEGACY_LOBE_LOCALE_COOKIE: 'LOBE_LOCALE',
+  LOCALE_COOKIE_FALLBACK_CHAIN: ['HERMES_LOCALE', 'LOBE_LOCALE'],
+  LOBE_LOCALE_COOKIE: 'HERMES_LOCALE',
 }));
 
 vi.mock('@/locales/resources', () => ({

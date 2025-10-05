@@ -49,7 +49,7 @@ export const createI18nNext = (lang?: string) => {
         //   cookieOptions: {
         //     sameSite: 'lax',
         //   },
-        //   lookupCookie: LOBE_LOCALE_COOKIE,
+        //   lookupCookie: HERMES_LOCALE_COOKIE,
         // },
         fallbackLng: DEFAULT_LANG,
 

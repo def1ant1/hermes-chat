@@ -15,6 +15,11 @@ vi.mock('@/utils/logger', () => ({
   }),
 }));
 
+// 模拟 fetch-socks 以避免在测试环境中引入原生依赖
+vi.mock('fetch-socks', () => ({
+  socksDispatcher: vi.fn(),
+}));
+
 // 模拟 undici - 使用 vi.fn() 直接在 Mock 中创建
 vi.mock('undici', () => ({
   fetch: vi.fn(),
@@ -236,6 +241,9 @@ describe('NetworkProxyCtr', () => {
 
       expect(result).toEqual({ success: true });
       expect(mockUndici.fetch).toHaveBeenCalledWith('https://www.google.com', expect.any(Object));
+
+      const [, requestInit] = vi.mocked(mockUndici.fetch).mock.calls.at(-1) ?? [];
+      expect(requestInit?.headers?.['User-Agent']).toBe('HermesChat-Desktop/1.0.0');
     });
 
     it('should throw error for failed connection', async () => {
@@ -280,6 +288,9 @@ describe('NetworkProxyCtr', () => {
 
       expect(result.success).toBe(true);
       expect(result.responseTime).toBeGreaterThanOrEqual(0);
+
+      const [, proxyRequest] = vi.mocked(mockUndici.fetch).mock.calls.at(-1) ?? [];
+      expect(proxyRequest?.headers?.['User-Agent']).toBe('HermesChat-Desktop/1.0.0');
     });
 
     it('should return failure for invalid config', async () => {

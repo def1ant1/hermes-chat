@@ -1,6 +1,12 @@
-# 🤯 LobeHub Desktop Application
+# 🤯 Hermes Chat Desktop Application
 
-LobeHub Desktop is a cross-platform desktop application for [LobeChat](https://github.com/lobehub/lobe-chat), built with Electron, providing a more native desktop experience and functionality.
+Hermes Chat Desktop is a cross-platform desktop application for [Hermes Chat](https://github.com/hermes-chat/hermes-chat), built with Electron, providing a more native desktop experience and functionality.
+
+> \[!NOTE]
+> 2025-01-22 — Brand council (BRD-221) and Customer Success (OPS-984) signed off
+> on the rename. Desktop release trains must preserve dual cookie emission until
+> 2025-03-31 so managed tenants finish the Hermes rollout without user-visible
+> locale regressions.
 
 ## ✨ Features
 
@@ -11,7 +17,7 @@ LobeHub Desktop is a cross-platform desktop application for [LobeChat](https://g
 - **🔒 Secure & Reliable**: macOS notarized, encrypted token storage, secure OAuth flow
 - **📦 Multiple Release Channels**: Stable, beta, and nightly build versions
 - **⚡ Advanced Window Management**: Multi-window architecture with theme synchronization
-- **🔗 Remote Server Sync**: Secure data synchronization with remote LobeChat instances
+- **🔗 Remote Server Sync**: Secure data synchronization with remote Hermes Chat instances
 - **🎯 Developer Tools**: Built-in development panel and comprehensive debugging tools
 
 ## 🚀 Development Setup
@@ -325,7 +331,7 @@ Desktop application development involves complex cross-platform considerations a
 
 ### Contribution Process
 
-1. Fork the [LobeChat repository](https://github.com/lobehub/lobe-chat)
+1. Fork the [Hermes Chat repository](https://github.com/hermes-chat/hermes-chat)
 2. Set up the desktop development environment following our setup guide
 3. Make your changes to the desktop application
 4. Submit a Pull Request describing:
@@ -350,4 +356,4 @@ Desktop application development involves complex cross-platform considerations a
 - **Development Guide**: [`Development.md`](./Development.md) - Comprehensive development documentation
 - **Architecture Docs**: [`/docs`](../../docs/) - Detailed technical specifications
 - **Contributing**: [`CONTRIBUTING.md`](../../CONTRIBUTING.md) - Contribution guidelines
-- **Issues & Support**: [GitHub Issues](https://github.com/lobehub/lobe-chat/issues)
+- **Issues & Support**: [GitHub Issues](https://github.com/hermes-chat/hermes-chat/issues)

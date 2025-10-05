@@ -148,3 +148,10 @@ fi
 set -x
 bunx tsx scripts/rebrandHermesChat.ts "${CLI_ARGS[@]}"
 set +x
+
+if [[ "$COMMAND" == "lint-strings" ]]; then
+  echo "[rebrand] Running string-regression Vitest suite"
+  set -x
+  bunx vitest run --silent='passed-only' 'tests/scripts/rebrandHermesChat.test.ts'
+  set +x
+fi

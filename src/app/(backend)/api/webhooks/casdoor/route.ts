@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 
+import { HERMES_OAUTH_BRAND_KEY } from '@/const/app';
 import { serverDB } from '@/database/server';
 import { authEnv } from '@/envs/auth';
 import { pino } from '@/libs/logger';
@@ -12,7 +13,10 @@ export const POST = async (req: Request): Promise<NextResponse> => {
 
   if (!payload) {
     return NextResponse.json(
-      { error: 'webhook verification failed or payload was malformed' },
+      {
+        brand: HERMES_OAUTH_BRAND_KEY,
+        error: 'webhook verification failed or payload was malformed',
+      },
       { status: 400 },
     );
   }
@@ -39,7 +43,10 @@ export const POST = async (req: Request): Promise<NextResponse> => {
       pino.warn(
         `${req.url} received event type "${action}", but no handler is defined for this type`,
       );
-      return NextResponse.json({ error: `unrecognised payload type: ${action}` }, { status: 400 });
+      return NextResponse.json(
+        { brand: HERMES_OAUTH_BRAND_KEY, error: `unrecognised payload type: ${action}` },
+        { status: 400 },
+      );
     }
   }
 };

@@ -43,7 +43,9 @@ export class ProxyConnectionTester {
 
       const response = await fetch(url, {
         headers: {
-          'User-Agent': 'LobeChat-Desktop/1.0.0',
+          // 2025-01-22 (Desktop Release WG): Updated UA string keeps telemetry
+          // dashboards aligned with Hermes naming while analytics migrates.
+          'User-Agent': 'HermesChat-Desktop/1.0.0',
         },
         signal: controller.signal,
       });
@@ -116,7 +118,9 @@ export class ProxyConnectionTester {
         const response = await fetch(testUrl, {
           dispatcher: agent,
           headers: {
-            'User-Agent': 'LobeChat-Desktop/1.0.0',
+            // 2025-01-22 (Desktop Release WG): Same rationale as above—maintain
+            // Hermes UA across proxy tests for consistent monitoring.
+            'User-Agent': 'HermesChat-Desktop/1.0.0',
           },
           signal: controller.signal,
         });
