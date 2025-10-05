@@ -345,6 +345,30 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     replacement: (brand) => brand.domain,
   },
   {
+    description: 'Legacy referral source parameters migrate to the Hermes tracking taxonomy.',
+    id: 'utm-source-lobehub',
+    pattern: /utm_source=lobehub/g,
+    replacement: () => 'utm_source=hermes-chat',
+  },
+  {
+    description: 'GitHub specific referral sources collapse into the standard Hermes campaign.',
+    id: 'utm-source-github-lobechat',
+    pattern: /utm_source=github_lobe-?chat/g,
+    replacement: () => 'utm_source=hermes-chat',
+  },
+  {
+    description: 'Legacy README medium tags adopt the Hermes in-product taxonomy.',
+    id: 'utm-medium-github-readme',
+    pattern: /utm_medium=github_readme/g,
+    replacement: () => 'utm_medium=app_referral',
+  },
+  {
+    description: 'Legacy generic "link" campaigns move under the provider umbrella.',
+    id: 'utm-campaign-link',
+    pattern: /utm_campaign=link/g,
+    replacement: () => 'utm_campaign=model_provider',
+  },
+  {
     description:
       'Legacy lobechat.com hostnames (without www) that still surface in historical READMEs and deployment manifests.',
     id: 'legacy-lobechat-domain',

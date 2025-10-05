@@ -1,5 +1,22 @@
 import { ModelProviderCard } from '@/types/llm';
 
+import { buildHermesReferralUrl } from './utils/referral';
+
+// NOTE(HERMES-GROWTH-2025-02-18): PPIO relies on an invite code while their
+// partner dashboard catches up to Hermes tracking. The Growth pod asked us to
+// centralise both the model list and signup flows through go.hermes.chat so the
+// UTMs stay uniform across every surface.
+const PPIO_MODELS_REFERRAL = buildHermesReferralUrl({
+  destination: 'ppio-models',
+  slug: 'ppio',
+});
+
+const PPIO_SIGNUP_REFERRAL = buildHermesReferralUrl({
+  destination: 'ppio-signup',
+  extraParams: { invited_by: 'RQIMOC' },
+  slug: 'ppio',
+});
+
 const PPIO: ModelProviderCard = {
   chatModels: [
     {
@@ -159,15 +176,16 @@ const PPIO: ModelProviderCard = {
   disableBrowserRequest: true,
   id: 'ppio',
   modelList: { showModelFetcher: true },
-  modelsUrl:
-    'https://ppinfra.com/llm-api?utm_source=github_lobe-chat&utm_medium=github_readme&utm_campaign=link',
+  modelsUrl: PPIO_MODELS_REFERRAL,
   name: 'PPIO',
   settings: {
     disableBrowserRequest: true,
     sdkType: 'openai',
     showModelFetcher: true,
   },
-  url: 'https://ppinfra.com/user/register?invited_by=RQIMOC&utm_source=github_lobechat',
+  // Keep the invite code attached to the Hermes shortlink so PartnerOps can
+  // reconcile historical referrals while they finish migrating dashboards.
+  url: PPIO_SIGNUP_REFERRAL,
 };
 
 export default PPIO;

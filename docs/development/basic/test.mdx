@@ -74,6 +74,24 @@ This will run all unit tests and output the test results.
 >   validates SEO metadata snapshots.
 > - `bunx vitest run --silent=passed-only src/app/discover/__tests__/discoverProviderBrand.test.tsx`
 >   confirms the Hermes Cloud provider slug and fallbacks resolve correctly.
+> - `bunx vitest run --silent='passed-only' 'src/config/modelProviders/__tests__/referralLinks.test.ts'`
+>   validates the Growth-approved Hermes referral URLs for partner cards.
+
+## Referral instrumentation guardrails
+
+- Centralise partner and provider referral updates through
+  `src/config/modelProviders/utils/referral.ts`. The helper injects the
+  Growth-sanctioned `utm_source=hermes-chat`, `utm_medium=app_referral`, and
+  `utm_campaign=model_provider` tuple, plus a slug-specific `utm_content` so we
+  never regress dashboards when onboarding new providers.
+- When legacy `lobehub` links pop up in docs or configs, run
+  `bunx tsx scripts/rebrandHermesChat.ts --mode validate --workspace .` to
+  regenerate shortlinks and review the per-rule replacement audit. The CLI now
+  counts each `utm-source-*` replacement so Growth can self-serve compliance
+  checks.
+- Keep the regression test above green before merging provider changes. Extend
+  the assertions whenever new providers start using Hermes shortlinks so CI
+  blocks outdated tracking parameters automatically.
 
 ## Testing Strategy
 
