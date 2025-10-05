@@ -22,7 +22,7 @@ const REQUIRED_ARGS = [
   '--brand-domain',
   'qa.hermes.chat',
   '--support-email',
-  'help@hermes.chat',
+  'support@hermes.chat',
   '--support-url',
   'https://qa.hermes.chat/support',
   '--contact-email',
@@ -88,7 +88,7 @@ async function createWorkspace(): Promise<string> {
 
   await writeFile(
     join(workspace, 'docs.md'),
-    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @hermeslabs/ui\nScoped migration: @lobechat/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nLocale cookie constant: LOBE_LOCALE\nDesktop UA: LobeChat-Desktop/1.0.0\nMarkdown sample: \`lobe_chat\`\nCloud constant: LOBE_CHAT_CLOUD\nCloud slug: lobe-chat-cloud\nCloud snake: lobe_chat_cloud\nCloud label: Lobe Chat Cloud\nProvider slug: 'lobehub'\nPPIO referral: https://ppinfra.com/user/register?invited_by=RQIMOC&utm_source=github_lobechat&utm_medium=github_readme&utm_campaign=link\nAiHubMix docs: https://aihubmix.com?utm_source=lobehub&utm_medium=github_readme&utm_campaign=link\n`,
+    `# LobeChat\n\nLobeChat by LobeHub lives at https://lobehub.com and https://cdn.lobehub.com.\nLegacy domains: https://lobechat.com + https://www.lobechat.com\nRaw asset: https://raw.githubusercontent.com/lobehub/lobe-chat/main/assets/logo.svg\nSupport: https://help.lobehub.com\nAuth configuration guide: https://lobehub.com/docs/self-hosting/advanced/authentication\nAccess denied troubleshooting: https://authjs.dev/reference/core/errors#accessdenied\nVerification troubleshooting: https://authjs.dev/reference/core/errors#verification\nGeneric auth errors: https://authjs.dev/reference/core/errors\nContact support@lobehub.com or hello@lobehub.com.\nRepo: https://github.com/lobehub/lobe-chat.\nURN: urn:lobehub:chat\nPackage: @hermeslabs/ui\nScoped migration: @lobechat/analytics\nSocial: Follow us @lobehub!\nCommunity beta: say hi at @lobechat.\nAsset: /assets/logo/lobehub.svg\nDocker service: lobe-chat\nHelm release: LOBE-CHAT\nEnvironment constant: LOBE_CHAT\nLocale cookie constant: LOBE_LOCALE\nDesktop UA: LobeChat-Desktop/1.0.0\nMarkdown sample: \`lobe_chat\`\nCloud constant: LOBE_CHAT_CLOUD\nCloud slug: lobe-chat-cloud\nCloud snake: lobe_chat_cloud\nCloud label: Lobe Chat Cloud\nProvider slug: 'lobehub'\nPPIO referral: https://ppinfra.com/user/register?invited_by=RQIMOC&utm_source=github_lobechat&utm_medium=github_readme&utm_campaign=link\nAiHubMix docs: https://aihubmix.com?utm_source=lobehub&utm_medium=github_readme&utm_campaign=link\n`,
     'utf8',
   );
 
@@ -169,12 +169,24 @@ describe('rebrandHermesChat CLI', () => {
       expect(docs).toContain('Hermes Chat QA');
       expect(docs).toContain('Hermes Labs');
       expect(docs).toContain('https://qa.hermes.chat/support');
+      expect(docs).toContain(
+        'https://docs.qa.hermes.chat/self-hosting/advanced/authentication (English) | 简体中文：https://docs.qa.hermes.chat/zh-cn/self-hosting/advanced/authentication',
+      );
+      expect(docs).toContain(
+        'https://docs.qa.hermes.chat/platform/authentication/errors#access-denied (English) | 简体中文：https://docs.qa.hermes.chat/zh-cn/platform/authentication/errors#access-denied',
+      );
+      expect(docs).toContain(
+        'https://docs.qa.hermes.chat/platform/authentication/errors#verification (English) | 简体中文：https://docs.qa.hermes.chat/zh-cn/platform/authentication/errors#verification',
+      );
+      expect(docs).toContain(
+        'https://docs.qa.hermes.chat/platform/authentication/errors (English) | 简体中文：https://docs.qa.hermes.chat/zh-cn/platform/authentication/errors',
+      );
       expect(docs).toContain('cdn.qa.hermes.chat');
       expect(docs).toContain('https://qa.hermes.chat + https://www.qa.hermes.chat');
       expect(docs).toContain(
         'https://cdn.qa.hermes.chat/hermes-chat/chat-enterprise/main/assets/logo.svg',
       );
-      expect(docs).toContain('help@hermes.chat');
+      expect(docs).toContain('support@hermes.chat');
       expect(docs).toContain('@hermeslabs/ui');
       expect(docs).toContain('@hermeslabs/analytics');
       expect(docs).toContain('@hermeslabs!');
@@ -198,6 +210,7 @@ describe('rebrandHermesChat CLI', () => {
       expect(docs).not.toContain('github_lobechat');
       expect(docs).not.toContain('utm_source=lobehub');
       expect(docs).not.toContain('LobeChat');
+      expect(docs).not.toContain('authjs.dev');
       expect(docs).not.toContain('lobehub.com');
       expect(docs).not.toContain('lobechat.com');
       expect(docs).not.toContain('@lobechat');
@@ -260,6 +273,10 @@ describe('rebrandHermesChat CLI', () => {
       expect(combinedOutput).toContain('utm-source-github-lobechat');
       expect(combinedOutput).toContain('utm-medium-github-readme');
       expect(combinedOutput).toContain('utm-campaign-link');
+      expect(combinedOutput).toContain('docs-auth-configuration');
+      expect(combinedOutput).toContain('docs-auth-errors-access-denied');
+      expect(combinedOutput).toContain('docs-auth-errors-verification');
+      expect(combinedOutput).toContain('docs-auth-errors-generic');
       expect(combinedOutput).toContain('dry-run replacement summary');
 
       const after = await readFile(join(workspace, 'docs.md'), 'utf8');

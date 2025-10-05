@@ -46,6 +46,25 @@ export interface BrandMetadata {
     readonly website?: string;
   };
   /**
+   * Documentation entrypoints for surfaced troubleshooting guidance.
+   */
+  readonly docs?: {
+    /** Default locale documentation origin. */
+    readonly base: string;
+    /**
+     * Stable deep-links exercised by the auth error experiences. Additional paths can be
+     * appended over time without touching the CLI call sites.
+     */
+    readonly paths?: {
+      readonly authConfiguration?: string;
+      readonly authErrors?: string;
+      readonly authErrorsAccessDenied?: string;
+      readonly authErrorsVerification?: string;
+    };
+    /** Simplified Chinese locale documentation origin. */
+    readonly zhCN?: string;
+  };
+  /**
    * Primary marketing / login domain for the product.
    */
   readonly domain: string;
@@ -183,6 +202,27 @@ function deriveCloudProviderSlug(brand: BrandMetadata): string {
   const fallback = safeWords.length ? safeWords : ['hermes'];
 
   return `${fallback[0].toLowerCase()}cloud`;
+}
+
+function normalizeDocsPath(path: string): string {
+  if (!path) return '';
+  return path.startsWith('/') ? path : `/${path}`;
+}
+
+function resolveDocsBases(brand: BrandMetadata): { base: string; zhCN: string } {
+  const normalizedDomain = brand.domain?.replace(/\/$/, '') ?? 'hermes.chat';
+  const derivedBase = `https://docs.${normalizedDomain}`;
+  const base = brand.docs?.base?.replace(/\/$/, '') ?? derivedBase;
+  const zh = brand.docs?.zhCN?.replace(/\/$/, '') ?? `${base}/zh-cn`;
+
+  return { base, zhCN: zh };
+}
+
+function buildDocsLink(brand: BrandMetadata, path: string): string {
+  const { base, zhCN } = resolveDocsBases(brand);
+  const normalizedPath = normalizeDocsPath(path);
+
+  return `${base}${normalizedPath} (English) | 简体中文：${zhCN}${normalizedPath}`;
 }
 
 /**
@@ -331,6 +371,45 @@ const REBRANDING_RULES: readonly ReplacementRule[] = [
     id: 'support-email',
     pattern: /support@lobehub\.com/g,
     replacement: (brand) => brand.supportEmail,
+  },
+  {
+    description:
+      'Auth configuration troubleshooting now points to Hermes documentation with locale guidance.',
+    id: 'docs-auth-configuration',
+    pattern: /https?:\/\/lobehub\.com\/docs\/self-hosting\/advanced\/authentication/g,
+    replacement: (brand) =>
+      buildDocsLink(
+        brand,
+        brand.docs?.paths?.authConfiguration ?? '/self-hosting/advanced/authentication',
+      ),
+  },
+  {
+    description: 'Access denied remediation is hosted on Hermes documentation.',
+    id: 'docs-auth-errors-access-denied',
+    pattern: /https?:\/\/authjs\.dev\/reference\/core\/errors#accessdenied/g,
+    replacement: (brand) =>
+      buildDocsLink(
+        brand,
+        brand.docs?.paths?.authErrorsAccessDenied ??
+          '/platform/authentication/errors#access-denied',
+      ),
+  },
+  {
+    description: 'Verification error remediation is hosted on Hermes documentation.',
+    id: 'docs-auth-errors-verification',
+    pattern: /https?:\/\/authjs\.dev\/reference\/core\/errors#verification/g,
+    replacement: (brand) =>
+      buildDocsLink(
+        brand,
+        brand.docs?.paths?.authErrorsVerification ?? '/platform/authentication/errors#verification',
+      ),
+  },
+  {
+    description: 'Generic authentication error troubleshooting references Hermes documentation.',
+    id: 'docs-auth-errors-generic',
+    pattern: /https?:\/\/authjs\.dev\/reference\/core\/errors/g,
+    replacement: (brand) =>
+      buildDocsLink(brand, brand.docs?.paths?.authErrors ?? '/platform/authentication/errors'),
   },
   {
     description: 'General hello/inbox mailbox.',
@@ -666,6 +745,16 @@ const DEFAULT_BRAND: BrandMetadata = {
     email: 'hello@hermes.chat',
     website: 'https://hermes.chat',
   },
+  docs: {
+    base: 'https://docs.hermes.chat',
+    paths: {
+      authConfiguration: '/self-hosting/advanced/authentication',
+      authErrors: '/platform/authentication/errors',
+      authErrorsAccessDenied: '/platform/authentication/errors#access-denied',
+      authErrorsVerification: '/platform/authentication/errors#verification',
+    },
+    zhCN: 'https://docs.hermes.chat/zh-cn',
+  },
   domain: 'hermes.chat',
   name: 'Hermes Chat',
   organization: {
@@ -694,6 +783,7 @@ type ScriptMode = 'apply' | 'lint-strings' | 'validate';
 function mergeBrandMetadata(base: BrandMetadata, overrides: BrandOverrides): BrandMetadata {
   const resolvedName = overrides.name ?? base.name;
   const resolvedShortName = overrides.shortName ?? base.shortName ?? resolvedName;
+  const resolvedDomain = (overrides.domain ?? base.domain ?? 'hermes.chat').replace(/\/$/, '');
 
   const organization =
     overrides.organization || base.organization
@@ -729,6 +819,43 @@ function mergeBrandMetadata(base: BrandMetadata, overrides: BrandOverrides): Bra
       resolvedName,
   };
 
+  const trimTrailingSlash = (value?: string) => (value ? value.replace(/\/$/, '') : undefined);
+  const overrideDocsBase = overrides.docs?.base;
+  const overrideDocsZh = overrides.docs?.zhCN;
+  const overrideDocsPaths = overrides.docs?.paths ?? {};
+  const baseDocsBase = base.docs?.base;
+  const baseDocsZh = base.docs?.zhCN;
+  const baseDocsPaths = base.docs?.paths ?? {};
+  const hasDomainOverride = Boolean(overrides.domain);
+
+  const docsBaseCandidate =
+    overrideDocsBase ??
+    (!hasDomainOverride ? baseDocsBase : undefined) ??
+    (resolvedDomain ? `https://docs.${resolvedDomain}` : undefined) ??
+    'https://docs.hermes.chat';
+  const docsBase = trimTrailingSlash(docsBaseCandidate) ?? 'https://docs.hermes.chat';
+
+  const docsZhCandidate =
+    overrideDocsZh ?? (!hasDomainOverride ? baseDocsZh : undefined) ?? `${docsBase}/zh-cn`;
+  const docsZh = trimTrailingSlash(docsZhCandidate) ?? `${docsBase}/zh-cn`;
+
+  const docsPaths = {
+    authConfiguration:
+      overrideDocsPaths.authConfiguration ??
+      baseDocsPaths.authConfiguration ??
+      '/self-hosting/advanced/authentication',
+    authErrors:
+      overrideDocsPaths.authErrors ?? baseDocsPaths.authErrors ?? '/platform/authentication/errors',
+    authErrorsAccessDenied:
+      overrideDocsPaths.authErrorsAccessDenied ??
+      baseDocsPaths.authErrorsAccessDenied ??
+      '/platform/authentication/errors#access-denied',
+    authErrorsVerification:
+      overrideDocsPaths.authErrorsVerification ??
+      baseDocsPaths.authErrorsVerification ??
+      '/platform/authentication/errors#verification',
+  } as Required<NonNullable<BrandMetadata['docs']>>['paths'];
+
   return {
     ...base,
     ...overrides,
@@ -740,6 +867,11 @@ function mergeBrandMetadata(base: BrandMetadata, overrides: BrandOverrides): Bra
       ...base.contact,
       ...overrides.contact,
       email: overrides.contact?.email ?? overrides.supportEmail ?? base.contact.email,
+    },
+    docs: {
+      base: docsBase,
+      paths: docsPaths,
+      zhCN: docsZh,
     },
     organization,
     repository,
@@ -847,6 +979,12 @@ function parseBrandOverridesFromArgs(): {
       'contact-email': { type: 'string' },
       'contact-telegram': { type: 'string' },
       'contact-website': { type: 'string' },
+      'docs-auth-configuration': { type: 'string' },
+      'docs-auth-errors': { type: 'string' },
+      'docs-auth-errors-access-denied': { type: 'string' },
+      'docs-auth-errors-verification': { type: 'string' },
+      'docs-base': { type: 'string' },
+      'docs-zh-cn': { type: 'string' },
       'dry-run': { default: false, type: 'boolean' },
       'metadata-file': { type: 'string' },
       'mode': { type: 'string' },
@@ -917,6 +1055,12 @@ function parseBrandOverridesFromArgs(): {
   const brandShortName = values['brand-short-name'] as string | undefined;
   const brandDomain = values['brand-domain'] as string | undefined;
   const cdnDomain = values['cdn-domain'] as string | undefined;
+  const docsBase = values['docs-base'] as string | undefined;
+  const docsZhCn = values['docs-zh-cn'] as string | undefined;
+  const docsAuthConfiguration = values['docs-auth-configuration'] as string | undefined;
+  const docsAuthErrors = values['docs-auth-errors'] as string | undefined;
+  const docsAuthErrorsAccessDenied = values['docs-auth-errors-access-denied'] as string | undefined;
+  const docsAuthErrorsVerification = values['docs-auth-errors-verification'] as string | undefined;
   const supportEmail = values['support-email'] as string | undefined;
   const supportUrl = values['support-url'] as string | undefined;
   const themeTokenPrefix = values['theme-token-prefix'] as string | undefined;
@@ -925,6 +1069,35 @@ function parseBrandOverridesFromArgs(): {
   if (brandShortName || brandName) cliOverrides.shortName = brandShortName ?? brandName;
   if (brandDomain) cliOverrides.domain = brandDomain;
   if (cdnDomain) cliOverrides.cdnDomain = cdnDomain;
+  if (
+    docsBase ||
+    docsZhCn ||
+    docsAuthConfiguration ||
+    docsAuthErrors ||
+    docsAuthErrorsAccessDenied ||
+    docsAuthErrorsVerification
+  ) {
+    const baseDocsPaths = metadataBrand.docs?.paths ?? {};
+    cliOverrides.docs = {
+      base: docsBase ?? metadataBrand.docs?.base ?? 'https://docs.hermes.chat',
+      paths: {
+        authConfiguration:
+          docsAuthConfiguration ??
+          baseDocsPaths.authConfiguration ??
+          '/self-hosting/advanced/authentication',
+        authErrors: docsAuthErrors ?? baseDocsPaths.authErrors ?? '/platform/authentication/errors',
+        authErrorsAccessDenied:
+          docsAuthErrorsAccessDenied ??
+          baseDocsPaths.authErrorsAccessDenied ??
+          '/platform/authentication/errors#access-denied',
+        authErrorsVerification:
+          docsAuthErrorsVerification ??
+          baseDocsPaths.authErrorsVerification ??
+          '/platform/authentication/errors#verification',
+      },
+      zhCN: docsZhCn ?? metadataBrand.docs?.zhCN ?? 'https://docs.hermes.chat/zh-cn',
+    };
+  }
   if (supportEmail) cliOverrides.supportEmail = supportEmail;
   if (supportUrl) cliOverrides.supportUrl = supportUrl;
   if (themeTokenPrefix) cliOverrides.tokens = { themePrefix: themeTokenPrefix };

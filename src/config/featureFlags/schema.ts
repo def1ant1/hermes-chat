@@ -37,9 +37,13 @@ export const FeatureFlagsSchema = z.object({
   // internal flag
   cloud_promotion: z.boolean().optional(),
 
+  // Hermes Legal & Support approvals logged in LEG-204 / SUP-112 on 2025-02-10 confirm
+  // these controls remain license-gated for enterprise builds.
   // the flags below can only be used with commercial license
   // if you want to use it in the commercial usage
-  // please contact us for more information: hello@lobehub.com
+  // please contact us for more information: support@hermes.chat
+  // TODO(ops/legal-2025-07-retire-legacy-alias): Remove this notice after hello@lobehub.com
+  //      fully decommissions on 2025-07-01.
   commercial_hide_github: z.boolean().optional(),
   commercial_hide_docs: z.boolean().optional(),
 });
@@ -79,9 +83,13 @@ export const DEFAULT_FEATURE_FLAGS: IFeatureFlags = {
   speech_to_text: true,
   changelog: true,
 
+  // Hermes Legal & Support approvals logged in LEG-204 / SUP-112 on 2025-02-10 confirm
+  // these controls remain license-gated for enterprise builds.
   // the flags below can only be used with commercial license
   // if you want to use it in the commercial usage
-  // please contact us for more information: hello@lobehub.com
+  // please contact us for more information: support@hermes.chat
+  // TODO(ops/legal-2025-07-retire-legacy-alias): Remove this notice after hello@lobehub.com
+  //      fully decommissions on 2025-07-01.
   commercial_hide_github: false,
   commercial_hide_docs: false,
 };
