@@ -923,18 +923,22 @@ stories:
     acceptance_criteria:
       - >-
         Multi-step onboarding wizard in `apps/web/app/(dashboard)/onboarding/` supports autosave/resume,
-        audit-friendly event logging, and surfaces automation hooks for provisioning providers, rate limits,
-        and agent scaffolds without requiring manual ops tickets.
+        audit-friendly event logging, contextual inline guidance for every step, and surfaces automation
+        hooks for provisioning providers, rate limits, and agent scaffolds without requiring manual ops
+        tickets.
       - >-
-        Ingestion health scoring pipeline exposes ACL-aware diagnostics, remediation playbooks, and
-        streaming status cards within `apps/web/app/(dashboard)/knowledge/`, backed by `apps/services/ingestion-health/`
-        APIs capable of simulating large-document loads and tiered throttling policies.
+        Ingestion health scoring pipeline exposes ACL-aware diagnostics, automated retention tagging,
+        remediation playbooks, and streaming status cards within `apps/web/app/(dashboard)/knowledge/`,
+        backed by `apps/services/ingestion-health/` APIs capable of simulating large-document loads,
+        Mnemosyne knowledge graph integration, and tiered throttling policies.
       - >-
-        Enterprise agent template library in `packages/agents/templates/` publishes governance notes, version metadata,
-        and admin controls surfaced within the dashboard, with automated verification preventing drift from approved baselines.
+        Enterprise agent template library in `packages/agents/templates/` publishes governance notes,
+        version metadata, observability hooks, and admin controls surfaced within the dashboard, with
+        automated verification preventing drift from approved baselines.
       - >-
-        Idempotent automation jobs provision providers, enforce rate limit policies, and instantiate governed agent templates
-        when triggered by wizard completion events, with observable retries and rollback semantics.
+        Idempotent automation jobs provision providers, enforce rate limit policies, and instantiate
+        governed agent templates when triggered by wizard completion events, with observable retries,
+        centralized provisioning schedules, and rollback semantics.
     testing:
       - >-
         Add wizard e2e resilience coverage (`tests/e2e/onboarding_wizard.resilience.spec.ts`) exercising autosave,
@@ -955,15 +959,16 @@ stories:
         owner: onboarding-platform
         description: >-
           Build the multi-step onboarding experience in `apps/web/app/(dashboard)/onboarding/` using scalable state machines,
-          persistent autosave (e.g., secure draft API + optimistic UI), and automation webhooks that trigger idempotent
-          provisioning jobs; include copious inline documentation guiding future enhancements.
+          persistent autosave (e.g., secure draft API + optimistic UI), rich inline guidance/coach-marks per stage, and
+          automation webhooks that trigger idempotent provisioning jobs; include copious inline documentation guiding future
+          enhancements.
         references:
           - apps/web/app/(dashboard)/onboarding/
           - apps/services/provisioning/
           - tests/e2e/onboarding_wizard.resilience.spec.ts
         automation:
           - Implement reusable job orchestration (`apps/services/provisioning/jobs/`) that provisions providers, rate limits,
-            and baseline agents with retryable steps and centralized observability dashboards.
+            and baseline agents with retryable steps, centralized observability dashboards, and Mnemosyne sync triggers.
         testing:
           - Execute `bunx vitest run --silent='passed-only' 'tests/e2e/onboarding_wizard.resilience.spec.ts'` with network
             chaos toggled, plus component/unit suites covering autosave reducers and state machines.
@@ -975,16 +980,18 @@ stories:
         type: engineering
         owner: knowledge-insights
         description: >-
-          Implement ingestion health scoring, ACL assignment, and validation tooling across
-          `apps/web/app/(dashboard)/knowledge/` and `apps/services/ingestion-health/`, instrumenting streaming telemetry,
-          large-document simulators, and remediation playbooks with extensive developer notes for maintainability.
+          Implement ingestion health scoring, ACL assignment, automated retention tagging, Mnemosyne knowledge graph
+          integration, and validation tooling across `apps/web/app/(dashboard)/knowledge/` and `apps/services/ingestion-health/`,
+          instrumenting streaming telemetry, large-document simulators, and remediation playbooks with extensive developer
+          notes for maintainability.
         references:
           - apps/web/app/(dashboard)/knowledge/
           - apps/services/ingestion-health/
           - tests/services/ingestion-health/
         automation:
           - Create scheduled + on-demand ingestion diagnostics jobs that ingest synthetic corpora, auto-heal ACL drift,
-            and publish health signals to the wizard automation pipeline while enforcing idempotency.
+            enforce retention tagging, synchronize Mnemosyne facets, and publish health signals to the wizard automation
+            pipeline while enforcing idempotency.
         testing:
           - Run `bunx vitest run --silent='passed-only' 'tests/services/ingestion-health/*'` and execute load simulations
             via `bunx ts-node apps/services/ingestion-health/scripts/run-large-doc-sim.ts` against staging fixtures.
@@ -997,15 +1004,16 @@ stories:
         owner: agent-platform
         description: >-
           Publish enterprise agent templates with governance annotations in `packages/agents/templates/`, wire admin surfacing
-          into dashboard management panes, and ensure template lifecycle automation keeps production, staging, and sandbox
-          catalogs in sync with exhaustive inline commentary.
+          into dashboard management panes, connect observability hooks, and ensure template lifecycle automation keeps
+          production, staging, and sandbox catalogs in sync with exhaustive inline commentary.
         references:
           - packages/agents/templates/
           - apps/web/app/(dashboard)/admin/agents/
           - tests/packages/agents/templates/
         automation:
           - Extend template publishing pipelines to sign, version, and distribute templates via centralized registries,
-            triggered by onboarding wizard completion and nightly drift detection jobs.
+            attach observability hooks, and trigger centralized provisioning jobs aligned with onboarding wizard completion
+            and nightly drift detection schedules.
         testing:
           - Execute `bunx vitest run --silent='passed-only' 'tests/packages/agents/templates/*'` for snapshot/unit coverage
             and validate admin surfacing via integration harness.
