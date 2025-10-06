@@ -13,6 +13,7 @@ describe('FeatureFlagsSchema', () => {
       edit_agent: false,
       dalle: true,
       ai_image: true,
+      hermes_domain_redirect: true,
     });
 
     expect(result.success).toBe(true);
@@ -40,6 +41,7 @@ describe('mapFeatureFlagsEnvToState', () => {
       ai_image: true,
       check_updates: true,
       welcome_suggest: true,
+      hermes_domain_redirect: true,
     };
 
     const expectedState = {
@@ -52,6 +54,7 @@ describe('mapFeatureFlagsEnvToState', () => {
       showAiImage: true,
       enableCheckUpdates: true,
       showWelcomeSuggest: true,
+      enableHermesDomainRedirect: true,
     };
 
     const mappedState = mapFeatureFlagsEnvToState(config);

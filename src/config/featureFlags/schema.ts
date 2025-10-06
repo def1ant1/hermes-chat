@@ -24,6 +24,8 @@ export const FeatureFlagsSchema = z.object({
   speech_to_text: z.boolean().optional(),
   token_counter: z.boolean().optional(),
 
+  hermes_domain_redirect: z.boolean().optional(),
+
   welcome_suggest: z.boolean().optional(),
   changelog: z.boolean().optional(),
 
@@ -71,6 +73,8 @@ export const DEFAULT_FEATURE_FLAGS: IFeatureFlags = {
   check_updates: true,
   welcome_suggest: true,
   token_counter: true,
+
+  hermes_domain_redirect: true,
 
   knowledge_base: true,
   rag_eval: false,
@@ -128,5 +132,7 @@ export const mapFeatureFlagsEnvToState = (config: IFeatureFlags) => {
 
     hideGitHub: config.commercial_hide_github,
     hideDocs: config.commercial_hide_docs,
+
+    enableHermesDomainRedirect: config.hermes_domain_redirect,
   };
 };
