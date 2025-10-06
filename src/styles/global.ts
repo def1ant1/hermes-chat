@@ -1,9 +1,29 @@
+import { HERMES_THEME_CSS_VARIABLES } from '@/const/theme';
 import { Theme, css } from 'antd-style';
+
+const formatVariables = (variables: Readonly<Record<string, string>>): string =>
+  Object.entries(variables)
+    .map(([name, value]) => `    ${name}: ${value};`)
+    .join('\n');
 
 // fix ios input keyboard
 // overflow: hidden;
 // ref: https://zhuanlan.zhihu.com/p/113855026
 export default ({ token }: { prefixCls: string; token: Theme }) => css`
+  :root {
+    ${formatVariables({
+      ...HERMES_THEME_CSS_VARIABLES.common,
+      ...HERMES_THEME_CSS_VARIABLES.light,
+    })}
+  }
+
+  [data-theme='dark'] {
+    ${formatVariables({
+      ...HERMES_THEME_CSS_VARIABLES.common,
+      ...HERMES_THEME_CSS_VARIABLES.dark,
+    })}
+  }
+
   html,
   body,
   #__next {
@@ -15,7 +35,8 @@ export default ({ token }: { prefixCls: string; token: Theme }) => css`
     min-height: 100dvh;
     max-height: 100dvh;
 
-    background: ${token.colorBgLayout};
+    background: var(--hermes-color-bg-canvas, ${token.colorBgLayout});
+    color: var(--hermes-color-text-strong, ${token.colorText});
 
     @media (min-device-width: 576px) {
       overflow: hidden;
@@ -29,7 +50,7 @@ export default ({ token }: { prefixCls: string; token: Theme }) => css`
   }
 
   * {
-    scrollbar-color: ${token.colorFill} transparent;
+    scrollbar-color: var(--hermes-color-text-muted, ${token.colorFill}) transparent;
     scrollbar-width: thin;
 
     ::-webkit-scrollbar {
@@ -43,7 +64,7 @@ export default ({ token }: { prefixCls: string; token: Theme }) => css`
 
     :hover::-webkit-scrollbar-thumb {
       border: 3px solid transparent;
-      background-color: ${token.colorText};
+      background-color: var(--hermes-color-text-strong, ${token.colorText});
       background-clip: content-box;
     }
 

@@ -11,6 +11,9 @@
 - Updated edge middleware, Zustand general actions, and the `AppTheme`
   provider to respect the new identifiers while documenting cleanup TODOs for
   automation visibility.
+- Published palette, typography, and spacing foundations via
+  `HERMES_THEME_FOUNDATIONS`; generated CSS variables live at
+  `public/assets/hermes-chat/theme.css` for marketing + app reuse.
 
 ## Automation updates
 
@@ -20,12 +23,17 @@
   block regressions on string rewrites.
 - Enhanced the Bash wrapper (`scripts/rebrand_hermes_chat.sh`) with command
   awareness and a `THEME_TOKEN_PREFIX` override for enterprise rollouts.
+- Added `scripts/theme/generateCss.ts` to produce deterministic CSS variables
+  and `scripts/cdn/purgeThemeCache.ts` to automatically invalidate CDN caches
+  after palette updates.
 
 ## Quality gates
 
 - New Vitest suite `tests/unit/themeCookies.test.tsx` exercises the middleware,
   Zustand actions, and `AppTheme` cookie side effects to ensure Hermes tokens
   persist end-to-end.
+- Introduced `tests/unit/themeTokens.test.ts` and `tests/visual/brand.spec.ts`
+  for contrast, spacing, and CSS variable coverage ahead of Percy runs.
 - Percy/Chromatic maintainers must refresh baselines once the new cookies are
   deployed, because CSS variable names and DOM identifiers changed.
 
