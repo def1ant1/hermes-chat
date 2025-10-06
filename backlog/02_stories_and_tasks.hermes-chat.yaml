@@ -831,6 +831,32 @@ stories:
           - Execute quota engine unit tests and e2e scenarios for throttle + alert flows.
         documentation:
           - Extend admin guide with quota configuration instructions.
+      - id: TASK-HC-106C
+        type: engineering
+        owner: platform-core
+        description: >-
+          Stand up RBAC-governed feature flag service that centralizes toggle definitions, wires admin UI flows,
+          emits THEMIS-compliant audits, and orchestrates managed rollout scripts so operations can flip or rollback
+          features without manual redeploys. Notes: co-locate governance docs with code, prefer generated clients over
+          bespoke fetchers, and enforce least-privilege flag ownership groups.
+        references:
+          - src/server/feature-flags/
+          - packages/const/src/featureFlags.ts
+          - src/config/featureFlags/
+          - apps/web/app/(dashboard)/admin/feature-flags/
+          - scripts/feature-flags/
+        automation:
+          - Provision GitHub Action `ci/feature-flag-sync.yml` to lint schemas, sync definitions with managed store, and prevent drift.
+          - Add drift-detection cron invoking `scripts/feature-flags/drift-guard.ts` with Slack + PagerDuty hooks for divergence events.
+          - Extend release tooling so rollout scripts accept staged cohorts and auto-populate change management tickets.
+        testing:
+          - Bunx Vitest suites covering RBAC enforcement, toggle evaluation matrix, and schema validation paths.
+          - Playwright e2e scenario that flips flags via admin UI and verifies end-to-end propagation through server + client surfaces.
+          - Audit log assertions ensuring THEMIS event payloads emit correct actor, scope, and diff metadata.
+        documentation:
+          - Deep-dive flag operations + observability workflow updates in `docs/operations/observability.md` and `docs/operations/admin-feature-flags.md`.
+          - Admin quickstart describing RBAC roles, automated rollout steps, and recovery drills in `docs/operations/admin-guide.md`.
+          - Architecture notes embedded alongside code (README.md per directory) to aid future maintainers in extending the service.
 
   - id: STORY-HC-107
     epic_id: EPIC-HC-011
