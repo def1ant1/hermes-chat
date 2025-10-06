@@ -1064,8 +1064,9 @@ stories:
         Schedule nightly WASM fuzzing GitHub Action with flaky-test quarantine + alerting to
         security-oncall.
       - >-
-        Extend registry sync workflow to sign manifests, regenerate SBOMs, and publish hash-indexed
-        catalogs to CDN with drift detection alerts.
+        Extend registry sync workflow to sign manifests, regenerate SBOMs, enforce egress allowlist
+        policy bundles, and publish hash-indexed catalogs to CDN with drift detection alerts routed to
+        observability dashboards.
     documentation:
       - >-
         Update `docs/plugins/catalog.md` with developer notes covering metadata curation, prompt
@@ -1077,58 +1078,67 @@ stories:
         description: >-
           Extend `apps/web/app/(dashboard)/admin/plugins/` UI + server routes to display curated
           metadata, render consent prompts with inline rationale, persist approval audit logs,
-          and centralize configuration toggles with exhaustive developer comments for maintainers.
+          enforce declarative egress allowlists, and centralize configuration toggles with exhaustive
+          developer comments for maintainers.
         references:
           - apps/web/app/(dashboard)/admin/plugins/
           - packages/plugins/catalog/
           - tests/integration/plugins/
         automation:
-          - Generate metadata JSON from manifest signatures during build via `scripts/plugins/catalog_sync.ts`
-            and wire GitHub Action to auto-populate admin caches.
+          - Generate metadata + allowlist JSON from signed manifest bundles during build via
+            `scripts/plugins/catalog_sync.ts`, wire GitHub Action to auto-populate admin caches, and
+            gate merges on manifest schema validation (`bun run lint:plugins-manifest`).
         testing:
           - Execute `bunx vitest run --silent='passed-only' 'tests/integration/plugins/catalog.spec.ts'`
-            plus Playwright admin snapshots to ensure prompt flows and approval lifecycles function.
+            plus Playwright admin snapshots to ensure prompt flows, approval lifecycles, and allowlist
+            enforcement scenarios function.
         documentation:
-          - Add admin workflow diagrams + configuration matrix to `docs/plugins/catalog.md`, including
-            notes on minimizing manual approvals via policy inheritance.
+          - Add admin workflow diagrams, configuration automation notes, and schema validation SOP to
+            `docs/plugins/catalog.md`, including guidance on minimizing manual approvals via policy
+            inheritance and analytics dashboards.
       - id: TASK-HC-010B
         type: engineering
         owner: runtime-security
         description: >-
-          Fortify `packages/plugins/runtime/` WASM sandbox with resource quotas, deterministic
-          capability bridges, structured audit emitters, and integrated fuzz harnesses that feed
-          telemetry + failure corpora back into regression suites.
+          Fortify `packages/plugins/runtime/` WASM sandbox with deterministic capability bridges,
+          granular CPU/memory/io quotas, THEMIS-compatible audit emitters, and integrated fuzz harnesses
+          that feed telemetry + failure corpora back into regression suites.
         references:
           - packages/plugins/runtime/
           - packages/plugins/runtime/tests/
           - scripts/fuzz/
         automation:
           - Add Temporal/Chronicle pipeline to seed nightly fuzz jobs, upload minimized crash cases,
-            and open auto-generated issues with stack traces + reproduction scripts.
+            open auto-generated issues with stack traces + reproduction scripts, and enforce CI hooks that
+            block merges when sandbox attestation checks fail.
         testing:
-          - Run `bunx vitest run --silent='passed-only' 'packages/plugins/runtime/tests/**/*'` and
-            execute `scripts/fuzz/run_sandbox_escape.sh --ci` to validate harness integration.
+          - Run `bunx vitest run --silent='passed-only' 'packages/plugins/runtime/tests/**/*'`, execute
+            `scripts/fuzz/run_sandbox_escape.sh --ci` to validate harness integration, and record nightly
+            fuzz metrics artifacts for auditability.
         documentation:
-          - Document sandbox quotas, host capability shims, and fuzz triage flow in
-            `docs/plugins/catalog.md` developer notes appendix.
+          - Document sandbox quotas, host capability shims, THEMIS audit event taxonomy, and fuzz triage
+            flow in `docs/plugins/catalog.md` developer notes appendix and update security runbooks.
       - id: TASK-HC-010C
         type: engineering
         owner: observability-platform
         description: >-
-          Instrument telemetry + kill-switch automation across `packages/plugins/telemetry/` and
-          GitHub Actions pipelines to publish signed manifests, stream audit signals, trigger
-          automated rollback, and expose dashboards minimizing manual operations.
+          Instrument telemetry + kill-switch automation across `packages/plugins/telemetry/` and GitHub
+          Actions pipelines to publish signed manifests, stream analytics + audit signals, trigger automated
+          rollback, and expose dashboards minimizing manual operations.
         references:
           - packages/plugins/telemetry/
           - .github/workflows/plugins-*.yml
           - scripts/plugins/
         automation:
-          - Wire kill-switch workflow to signed manifest publication, Slack/PagerDuty alerts, and
-            automated registry sync rollback with dry-run verification on schedule.
+          - Wire kill-switch workflow to signed manifest publication, Slack/PagerDuty alerts, automated
+            registry sync rollback with dry-run verification on schedule, and CI hooks that validate
+            telemetry schema coverage + manifest signatures before deployment.
         testing:
           - Validate telemetry emitters via `bunx vitest run --silent='passed-only'
-            'packages/plugins/telemetry/tests/**/*'` and assert kill-switch CI workflow outcomes in
-            staging using workflow dispatch smoke tests.
+            'packages/plugins/telemetry/tests/**/*'`, assert kill-switch CI workflow outcomes in staging
+            using workflow dispatch smoke tests, and verify manifest signing + registry sync in pipeline
+            dry-runs.
         documentation:
-          - Record telemetry schema, kill-switch runbook, and signed manifest distribution steps in
-            `docs/plugins/catalog.md` with explicit developer checklist + troubleshooting notes.
+          - Record telemetry schema, kill-switch runbook, manifest signing checklist, and registry sync
+            automation steps in `docs/plugins/catalog.md` with explicit developer checklist + troubleshooting
+            notes plus updates to security operations playbooks.
