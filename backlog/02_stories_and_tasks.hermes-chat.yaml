@@ -277,6 +277,45 @@ stories:
           - Dry-run workflow using staging secrets and verify auto-rollback triggers on failure.
         documentation:
           - Update `docs/development/release-checklist.md` with workflow diagram.
+      - id: TASK-HC-005C
+        type: engineering
+        owner: platform-core
+        description: >-
+          Align `.env.example` and `.env.production` templates, plus supporting helpers in `src/envs/`, to emit Hermes Chat URLs
+          with backward-compatible legacy fallbacks and environment detection shims to simplify migration for enterprise tenants.
+        references:
+          - .env.example
+          - .env.production
+          - src/envs/
+          - scripts/rebrand_hermes_chat.sh
+        automation:
+          - Extend `scripts/rebrand_hermes_chat.sh` with an env-matrix lint that cross-validates template keys against runtime loaders
+            and blocks merges when Hermes/legacy permutations drift.
+        testing:
+          - Add matrix coverage to `tests/config/env-matrix.spec.ts` ensuring every permutation bootstraps correct Hermes URLs and
+            fails fast on missing secrets.
+        documentation:
+          - Update `.env.example` header comments and `docs/self-hosting/configuration.md` with Hermes URL mapping tables and
+            automated validation expectations.
+      - id: TASK-HC-005D
+        type: engineering
+        owner: sre
+        description: >-
+          Automate ACME certificate issuance and renewal for Hermes domains with staged validation, telemetry hooks, and PagerDuty
+          renewal alerts to guarantee zero-touch lifecycle management across environments.
+        references:
+          - infrastructure/domains/
+          - .github/workflows/rebrand-cutover.yml
+          - scripts/automation/
+        automation:
+          - Add Terraform/Ansible modules invoking ACME DNS-01 challenges with audit logging, integrate renewal status into
+            PagerDuty via webhook automation, and schedule renewal simulations through GitHub Actions.
+        testing:
+          - Implement renewal dry-run simulations in staging, exercising validation hooks via `scripts/automation/cert-renewal.sh`
+            and recording results in CI artifacts.
+        documentation:
+          - Document staged validation runbooks, PagerDuty escalation policies, and telemetry dashboards in
+            `docs/self-hosting/migration-hermes-chat.md` and `docs/development/reliability.md`.
 
   - id: STORY-HC-006
     epic_id: EPIC-HC-003
