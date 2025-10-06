@@ -656,6 +656,27 @@ stories:
           - Run `bunx vitest run --silent='passed-only' 'tests/unit/compliance/*'` plus time-travel integration tests.
         documentation:
           - Extend compliance docs with policy configuration and SLA expectations.
+      # Focus: UI/observability surfaces for ingestion health signals.
+      - id: TASK-HC-103C
+        type: engineering
+        owner: knowledge-experience
+        description: >-
+          Build knowledge ingestion health experience with dashboard panes under `src/app/[variants]/(main)/knowledge/` that visualize token usage trends, redaction throughput, and promotion blockers while reusing shared widgets from `src/features/` and `src/components/knowledge` and wiring selectors into `src/store/knowledgeBase`.
+        references:
+          - src/app/[variants]/(main)/knowledge/
+          - src/components/knowledge/
+          - src/features/
+          - src/store/knowledgeBase/
+        automation:
+          - Stream ingestion telemetry into UI via SSE/WebSocket bridge and persist to TimeSeries store with automated retention pruning.
+          - Schedule diagnostics workflow (`.github/workflows/knowledge-diagnostics.yml`) that exercises redaction simulators nightly and posts results to the dashboard timeline.
+        testing:
+          - Capture component snapshot coverage with `bunx vitest run --silent='passed-only' 'src/app/[variants]/(main)/knowledge/**/*.spec.tsx'` ensuring deterministic chart + table renders.
+          - Add Playwright journeys in `tests/e2e/knowledge-health.spec.ts` validating promotion gating, diagnostics history, and redaction drill-downs.
+          - Expand Vitest store selector suites (`tests/unit/store/knowledgeBase.selectors.spec.ts`) to assert token usage aggregations and blocker state machines.
+        documentation:
+          - Update `docs/architecture/memory.md` with ingestion health dashboards, telemetry architecture, and automation data flows.
+          - Extend runbooks (`docs/runbooks/knowledge-ingestion.md`) with troubleshooting steps for telemetry gaps, diagnostics failures, and promotion unblock procedures.
 
   - id: STORY-HC-104
     epic_id: EPIC-HC-007
