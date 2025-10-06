@@ -149,6 +149,20 @@ set -x
 bunx tsx scripts/rebrandHermesChat.ts "${CLI_ARGS[@]}"
 set +x
 
+if [[ "$DRY_RUN" == "true" ]]; then
+  echo "[rebrand] Dry run detected – skipping theme CSS regeneration and CDN purge"
+else
+  echo "[rebrand] Regenerating Hermes theme CSS variables"
+  set -x
+  bunx tsx scripts/theme/generateCss.ts
+  set +x
+
+  echo "[rebrand] Purging CDN caches for Hermes theme assets"
+  set -x
+  bunx tsx scripts/cdn/purgeThemeCache.ts
+  set +x
+fi
+
 if [[ "$COMMAND" == "lint-strings" ]]; then
   echo "[rebrand] Running string-regression Vitest suite"
   set -x
