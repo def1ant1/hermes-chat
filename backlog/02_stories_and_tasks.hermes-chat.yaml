@@ -1021,6 +1021,137 @@ stories:
           - Update `docs/usage/onboarding-enterprise.md` with governance note conventions and admin controls,
             and add CHANGELOG entries describing template lifecycle automation.
 
+  - id: STORY-HC-121
+    epic_id: EPIC-HC-012
+    title: Deliver governed enterprise onboarding, ingestion health, and agent template experience
+    priority: P0
+    description: >-
+      Launch an end-to-end, enterprise-grade enablement journey that unifies the onboarding wizard,
+      ingestion health automation, and governed agent template catalog with exhaustive inline notes,
+      observability guardrails, and automated provisioning to minimize manual operations while
+      scaling to pre-production workloads.
+    # Context: Extends EPIC-HC-012 scope to stitch onboarding, ingestion, and agent catalog pillars
+    # into a cohesive enterprise rollout with automation-first delivery expectations.
+    acceptance_criteria:
+      - >-
+        Multi-step onboarding wizard at `apps/web/app/(dashboard)/onboarding/` guides administrators
+        through workspace, data, and automation setup with autosave, contextual help, and rate-limited
+        trigger orchestration; every step includes inline implementation notes and emits analytics to
+        the observability bus.
+      - >-
+        Ingestion health services under `apps/services/ingestion-health/` compute tenant-level scores,
+        automate retention and ACL tagging, surface actionable dashboards in
+        `apps/web/app/(dashboard)/knowledge/`, and expose Mnemosyne hooks + alerts for drift,
+        saturation, and pipeline failures.
+      - >-
+        Governed agent template library in `packages/agents/templates/` supports versioned publishing,
+        admin surfacing, observability instrumentation, and idempotent provisioning pipelines that
+        automatically sync environments while enforcing RBAC and audit logging requirements.
+      - >-
+        Automation playbooks cover autosave retries, ingestion backfills, template provisioning, and
+        rate-limit configurations with CI enforcement to prevent manual drift.
+    testing:
+      - >-
+        Build Playwright/Vitest hybrid E2E coverage for the onboarding wizard, including autosave,
+        automation trigger handoffs, and guided setup branching scenarios executed via CI.
+      - >-
+        Execute ingestion stress and resilience suites targeting scoring accuracy, ACL propagation,
+        retention automation, and Mnemosyne callbacks with synthetic + fixture-driven datasets.
+      - >-
+        Maintain unit and snapshot suites for governed templates, admin surfacing, and provisioning
+        flows to guarantee deterministic catalog behaviors across environments.
+    automation:
+      - >-
+        Provision Temporal/Chronicle workflows for onboarding trigger fan-out, ingestion scoring,
+        and template publishing, guaranteeing idempotent retries, rate-limited execution, and
+        centralized observability exports.
+      - >-
+        Wire GitHub Actions and deployment pipelines to validate automation manifests, enforce schema
+        guardrails, and auto-publish documentation once tasks complete.
+    documentation:
+      - >-
+        Expand `docs/usage/onboarding-enterprise.md`, `docs/operations/ingestion-health.md`, and
+        `docs/agents/templates/governed-library.md` with setup guides, automation references, and
+        troubleshooting notes before launch.
+    tasks:
+      - id: TASK-HC-121A
+        type: engineering
+        owner: activation-platform
+        description: >-
+          Build the multi-step onboarding flow in `apps/web/app/(dashboard)/onboarding/` with autosave
+          persistence, automation trigger wiring, contextual guidance, and comprehensive inline
+          developer notes explaining decision points and extensibility hooks.
+        references:
+          - apps/web/app/(dashboard)/onboarding/
+          - packages/automations/
+          - tests/e2e/onboarding/
+        automation:
+          - Orchestrate Temporal workflows to fan out automation triggers, enforce rate limits, and
+            record provisioning state changes while keeping autosave idempotent across retries.
+          - Add CI lint to verify onboarding step schemas and localization completeness to prevent
+            manual regression.
+        testing:
+          - Implement Playwright wizard E2E suites (`bunx vitest run --silent='passed-only'
+            'tests/e2e/onboarding/wizard.spec.ts'`) validating autosave, automation execution, guided
+            setup paths, and analytics emission.
+          - Add component-level tests for step forms with snapshot coverage to guard UX regressions.
+        documentation:
+          - Author mandatory updates in `docs/usage/onboarding-enterprise.md` and developer runbooks in
+            `docs/development/onboarding/implementation-notes.md` summarizing flow architecture,
+            autosave behaviors, and automation troubleshooting.
+      - id: TASK-HC-121B
+        type: engineering
+        owner: data-platform
+        description: >-
+          Implement ingestion health scoring services in `apps/services/ingestion-health/` and surface
+          dashboards plus remediation tooling within `apps/web/app/(dashboard)/knowledge/`, including
+          ACL tagging automation, retention policy enforcement, Mnemosyne hook integration, and
+          verbose inline comments for maintainability.
+        references:
+          - apps/services/ingestion-health/
+          - apps/web/app/(dashboard)/knowledge/
+          - packages/acl/
+        automation:
+          - Schedule idempotent ingestion scoring, retention pruning, and ACL tagging jobs with
+            rate-limited retries, Mnemosyne signal routing, and alert fan-out via centralized
+            observability channels.
+          - Add CI schema checks ensuring scoring contracts and Mnemosyne hook payloads remain stable.
+        testing:
+          - Run ingestion stress harness (`bunx vitest run --silent='passed-only'
+            'tests/services/ingestion-health/stress.spec.ts'`) and regression suites covering scoring
+            accuracy, ACL propagation, retention automation, and Mnemosyne callbacks.
+          - Capture UI snapshot + contract tests for knowledge dashboards and automation banners.
+        documentation:
+          - Update `docs/operations/ingestion-health.md` with scoring formulas, automation schedules,
+            and on-call runbooks; add Mnemosyne integration notes to
+            `docs/development/observability/mnemosyne-hooks.md` before completion.
+      - id: TASK-HC-121C
+        type: engineering
+        owner: agent-platform
+        description: >-
+          Publish governed agent templates under `packages/agents/templates/` with admin surfacing,
+          observability instrumentation, provisioning pipelines, exhaustive inline commentary, and
+          automation to synchronize environments without manual intervention.
+        references:
+          - packages/agents/templates/
+          - apps/web/app/(dashboard)/admin/agents/
+          - scripts/agents/provisioning/
+        automation:
+          - Implement idempotent provisioning jobs and rate-limited rollout pipelines that version,
+            sign, and distribute templates across environments while emitting telemetry and audit logs.
+          - Configure GitHub Actions to validate template manifests, regenerate docs, and notify admins
+            on drift or provisioning failures.
+        testing:
+          - Expand template unit + snapshot suites (`bunx vitest run --silent='passed-only'
+            'tests/packages/agents/templates/**/*'`) ensuring governed metadata, admin surfacing, and
+            provisioning hooks remain stable.
+          - Add smoke tests validating provisioning pipelines against staging sandboxes with rollback
+            verification.
+        documentation:
+          - Refresh `docs/agents/templates/governed-library.md` with publishing SOPs, provisioning
+            automation diagrams, and observability dashboards; append template playbooks to
+            `docs/runbooks/agents/templates.md`.
+
   - id: STORY-HC-010
     epic_id: EPIC-HC-010
     title: Harden plugin catalog lifecycle with sandboxed execution guardrails
