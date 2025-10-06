@@ -822,3 +822,91 @@ stories:
           - Execute desktop unit tests per `testing-guide/electron-ipc-test.mdc` and manual QA sign-off script.
         documentation:
           - Update policy pack section in enterprise deployment guide.
+
+  - id: STORY-HC-108
+    epic_id: EPIC-HC-010
+    title: Govern plugin catalog metadata, sandboxing, and observability
+    priority: P0
+    description: >-
+      Deliver enterprise-grade governance for curated plugin catalog entries, including granular permission prompts, egress allowlists,
+      WASM sandbox hardening, and admin observability/kill-switch tooling with automated manifest signing.
+    # Context: Supports secure plugin ecosystem roadmap per EPIC-HC-010 requirements dossier.
+    acceptance_criteria:
+      - >-
+        Admin catalog UI at `apps/web/app/(dashboard)/admin/plugins/` surfaces curated metadata from `packages/plugins/catalog`,
+        permission prompts, and egress allowlist policies with RBAC enforcement and audit trails.
+      - >-
+        WASM runtime in `packages/plugins/runtime/` enforces CPU/memory/disk quotas, syscalls restrictions, deterministic resource metering,
+        and blocks network access outside declared allowlists with automated manifest signature verification.
+      - >-
+        Observability suite emits sandbox metrics/traces, exposes kill-switch toggles, and GitHub Actions pipeline publishes signed plugin manifests
+        with chain-of-custody logs.
+    testing:
+      - >-
+        Run sandbox escape fuzzing harness nightly with coverage reports stored in artifacts; contract tests validate manifest schema + policy enforcement gates.
+      - >-
+        Execute end-to-end admin approval flow tests validating permission prompts, audit logging, and kill-switch activation within synthetic tenants.
+    documentation:
+      - >-
+        Update `docs/plugins/catalog.md` with governance model, sandbox guarantees, manifest signing workflow, and admin observability procedures.
+    tasks:
+      - id: TASK-HC-108A
+        type: engineering
+        owner: admin-platform
+        description: >-
+          Build plugin catalog + allowlist management UI in `apps/web/app/(dashboard)/admin/plugins/` consuming metadata from `packages/plugins/catalog`,
+          rendering permission prompts, and wiring RBAC policy enforcement with exhaustive inline notes for future contributors.
+        references:
+          - apps/web/app/(dashboard)/admin/plugins/
+          - packages/plugins/catalog
+        automation:
+          - Extend admin build pipeline to auto-generate catalog metadata snapshots and lint RBAC policies during CI to eliminate manual reviews.
+        testing:
+          - Add Playwright suites covering permission prompt flows, policy editing, and egress allowlist validations plus Vitest component coverage.
+        documentation:
+          - Capture UI workflows, RBAC scopes, and reviewer checklist updates in `docs/plugins/catalog.md`.
+      - id: TASK-HC-108B
+        type: engineering
+        owner: runtime-security
+        description: >-
+          Harden `packages/plugins/runtime/` WASM sandbox with capability-based imports, resource quota enforcement, deterministic fuel metering,
+          and allowlist-aware network shims while instrumenting copious code comments for maintainability.
+        references:
+          - packages/plugins/runtime/
+          - packages/plugins/catalog
+        automation:
+          - Configure nightly GitHub Actions fuzz job executing sandbox escape corpus with automatic corpus minimization and alerting on regressions.
+        testing:
+          - Run WASM runtime unit tests, sandbox escape fuzzers, and contract suites verifying quota + syscall restrictions before merge.
+        documentation:
+          - Document sandbox guarantees, quota knobs, and fuzz coverage expectations in `docs/plugins/catalog.md` appendices.
+      - id: TASK-HC-108C
+        type: engineering
+        owner: telemetry-ops
+        description: >-
+          Implement observability + kill-switch dashboards/hooks in `packages/plugins/telemetry`, integrate with feature flagging, and
+          author GitHub Actions automation that signs and publishes manifests with tamper-evident logs and rollback toggles.
+        references:
+          - packages/plugins/telemetry
+          - .github/workflows/plugins-manifest-signing.yml
+        automation:
+          - Ship reusable workflow for manifest signing + attestation upload, broadcasting status to Slack/Teams and blocking deploys on drift.
+        testing:
+          - Add telemetry integration tests validating metric/trace emission, kill-switch activation drills, and manifest signing pipeline smoke tests.
+        documentation:
+          - Update `docs/plugins/catalog.md` with dashboard URLs, alert policies, kill-switch SOP, and automation diagrams.
+      - id: TASK-HC-108D
+        type: security
+        owner: assurance-engineering
+        description: >-
+          Establish contract testing + security validation suite covering manifest schema validation, permission prompt contracts, and sandbox escape fuzzing,
+          including signed evidence bundles for audit readiness.
+        references:
+          - tests/security/plugins/
+          - docs/plugins/catalog.md
+        automation:
+          - Wire manifest schema validation + fuzz results into nightly CI pipelines with auto-generated compliance attestations stored in artifacts.
+        testing:
+          - Execute `bunx vitest run --silent='passed-only' 'tests/security/plugins/*'` alongside fuzz regression jobs and schema validation CLI.
+        documentation:
+          - Append security validation checklist and evidence storage process to `docs/plugins/catalog.md` and compliance runbooks.
