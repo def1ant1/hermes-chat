@@ -439,3 +439,386 @@ stories:
           - Validate dashboards using screenshot diffs stored under `tests/analytics/dashboard-visual.spec.ts`.
         documentation:
           - Capture metric definitions + owners in `docs/development/analytics.md` appendix.
+
+  - id: STORY-HC-101
+    epic_id: EPIC-HC-005
+    title: Enforce enterprise SSO and foundational RBAC guardrails
+    priority: P0
+    description: >-
+      Implement mandatory OIDC/SAML SSO across the Next.js gateway, codify organization/project hierarchy, and enforce
+      Owner/Admin/Editor/Viewer roles for web, API, and plugin paths.
+    acceptance_criteria:
+      - >-
+        NextAuth (or custom OIDC) flows configured for Okta, Entra ID, and Google with IdP metadata stored in Vault and SSO
+        enforced via feature flag toggle.
+      - >-
+        Organization, Project, MemberRole, and Invitation models migrated via Drizzle with tenant-aware foreign keys and
+        optimistic concurrency controls.
+      - >-
+        API and UI routes guarded by reusable RBAC middleware returning 403 for unauthorized roles and logging attempts to THEMIS.
+    testing:
+      - >-
+        Add e2e coverage in `tests/e2e/identity/sso.spec.ts` for sign-in, logout, session refresh, and disabled password login fallback.
+      - >-
+        Implement RBAC unit tests (`bunx vitest run --silent='passed-only' 'tests/unit/rbac/*'`) verifying guard behavior across permutations.
+    documentation:
+      - >-
+        Document SSO onboarding and RBAC hierarchy in `docs/usage/enterprise-security.md` with IdP-specific setup instructions.
+    tasks:
+      - id: TASK-HC-101A
+        type: engineering
+        owner: identity-platform
+        description: >-
+          Wire NextAuth custom provider adapters for Okta, Entra ID, and Google with PKCE + nonce validation, storing client secrets
+          in Vault/THEMIS and retrieving via signed service tokens.
+        references:
+          - apps/web/app/api/auth/[...nextauth]/route.ts
+          - packages/server/auth/
+          - scripts/vault/
+        automation:
+          - Terraform module `infra/identity/` provisions IdP applications and exports metadata to Vault.
+        testing:
+          - Run `bunx vitest run --silent='passed-only' 'tests/unit/auth/*'` plus `tests/e2e/identity/sso.spec.ts`.
+        documentation:
+          - Update `docs/self-hosting/sso.md` with automated setup script usage and rollback steps.
+      - id: TASK-HC-101B
+        type: engineering
+        owner: platform-core
+        description: >-
+          Introduce Organization, Project, Membership, and Role tables via Drizzle migrations with tenant-aware policies enforced in Postgres
+          Row Level Security and mirrored in application middleware.
+        references:
+          - drizzle/schema/
+          - src/server/rbac/
+        automation:
+          - Add migration verification to `scripts/db/verify-migrations.ts` ensuring RLS + policies exist.
+        testing:
+          - Execute `bunx vitest run --silent='passed-only' 'tests/unit/rbac/*'` and new integration tests in `tests/integration/db/rbac.spec.ts`.
+        documentation:
+          - Extend `docs/development/database.md` with ERD diagrams and tenancy notes.
+      - id: TASK-HC-101C
+        type: engineering
+        owner: security-engineering
+        description: >-
+          Build reusable RBAC guard middleware for Next.js (server actions, API routes) and plugin execution contexts, instrumenting denied attempts
+          to THEMIS audit log stream.
+        references:
+          - src/server/middleware/rbac.ts
+          - packages/plugins/
+        automation:
+          - Register audit schema in `scripts/audit/register_schema.ts` to auto-validate payloads during CI.
+        testing:
+          - Run `bunx vitest run --silent='passed-only' 'tests/unit/middleware/rbacGuard.spec.ts'` and e2e regression suite.
+        documentation:
+          - Update `docs/usage/enterprise-security.md` guardrail sections with troubleshooting tips.
+
+  - id: STORY-HC-102
+    epic_id: EPIC-HC-005
+    title: Vault-backed provider key proxy with quotas and audit trails
+    priority: P0
+    description: >-
+      Centralize provider credential storage in Vault/THEMIS, serve requests through a proxy enforcing quotas/rate limits, and emit SAIG-compatible
+      audit events for every key usage.
+    acceptance_criteria:
+      - >-
+        Key proxy exposes REST/gRPC endpoints for model/tool invocations without exposing raw credentials to clients; per-tenant quotas configurable via
+        admin console.
+      - >-
+        THEMIS audit log stream records key issuance, usage, rotation, and revocation with verifiable hash chain.
+      - >-
+        Client applications load credentials via short-lived signed tokens scoped to tenant + model.
+    testing:
+      - >-
+        Security regression harness (`bun run test:security`) fuzzes proxy rate limits and leakage scenarios.
+      - >-
+        Integration tests in `tests/integration/key-proxy.spec.ts` validate quota enforcement and audit events.
+    documentation:
+      - >-
+        Document key custody model and rotation workflows in `docs/usage/enterprise-security.md` and `docs/operations/key-proxy.md`.
+    tasks:
+      - id: TASK-HC-102A
+        type: engineering
+        owner: security-engineering
+        description: >-
+          Implement NestJS (or Fastify) microservice backed by Vault/THEMIS for credential storage, issuing short-lived signed tokens and forwarding
+          provider calls with quota enforcement.
+        references:
+          - apps/services/key-proxy/
+          - packages/sdk/
+        automation:
+          - GitHub Actions deploy job publishes container to GHCR and provisions Vault roles automatically.
+        testing:
+          - Run `bunx vitest run --silent='passed-only' 'apps/services/key-proxy/tests/*'` plus integration suites.
+        documentation:
+          - Update service README with deployment + monitoring instructions.
+      - id: TASK-HC-102B
+        type: engineering
+        owner: compliance-ops
+        description: >-
+          Wire THEMIS audit emitters for key lifecycle events, generating SAIG-compatible append-only logs and providing CLI `audit_export --since --tenant`
+          for compliance teams.
+        references:
+          - packages/audit/
+          - scripts/audit/
+        automation:
+          - Schedule nightly export verification job uploading Merkle proofs to secure storage.
+        testing:
+          - Execute `bunx vitest run --silent='passed-only' 'tests/unit/audit/*'` and golden file comparisons.
+        documentation:
+          - Document audit export/verification in `docs/operations/audit.md`.
+
+  - id: STORY-HC-103
+    epic_id: EPIC-HC-006
+    title: Mnemosyne-backed ingestion pipeline with retention and redaction
+    priority: P0
+    description: >-
+      Replace local vector ingestion with Mnemosyne SDK, layering adaptive chunking, virus scanning, PII redaction, and tenant-specific retention/legal hold controls.
+    acceptance_criteria:
+      - >-
+        Ingestion workers push embeddings to Mnemosyne using per-tenant namespaces and emit deletion receipts during retention expiry or manual erasure.
+      - >-
+        Knowledge ingestion UI surfaces health metrics (token usage, redaction status) and blocks promotion when scans fail.
+      - >-
+        Legal hold toggles prevent deletion while logging overrides to THEMIS.
+    testing:
+      - >-
+        Run `bunx vitest run --silent='passed-only' 'tests/mnemosyne/ingestion.spec.ts'` covering happy/edge paths.
+      - >-
+        Integration tests simulate large document batches via `tests/perf/ingestion.load.ts` to validate scaling.
+    documentation:
+      - >-
+        Update `docs/architecture/memory.md` and ingestion runbooks with pipeline diagrams and automation scripts.
+    tasks:
+      - id: TASK-HC-103A
+        type: engineering
+        owner: knowledge-platform
+        description: >-
+          Build ingestion orchestrator (BullMQ/Temporal) that runs virus scan, MIME validation, adaptive chunking, and PII redaction before submitting to Mnemosyne.
+        references:
+          - apps/services/ingestion/
+          - packages/workers/
+        automation:
+          - Terraform-managed Redis/Temporal clusters with autoscaling metrics.
+        testing:
+          - Execute worker unit tests and pipeline integration suites with mocked Mnemosyne endpoints.
+        documentation:
+          - Add pipeline walkthrough to `docs/architecture/memory.md`.
+      - id: TASK-HC-103B
+        type: engineering
+        owner: compliance-ops
+        description: >-
+          Implement retention + legal hold engine storing policies per tenant/project, scheduling expirations, and writing THEMIS audit events upon deletion or hold toggles.
+        references:
+          - packages/compliance/
+          - drizzle/schema/compliance.ts
+        automation:
+          - Scheduled job `scripts/compliance/enforce_retention.ts` runs via GitHub Actions workflow dispatch.
+        testing:
+          - Run `bunx vitest run --silent='passed-only' 'tests/unit/compliance/*'` plus time-travel integration tests.
+        documentation:
+          - Extend compliance docs with policy configuration and SLA expectations.
+
+  - id: STORY-HC-104
+    epic_id: EPIC-HC-007
+    title: Chat-triggered URS playbook execution with approvals
+    priority: P1
+    description: >-
+      Allow users to discover, parameterize, and execute URS playbooks directly from chat while capturing approvals, SLAs, and compensating actions with full audit coverage.
+    acceptance_criteria:
+      - >-
+        Chat UI lists available playbooks with search/filter, input validation, and SLA metadata surfaced.
+      - >-
+        Execution timeline modal displays DAG progress, retries, compensations, and links to underlying logs.
+      - >-
+        Approvals require RBAC-authorized reviewers; break-glass overrides emit dedicated audit events.
+    testing:
+      - >-
+        e2e tests in `tests/e2e/playbooks/chat-runner.spec.ts` simulate approval and break-glass flows.
+      - >-
+        Contract tests validate URS schema compatibility and error handling for timeouts.
+    documentation:
+      - >-
+        Update `docs/usage/runbooks.md` with screenshots and SOPs for approvals + rollback.
+    tasks:
+      - id: TASK-HC-104A
+        type: engineering
+        owner: orchestration-platform
+        description: >-
+          Implement chat-side panel to browse playbooks, capture input forms (zod schemas), and stream status updates via SSE/WebSocket from URS orchestrator.
+        references:
+          - apps/web/app/(dashboard)/chat/
+          - packages/urs-client/
+        automation:
+          - Generate playbook TypeScript types automatically from URS schema repository via `bun run sync:urs`.
+        testing:
+          - Run component tests with Testing Library and e2e suites for streaming updates.
+        documentation:
+          - Document UI patterns in `docs/development/design-system.md` runbook section.
+      - id: TASK-HC-104B
+        type: engineering
+        owner: security-engineering
+        description: >-
+          Build approval workflow service storing pending approvals, enforcing RBAC checks, and logging decisions to THEMIS including break-glass overrides and SLA breaches.
+        references:
+          - packages/approvals/
+          - drizzle/schema/approvals.ts
+        automation:
+          - Scheduled SLA monitor job posts alerts to Ops Slack when deadlines breach.
+        testing:
+          - Run unit + integration tests ensuring multi-approver requirements and compensating action triggers.
+        documentation:
+          - Update compliance + ops runbooks with approval procedures.
+
+  - id: STORY-HC-105
+    epic_id: EPIC-HC-008
+    title: Clio-powered streaming voice mode with Lobe fallback
+    priority: P1
+    description: >-
+      Deliver a low-latency voice chat experience backed by Clio STT/TTS with WebRTC transport, VAD, and automatic fallback to Lobe TTS when Clio endpoints are degraded.
+    acceptance_criteria:
+      - >-
+        Web client captures microphone audio, performs on-device VAD, streams to Clio, and plays synthesized responses with <250ms added latency on stable connections.
+      - >-
+        Fallback to Lobe TTS triggered by health monitor with user notification and audit trail.
+      - >-
+        Voice transcripts stored in Mnemosyne with retention policies applied.
+    testing:
+      - >-
+        Integration tests stub Clio + Lobe endpoints verifying fallback logic and latency budgets.
+      - >-
+        Browser automation via Playwright validates microphone permissions and audio playback.
+    documentation:
+      - >-
+        Update `docs/usage/voice-media.md` with configuration steps and troubleshooting.
+    tasks:
+      - id: TASK-HC-105A
+        type: engineering
+        owner: realtime-experience
+        description: >-
+          Build WebRTC transport layer with adaptive bitrate, Clio endpoint negotiation, and metrics hooks for OpenTelemetry spans.
+        references:
+          - apps/web/app/(dashboard)/voice/
+          - packages/realtime/
+        automation:
+          - Health monitor cron pings Clio/Lobe endpoints and updates feature flag toggles automatically.
+        testing:
+          - Run WebRTC unit tests and Playwright coverage for microphone flows.
+        documentation:
+          - Document architecture in `docs/architecture/voice.md`.
+      - id: TASK-HC-105B
+        type: engineering
+        owner: platform-core
+        description: >-
+          Persist voice transcripts + metadata to Mnemosyne with tenant-aware namespaces and retention, exposing download + erase flows respecting legal hold.
+        references:
+          - packages/mnemosyne/
+          - apps/web/app/api/voice/
+        automation:
+          - Scheduled retention job ensures transcripts expire per policy and logs outcomes.
+        testing:
+          - Execute ingestion integration tests ensuring transcripts link to chat sessions.
+        documentation:
+          - Update retention policy docs with voice-specific details.
+
+  - id: STORY-HC-106
+    epic_id: EPIC-HC-009
+    title: End-to-end OpenTelemetry with quotas, feature flags, and kill-switches
+    priority: P1
+    description: >-
+      Instrument Hermes Chat frontend/backend/plugins with OpenTelemetry spans, implement tenant-aware quotas, and deliver ops-managed feature flags + kill-switches.
+    acceptance_criteria:
+      - >-
+        Frontend instrumentation exports traces via OpenTelemetry SDK to gateway, including tenant/workspace tags.
+      - >-
+        Feature flag service integrates with RBAC to restrict toggles to owners and exposes audit history.
+      - >-
+        Quota engine enforces tenant usage caps with admin dashboard visibility and alerts.
+    testing:
+      - >-
+        Chaos tests simulate provider outages verifying kill-switch + circuit breaker activation.
+      - >-
+        Telemetry integration tests assert span propagation across async boundaries.
+    documentation:
+      - >-
+        Update `docs/operations/observability.md` with dashboards, runbooks, and flag workflows.
+    tasks:
+      - id: TASK-HC-106A
+        type: engineering
+        owner: sre-platform
+        description: >-
+          Integrate OpenTelemetry SDK in Next.js app, gateway, and worker services, exporting traces/metrics to Grafana stack with tenant attributes and exemplars.
+        references:
+          - apps/web/
+          - packages/server/
+          - scripts/observability/
+        automation:
+          - CI job `ci/otel-verify.yml` validates schema + sampling configs before deploy.
+        testing:
+          - Run telemetry integration tests and snapshot metrics to ensure budgets.
+        documentation:
+          - Update observability docs with instrumentation specifics.
+      - id: TASK-HC-106B
+        type: engineering
+        owner: platform-core
+        description: >-
+          Implement quota + rate limit engine tied to tenant billing plans, expose dashboards, and integrate with feature flag service for kill-switch automation.
+        references:
+          - packages/quotas/
+          - apps/web/app/(dashboard)/admin/
+        automation:
+          - Scheduled job publishes usage metrics to billing providers and enforces kill-switch triggers.
+        testing:
+          - Execute quota engine unit tests and e2e scenarios for throttle + alert flows.
+        documentation:
+          - Extend admin guide with quota configuration instructions.
+
+  - id: STORY-HC-107
+    epic_id: EPIC-HC-011
+    title: Signed desktop builds with enterprise policy pack
+    priority: P2
+    description: >-
+      Automate signed macOS/Windows desktop builds, enable auto-update with staged rollout, and ship policy pack enforcing SSO-only login plus restricted local capabilities.
+    acceptance_criteria:
+      - >-
+        CI/CD pipeline builds, signs, notarizes, and publishes installers with integrity artifacts stored securely.
+      - >-
+        Desktop app enforces SSO-only login with offline denial and surfaces policy status in settings.
+      - >-
+        Policy pack toggles (disable local file I/O, clipboard restrictions) centrally managed and audit logged.
+    testing:
+      - >-
+        Desktop controller tests cover policy enforcement; Playwright smoke suite validates chat flows on signed builds.
+      - >-
+        Auto-update integration tests confirm staged rollout + rollback.
+    documentation:
+      - >-
+        Update `docs/desktop/enterprise-deployment.md` with signing pipeline, rollout strategy, and policy config.
+    tasks:
+      - id: TASK-HC-107A
+        type: engineering
+        owner: desktop-platform
+        description: >-
+          Configure GitHub Actions to build Electron app for macOS/Windows, integrate with secure code-signing service, notarize macOS binaries, and publish to GHCR with release notes.
+        references:
+          - apps/desktop/
+          - .github/workflows/desktop-release.yml
+        automation:
+          - Use reusable workflow + secrets OIDC to fetch signing certificates on-demand.
+        testing:
+          - Run Playwright smoke tests against produced installers.
+        documentation:
+          - Document pipeline configuration and troubleshooting.
+      - id: TASK-HC-107B
+        type: engineering
+        owner: security-engineering
+        description: >-
+          Implement policy enforcement module in Electron main process locking down local file I/O, clipboard, and enforcing SSO token checks with remote configuration.
+        references:
+          - apps/desktop/src/main/
+          - packages/policies/
+        automation:
+          - Feature flag toggles retrieved from central service with signed configs and fallback cache.
+        testing:
+          - Execute desktop unit tests per `testing-guide/electron-ipc-test.mdc` and manual QA sign-off script.
+        documentation:
+          - Update policy pack section in enterprise deployment guide.

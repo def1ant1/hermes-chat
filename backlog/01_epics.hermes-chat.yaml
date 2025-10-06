@@ -160,3 +160,298 @@ epics:
       - >-
         Add Hermes Chat launch runbook to `docs/changelog/2025-hermes-chat-launch.md` and link to training
         decks for sales, support, and partners.
+
+  - id: EPIC-HC-005
+    name: Identity, Tenancy, and Compliance Foundations
+    description: >-
+      Deliver enterprise-grade authentication, authorization, and tenant isolation with centralized key
+      custody so regulated customers can adopt Hermes Chat without manual exception handling.
+    business_rationale: >-
+      Enterprise buyers require SSO, RBAC, auditability, and compliant key management (Vault/THEMIS) before
+      allowing sensitive workloads onto the platform; failing to provide these blocks P0 deals.
+    dependencies:
+      - EPIC-HC-003 # Production domains must exist before wiring SSO callbacks and audit exports.
+    acceptance_criteria:
+      - >-
+        OIDC/SAML SSO (Okta, Entra ID, Google) enforced for all interactive logins via NextAuth gateway with
+        password/email login disabled by feature flag.
+      - >-
+        Multi-tenant workspace model (Organization → Project) with Owner/Admin/Editor/Viewer roles enforced
+        across API, chat sessions, knowledge base, and plugin execution paths.
+      - >-
+        Provider credentials never leave the server tier: keys stored in Vault/THEMIS and proxied through
+        a hardened service that applies per-tenant quotas and rate limits, with rotations audited.
+      - >-
+        THEMIS audit hooks emit append-only SAIG-compatible events for chat prompts, tool calls, file ingest,
+        and erase/export operations with verifiable hash chains.
+      - >-
+        Data classification, PII redaction, retention, and legal hold policies configurable per tenant with
+        documented admin workflows and automated expiry jobs.
+    testing_expectations:
+      - >-
+        End-to-end tests in `tests/e2e/identity/*.spec.ts` validate SSO enforcement, role-guarded routes,
+        and tenant isolation including forbidden cross-tenant access attempts.
+      - >-
+        Security regression suite executes `bun run test:security` to fuzz the key proxy and audit log
+        append-only guarantees with deterministic fixtures.
+      - >-
+        Compliance smoke tests verify retention + legal hold timers via time-travel integration tests running
+        against ephemeral Postgres + Vault containers in CI.
+    automation_expectations:
+      - >-
+        Terraform/Terragrunt modules manage Vault/THEMIS policies and Okta/Entra app registrations,
+        triggered from GitHub Actions with OIDC federation to eliminate manual secret handling.
+      - >-
+        GitHub Actions workflow `ci/compliance.yml` gates merges on successful SSO contract tests, RBAC policy
+        unit tests, and audit log schema validation.
+    documentation_expectations:
+      - >-
+        Expand `docs/usage/enterprise-security.md` with SSO onboarding, key custody diagrams, audit export
+        recipes, and retention playbooks.
+
+  - id: EPIC-HC-006
+    name: Mnemosyne Memory & Knowledge Platform Integration
+    description: >-
+      Replace ad-hoc vector storage with Mnemosyne federated memory, delivering namespace isolation,
+      summarization controls, and automated knowledge governance across ingestion and retrieval.
+    business_rationale: >-
+      Aligning with Apotheon.ai stack unlocks shared federated memory features and reduces maintenance of
+      bespoke vector infrastructure, while enabling decay policies demanded by compliance teams.
+    dependencies:
+      - EPIC-HC-005 # Tenant hierarchy and retention policies drive namespace + TTL configuration.
+    acceptance_criteria:
+      - >-
+        All retrieval-augmented workflows route through Mnemosyne SDK with per-tenant/project namespaces and
+        configurable summarization/decay knobs stored in the admin console.
+      - >-
+        Ingestion pipeline performs adaptive chunking, MIME validation, malware scanning, and PII redaction
+        before persisting embeddings, with failures surfaced via admin alerts.
+      - >-
+        Legal hold and retention controls propagate to Mnemosyne, generating deletion receipts linked to
+        THEMIS audit entries.
+    testing_expectations:
+      - >-
+        Contract tests run against Mnemosyne sandbox using `bunx vitest run --silent='passed-only' 'tests/mnemosyne/*'`
+        covering namespace isolation, summarization toggles, and decay scheduling.
+      - >-
+        Load tests (`bun run test:load:mnemosyne`) validate throughput and latency budgets at enterprise scale
+        with synthetic tenants.
+    automation_expectations:
+      - >-
+        CI pipelines provision ephemeral Mnemosyne namespaces via API for integration tests, and Terraform
+        modules manage production tiers with automated drift detection.
+    documentation_expectations:
+      - >-
+        Update `docs/architecture/memory.md` with Mnemosyne topology diagrams, retention knobs, and operational
+        runbooks for ingestion + replay tooling.
+
+  - id: EPIC-HC-007
+    name: URS/Hermes Orchestration & Playbook Automation
+    description: >-
+      Expose URS DAG execution from chat, enabling operators to launch playbooks with approvals, SLA tracking,
+      and compensating actions directly within the Hermes Chat workspace.
+    business_rationale: >-
+      Enterprise teams require auditable, semi-automated runbooks that integrate with Hermes orchestration to
+      drive high-value workflows and reduce swivel-chair operations.
+    dependencies:
+      - EPIC-HC-005 # RBAC + approvals rely on tenant-aware policies.
+      - EPIC-HC-006 # Playbooks often reference Mnemosyne memories and KB artifacts.
+    acceptance_criteria:
+      - >-
+        Chat UI surfaces "Run Playbook" action with searchable URS catalog, input validation, SLA metadata,
+        and progress tracking for each DAG node including compensations.
+      - >-
+        Approval workflows support multi-step human-in-the-loop gates, break-glass overrides, and audit hooks
+        to THEMIS capturing requester, approver, and execution metadata.
+      - >-
+        Failure handling triggers compensating actions and notifies relevant roles via Slack/Teams webhooks
+        with retriable state machine entries.
+    testing_expectations:
+      - >-
+        Scenario tests in `tests/e2e/playbooks/*.spec.ts` cover DAG execution, approval gating, break-glass,
+        and rollback logic with mocked URS endpoints.
+      - >-
+        Contract tests validate URS API schemas using `bunx vitest run --silent='passed-only' 'tests/contract/urs*'`.
+    automation_expectations:
+      - >-
+        GitHub Actions pipeline publishes URS schema stubs to an internal registry and syncs with the chat
+        app automatically, preventing manual copy/paste of protobuf/JSON definitions.
+    documentation_expectations:
+      - >-
+        Document playbook lifecycle, approvals, and rollback procedures in `docs/usage/runbooks.md` with
+        screenshots and example DAG definitions.
+
+  - id: EPIC-HC-008
+    name: Clio Voice & Morpheus Media Experiences
+    description: >-
+      Integrate Clio streaming voice (VAD, STT, TTS) and Morpheus long-running media generation into the chat
+      experience with resilient fallbacks and artifact management.
+    business_rationale: >-
+      Voice and media workflows expand Hermes Chat's applicability to frontline and creative teams, aligning
+      with Apotheon.ai ecosystem commitments.
+    dependencies:
+      - EPIC-HC-005 # RBAC determines who can access voice/media features.
+      - EPIC-HC-006 # Generated artifacts may reference Mnemosyne storage policies.
+    acceptance_criteria:
+      - >-
+        Voice mode enables real-time transcription and TTS using Clio endpoints with WebRTC transport, VAD,
+        and fallback to Lobe TTS if Clio is unavailable.
+      - >-
+        Morpheus job queue handles image/video generation with progress updates, resumable polling, and an
+        artifact gallery scoped per tenant with retention controls.
+      - >-
+        Network resiliency includes circuit breakers and retry policies for Clio/Morpheus endpoints with
+        observability (metrics/traces) exported to the shared telemetry stack.
+    testing_expectations:
+      - >-
+        Web integration tests simulate degraded networks ensuring graceful fallback from Clio to Lobe TTS and
+        verifying audio synchronization.
+      - >-
+        Backend integration tests cover Morpheus job lifecycle, artifact storage, and RBAC enforcement using
+        deterministic fixtures.
+    automation_expectations:
+      - >-
+        CI mocks Clio/Morpheus via contract snapshots automatically regenerated from upstream schemas to
+        detect breaking changes early.
+    documentation_expectations:
+      - >-
+        Expand `docs/usage/voice-media.md` with setup instructions, supported codecs, retention policies, and
+        troubleshooting guides for admins and end users.
+
+  - id: EPIC-HC-009
+    name: Observability, Feature Flags, and SRE Controls
+    description: >-
+      Instrument Hermes Chat end-to-end with OpenTelemetry, quota enforcement, kill switches, and automated
+      circuit breakers to meet enterprise SLOs and compliance observability requirements.
+    business_rationale: >-
+      Enterprise readiness demands real-time visibility, throttling, and rapid mitigation capabilities across
+      multi-tenant infrastructure.
+    dependencies:
+      - EPIC-HC-005 # Tenant metadata powers dashboards and quotas.
+    acceptance_criteria:
+      - >-
+        OpenTelemetry traces span frontend → gateway → providers/plugins with tenant/context attributes and
+        flow into Grafana/Tempo dashboards.
+      - >-
+        Feature flag service (e.g., OpenFeature) enables ops-controlled toggles, including provider kill-switch
+        and plugin allowlist enforcement.
+      - >-
+        Automated circuit breakers throttle providers/plugins on error surges and emit alerts to on-call.
+      - >-
+        Usage analytics + quotas surface in admin console with exportable billing hooks.
+    testing_expectations:
+      - >-
+        Chaos experiments (`bun run test:chaos`) validate circuit breaker thresholds and recovery paths.
+      - >-
+        Telemetry integration tests confirm trace/span propagation and sampling policies under load.
+    automation_expectations:
+      - >-
+        GitHub Actions enforces observability schema via `otel-lint` job and deploys flag definitions through
+        Infrastructure-as-Code to prevent drift.
+    documentation_expectations:
+      - >-
+        Publish `docs/operations/observability.md` covering dashboards, alert routing, and feature flag SOPs.
+
+  - id: EPIC-HC-010
+    name: Plugin & MCP Ecosystem Hardening
+    description: >-
+      Curate internal plugins (THEMIS, Mnemosyne, URS, Clio, Morpheus, Jarvis) with granular permissions,
+      egress controls, and sandboxing to safely extend Hermes Chat.
+    business_rationale: >-
+      Enterprises require vetted integrations and the ability to restrict plugin capabilities for regulatory
+      compliance and data governance.
+    dependencies:
+      - EPIC-HC-005 # RBAC + tenant metadata determine plugin visibility.
+      - EPIC-HC-009 # Observability + kill-switch instrumentation shared with plugin layer.
+    acceptance_criteria:
+      - >-
+        Plugin catalog distinguishes curated/internal plugins with metadata (scopes, data classification)
+        and enforces permission prompts and egress allowlists before activation.
+      - >-
+        Untrusted plugin execution isolated via WASM sandbox with resource quotas and audit logging.
+      - >-
+        Admin console surfaces plugin analytics, kill-switches, and approval workflows integrated with THEMIS.
+    testing_expectations:
+      - >-
+        Security tests attempt sandbox escapes, egress violations, and unauthorized data access with automated
+        fuzzing harnesses executed nightly.
+      - >-
+        Contract tests ensure plugin manifests comply with Hermes MCP schema via `bunx vitest run --silent='passed-only' 'tests/plugins/*'`.
+    automation_expectations:
+      - >-
+        Plugin publishing pipeline signs manifests, pushes to internal registry, and updates documentation via
+        automated PRs.
+    documentation_expectations:
+      - >-
+        Update `docs/plugins/catalog.md` describing each plugin, permission scopes, and sandbox controls with
+        runbooks for security reviews.
+
+  - id: EPIC-HC-011
+    name: Desktop Distribution & Policy Enforcement
+    description: >-
+      Harden the Electron desktop app with code signing, auto-updates, and enterprise policy packs enforcing
+      SSO-only authentication and restricted local capabilities.
+    business_rationale: >-
+      Desktop deployments in regulated industries require signed binaries, managed updates, and admin
+      controls to pass security assessments.
+    dependencies:
+      - EPIC-HC-005 # SSO enforcement + RBAC apply to desktop clients.
+      - EPIC-HC-009 # Feature flags + kill-switch must propagate to desktop runtime.
+    acceptance_criteria:
+      - >-
+        macOS and Windows builds signed via automated CI/CD, published to GHCR with notarization logs stored
+        for audits.
+      - >-
+        Auto-update channel supports staged rollout, rollback, and policy enforcement (disable local file I/O,
+        enforce SSO) managed centrally.
+      - >-
+        Desktop telemetry integrates with OpenTelemetry stack and respects tenant retention policies.
+    testing_expectations:
+      - >-
+        Desktop controller tests validate policy enforcement, update flows, and offline login denial.
+      - >-
+        Smoke tests run via Playwright on signed builds to ensure core chat flows remain functional.
+    automation_expectations:
+      - >-
+        GitHub Actions pipeline builds, signs, notarizes, and publishes installers automatically using secure
+        code-signing service accounts.
+    documentation_expectations:
+      - >-
+        Document desktop deployment + policy configuration in `docs/desktop/enterprise-deployment.md`.
+
+  - id: EPIC-HC-012
+    name: Enterprise Onboarding & UX Accelerators
+    description: >-
+      Deliver guided onboarding, knowledge base ingestion, and agent templates tailored for enterprise
+      compliance, reducing time-to-value and minimizing manual setup steps.
+    business_rationale: >-
+      Streamlined onboarding and reusable agent templates differentiate Hermes Chat in competitive RFPs and
+      reduce implementation effort for customer success teams.
+    dependencies:
+      - EPIC-HC-005 # Workspace + RBAC contexts drive onboarding flows.
+      - EPIC-HC-006 # Knowledge ingestion relies on Mnemosyne integration.
+    acceptance_criteria:
+      - >-
+        First-run enterprise onboarding wizard covers SSO connection, provider routing, rate limits, and
+        agent kit import with progress save + resume.
+      - >-
+        Knowledge base ingestion workflow offers health scoring, token budget guidance, doc-level ACLs, and
+        automated validation (virus scan, chunking preview, retention tags).
+      - >-
+        Library of enterprise agent templates (Compliance Reviewer, Data Steward, Red Team Assistant) shipped
+        with documentation, observability hooks, and audit-ready prompts.
+    testing_expectations:
+      - >-
+        Guided onboarding e2e tests verify wizard steps, error handling, and resumption logic under network
+        interruptions.
+      - >-
+        Knowledge ingestion tests simulate large document batches ensuring automation handles chunking,
+        redaction, and ACL assignment.
+    automation_expectations:
+      - >-
+        Onboarding wizard triggers backend automation to provision providers, rate limits, and sample agents
+        via idempotent jobs—no manual console work required.
+    documentation_expectations:
+      - >-
+        Update `docs/usage/onboarding-enterprise.md` and create agent template playbooks with governance notes
+        and recommended monitoring dashboards.
