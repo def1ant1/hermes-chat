@@ -6,12 +6,21 @@ import { UAParser } from 'ua-parser-js';
 import urlJoin from 'url-join';
 
 import { OAUTH_AUTHORIZED } from '@/const/auth';
+import { HERMES_DOMAIN_REDIRECT_EVENT, HERMES_DOMAIN_REDIRECT_FLAG, resolveHermesRedirectFlag } from '@/const/featureFlags';
 import { LOCALE_COOKIE_FALLBACK_CHAIN } from '@/const/locale';
 import { HERMES_THEME_APPEARANCE } from '@/const/theme';
+import { DEFAULT_FEATURE_FLAGS } from '@/config/featureFlags';
+import { parseFeatureFlag } from '@/config/featureFlags/utils/parser';
+import {
+  HERMES_DOMAIN_REDIRECT_ANALYTICS_PARAMS,
+  HERMES_DOMAIN_REDIRECT_TOTAL,
+  resolveHermesRedirectRule,
+} from '@/config/redirects/hermesDomains';
 import { appEnv } from '@/envs/app';
 import { authEnv } from '@/envs/auth';
 import NextAuth from '@/libs/next-auth';
 import { Locales } from '@/locales/resources';
+import { emitHermesRedirectTelemetry } from '@/utils/telemetry/hermesRedirect';
 
 import { oidcEnv } from './envs/oidc';
 import { parseBrowserLanguage } from './utils/locale';
@@ -21,6 +30,47 @@ import { RouteVariants } from './utils/server/routeVariants';
 const logDefault = debug('middleware:default');
 const logNextAuth = debug('middleware:next-auth');
 const logClerk = debug('middleware:clerk');
+const logRedirect = debug('middleware:redirect');
+const logRedirectTelemetry = debug('middleware:redirect-telemetry');
+
+const featureFlagEnvOverrides = parseFeatureFlag(process.env.FEATURE_FLAGS);
+const redirectFlagDefaults = resolveHermesRedirectFlag(
+  { hermes_domain_redirect: featureFlagEnvOverrides.hermes_domain_redirect },
+  DEFAULT_FEATURE_FLAGS.hermes_domain_redirect ?? true,
+);
+
+logRedirect(
+  'Hermes domain redirect catalogue initialised with %d rules (default enabled=%s)',
+  HERMES_DOMAIN_REDIRECT_TOTAL,
+  redirectFlagDefaults.enabled,
+);
+
+const interpretBooleanOverride = (value: string | null | undefined): boolean | null => {
+  if (!value) return null;
+
+  const normalized = value.trim().toLowerCase();
+
+  if (['1', 'true', 'enable', 'enabled', 'on', 'yes'].includes(normalized)) {
+    return true;
+  }
+
+  if (['0', 'false', 'disable', 'disabled', 'off', 'no'].includes(normalized)) {
+    return false;
+  }
+
+  return null;
+};
+
+const isLocalDevelopmentHost = (host: string): boolean => {
+  const normalized = host.toLowerCase();
+
+  return (
+    normalized.includes('localhost') ||
+    normalized.startsWith('127.') ||
+    normalized.endsWith('.local') ||
+    normalized === '::1'
+  );
+};
 
 // OIDC session pre-sync constant
 const OIDC_SESSION_HEADER = 'x-oidc-session-sync';
@@ -58,10 +108,88 @@ const backendApiEndpoints = ['/api', '/trpc', '/webapi', '/oidc'];
 
 const defaultMiddleware = (request: NextRequest) => {
   const url = new URL(request.url);
-  logDefault('Processing request: %s %s', request.method, request.url);
+  const host = request.headers.get('host');
+  const method = request.method.toUpperCase();
+  const isBackendRequest = backendApiEndpoints.some((path) => url.pathname.startsWith(path));
 
-  // skip all api requests
-  if (backendApiEndpoints.some((path) => url.pathname.startsWith(path))) {
+  logDefault('Processing request: %s %s (host=%s)', method, request.url, host);
+
+  if (!isBackendRequest && host && !isLocalDevelopmentHost(host)) {
+    const redirectRule = resolveHermesRedirectRule(host, url.pathname);
+
+    if (redirectRule) {
+      let redirectEnabled = redirectFlagDefaults.enabled;
+
+      const headerOverride = interpretBooleanOverride(request.headers.get('x-hermes-redirect'));
+      const bypassHeader = interpretBooleanOverride(request.headers.get('x-hermes-redirect-bypass'));
+      const queryOverride = interpretBooleanOverride(url.searchParams.get('hermesRedirect'));
+      const legacyOverride = interpretBooleanOverride(url.searchParams.get('legacyRedirect'));
+
+      for (const override of [headerOverride, bypassHeader, queryOverride, legacyOverride]) {
+        if (override !== null) {
+          redirectEnabled = override;
+        }
+      }
+
+      const safeMethod = method === 'GET' || method === 'HEAD';
+
+      if (redirectEnabled && safeMethod) {
+        const destinationUrl = new URL(url.toString());
+        destinationUrl.protocol = 'https:';
+        destinationUrl.host = redirectRule.destinationHost;
+        destinationUrl.port = '';
+        destinationUrl.pathname = redirectRule.destinationPath;
+
+        for (const [key, value] of url.searchParams) {
+          destinationUrl.searchParams.set(key, value);
+        }
+
+        for (const [key, value] of Object.entries(HERMES_DOMAIN_REDIRECT_ANALYTICS_PARAMS)) {
+          if (!destinationUrl.searchParams.has(key)) {
+            destinationUrl.searchParams.set(key, value);
+          }
+        }
+
+        logRedirect('Redirecting legacy domain', {
+          destination: destinationUrl.toString(),
+          host,
+          method,
+          path: url.pathname,
+        });
+
+        logRedirectTelemetry('Queueing Hermes redirect telemetry for %s', destinationUrl.toString());
+        void emitHermesRedirectTelemetry({
+          analytics: HERMES_DOMAIN_REDIRECT_ANALYTICS_PARAMS,
+          destination: destinationUrl.toString(),
+          event: HERMES_DOMAIN_REDIRECT_EVENT,
+          featureFlag: HERMES_DOMAIN_REDIRECT_FLAG,
+          method,
+          originalHost: host,
+          originalPath: url.pathname,
+          permanent: redirectRule.permanent,
+          tags: redirectRule.tags,
+        });
+
+        return NextResponse.redirect(destinationUrl, redirectRule.permanent ? 308 : 307);
+      }
+
+      if (!redirectEnabled) {
+        logRedirect('Skipped redirect because feature flag override disabled enforcement', {
+          host,
+          method,
+          path: url.pathname,
+        });
+      } else if (!safeMethod) {
+        logRedirect('Skipped redirect because method is not idempotent', {
+          host,
+          method,
+          path: url.pathname,
+        });
+      }
+    }
+  }
+
+  if (isBackendRequest) {
     logDefault('Skipping API request: %s', url.pathname);
     return NextResponse.next();
   }

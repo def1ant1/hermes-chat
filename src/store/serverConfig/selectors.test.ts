@@ -39,6 +39,7 @@ describe('featureFlagsSelectors', () => {
       showMarket: true,
       showPinList: false,
       enableSTT: true,
+      enableHermesDomainRedirect: true,
     });
   });
 });

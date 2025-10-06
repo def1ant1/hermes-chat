@@ -12,6 +12,7 @@ export * from './auth';
 export * from './branding';
 export * from './currency';
 export * from './desktop';
+export * from './featureFlags';
 export * from './guide';
 export * from './layoutTokens';
 export * from './message';

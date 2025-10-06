@@ -14,9 +14,10 @@ usage() {
 Usage: scripts/rebrand_hermes_chat.sh [command] [options] [-- <extra tsx args>]
 
 Commands:
-  apply           Run the rebranding automation and apply file changes (default)
-  lint-strings    Dry-run replacements and execute regression checks
-  validate        Apply replacements and execute regression checks
+  apply             Run the rebranding automation and apply file changes (default)
+  lint-strings      Dry-run replacements and execute regression checks
+  validate          Apply replacements and execute regression checks
+  verify-redirects  Validate Hermes legacy domain redirect coverage
 
 Options:
   --workspace <path>   Directory to rebrand (defaults to repo root)
@@ -64,11 +65,19 @@ WORKSPACE=""
 FORWARDED_ARGS=()
 
 case "${1:-}" in
-  apply|lint-strings|validate)
+  apply|lint-strings|validate|verify-redirects)
     COMMAND="$1"
     shift
     ;;
 esac
+
+if [[ "$COMMAND" == "verify-redirects" ]]; then
+  echo "[rebrand] Validating Hermes domain redirect catalogue"
+  set -x
+  bunx tsx scripts/redirects/verifyHermesRedirects.ts "${FORWARDED_ARGS[@]}"
+  set +x
+  exit 0
+fi
 
 if [[ "$COMMAND" == "lint-strings" ]]; then
   DRY_RUN=true
